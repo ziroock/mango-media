@@ -1,0 +1,23 @@
+{
+  "name": "mango-media",
+  "version": "1.0.0",
+  "description": "Simple Social Media",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ziroock/mango-media.git"
+  },
+  "author": "Zaprin Ignatiev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ziroock/mango-media/issues"
+  },
+  "homepage": "https://github.com/ziroock/mango-media#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.9.17"
+  }
+}

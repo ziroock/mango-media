@@ -1,6 +1,5 @@
-module.exports = {
-    mongoURI: 'mongodb+srv://ziroock:TOyfSSI17ai7SVoq@mango-media-00-dknut.mongodb.net/mango-media-00?retryWrites=true&w=majority',
+if (process.env.NODE_ENV === 'production') {
+	module.exports = require('./prod');
+} else {
+	module.exports = require('./dev');
 }
-//username: ziroock
-// password: TOyfSSI17ai7SVoq
-

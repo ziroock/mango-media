@@ -22,7 +22,6 @@ passport.use(new LocalStrategy( {usernameField: 'email'},
             if (!user) {
                 return done(null, false, { message: 'Incorrect username.' });
             }
-            //!user.validPassword(password)
             if (user.password !== password) {
                 return done(null, false, { message: 'Incorrect password.' });
             }

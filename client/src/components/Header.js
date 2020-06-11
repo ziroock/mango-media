@@ -4,13 +4,14 @@ class Header extends Component {
     render() {
         return (
             <nav>
-                <div className="nav-wrapper">
-                    <a href="#" className="brand-logo">Logo</a>
+                <div className="nav-wrapper light-blue accent-3">
+                    <div style={{margin: '0 1em'}}>
+                    <a href="#" className="brand-logo">Mango-Media</a>
                     <ul id="nav-mobile" className="right hide-on-med-and-down">
-                        <li><a href="sass.html">Sass</a></li>
-                        <li><a href="badges.html">Components</a></li>
-                        <li><a href="collapsible.html">JavaScript</a></li>
+                        <li><a href="#">Login</a></li>
+                        <li><a href="#">Register</a></li>
                     </ul>
+                    </div>
                 </div>
             </nav>
         );

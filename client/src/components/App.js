@@ -9,6 +9,8 @@ const Dashboard = () => <h2>Dashboard</h2>;
 const Login = () => <h2>Login</h2>;
 const Register = () => <h2>Register</h2>;
 
+// TODO: Re-route unknown routes to home or print a message
+
 class App extends Component {
     componentDidMount() {
         this.props.fetchUser();
@@ -21,7 +23,7 @@ class App extends Component {
                     <div>
                         <Header/>
                         <Route exact path="/" component={Home}/>
-                        <Route exact path="/dashboard" component={Dashboard}/>
+                        <Route path="/dashboard" component={Dashboard}/>
                         <Route path="/login" component={Login}/>
                         <Route path="/register" component={Register}/>
                     </div>

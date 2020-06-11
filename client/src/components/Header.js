@@ -5,11 +5,16 @@ class Header extends Component {
     renderContent() {
         switch(this.props.auth) {
             case null:
-                return 'Still deciding';
+                return;
             case false:
-                return 'logged out';
+                return (
+                    <div>
+                        <li><a href="/login">Sign In</a></li>
+                        <li><a href="/register">Sign Up</a></li>
+                    </div>
+                );
             default:
-                return 'logged in';
+                return <li>Log Out</li>;
         }
     }
 
@@ -19,7 +24,7 @@ class Header extends Component {
             <nav>
                 <div className="nav-wrapper light-blue accent-3">
                     <div style={{margin: '0 1em'}}>
-                        <a href="#" className="left brand-logo">Mango</a>
+                        <a href="/" className="left brand-logo">Mango</a>
                         <ul id="nav-mobile" className="right">
                             {this.renderContent()}
                         </ul>

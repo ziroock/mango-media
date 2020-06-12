@@ -6,16 +6,12 @@ class Register extends Component {
         super(props);
         this.state = {email: '', password: ''};
 
-        this.handleEmailChange = this.handleEmailChange.bind(this);
-        this.handlePasswordChange = this.handlePasswordChange.bind(this);
+        this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleEmailChange(event) {
-        this.setState({email:event.target.value});
-    }
-    handlePasswordChange(event) {
-        this.setState({password:event.target.value});
+    handleChange (event) {
+        this.setState({ [event.target.name]: event.target.value });
     }
 
     handleSubmit(event) {
@@ -32,11 +28,11 @@ class Register extends Component {
                 <form onSubmit={this.handleSubmit} method="post">
                     <div>
                         <label>Email:</label>
-                        <input type="text" name="email" autoComplete="username" onChange={this.handleEmailChange}/>
+                        <input type="text" name="email" autoComplete="username" onChange={this.handleChange}/>
                     </div>
                     <div>
                         <label>Password:</label>
-                        <input type="password" name="password" autoComplete="new-password" onChange={this.handlePasswordChange}/>
+                        <input type="password" name="password" autoComplete="new-password" onChange={this.handleChange}/>
                     </div>
                     <button className="btn waves-effect waves-light teal accent-3" type="submit">Sign Up</button>
                 </form>

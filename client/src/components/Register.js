@@ -29,6 +29,9 @@ class Register extends Component {
                 <h3>
                     Sign Up Form
                 </h3>
+                <p className="red-text">
+                    {this.props.message}
+                </p>
                 <form onSubmit={this.handleSubmit} method="post">
                     <div>
                         <label>Email:</label>
@@ -45,4 +48,9 @@ class Register extends Component {
     }
 }
 
-export default connect(null, actions)(Register);
+function mapStateToProps(state) {
+    // console.log(state.auth);
+    return { message: state.auth };
+}
+
+export default connect(mapStateToProps, actions)(Register);

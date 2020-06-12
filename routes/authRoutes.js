@@ -11,6 +11,7 @@ module.exports = app => {
             return null;
         }
         //console.log('email: ' + email + '\npassword: ' + password);
+        //TODO: Fix user validation errors to better ones
         const user = new User({ email: email, password: password });
 
         try {

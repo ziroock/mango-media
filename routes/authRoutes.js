@@ -6,18 +6,21 @@ module.exports = app => {
     app.post('/api/register', async (req, res) => {
         const { email, password } = req.body;
         if (!email || !password) {
-            res.status(422).send('Please enter username and password!');
+            //.status(422)
+            res.send({message: 'Please enter username and password!'});
             return null;
         }
-
+        //console.log('email: ' + email + '\npassword: ' + password);
         const user = new User({ email: email, password: password });
 
         try {
             await user.save();
-            res.send('Registration successful!');
+            res.send({message: 'Registration successful!'});
         } catch(err) {
-            res.status(409).send(
-                (err.name === 'MongoError' && err.code === 11000) ? 'Email is already in use!' : err.message
+            //.status(409)
+            res.send(
+                (err.name === 'MongoError' && err.code === 11000) ?
+                    {message: 'Email is already in use!'} : {message: err.message}
             );
         }
     });
@@ -36,7 +39,7 @@ module.exports = app => {
     );
 
     app.get('/api/current_user',(req, res) => {
-        console.log(req.user);
+        //console.log(req.user);
         res.send(req.user);
     });
 

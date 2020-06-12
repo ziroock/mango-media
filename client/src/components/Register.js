@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import * as actions from '../actions';
 
 class Register extends Component {
     constructor(props) {
@@ -15,10 +16,13 @@ class Register extends Component {
     }
 
     handleSubmit(event) {
-        console.log('Email: ' + this.state.email + '\nPassword: ' + this.state.password);
+        // console.log('Email: ' + this.state.email + '\nPassword: ' + this.state.password);
         event.preventDefault();
+        this.props.registerUser(this.state);
     }
 
+    // Link for why to use autoComplete
+    //   https://www.chromium.org/developers/design-documents/create-amazing-password-forms
     render() {
         return (
             <div className="container">
@@ -41,4 +45,4 @@ class Register extends Component {
     }
 }
 
-export default connect()(Register);
+export default connect(null, actions)(Register);

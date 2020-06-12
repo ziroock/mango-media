@@ -10,7 +10,7 @@ class Header extends Component {
                 return (
                     <div>
                         <li><a href="/login">Sign In</a></li>
-                        <li><a href="/register">Sign Up</a></li>
+                        <li className="teal accent-3"><a href="/register">Sign Up</a></li>
                     </div>
                 );
             default:

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FETCH_USER} from "./types";
+import {FETCH_USER, REGISTER_USER} from "./types";
 
 export const fetchUser = () => {
     return async dispatch => {
@@ -14,6 +14,6 @@ export const registerUser = (userInfo) => {
     return async dispatch => {
         const res = await axios.post('/api/register', userInfo);
         //console.log(res.data);
-        dispatch({ type: FETCH_USER, payload: res.data.message});
+        dispatch({ type: REGISTER_USER, payload: res.data.message});
     };
 };

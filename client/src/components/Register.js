@@ -49,8 +49,8 @@ class Register extends Component {
 }
 
 function mapStateToProps(state) {
-    // console.log(state.auth);
-    return { message: state.auth };
+    // console.log(state.register);
+    return { message: state.register };
 }
 
 export default connect(mapStateToProps, actions)(Register);

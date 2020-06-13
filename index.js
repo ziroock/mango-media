@@ -6,9 +6,19 @@ const keys = require('./config/keys');
 require('./models/User');
 require('./services/passport');
 
-mongoose.connect(keys.mongoURI, {
-    useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex:true
-});
+try {
+    mongoose.connect(keys.mongoURI, {
+        useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true
+    });
+
+    const connection = mongoose.connection;
+
+    connection.once('open', () => {
+        console.log("MongoDB connection established successfully!");
+    });
+} catch(error) {
+    console.log(error.message);
+}
 
 const app = express();
 app.use(express.json());

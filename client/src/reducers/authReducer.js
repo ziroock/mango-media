@@ -1,4 +1,4 @@
-import { FETCH_USER } from '../actions/types';
+import {FETCH_USER} from '../actions/types';
 
 // if state null ( don't know what is happening may be slow internet ... )
 // action.payload || false returns the user_id or if '' returns false

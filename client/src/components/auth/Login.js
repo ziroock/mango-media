@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import * as actions from '../../actions';
 
 // TODO: Make it so you can't access login or register
@@ -24,8 +25,17 @@ class Login extends Component {
         this.props.loginUser(this.state);
     }
 
+    handleRedirect() {
+        // console.log('Boiko ' + this.props.message)
+        // if(this.props.message === 'success') {
+        //     this.props.history.push('/');
+        // }
+
+    }
+
     // Link for why to use autoComplete
     //   https://www.chromium.org/developers/design-documents/create-amazing-password-forms
+    // "
     render() {
         return (
             <div className="container">
@@ -44,7 +54,7 @@ class Login extends Component {
                         <label>Password:</label>
                         <input type="password" name="password" autoComplete="new-password" onChange={this.handleChange}/>
                     </div>
-                    <button className="btn waves-effect waves-light teal accent-3" type="submit" >Sign In</button>
+                    <button className="btn waves-effect waves-light teal accent-3" type="Submit" >Sign In</button>
                 </form>
             </div>
         );
@@ -52,8 +62,8 @@ class Login extends Component {
 }
 
 function mapStateToProps(state) {
-    // console.log(state.register);
+    // console.log(state.auth);
     return { message: state.auth };
 }
 
-export default connect(mapStateToProps, actions)(Login);
+export default connect(mapStateToProps, actions)(withRouter(Login));

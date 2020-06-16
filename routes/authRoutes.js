@@ -26,10 +26,12 @@ module.exports = app => {
         }
     });
 
-    app.get('/api/login', (req, res) => {
-       res.send({});
-    });
     /*
+        // TODO: need to add error handling for wrong user name or wrong password
+    app.post('/api/login', passport.authenticate('local'), (req, res) => {
+            res.redirect(200, '/');
+        }
+    );
     , {
             successRedirect: '/',
             failureRedirect: '/api/login',
@@ -38,13 +40,41 @@ module.exports = app => {
     */
 
     // TODO: need to add error handling for wrong user name or wrong password
-    app.post('/api/login', passport.authenticate('local',
-        {
-            successRedirect: '/',
-            failureRedirect: '/api/login',
-            failureFlash: false
-        })
+    // app.post('/api/login',
+    //     (req, res, next) => {
+    //         passport.authenticate('local', (error, user, info) => {
+    //             console.log(error);
+    //             console.log(user);
+    //             console.log(info);
+    //
+    //             if (error) {
+    //                 res.send(error);
+    //             } else if (!user) {
+    //                 res.send(info);
+    //             } else {
+    //                 next();
+    //             }
+    //         })(req, res, next);
+    //     },
+    //     (req, res) => {
+    //         res.status(200).send({ message: 'Logged in!' });
+    //     }
+    // );
+
+    app.post('/api/login', passport.authenticate('local'), (req, res) => {
+            res.send('success');
+        }
     );
+
+    app.get('/login_check', (req, res) => {
+        if(req.user) {
+            res.redirect('/');
+        }
+    })
+
+    // app.get('/', (req, res) => {
+    //     res.send({hi: 'there'});
+    // });
 
     app.get('/api/current_user',(req, res) => {
         //console.log(req.user);

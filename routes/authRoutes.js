@@ -29,10 +29,17 @@ module.exports = app => {
     app.get('/api/login', (req, res) => {
        res.send({});
     });
+    /*
+    , {
+            successRedirect: '/',
+            failureRedirect: '/api/login',
+            failureFlash: false
+        }
+    */
 
     // TODO: need to add error handling for wrong user name or wrong password
-    app.post('/api/login',
-        passport.authenticate('local', {
+    app.post('/api/login', passport.authenticate('local',
+        {
             successRedirect: '/',
             failureRedirect: '/api/login',
             failureFlash: false

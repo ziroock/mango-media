@@ -4,10 +4,10 @@ import { connect } from 'react-redux';
 import * as actions from '../actions';
 
 import Header from './Header';
-import Register from './Register';
+import Register from './auth/Register';
+import Login from "./auth/Login";
 const Home = () => <h2>Home</h2>;
 const Dashboard = () => <h2>Dashboard</h2>;
-const Login = () => <h2>Login</h2>;
 
 
 // TODO: Re-route unknown routes to home or print a message

@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../actions';
+import * as actions from '../../actions';
+
+// TODO: Make it so you can't access login or register
+// TODO:  if the user is logged in!!!
 
 class Register extends Component {
     constructor(props) {

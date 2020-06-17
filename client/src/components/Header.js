@@ -23,10 +23,10 @@ class Header extends Component {
         return (
             <nav>
                 <div className="nav-wrapper light-blue accent-3">
-                    <div style={{margin: '0 1em'}}>
+                    <div style={{ margin: '0 1em' }}>
                         <a href="/" className="left brand-logo">Mango</a>
                         <ul id="nav-mobile" className="right">
-                            {this.renderContent()}
+                            { this.renderContent() }
                         </ul>
                     </div>
                 </div>

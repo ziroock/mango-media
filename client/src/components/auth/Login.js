@@ -7,7 +7,7 @@ import axios from 'axios';
 class Login extends Component {
     constructor(props) {
         super(props);
-        this.state = {email: '', password: ''};
+        this.state = {email: '', password: '', message:''};
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -18,7 +18,6 @@ class Login extends Component {
     }
 
     handleSubmit(event) {
-        // console.log('Email: ' + this.state.email + '\nPassword: ' + this.state.password);
         event.preventDefault();
 
         axios.post(
@@ -26,18 +25,16 @@ class Login extends Component {
             {email: this.state.email, password: this.state.password},
             {headers: {'content-type': 'application/json'}}
         )
-        .then(function (response) {
-            if (response.data === 'success') {
+        .then(() => { //on success
                 window.location = "/"
-            }
-            console.log(response);
         })
-        .catch(function (response) {
-            //handle error
-            console.log('Error ' + JSON.stringify(response));
+        .catch(() => { //on failure
+            axios.get('/api/loginMessage')
+                .then((res) => {
+                    this.setState({ message: res.data.error[0] });
+                })
         });
     }
-
 
     // Link for why to use autoComplete
     //   https://www.chromium.org/developers/design-documents/create-amazing-password-forms
@@ -48,6 +45,9 @@ class Login extends Component {
                 <h3>
                     SIGN IN FORM
                 </h3>
+                <p className="red-text">
+                    {this.state.message}
+                </p>
 
                 <form onSubmit={this.handleSubmit} method="post" action="/api/login">
                     <div>

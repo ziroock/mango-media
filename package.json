@@ -21,6 +21,7 @@
   "homepage": "https://github.com/ziroock/mango-media#readme",
   "dependencies": {
     "concurrently": "^5.2.0",
+    "connect-flash": "^0.1.1",
     "cookie-session": "^1.4.0",
     "express": "^4.17.1",
     "express-session": "^1.17.1",

@@ -2,6 +2,7 @@ const express = require('express');
 const session = require('express-session');
 const mongoose = require('mongoose');
 const passport = require('passport');
+const flash = require('connect-flash');
 const keys = require('./config/keys');
 require('./models/User');
 require('./services/passport');
@@ -15,7 +16,7 @@ const app = express();
 app.use(express.json());
 //app.use(express.urlencoded({extended: false}));
 
-
+app.use(flash());
 app.use(session({
         maxAge: 30 * 24 * 60 * 60 * 1000,
         secret: ['mango'],

@@ -6,11 +6,9 @@ module.exports = app => {
     app.post('/api/register', async (req, res) => {
         const { email, password } = req.body;
         if (!email || !password) {
-            //.status(422)
             res.send({message: 'Please enter username and password!'});
             return null;
         }
-        //console.log('email: ' + email + '\npassword: ' + password);
         //TODO: Fix user validation errors to better ones
         const user = new User({ email: email, password: password });
 
@@ -18,7 +16,6 @@ module.exports = app => {
             await user.save();
             res.send({message: 'Registration successful!'});
         } catch(err) {
-            //.status(409)
             res.send(
                 (err.name === 'MongoError' && err.code === 11000) ?
                     {message: 'Email is already in use!'} : {message: err.message}
@@ -26,36 +23,16 @@ module.exports = app => {
         }
     });
 
-
-    // app.post('/api/login',
-    //     (req, res, next) => {
-    //         passport.authenticate('local', (error, user, info) => {
-    //             console.log(error);
-    //             console.log(user);
-    //             console.log(info);
-    //
-    //             if (error) {
-    //                 res.send(error);
-    //             } else if (!user) {
-    //                 res.send(info);
-    //             } else {
-    //                 next();
-    //             }
-    //         })(req, res, next);
-    //     },
-    //     (req, res) => {
-    //         res.status(200).send({ message: 'Logged in!' });
-    //     }
-    // );
-
-    // TODO: need to add error handling for wrong user name or wrong password
-    app.post('/api/login', passport.authenticate('local'), (req, res) => {
+    // TODO: need to block /api/login and /api/register for when a user is logged in!
+    app.post('/api/login', passport.authenticate('local', {failureFlash: true}), (req, res) => {
             res.status(200).send('success');
         }
     );
+    app.get('/api/loginMessage', (req, res) => {
+        res.send(req.flash());
+    })
 
     app.get('/api/current_user',(req, res) => {
-        //console.log(req.user);
         res.send(req.user);
     });
 

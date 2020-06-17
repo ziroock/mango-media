@@ -18,10 +18,12 @@ class Register extends Component {
         this.setState({ [event.target.name]: event.target.value });
     }
 
-    handleSubmit(event) {
-        // console.log('Email: ' + this.state.email + '\nPassword: ' + this.state.password);
+    async handleSubmit(event) {
         event.preventDefault();
-        this.props.registerUser(this.state);
+        await this.props.registerUser(this.state);
+        if(this.props.message === 'Registration successful!') {
+            window.location = "/login";
+        }
     }
 
     // Link for why to use autoComplete
@@ -52,7 +54,6 @@ class Register extends Component {
 }
 
 function mapStateToProps(state) {
-    // console.log(state.register);
     return { message: state.register };
 }
 

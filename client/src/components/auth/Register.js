@@ -54,7 +54,7 @@ class Register extends Component {
 }
 
 function mapStateToProps(state) {
-    return { message: state.register };
+    return { message: state.message };
 }
 
 export default connect(mapStateToProps, actions)(Register);

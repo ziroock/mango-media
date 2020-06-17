@@ -5,7 +5,6 @@ import {FETCH_USER} from '../actions/types';
 
 // TODO: Need to make sure that only the user_id or username is what is seen
 export default function(state = null, action) {
-    console.log(action);
     switch (action.type) {
         case FETCH_USER:
             return action.payload || false;

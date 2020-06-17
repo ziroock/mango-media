@@ -12,7 +12,10 @@ class Header extends Component {
                     <li key="2" className="teal accent-3"><a href="/register">Sign Up</a></li>
                 ];
             default:
-                return <li><a href="/api/logout">Log Out</a></li>;
+                return [
+                    <li key="1"><a href="/dashboard">Profile</a></li>,
+                    <li key="2"><a href="/api/logout">Log Out</a></li>
+                    ];
         }
     }
 

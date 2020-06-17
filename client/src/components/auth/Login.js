@@ -27,7 +27,6 @@ class Login extends Component {
             {headers: {'content-type': 'application/json'}}
         )
         .then(function (response) {
-        //handle success
             if (response.data === 'success') {
                 window.location = "/"
             }
@@ -35,7 +34,7 @@ class Login extends Component {
         })
         .catch(function (response) {
             //handle error
-            console.log(response);
+            console.log('Error ' + JSON.stringify(response));
         });
     }
 
@@ -43,9 +42,6 @@ class Login extends Component {
     // Link for why to use autoComplete
     //   https://www.chromium.org/developers/design-documents/create-amazing-password-forms
     // "
-    //                <p className="red-text">
-    //                     {this.props.message}
-    //                 </p>
     render() {
         return (
             <div className="container">

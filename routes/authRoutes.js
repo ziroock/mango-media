@@ -26,19 +26,6 @@ module.exports = app => {
         }
     });
 
-    /*
-        // TODO: need to add error handling for wrong user name or wrong password
-    app.post('/api/login', passport.authenticate('local'), (req, res) => {
-            res.redirect(200, '/');
-        }
-    );
-    , {
-            successRedirect: '/',
-            failureRedirect: '/api/login',
-            failureFlash: false
-        }
-    */
-
     // TODO: need to add error handling for wrong user name or wrong password
     // app.post('/api/login',
     //     (req, res, next) => {
@@ -62,19 +49,9 @@ module.exports = app => {
     // );
 
     app.post('/api/login', passport.authenticate('local'), (req, res) => {
-            res.send('success');
+            res.send(200, 'success');
         }
     );
-
-    app.get('/login_check', (req, res) => {
-        if(req.user) {
-            res.redirect('/');
-        }
-    })
-
-    // app.get('/', (req, res) => {
-    //     res.send({hi: 'there'});
-    // });
 
     app.get('/api/current_user',(req, res) => {
         //console.log(req.user);

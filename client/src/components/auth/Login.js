@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-import * as actions from '../../actions';
+import axios from 'axios';
 
 // TODO: Make it so you can't access login or register
 // TODO:  if the user is logged in!!!
@@ -22,29 +20,39 @@ class Login extends Component {
     handleSubmit(event) {
         // console.log('Email: ' + this.state.email + '\nPassword: ' + this.state.password);
         event.preventDefault();
-        this.props.loginUser(this.state);
+
+        axios.post(
+            '/api/login',
+            {email: this.state.email, password: this.state.password},
+            {headers: {'content-type': 'application/json'}}
+        )
+        .then(function (response) {
+        //handle success
+            if (response.data === 'success') {
+                window.location = "/"
+            }
+            console.log(response);
+        })
+        .catch(function (response) {
+            //handle error
+            console.log(response);
+        });
     }
 
-    handleRedirect() {
-        // console.log('Boiko ' + this.props.message)
-        // if(this.props.message === 'success') {
-        //     this.props.history.push('/');
-        // }
-
-    }
 
     // Link for why to use autoComplete
     //   https://www.chromium.org/developers/design-documents/create-amazing-password-forms
     // "
+    //                <p className="red-text">
+    //                     {this.props.message}
+    //                 </p>
     render() {
         return (
             <div className="container">
                 <h3>
                     SIGN IN FORM
                 </h3>
-                <p className="red-text">
-                    {this.props.message}
-                </p>
+
                 <form onSubmit={this.handleSubmit} method="post" action="/api/login">
                     <div>
                         <label>Email:</label>
@@ -61,9 +69,4 @@ class Login extends Component {
     }
 }
 
-function mapStateToProps(state) {
-    // console.log(state.auth);
-    return { message: state.auth };
-}
-
-export default connect(mapStateToProps, actions)(withRouter(Login));
+export default Login;

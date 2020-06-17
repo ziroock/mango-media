@@ -18,11 +18,11 @@ export const registerUser = (userInfo) => {
     };
 };
 
-export const loginUser = (userInfo) => {
-    // console.log(userInfo);
-    return async dispatch => {
-        const res = await axios.post('/api/login', userInfo);
-        console.log(res);
-        dispatch({ type: FETCH_USER, payload: res.data });
-    };
-};
+// export const loginUser = (userInfo) => {
+//     // console.log(userInfo);
+//     return async dispatch => {
+//         const res = await axios.post('/api/login', userInfo);
+//         console.log(res);
+//         // dispatch({ type: FETCH_USER, payload: res.data });
+//     };
+// };

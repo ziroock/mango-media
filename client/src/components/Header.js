@@ -7,14 +7,12 @@ class Header extends Component {
             case null:
                 return;
             case false:
-                return (
-                    <div>
-                        <li><a href="/login">Sign In</a></li>
-                        <li className="teal accent-3"><a href="/register">Sign Up</a></li>
-                    </div>
-                );
+                return [
+                    <li key="1"><a href="/login">Sign In</a></li>,
+                    <li key="2" className="teal accent-3"><a href="/register">Sign Up</a></li>
+                ];
             default:
-                return <li>Log Out</li>;
+                return <li><a href="/api/logout">Log Out</a></li>;
         }
     }
 

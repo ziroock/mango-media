@@ -50,7 +50,7 @@ module.exports = app => {
 
     // TODO: need to add error handling for wrong user name or wrong password
     app.post('/api/login', passport.authenticate('local'), (req, res) => {
-            res.send(200, 'success');
+            res.status(200).send('success');
         }
     );
 

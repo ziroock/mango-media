@@ -1,5 +1,5 @@
 const express = require('express');
-const cookieSession = require('cookie-session');
+const session = require('express-session');
 const mongoose = require('mongoose');
 const passport = require('passport');
 const keys = require('./config/keys');
@@ -16,9 +16,11 @@ app.use(express.json());
 //app.use(express.urlencoded({extended: false}));
 
 
-app.use(cookieSession({
+app.use(session({
         maxAge: 30 * 24 * 60 * 60 * 1000,
-        keys: ['mango']
+        secret: ['mango'],
+        resave: false,
+        saveUninitialized: false,
     })
 );
 

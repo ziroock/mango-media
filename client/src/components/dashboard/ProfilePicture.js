@@ -8,7 +8,10 @@ export default () => {
             <img src={profileAvatar} alt="profile-avatar" style={{
                 objectFit: "cover",
                 width: "100px",
-                height: "100px"
+                height: "100px",
+                position: "absolute",
+                top: "-10px",
+                left: "-30px"
             }}/>
         </div>
     )

@@ -7,6 +7,7 @@ import Header from './Header';
 import Register from './auth/Register';
 import Login from "./auth/Login";
 import ProfileDashboard from './dashboard/ProfileDashboard';
+import '../style/style.css';
 const Home = () => <h2>Home</h2>;
 
 
@@ -19,10 +20,10 @@ class App extends Component {
 
     render() {
         return (
-            <div className="App">
+            <div id="App">
                 <BrowserRouter>
                     <div>
-                        <Header/>
+                        <Header id="header"/>
                         <Route exact path="/" component={Home}/>
                         <Route path="/dashboard" component={ProfileDashboard}/>
                         <Route path="/login" component={Login}/>

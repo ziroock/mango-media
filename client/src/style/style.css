@@ -14,3 +14,8 @@
         width: 70%;
     }
 }
+
+nav, .navbar-fixed {
+    height: 50px;
+    line-height: 50px;
+}

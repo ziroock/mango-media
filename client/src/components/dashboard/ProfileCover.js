@@ -9,8 +9,8 @@ export default () => {
             position: "relative",
             textAlign: "center",
             marginTop: "0.5em",
-            height: "820px",
-            width: "312px"}}>
+            height: "312px",
+            width: "820px"}}>
             <div style={{ display: "inline-block" }}>
                 <img src={mangoCover} alt="mango-cover" style={{
                     objectFit: "cover",

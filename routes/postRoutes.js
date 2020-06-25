@@ -13,7 +13,7 @@ module.exports = app => {
         const post = new Post({ body: body, dateCreated: new Date(), _user: req.user.id });
 
         try {
-            //await post.save();
+            await post.save();
             console.log(body, "   " , req.user.id);
             res.send({ message: 'Post successful!' });
         } catch(err) {

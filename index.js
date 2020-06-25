@@ -5,6 +5,7 @@ const passport = require('passport');
 const flash = require('connect-flash');
 const keys = require('./config/keys');
 require('./models/User');
+require('./models/Post');
 require('./services/passport');
 
 mongoose.connect(keys.mongoURI, {
@@ -29,6 +30,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 require('./routes/authRoutes')(app);
+require('./routes/postRoutes')(app);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT);

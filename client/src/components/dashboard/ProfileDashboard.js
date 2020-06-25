@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 
 import ProfileCover from "./ProfileCover";
-import ProfileTextBox from "./ProfileTextBox";
+import ProfilePost from "./ProfilePost";
 //TODO: Good for now, but need to make scalable keeping the same resolution
 
 class ProfileDashboard extends Component {
@@ -10,7 +10,7 @@ class ProfileDashboard extends Component {
         return (
             <div className="container green lighten-4">
                 <ProfileCover/>
-                <ProfileTextBox/>
+                <ProfilePost/>
             </div>
         )
     }

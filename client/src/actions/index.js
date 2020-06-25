@@ -25,3 +25,13 @@ export const createPost = (postBody) => {
         dispatch({ type: FETCH_POST, payload: res.data });
     };
 };
+
+export const fetchPosts = () => {
+    return async dispatch => {
+      const res = await axios.get('/api/postSend');
+      console.log(res.data);
+
+      dispatch({ type: FETCH_POST, payload: res.data });
+    };
+};
+

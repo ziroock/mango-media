@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import ProfileCover from "./ProfileCover";
 import ProfilePost from "./ProfilePost";
+import ProfilePostList from "./ProfilePostList";
 //TODO: Good for now, but need to make scalable keeping the same resolution
 
 class ProfileDashboard extends Component {
@@ -18,6 +19,7 @@ class ProfileDashboard extends Component {
                     <div className="container green lighten-4">
                         <ProfileCover/>
                         <ProfilePost/>
+                        <ProfilePostList/>
                     </div>
                 );
         }

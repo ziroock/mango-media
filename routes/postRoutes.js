@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const Post = mongoose.model('posts');
 
+//TODO: create requireLogin middleware and add to both create and send
+
 module.exports = app => {
     app.post('/api/postCreate', async (req, res) => {
         console.log(req.body);
@@ -20,4 +22,12 @@ module.exports = app => {
             res.send({ message: err.message });
         }
     });
+
+    app.get('/api/postSend', async (req,res) => {
+        const posts = await Post.find({ _user: req.user.id });
+
+        res.send(posts);
+    });
+
+
 };

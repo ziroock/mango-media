@@ -2,21 +2,26 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
 
+const defaultPostValue = 'Write post...';
+
 class ProfilePost extends Component {
     constructor(props) {
         super(props);
-        this.state = {body: ''};
+        this.state = {body: defaultPostValue};
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleChange (event) {
-        this.setState({ [event.target.name]: event.target.value });
+    handleChange(event) {
+        if(this.state.body === defaultPostValue) {
+            this.setState({ [event.target.name]: event.target.value.slice(-1) });
+        } else {
+            this.setState({ [event.target.name]: event.target.value} );
+        }
     }
 
     async handleSubmit(event) {
-        console.log(this.state.body);
         event.preventDefault();
         await this.props.createPost(this.state);
     }
@@ -32,7 +37,7 @@ class ProfilePost extends Component {
                             height: "100px",
                             border: "none",
                             resize: "none"
-                        }} defaultValue="Write a post..."/>
+                        }} value={this.state.body}/>
                     <button className="btn waves-effect waves-light teal accent-3" type="submit">Post</button>
                 </form>
             </div>

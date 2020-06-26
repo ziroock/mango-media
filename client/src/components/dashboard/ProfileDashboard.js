@@ -30,7 +30,7 @@ class ProfileDashboard extends Component {
     }
 }
 function mapStateToProps(state) {
-    return { auth: state.auth };
+    return { auth: state.auth, post: state.post };
 }
 
 export default connect(mapStateToProps)(ProfileDashboard);

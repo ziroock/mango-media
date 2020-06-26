@@ -17,9 +17,10 @@ module.exports = app => {
         try {
             await post.save();
             console.log(body, "   " , req.user.id);
-            res.send({ message: 'Post successful!' });
+            const posts = await Post.find({ _user: req.user.id });
+            res.send(posts);
         } catch(err) {
-            res.send({ message: err.message });
+            res.send([{ message: err.message }]);
         }
     });
 

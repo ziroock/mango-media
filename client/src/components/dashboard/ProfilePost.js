@@ -14,16 +14,23 @@ class ProfilePost extends Component {
     }
 
     handleChange(event) {
-        if(this.state.body === defaultPostValue) {
+        console.log('The handle change is: ' + event.target.value);
+        if(this.state.body.trim() === defaultPostValue) {
             this.setState({ [event.target.name]: event.target.value.slice(-1) });
         } else {
             this.setState({ [event.target.name]: event.target.value} );
         }
     }
 
-    async handleSubmit(event) {
+    // The function first executes the following:
+    //  if the trimmed version of the body is not equal to the default value or if equal to just whitespaces
+    //  then make the post request to create post and then update the body to the defaultPostValue
+    handleSubmit(event) {
         event.preventDefault();
-        await this.props.createPost(this.state);
+        if(this.state.body.trim() !== '' && this.state.body.trim() !== defaultPostValue) {
+             this.props.createPost(this.state);
+             this.setState({body: defaultPostValue});
+        }
     }
 
     render() {

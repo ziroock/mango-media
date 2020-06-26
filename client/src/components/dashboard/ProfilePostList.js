@@ -10,20 +10,33 @@ class ProfilePostList extends Component {
         this.props.fetchPosts();
     }
 
+    findNumberOfPosts() {
+        let numberPosts = 0;
+        try {
+            this.props.posts.forEach(() => numberPosts++);
+        } catch {
+            console.log(this.props.posts);
+        }
+        return numberPosts;
+    }
+
     renderPosts() {
-        return this.props.posts.reverse().map(post => {
-            return (
-                <div className="card blue-grey" key={post._id}>
-                    <div className="card-content white-text">
-                        <span className="card-title">Mango Post</span>
-                        <p>{post.body}</p>
-                        <p className="right">
-                            Posted On: {new Date(post.dateCreated).toLocaleDateString()}
-                        </p>
+        let numberPosts= this.findNumberOfPosts()
+        if(numberPosts > 0) {
+            return this.props.posts.reverse().map((post, i) => {
+                return (
+                    <div className="card blue-grey" key={post._id}>
+                        <div className="card-content white-text">
+                            <span className="card-title">Mango Post #{numberPosts - i}</span>
+                            <p>{post.body}</p>
+                            <p className="right">
+                                Posted On: {new Date(post.dateCreated).toLocaleDateString()}
+                            </p>
+                        </div>
                     </div>
-                </div>
-            );
-        });
+                );
+            });
+        }
     }
 
     render() {

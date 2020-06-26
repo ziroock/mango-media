@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {FETCH_USER, FETCH_MESSAGE, FETCH_POST} from "./types";
+import {FETCH_USER, FETCH_MESSAGE, FETCH_POST, SUBMIT_POST} from "./types";
 
 export const fetchUser = () => {
     return async dispatch => {
@@ -22,7 +22,7 @@ export const createPost = (postBody) => {
     return async dispatch => {
         const res = await axios.post('/api/postCreate', postBody);
 
-        dispatch({ type: FETCH_POST, payload: res.data });
+        dispatch({ type: SUBMIT_POST, payload: res.data });
     };
 };
 

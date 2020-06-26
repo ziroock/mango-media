@@ -28,6 +28,4 @@ module.exports = app => {
 
         res.send(posts);
     });
-
-
 };

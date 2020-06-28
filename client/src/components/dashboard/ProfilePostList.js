@@ -20,6 +20,18 @@ class ProfilePostList extends Component {
         return numberPosts;
     }
 
+    //TODO: Add conditional to change from military time to am/pm because people don't know military time
+    toDateString(newDate){
+        let date = '';
+        date = date + newDate.getUTCHours().toString().padStart(2, '0') + ':' +
+            newDate.getUTCMinutes().toString().padStart(2, '0') + ', ' +
+            newDate.getUTCMonth().toString().padStart(2, '0') + '/' +
+            newDate.getUTCDate().toString().padStart(2, '0') + '/' +
+            newDate.getUTCFullYear().toString().padStart(4, '0');
+
+        return date;
+    }
+
     renderPosts() {
         let numberPosts= this.findNumberOfPosts()
         if(numberPosts > 0) {
@@ -30,7 +42,7 @@ class ProfilePostList extends Component {
                             <span className="card-title">Mango Post #{numberPosts - i}</span>
                             <p>{post.body}</p>
                             <p className="right">
-                                Posted On: {new Date(post.dateCreated).toLocaleString()}
+                                Posted On: {this.toDateString(new Date(post.dateCreated))}
                             </p>
                         </div>
                     </div>

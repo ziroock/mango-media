@@ -30,7 +30,7 @@ class ProfilePostList extends Component {
                             <span className="card-title">Mango Post #{numberPosts - i}</span>
                             <p>{post.body}</p>
                             <p className="right">
-                                Posted On: {new Date(post.dateCreated).toLocaleDateString()}
+                                Posted On: {new Date(post.dateCreated).toLocaleString()}
                             </p>
                         </div>
                     </div>

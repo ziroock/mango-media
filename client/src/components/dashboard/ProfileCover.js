@@ -2,7 +2,7 @@ import React from "react";
 import mangoCover from '../../images/mango-cover.jpg';
 import profileAvatar from '../../images/profile-avatar.jpg';
 
-//TODO: Good for now, but need to make scalable keeping the same resolution
+//TODO: Need to get user email and post as username, then change to Name when I add it to the model
 export default () => {
     return(
         <div style={{
@@ -25,6 +25,12 @@ export default () => {
                     top: "205px",
                     left: "10px"
                 }}/>
+                <h2 style={{
+                    position: "absolute",
+                    top: "205px",
+                    left: "150px",
+                    color: 'black'
+                }}> Test User </h2>
             </div>
         </div>
     )

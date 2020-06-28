@@ -25,6 +25,7 @@ class ProfilePost extends Component {
     // The function first executes the following:
     //  if the trimmed version of the body is not equal to the default value or if equal to just whitespaces
     //  then make the post request to create post and then update the body to the defaultPostValue
+    // TODO: add submit on enter, not just on the button click
     handleSubmit(event) {
         event.preventDefault();
         if(this.state.body.trim() !== '' && this.state.body.trim() !== defaultPostValue) {
@@ -45,7 +46,10 @@ class ProfilePost extends Component {
                             border: "none",
                             resize: "none"
                         }} value={this.state.body}/>
-                    <button className="btn waves-effect waves-light teal accent-3" type="submit">Post</button>
+                    <button style={{ fontSize: '20px', top: "-20px", left: "10px"}}
+                            className="btn waves-effect waves-light teal accent-3" type="submit">
+                        Post
+                    </button>
                 </form>
             </div>
         )

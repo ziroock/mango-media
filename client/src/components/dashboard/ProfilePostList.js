@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchPosts } from '../../actions';
-
-
-//TODO: when I add a new post the PfogilePostList breaks on update :( !!!
+import ProfilePostMenu from './ProfilePostMenu';
 
 class ProfilePostList extends Component {
     componentDidMount() {
@@ -24,7 +22,7 @@ class ProfilePostList extends Component {
     toDateString(newDate){
         let date = '';
         date = date + newDate.getUTCHours().toString().padStart(2, '0') + ':' +
-            newDate.getUTCMinutes().toString().padStart(2, '0') + ', ' +
+            newDate.getUTCMinutes().toString().padStart(2, '0') + ' ' +
             newDate.getUTCMonth().toString().padStart(2, '0') + '/' +
             newDate.getUTCDate().toString().padStart(2, '0') + '/' +
             newDate.getUTCFullYear().toString().padStart(4, '0');
@@ -40,6 +38,7 @@ class ProfilePostList extends Component {
                     <div className="card blue-grey" key={post._id}>
                         <div className="card-content white-text">
                             <span className="card-title">Mango Post #{numberPosts - i}</span>
+                            <ProfilePostMenu/>
                             <p>{post.body}</p>
                             <p className="right">
                                 Posted On: {this.toDateString(new Date(post.dateCreated))}
@@ -48,6 +47,8 @@ class ProfilePostList extends Component {
                     </div>
                 );
             });
+        } else {
+            return <div> Write your first Post! </div>;
         }
     }
 

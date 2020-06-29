@@ -35,3 +35,15 @@ export const fetchPosts = () => {
     };
 };
 
+export const deletePost = (postId) => {
+    return async dispatch => {
+        console.log(postId);
+        const res = await axios.post('/api/postDelete', postId);
+        console.log(res.data);
+
+        dispatch({ type: FETCH_POST, payload: res.data });
+    };
+};
+
+
+

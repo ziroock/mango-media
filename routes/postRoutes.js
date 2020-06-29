@@ -30,6 +30,7 @@ module.exports = app => {
 
     //TODO: Finish postDelete, then test with postman, then connect to client
     app.post('/api/postDelete', async (req, res) => {
+        await Post.deleteOne({ _user: req.user.id, _id: req.body.postId });
         const posts = await Post.find({ _user: req.user.id });
         console.log(req.body);
         res.send(posts);

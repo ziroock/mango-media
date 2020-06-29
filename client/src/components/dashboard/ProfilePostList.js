@@ -38,7 +38,7 @@ class ProfilePostList extends Component {
                     <div className="card blue-grey" key={post._id}>
                         <div className="card-content white-text">
                             <span className="card-title">Mango Post #{numberPosts - i}</span>
-                            <ProfilePostMenu/>
+                            <ProfilePostMenu data={post._id}/>
                             <p>{post.body}</p>
                             <p className="right">
                                 Posted On: {this.toDateString(new Date(post.dateCreated))}

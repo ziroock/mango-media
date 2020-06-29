@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../../actions';
+import { createPost } from '../../actions';
 
 const defaultPostValue = 'Write post...';
 
@@ -56,4 +56,4 @@ class ProfilePost extends Component {
     }
 }
 
-export default connect(null, actions)(ProfilePost);
+export default connect(null, { createPost })(ProfilePost);

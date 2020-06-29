@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { deletePost } from '../../actions';
 
 class ProfilePostMenu extends Component {
     constructor(props) {
@@ -6,12 +8,15 @@ class ProfilePostMenu extends Component {
         this.state = {
             showMenu: false,
         }
+        this.postId = props.data;
 
         this.showMenu = this.showMenu.bind(this);
         this.closeMenu = this.closeMenu.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
     }
 
     showMenu(event) {
+        console.log('postID: ' + this.postId);
         event.preventDefault();
         this.setState({ showMenu: true }, () => {
             document.addEventListener('click', this.closeMenu);
@@ -24,6 +29,10 @@ class ProfilePostMenu extends Component {
         });
     }
 
+    handleDelete() {
+        this.props.deletePost({ postId: this.postId });
+    }
+
     // TODO: add hover!
     renderMenu() {
         if(this.state.showMenu) {
@@ -34,7 +43,7 @@ class ProfilePostMenu extends Component {
                     }}
                 >
                     <li style={{cursor: 'pointer'}}>Edit</li>
-                    <li style={{cursor: 'pointer'}}>Delete</li>
+                    <li style={{cursor: 'pointer'}} onClick={this.handleDelete}>Delete</li>
                 </ul>
             );
         }
@@ -51,4 +60,4 @@ class ProfilePostMenu extends Component {
     }
 }
 
-export default ProfilePostMenu;
+export default connect(null, { deletePost })(ProfilePostMenu);

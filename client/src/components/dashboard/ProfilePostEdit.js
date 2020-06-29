@@ -46,7 +46,12 @@ class ProfilePostEdit extends Component {
                                   resize: "none"
                               }} value={this.state.body}
                     />
-                    <button onClick={this.handleSubmit}>submit</button>
+                    <button
+                        onClick={this.handleSubmit}
+                        style={{ fontSize: '15px', top: '140px', right: '20px', position: 'absolute'}}
+                    >
+                        submit
+                    </button>
                     <p className="right">{this.props.postDate}</p>
                 </div>
             </div>

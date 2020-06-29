@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Post = mongoose.model('posts');
 
-//TODO: create requireLogin middleware and add to: create, delete and send
+//TODO: create requireLogin middleware and add to: create, delete, edit and send
 
 module.exports = app => {
     app.get('/api/postSend', async (req,res) => {
@@ -28,9 +28,19 @@ module.exports = app => {
         res.send(posts);
     });
 
-    //TODO: Finish postDelete, then test with postman, then connect to client
     app.post('/api/postDelete', async (req, res) => {
         await Post.deleteOne({ _user: req.user.id, _id: req.body.postId });
+        const posts = await Post.find({ _user: req.user.id });
+        console.log(req.body);
+        res.send(posts);
+    });
+
+    app.post('/api/postEdit', async (req, res) => {
+        console.log('the update is: ' + req.body.body);
+        console.log('the update postId is: ' + req.body.postId);
+        await Post.updateOne(
+            { _user: req.user.id, _id: req.body.postId },
+            { $set: { 'body': req.body.body }});
         const posts = await Post.find({ _user: req.user.id });
         console.log(req.body);
         res.send(posts);

@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { fetchPosts } from '../../actions';
 import ProfilePostMenu from './ProfilePostMenu';
 
+// TODO: Document what key functions are doing
+
 class ProfilePostList extends Component {
     componentDidMount() {
         this.props.fetchPosts();
@@ -38,7 +40,12 @@ class ProfilePostList extends Component {
                     <div className="card blue-grey" key={post._id}>
                         <div className="card-content white-text">
                             <span className="card-title">Mango Post #{numberPosts - i}</span>
-                            <ProfilePostMenu data={post._id}/>
+                            <ProfilePostMenu
+                                id={post._id}
+                                title={'Mongo Post #' + (numberPosts - i).toString()}
+                                body={post.body}
+                                date={'Posted On:' + this.toDateString(new Date(post.dateCreated))}
+                            />
                             <p>{post.body}</p>
                             <p className="right">
                                 Posted On: {this.toDateString(new Date(post.dateCreated))}

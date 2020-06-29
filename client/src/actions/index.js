@@ -29,7 +29,6 @@ export const createPost = (postBody) => {
 export const fetchPosts = () => {
     return async dispatch => {
       const res = await axios.get('/api/postSend');
-      console.log(res.data);
 
       dispatch({ type: FETCH_POST, payload: res.data });
     };
@@ -37,9 +36,15 @@ export const fetchPosts = () => {
 
 export const deletePost = (postId) => {
     return async dispatch => {
-        console.log(postId);
         const res = await axios.post('/api/postDelete', postId);
-        console.log(res.data);
+
+        dispatch({ type: FETCH_POST, payload: res.data });
+    };
+};
+
+export const editPost = (postInfo) => {
+    return async dispatch => {
+        const res = await axios.post('/api/postEdit', postInfo);
 
         dispatch({ type: FETCH_POST, payload: res.data });
     };

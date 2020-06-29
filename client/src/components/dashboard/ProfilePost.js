@@ -46,7 +46,7 @@ class ProfilePost extends Component {
                             border: "none",
                             resize: "none"
                         }} value={this.state.body}/>
-                    <button style={{ fontSize: '20px', top: "-20px", left: "10px"}}
+                    <button style={{ fontSize: '20px', top: "-20px", left: "10px", zIndex: '1'}}
                             className="btn waves-effect waves-light teal accent-3" type="submit">
                         Post
                     </button>

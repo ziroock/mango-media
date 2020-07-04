@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { createPost, fetchUser } from '../../actions';
+import { createPost } from '../../actions';
 
 const defaultPostValue = 'Write post...';
 
@@ -35,7 +35,7 @@ class ProfilePost extends Component {
     }
 
     renderPostArea() {
-        if(this.props.auth === this.props.userId){
+        if(this.props.auth._id === this.props.userId){
             return(
                 <div style={{ textAlign: "center"}}>
                     <label style={{ fontSize: '20px'}}>Post</label>
@@ -67,4 +67,4 @@ function mapStateToProps(state) {
     return { auth: state.auth };
 }
 
-export default connect(mapStateToProps, { createPost, fetchUser })(ProfilePost);
+export default connect(mapStateToProps, { createPost })(ProfilePost);

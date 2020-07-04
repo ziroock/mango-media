@@ -4,8 +4,13 @@ import {FETCH_USER, FETCH_MESSAGE, FETCH_POST} from "./types";
 export const fetchUser = () => {
     return async dispatch => {
         const res = await axios.get('/api/current_user');
+        let payload = res.data;
+        console.log(res.data);
+        if(!res.data) {
+            payload = {_id: false, email: false };
+        }
 
-        dispatch({ type: FETCH_USER, payload: res.data._id });
+        dispatch({ type: FETCH_USER, payload: payload });
     };
 };
 

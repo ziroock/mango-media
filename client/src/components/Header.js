@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from "react-router-dom";
 
 class Header extends Component {
     renderContent() {
-        switch(this.props.auth) {
+        switch(this.props.auth._id) {
             case null:
                 return;
             case false:
@@ -14,7 +13,7 @@ class Header extends Component {
                 ];
             default:
                 return [
-                    <li key="1"><Link to={ `/dashboard/${this.props.auth}`}>Profile</Link></li>,
+                    <li key="1"><a href={ `/dashboard/${this.props.auth._id}` }>Profile</a></li>,
                     <li key="2"><a href="/api/logout">Log Out</a></li>
                     ];
         }
@@ -41,6 +40,7 @@ class Header extends Component {
 
 // Gets called with the entire state statement our of the reduxStore
 function mapStateToProps(state) {
+   //  console.log(state.auth);
     return { auth: state.auth };
 }
 

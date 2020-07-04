@@ -4,8 +4,8 @@ const Post = mongoose.model('posts');
 //TODO: create requireLogin middleware and add to: create, delete, edit and send
 
 module.exports = app => {
-    app.get('/api/postSend', async (req,res) => {
-        const posts = await Post.find({ _user: req.user.id });
+    app.post('/api/postSend', async (req,res) => {
+        const posts = await Post.find({ _user: req.body.userId });
 
         res.send(posts);
     });

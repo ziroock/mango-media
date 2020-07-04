@@ -7,8 +7,12 @@ import ProfilePost from "./ProfilePost";
 import ProfilePostList from "./ProfilePostList";
 //TODO: Good for now, but need to make scalable keeping the same resolution
 
+//                         <h2>:::{this.props.match}::::{this.props.location}</h2>
 class ProfileDashboard extends Component {
     renderContent() {
+        console.log('match: ');
+        console.log('match: ' + JSON.stringify(this.props.match, null, 4) + '\n location: ' +
+            JSON.stringify(this.props.location, null, 4));
         switch(this.props.auth) {
             case null:
                 return <h2>Please Sign In to access dashboard!</h2>;
@@ -18,8 +22,8 @@ class ProfileDashboard extends Component {
                 return (
                     <div className="container green lighten-4">
                         <ProfileCover/>
-                        <ProfilePost/>
-                        <ProfilePostList/>
+                        <ProfilePost userId={this.props.match.params.userId}/>
+                        <ProfilePostList userId={this.props.match.params.userId}/>
                     </div>
                 );
         }

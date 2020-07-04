@@ -7,7 +7,8 @@ import ProfilePostMenu from './ProfilePostMenu';
 
 class ProfilePostList extends Component {
     componentDidMount() {
-        this.props.fetchPosts();
+        this.props.fetchPosts({userId: this.props.userId});
+        console.log(this.props.userId);
     }
 
     findNumberOfPosts() {
@@ -55,7 +56,7 @@ class ProfilePostList extends Component {
                 );
             });
         } else {
-            return <div> Write your first Post! </div>;
+            return <h3> Write your first Post! </h3>;
         }
     }
 

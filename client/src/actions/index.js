@@ -5,7 +5,7 @@ export const fetchUser = () => {
     return async dispatch => {
         const res = await axios.get('/api/current_user');
 
-        dispatch({ type: FETCH_USER, payload: res.data.email });
+        dispatch({ type: FETCH_USER, payload: res.data._id });
     };
 };
 
@@ -26,9 +26,9 @@ export const createPost = (postBody) => {
     };
 };
 
-export const fetchPosts = () => {
+export const fetchPosts = (userId) => {
     return async dispatch => {
-      const res = await axios.get('/api/postSend');
+      const res = await axios.post('/api/postSend', userId);
 
       dispatch({ type: FETCH_POST, payload: res.data });
     };

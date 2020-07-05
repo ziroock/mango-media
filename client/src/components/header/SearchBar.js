@@ -3,14 +3,16 @@ import findUser from "../../utils/findUser";
 // import { connect } from 'react-redux';
 const defaultSearchValue = 'Search...';
 
+
 class SearchBar extends Component {
     constructor(props) {
         super(props);
         this.state = {body: defaultSearchValue, renderResults: false, userExists: false};
-        this.resutsArray = [];
+        this.resultsArray = [];
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.closeResults = this.closeResults.bind(this);
     }
 
     handleChange(event) {
@@ -30,13 +32,20 @@ class SearchBar extends Component {
         if(this.state.body.trim() !== '' && this.state.body.trim() !== defaultSearchValue) {
             let userExists = await findUser(this.state.body);
             if(userExists) {
-                // console.log('the body is: '+ this.state.body);
                 this.setState({ userExists: true });
             } else {
                 this.setState({ body: defaultSearchValue, userExists: false });
             }
-            this.setState({ renderResults: true });
+            this.setState({ renderResults: true }, () => {
+                document.addEventListener('click', this.closeResults);
+            });
         }
+    }
+
+    closeResults() {
+        this.setState({ renderResults: false }, () => {
+            document.removeEventListener('click', this.closeResults);
+        });
     }
 
     renderSearchResults() {
@@ -47,32 +56,24 @@ class SearchBar extends Component {
         }
     }
 
-    renderSearchBar() {
-            return(
-                <div>
-                    <div id="searchBar" className='left' style={{
-                        top: "10px", left: "180px", position:"absolute", zIndex: '1', fontSize: '20px'
-                    }} >
-                        <textarea className="white left" onChange={this.handleChange} name="body"
-                                  style={{ width: "200px", height: "30px", border: "none", resize: "none"}}
-                                  value={this.state.body}/>
-                            <li style={{ top: "-10px", right: " -70px", position:"absolute", cursor: 'pointer' }}
-                                className="right"     onClick={this.handleSubmit} >
-                                Search
-                            </li>
-                    </div>
-                    <ul id='searchResults'>
-                        {this.renderSearchResults()}
-                    </ul>
-
-                </div>
-            )
-    }
-
     render() {
-        return this.renderSearchBar();
+        return(
+            <div id="searchBar" className='left' style={{
+                top: "10px", left: "180px", position:"absolute", zIndex: '1', fontSize: '20px', backgroundColor: 'red'
+            }} >
+                    <textarea className="white left" onChange={this.handleChange} name="body"
+                              style={{ width: "200px", height: "30px", border: "none", resize: "none"}}
+                              value={this.state.body}/>
+                <li style={{ top: "-10px", right: " -70px", position:"absolute", cursor: 'pointer' }}
+                    className="right" onClick={this.handleSubmit} >
+                    Search
+                </li>
+                <div id="searchResults">
+                    <ul> {this.renderSearchResults()} </ul>
+                </div>
+            </div>
+        )
     }
 }
 
 export default SearchBar;
-// export default connect(mapStateToProps)(Header);

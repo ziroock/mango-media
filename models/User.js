@@ -15,7 +15,8 @@ const userSchema = new Schema({
         required: 'Password is required!',
         trim: true,
         minlength: 6
-    }
+    },
+    name: { type: String, trim: true, required: 'Name is required!'},
 });
 
 mongoose.model('users', userSchema);

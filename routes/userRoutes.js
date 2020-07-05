@@ -5,8 +5,8 @@ module.exports = app => {
 
     app.get('/api/current_user',(req, res) => {
         if(req.user) {
-            const {_id, email} = req.user;
-            res.send({_id: _id, email: email});
+            const {_id, email, name} = req.user;
+            res.send({_id: _id, email: email, name: name});
         } else {
             res.send(req.user);
         }
@@ -19,8 +19,8 @@ module.exports = app => {
         try {
             let userInfoFull = await User.findOne({_id: userId});
             // console.log( '###userInfo: ' + JSON.stringify(userInfoFull, null, 4) );
-            const {_id, email} = userInfoFull;
-            res.send({ _id, email });
+            const {_id, email, name} = userInfoFull;
+            res.send({ _id, email, name });
         } catch(error) {
             console.log(error.message);
             res.send(null);
@@ -42,6 +42,15 @@ module.exports = app => {
                 res.send({exist: false});
             }
         }
+    });
+
+    app.get('/addName' , async (req, res) => {
+        await User.updateOne(
+            { _id: req.body._id },
+            { $set: { 'name': req.body.name }});
+        console.log(req.body._id);
+        console.log(req.body.name);
+        res.send('name added!')
     });
 
 };

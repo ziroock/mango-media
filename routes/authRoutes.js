@@ -44,7 +44,7 @@ module.exports = app => {
         console.log(req.body._id);
         console.log(password);
         res.send('password updated!')
-    })
+    });
 
     app.get('/api/logout', (req, res) => {
         req.logout();

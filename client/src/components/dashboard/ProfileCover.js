@@ -48,7 +48,7 @@ class ProfileCover extends Component {
                         top: "205px",
                         left: "150px",
                         color: 'black'
-                    }}> {this.state.userInfo.email} </h2>
+                    }}> {this.state.userInfo.name} </h2>
                 </div>
             </div>
         )

@@ -13,8 +13,7 @@ const defaultSearchValue = 'Search...';
 class SearchBar extends Component {
     constructor(props) {
         super(props);
-        this.state = {body: defaultSearchValue, renderResults: false, userExists: false};
-        this.resultsArray = [];
+        this.state = {body: defaultSearchValue, renderResults: false, userArray: []};
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -32,11 +31,11 @@ class SearchBar extends Component {
     async handleSubmit(event) {
         event.preventDefault();
         if(this.state.body.trim() !== '' && this.state.body.trim() !== defaultSearchValue) {
-            let userExists = await findUser(this.state.body);
-            if(userExists) {
-                this.setState({ userExists: true });
+            let userArray = await findUser(this.state.body);
+            if(userArray) {
+                this.setState({ userArray: userArray });
             } else {
-                this.setState({ body: defaultSearchValue, userExists: false });
+                this.setState({ body: defaultSearchValue, userArray: [] });
             }
             this.setState({ renderResults: true }, () => {
                 document.addEventListener('click', this.closeResults);
@@ -51,8 +50,8 @@ class SearchBar extends Component {
     }
 
     renderSearchResults() {
-        if(this.state.renderResults && this.state.userExists) {
-            return <li key = "1"><a href={`/dashboard/${this.state.body}`}>{this.state.body}</a></li>;
+        if(this.state.renderResults && this.state.userArray) {
+            return <li key = "1"><a href={`/dashboard/${this.state.userArray[0]._id}`}>{this.state.userArray[0].name}</a></li>;
         } else if (this.state.renderResults) {
             return <li key = "1">No user found!</li>;
         }

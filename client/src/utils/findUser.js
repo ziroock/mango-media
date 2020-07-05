@@ -1,17 +1,17 @@
 import axios from "axios";
 
-export default async(userId) => {
+export default async(userName) => {
     try {
         let res = await axios.post(
             '/api/findUser',
-            {userId: userId},
+            {userName: userName},
             {headers: {'content-type': 'application/json'}}
         )
-        console.log(res);
-        return res.data.exist;
+        console.log(res.data);
+        return res.data;
 
     } catch(error) {
         console.log(error.message);
-        return false;
+        return [];
     }
 }

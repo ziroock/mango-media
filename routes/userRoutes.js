@@ -30,16 +30,14 @@ module.exports = app => {
     app.post('/api/findUser', async (req, res) =>{
 
         if(req.body) {
-            console.log(req.body.userId);
+            console.log(req.body.userName);
             try{
-                const userExist = await User.findById(req.body.userId);
-                console.log('userExist: ' + userExist);
-                if(userExist) {
-                    res.send({exist: true});
-                }
+                const userArray = await User.find({name: req.body.userName}).select({ password: false, __v: false });
+                console.log(userArray);
+                res.send(userArray);
             } catch(error) {
                 console.log(error.message);
-                res.send({exist: false});
+                res.send([]);
             }
         }
     });

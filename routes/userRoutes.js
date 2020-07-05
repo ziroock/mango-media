@@ -27,6 +27,9 @@ module.exports = app => {
         }
     });
 
+
+    // TODO: Need to find a user and compare user names without case sensitivity!
+    // example: Mac Miller needs to be considered the same as mac miller
     app.post('/api/findUser', async (req, res) =>{
 
         if(req.body) {

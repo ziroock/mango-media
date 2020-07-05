@@ -32,11 +32,7 @@ class SearchBar extends Component {
         event.preventDefault();
         if(this.state.body.trim() !== '' && this.state.body.trim() !== defaultSearchValue) {
             let userArray = await findUser(this.state.body);
-            if(userArray) {
-                this.setState({ userArray: userArray });
-            } else {
-                this.setState({ body: defaultSearchValue, userArray: [] });
-            }
+            this.setState({ userArray: userArray });
             this.setState({ renderResults: true }, () => {
                 document.addEventListener('click', this.closeResults);
             });
@@ -48,9 +44,9 @@ class SearchBar extends Component {
             document.removeEventListener('click', this.closeResults);
         });
     }
-// <li key = "1"><a href={`/dashboard/${this.state.userArray[0]._id}`}>{this.state.userArray[0].name}</a></li>
+
     renderSearchResults() {
-        if(this.state.renderResults && this.state.userArray) {
+        if(this.state.renderResults && (this.state.userArray.length !== 0)) {
             return this.state.userArray.map((user, i) => {
                 let userPageHref = `/dashboard/${user._id}`;
                 return (

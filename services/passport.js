@@ -1,4 +1,5 @@
 const passport = require('passport');
+const bcrypt = require('bcryptjs');
 const LocalStrategy = require('passport-local').Strategy;
 const mongoose = require('mongoose');
 
@@ -22,7 +23,8 @@ passport.use(new LocalStrategy( {usernameField: 'email'},
             if (!user) {
                 return done(null, false, { message: 'Incorrect username.' });
             }
-            if (user.password !== password) {
+            // user.password !== password
+            if (!bcrypt.compareSync(password, user.password)) {
                 return done(null, false, { message: 'Incorrect password.' });
             }
             return done(null, user);

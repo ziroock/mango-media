@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import SearchBar from "./SearchBar";
+
 class Header extends Component {
     renderContent() {
         switch(this.props.auth._id) {
@@ -8,13 +10,14 @@ class Header extends Component {
                 return;
             case false:
                 return [
-                    <li key="1"><a href="/login">Sign In</a></li>,
-                    <li key="2" className="teal accent-3"><a href="/register">Sign Up</a></li>
+                    <li key="1"><a style={{fontSize: '20px' }} href="/login">Sign In</a></li>,
+                    <li key="2" className="teal accent-3"><a style={{fontSize: '20px' }} href="/register">Sign Up</a></li>
                 ];
             default:
                 return [
-                    <li key="1"><a href={ `/dashboard/${this.props.auth._id}` }>Profile</a></li>,
-                    <li key="2"><a href="/api/logout">Log Out</a></li>
+                    <SearchBar key="1" />,
+                    <li key="2"><a style={{fontSize: '20px' }} href={ `/dashboard/${this.props.auth._id}` }>Profile</a></li>,
+                    <li key="3"><a style={{fontSize: '20px' }}  href="/api/logout">Log Out</a></li>
                     ];
         }
     }
@@ -25,8 +28,8 @@ class Header extends Component {
             <div className="navbar-fixed">
                 <nav>
                     <div className="nav-wrapper  green darken-2">
-                        <div style={{ margin: '0 1em'}}>
-                            <a href="/" className="left brand-logo">Mango</a>
+                        <div style={{ margin: '0 1em' }}>
+                            <a href="/" className="left brand-logo" style={{fontSize: '30px' }}>Mango</a>
                             <ul id="nav-mobile" className="right">
                                 { this.renderContent() }
                             </ul>

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createPost } from '../../actions';
 
-const defaultPostValue = 'Write post...';
+const defaultPostValue = 'Write a post...';
 
 class ProfilePost extends Component {
     constructor(props) {

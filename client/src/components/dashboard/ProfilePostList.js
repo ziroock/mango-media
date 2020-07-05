@@ -24,11 +24,11 @@ class ProfilePostList extends Component {
     //TODO: Add conditional to change from military time to am/pm because people don't know military time
     toDateString(newDate){
         let date = '';
-        date = date + newDate.getUTCHours().toString().padStart(2, '0') + ':' +
-            newDate.getUTCMinutes().toString().padStart(2, '0') + ' ' +
-            newDate.getUTCMonth().toString().padStart(2, '0') + '/' +
-            newDate.getUTCDate().toString().padStart(2, '0') + '/' +
-            newDate.getUTCFullYear().toString().padStart(4, '0');
+        date = date + newDate.getHours().toString().padStart(2, '0') + ':' +
+            newDate.getMinutes().toString().padStart(2, '0') + ' ' +
+            newDate.getMonth().toString().padStart(2, '0') + '/' +
+            newDate.getDate().toString().padStart(2, '0') + '/' +
+            newDate.getFullYear().toString().padStart(4, '0');
 
         return date;
     }

@@ -24,7 +24,10 @@ module.exports = app => {
             console.log(error.message);
             res.send(null);
         }
+    });
 
+    app.post('/api/checkUser', async (req, res) =>{
+       cons
     });
 
 };

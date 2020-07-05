@@ -17,7 +17,7 @@ class ProfileCover extends Component {
             { userId: this.props.userId },
             {headers: {'content-type': 'application/json'}})
             .then(response => this.setState({userInfo: response.data}))
-            .catch(err => console.log(err))
+            .catch(err => console.log(err));
     }
 
     render() {

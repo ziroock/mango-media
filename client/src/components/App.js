@@ -3,7 +3,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchUser } from '../actions';
 
-import Header from './Header';
+import Header from './header/Header';
 import Register from './auth/Register';
 import Login from "./auth/Login";
 import ProfileDashboard from './dashboard/ProfileDashboard';

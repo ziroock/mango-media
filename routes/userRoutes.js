@@ -12,6 +12,7 @@ module.exports = app => {
         }
     });
 
+    //TODO: maybe add protection for if userId is invalid aka res.body is empty
     app.post('/api/getUserInfo',async (req, res) => {
         const { userId } = req.body;
         //console.log(req.body.userId);
@@ -26,8 +27,21 @@ module.exports = app => {
         }
     });
 
-    app.post('/api/checkUser', async (req, res) =>{
-       cons
+    app.post('/api/findUser', async (req, res) =>{
+
+        if(req.body) {
+            console.log(req.body.userId);
+            try{
+                const userExist = await User.findById(req.body.userId);
+                console.log('userExist: ' + userExist);
+                if(userExist) {
+                    res.send({exist: true});
+                }
+            } catch(error) {
+                console.log(error.message);
+                res.send({exist: false});
+            }
+        }
     });
 
 };

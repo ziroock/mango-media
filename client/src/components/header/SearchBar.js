@@ -48,15 +48,21 @@ class SearchBar extends Component {
             document.removeEventListener('click', this.closeResults);
         });
     }
-
+// <li key = "1"><a href={`/dashboard/${this.state.userArray[0]._id}`}>{this.state.userArray[0].name}</a></li>
     renderSearchResults() {
         if(this.state.renderResults && this.state.userArray) {
-            return <li key = "1"><a href={`/dashboard/${this.state.userArray[0]._id}`}>{this.state.userArray[0].name}</a></li>;
+            return this.state.userArray.map((user, i) => {
+                let userPageHref = `/dashboard/${user._id}`;
+                return (
+                    <li key={i} style={{display: 'block'}}><a href={userPageHref}>{user.name}</a></li>
+                );
+            });
         } else if (this.state.renderResults) {
             return <li key = "1">No user found!</li>;
         }
     }
 
+    // TODO: Need to make the list ul into a column instead of a row???
     render() {
         return(
             <div id="searchBar" className='left'

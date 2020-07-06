@@ -1,8 +1,29 @@
 import React, { Component } from 'react';
 import loginRedirectAndMessages from "../../utils/loginRedirectAndMessages";
 
-// TODO: Make it so you can't access login or register
-// TODO:  if the user is logged in!!!
+/*
+* The Login component handles user changes to the Login form  and fields.
+* - TODO: Make the front and back end to forbid the user from using
+*    login or register if currently logged in.
+*
+* - handleSubmit(event):
+*   + This function sends user email and password to loginRedirectAndMessages
+*   + It sets the received authentication error handling messages to message state.
+* - handleChange(event):
+*   + This is a general function that is used for both password and email fields.
+*     It changes the specific state based on what field it comes from; email or pass.
+* - render():
+*   + This component renders the user Login form, that currently takes the following
+*     information upon login:
+*     + Local Authentication Fields:
+*       + Login: email
+*       + TODO: Add the ability to login with username, when I add username
+*       + Password: password
+*     + TODO: Add Links for  Google, Facebook etc. Strategies and add auth id's to user model.
+*   + Link to Google's suggestion for using autoComplete:
+        + https://www.chromium.org/developers/design-documents/create-amazing-password-forms
+* */
+
 
 class Login extends Component {
     constructor(props) {
@@ -23,9 +44,6 @@ class Login extends Component {
         this.setState({ message: loginMessage });
     }
 
-    // Link for why to use autoComplete
-    //   https://www.chromium.org/developers/design-documents/create-amazing-password-forms
-    // "
     render() {
         return (
             <div className="container">

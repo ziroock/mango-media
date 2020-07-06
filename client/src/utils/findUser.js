@@ -1,5 +1,14 @@
 import axios from "axios";
 
+/*
+* This function was created to be used in the SearchBar component. However,
+* I decided to move it in it's own file so I can reuse it in other Components.
+*
+* It returns the array received from the post request to findUser and an empty
+* array if the request fails.
+* */
+
+
 export default async(userName) => {
     try {
         let res = await axios.post(

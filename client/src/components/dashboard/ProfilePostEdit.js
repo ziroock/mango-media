@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { editPost } from '../../actions';
 
+
 /*
 * The Component ProfilePostEdit is a new page that opens up a new text are, and
 * takes care of post edits and sends them using the editPost(body, postId) action
@@ -17,6 +18,8 @@ import { editPost } from '../../actions';
 *   + The component renders a close a close icon, submit button and text area,
 *     containing and updating the body. Close icon calls togglePopUp() onClick.
 * */
+
+
 class ProfilePostEdit extends Component {
     constructor(props) {
         super(props);

@@ -11,12 +11,14 @@ import ProfilePostMenu from './ProfilePostMenu';
 * - toDateString(newDate):
 *   + This function transforms to the following date form hh:mm mm/dd/yy based
 *     on the incoming newDate.
+*   + TODO: Add conditional to change from military time to am/pm because people don't know military time
 * - render():
 *   + If there are existing posts for this user, map over in
 *     reverse order and calculate the proper post #.
 *   + Then the information relative to each post is sent to <ProfilePostMenu/>.
 *     <ProfilePostMenu/> handles edits and deletes based on the info received.
 * */
+
 
 class ProfilePostList extends Component {
     componentDidMount() {

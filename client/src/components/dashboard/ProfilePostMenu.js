@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { deletePost } from '../../actions';
 import ProfilePostEdit from "./ProfilePostEdit";
 
-// TODO: Document what key functions are doing
+
 /*
 * Component ProfilePostMenu is the small dropdown post menu and handles all the
 * functionality and action handling. The component is connected to the
@@ -29,6 +29,7 @@ import ProfilePostEdit from "./ProfilePostEdit";
 *   + On any click, this function changes the state showMenu to false which forces
 *     the menu to close. Then it removes the on click listener.
 * */
+
 
 class ProfilePostMenu extends Component {
     constructor(props) {

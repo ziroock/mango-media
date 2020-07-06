@@ -6,13 +6,11 @@ import ProfilePost from "./ProfilePost";
 import ProfilePostList from "./ProfilePostList";
 
 /*
-*   ProfileDashboard is the component that holds all the User Profile Components!
+* ProfileDashboard is the component that holds all the User Profile Components!
 * It holds: <ProfileCover/>, <ProfilePost/> and <ProfilePostList/>
+* TODO: Good for now, but need to make scalable keeping the same resolution
 * */
 
-
-
-//TODO: Good for now, but need to make scalable keeping the same resolution
 
 class ProfileDashboard extends Component {
     renderContent() {

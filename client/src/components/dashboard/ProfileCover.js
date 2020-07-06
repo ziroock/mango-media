@@ -13,7 +13,7 @@ import profileAvatar from '../../images/profile-avatar.jpg';
 * to getUserInfo on the server side.
  */
 
-//TODO: Need to get user email and post as username, then change to Name when I add it to the model
+
 class ProfileCover extends Component {
     constructor(props) {
         super(props);

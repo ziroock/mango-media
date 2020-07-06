@@ -19,6 +19,7 @@ const defaultPostValue = 'Write a post...';
 *   + TODO: add submit on enter, not just on the button click
 * */
 
+
 class ProfilePost extends Component {
     constructor(props) {
         super(props);

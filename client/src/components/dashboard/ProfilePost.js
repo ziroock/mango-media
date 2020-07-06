@@ -4,6 +4,21 @@ import { createPost } from '../../actions';
 
 const defaultPostValue = 'Write a post...';
 
+/*
+* ProfilePost handles everything behind creating a new post on the client side.
+*
+* - handleChange():
+*   + This is a generic function to handle changes inside the text area.
+*   + When the text of body is default, delete everything and start with new
+*     information.
+*   + When the text is not defaultPostValue, then keep updating the new body,
+*     continue to listen for new input from the keyboard.
+* - handleChange():
+*   + If the body is not empty and the body is not equal to default send
+*     request to createPost. Then update the body of the text area to default
+*   + TODO: add submit on enter, not just on the button click
+* */
+
 class ProfilePost extends Component {
     constructor(props) {
         super(props);
@@ -22,9 +37,7 @@ class ProfilePost extends Component {
         }
     }
 
-    // The function first executes the following:
-    //  if the trimmed version of the body is not equal to the default value or if equal to just whitespaces
-    //  then make the post request to create post and then update the body to the defaultPostValue
+
     // TODO: add submit on enter, not just on the button click
     handleSubmit(event) {
         event.preventDefault();
@@ -34,7 +47,7 @@ class ProfilePost extends Component {
         }
     }
 
-    renderPostArea() {
+    render() {
         if(this.props.auth._id === this.props.userId){
             return(
                 <div style={{ textAlign: "center"}}>
@@ -56,10 +69,6 @@ class ProfilePost extends Component {
             )
         }
         return null;
-    }
-
-    render() {
-        return this.renderPostArea();
     }
 }
 

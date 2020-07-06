@@ -4,13 +4,22 @@ import axios from 'axios';
 import mangoCover from '../../images/mango-cover.jpg';
 import profileAvatar from '../../images/profile-avatar.jpg';
 
+/*
+*   This component contains the ProfileCover items: Cover Photo, Profile Photo
+*  and User's Name.
+*
+*   - componentDidMount():
+*  This is a crucial function as I am getting the user info by sending a request
+* to getUserInfo on the server side.
+ */
+
 //TODO: Need to get user email and post as username, then change to Name when I add it to the model
 class ProfileCover extends Component {
     constructor(props) {
         super(props);
-
         this.state = {userInfo: {}}
     }
+
     componentDidMount() {
         console.log('UserId: ' + this.props.userId);
         axios.post('/api/getUserInfo',

@@ -4,6 +4,31 @@ import { deletePost } from '../../actions';
 import ProfilePostEdit from "./ProfilePostEdit";
 
 // TODO: Document what key functions are doing
+/*
+* Component ProfilePostMenu is the small dropdown post menu and handles all the
+* functionality and action handling. The component is connected to the
+* deletePost() action.
+*
+* - renderPostEdit():
+*   + Given the current state of showEdit is true, then open up the
+*     <ProfilePostEdit/> Component Page.
+*       + All the information
+* - handleDelete():
+*   + This function calls the deletePost action, when the delete button is clicked.
+* - renderMenu():
+*  + This function render's the post menu, when the showMenu state is set true.
+*  + TODO: Add on hover styling!
+* - toggleEdit():
+*   + This function sets showEdit state to opposite value which forces a re-render.
+*     This is used inside <ProfilePostEdit/> to handle close menu onClick and inside
+*     renderMenu() to open <ProfilePostEit/>.
+* - showMenu(event):
+*   + This function sets the showMenu state to true and calls an event listener
+*     of type 'click' and listens for a click inside closeMenu() to close menu.
+* - closeMenu():
+*   + On any click, this function changes the state showMenu to false which forces
+*     the menu to close. Then it removes the on click listener.
+* */
 
 class ProfilePostMenu extends Component {
     constructor(props) {

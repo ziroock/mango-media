@@ -2,7 +2,21 @@ import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { editPost } from '../../actions';
 
-// TODO: Document what key functions are doing
+/*
+* The Component ProfilePostEdit is a new page that opens up a new text are, and
+* takes care of post edits and sends them using the editPost(body, postId) action
+* TODO: Add css to handle scaling issue, create diff page based on diff device.
+*
+* - handleChange():
+*   + This function handles the change on the post body and updates the body state.
+* - handleSubmit():
+*   + Given that the body of the post is not empty, then send an action to
+*     editPost(body, postId). Then it calls closePopUp(), which is
+*     togglePopUp() inside inside the component parent <ProfilePostMenu/>.
+* - render():
+*   + The component renders a close a close icon, submit button and text area,
+*     containing and updating the body. Close icon calls togglePopUp() onClick.
+* */
 class ProfilePostEdit extends Component {
     constructor(props) {
         super(props);

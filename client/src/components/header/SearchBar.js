@@ -3,12 +3,34 @@ import findUser from "../../utils/findUser";
 const defaultSearchValue = 'Search...';
 
 
-/* handleSumbint():
-     // The function first executes the following:
-     //  if the trimmed version of the body is not equal to the default value or if equal to just whitespaces
-     //  then make the post request to create post and then update the body to the defaultPostValue
-     // TODO: add submit on enter, not just on the button click
+/*
+* The SearchBar Component handles the user search area inside Header.
+* It calls the util function findUser().
+*
+* - handleChange():
+*   + If the state.body = defaultSearchValue, then get only new keyboard input.
+*   + Else update the body inside the text area based on every keyboard input.
+* - handleSubmit():
+*   + If the body is not empty and is not equal to defaultSearchValue then:
+*       + execute findUsers() to fetch all users with this name (state.body)
+*         and assign to userArray
+*       + update state.userArray with the userArray and renderResults to true
+*       + add an event listener to close the dropdown with results on anny click.
+*   + TODO: add submit on enter, not just on the button click
+* - closeResults():
+*   + This function is called inside handleChange() and is used to se the state of
+*     renderResults to false and remove the event listener set in handleChange().
+*     All of this forces the drop down to close.
+* - renderSearchResults():
+*   + if renderResults is true and the userArray length not 0 then:
+*       + map all the received results and add a link with the userName
+*         and set it to the proper dashboard/user._id.
+*   + else send No User Found! list element.
+* - render():
+*   + The component renders and takes care of the actions for a text area,
+*     submit button, and a dropDown with results.
 */
+
 
 class SearchBar extends Component {
     constructor(props) {

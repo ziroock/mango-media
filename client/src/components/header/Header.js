@@ -1,7 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
 import SearchBar from "./SearchBar";
+
+/*
+* The Header Component is a navigation bar fixed at the top of every page. It renders
+* based on conditional logic received from the authReducer.
+*
+* - renderContent():
+*   + This function renders different Header values base on authReducer _id value.
+*   + In case no response or page is not loaded show nothing.
+*   + In case the user is not authenticated show login and register links.
+*   + In case user is logged in then show SearchBar Component , Profile and Log Out links.
+* */
+
 
 class Header extends Component {
     renderContent() {

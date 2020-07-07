@@ -10,8 +10,16 @@ import ProfileDashboard from './dashboard/ProfileDashboard';
 import '../style/style.css';
 const Home = () => <h2>Home</h2>;
 
-
-// TODO: Re-route unknown routes to home or print a message
+/*
+* The App Component is the what puts everything together! It is where the
+* routes to the parent components are handled. To achieve this I am using
+* BrowserRouter and Route from react-router-dom.
+* TODO: Re-route unknown routes to home or print a message
+*
+* - ComponentDidMount():
+*   + The function triggers a fetchUser() action, which receives the
+*      current user state and sends it to the authReducer.
+* */
 
 class App extends Component {
     componentDidMount() {

@@ -1,6 +1,27 @@
 const mongoose = require('mongoose');
 const User = mongoose.model('users');
 
+/**
+* This file contains the routes related to the user.
+*
+* - app.get('/api/current_user'):
+*   + This is a get request to send the current user info. If the user is
+*     logged in the info is send, else the response is empty.
+* - app.post('/api/geUserInfo'):
+*   + This is a post request that receives the a user id.
+*   + If the user exists within the data base send user info, else send null.
+* - app.post('/api/findUser'):
+*   + This is a post request that receives the user's Name.
+*   + If users with this name exist, return an array of this users info.
+*   + TODO: Need to find a user and compare user names without case sensitivity!
+*      example: Mac Miller needs to be considered the same as mac miller.
+* - app.get('/addName'):
+*   + This is a temporary function to add Name to user model. It was used to
+*     populate the user model after I added user name to it.
+*   + TODO: Keep for now and figure out if I will need to use it on the client.
+* */
+
+
 module.exports = app => {
 
     app.get('/api/current_user',(req, res) => {
@@ -12,7 +33,6 @@ module.exports = app => {
         }
     });
 
-    //TODO: maybe add protection for if userId is invalid aka res.body is empty
     app.post('/api/getUserInfo',async (req, res) => {
         const { userId } = req.body;
         //console.log(req.body.userId);
@@ -27,9 +47,6 @@ module.exports = app => {
         }
     });
 
-
-    // TODO: Need to find a user and compare user names without case sensitivity!
-    // example: Mac Miller needs to be considered the same as mac miller
     app.post('/api/findUser', async (req, res) =>{
 
         if(req.body) {

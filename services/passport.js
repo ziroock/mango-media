@@ -5,6 +5,19 @@ const mongoose = require('mongoose');
 
 const User = mongoose.model('users');
 
+/**
+* In this file I define functions and strategies needed for passport auth.
+* TODO: Add Facebook, Google, etc. authentication strategies
+*
+* - serializeUser():
+*   + This function serializes the user for the current session.
+* - deserializeUser():
+*   + This function deserializes the user for the current session after it is
+*     successfully received from the DB.
+* - user(LocalStrategy):
+*   + This function defines the Strategy used by passport for local authentication.
+* */
+
 passport.serializeUser((user, done) => {
     done(null, user.id);
 });

@@ -8,6 +8,14 @@ require('./models/User');
 require('./models/Post');
 require('./services/passport');
 
+/**
+ * This file sets up the server and connects all the needed files to it like:
+ *  Routes, DB models, services (passport).
+ *  Order of require statements matters as the model statements are needed
+ *  for the passport services.
+ * */
+
+
 mongoose.connect(keys.mongoURI, {
     useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true
 });
@@ -15,7 +23,6 @@ mongoose.connect(keys.mongoURI, {
 
 const app = express();
 app.use(express.json());
-//app.use(express.urlencoded({extended: false}));
 
 app.use(flash());
 app.use(session({

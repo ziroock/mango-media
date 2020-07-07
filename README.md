@@ -30,7 +30,7 @@ dependencies.
 **TODO: Finish Section**
 
 ## Versions used to implement the project
-- Node v12.8.0
+- Node v12.18.0
 - NPM v6.14.4
 
 ## Time Spent

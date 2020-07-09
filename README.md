@@ -26,8 +26,17 @@ dependencies.
 2. To access the project type http://localhost:3000 in a new browser window.
 3. To stop the server, and the client press **CTRL^C** twice inside terminal. 
 
-## Future Changes/TODO List
-**TODO: Finish Section**
+## Future Changes & TODO List
+###Future Changes
+** TODO: Finish Section**
+### TODO List
+- Finish/Update README.mn consistently   
+- Access control on back end
+- Access control on front end
+- Figure out how to store photos
+- Figure out how to let user change profile and cover photos
+- Add the ability for users to send out invitations for people to join the site
+- Add the ability for users to track invitations sent and invitations accepted
 
 ## Versions used to implement the project
 - Node v12.18.0

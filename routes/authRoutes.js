@@ -2,6 +2,7 @@ const passport = require('passport');
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const User = mongoose.model('users');
+const requireLogin = require('../middleware/requireLogin');
 
 /**
 * The file is containing all the auth server routes.
@@ -61,7 +62,7 @@ module.exports = app => {
         res.send(req.flash());
     })
 
-    app.get('/api/updatePassword' , async (req, res) => {
+    app.get('/api/updatePassword', requireLogin, async (req, res) => {
         let password = bcrypt.hashSync('password');
 
         await User.updateOne(
@@ -72,7 +73,7 @@ module.exports = app => {
         res.send('password updated!')
     });
 
-    app.get('/api/logout', (req, res) => {
+    app.get('/api/logout', requireLogin, (req, res) => {
         req.logout();
         res.redirect('/');
     });

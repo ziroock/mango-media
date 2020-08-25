@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const User = mongoose.model('users');
+const requireLogin = require('../middleware/requireLogin');
 
 /**
 * This file contains the routes related to the user.
@@ -33,7 +34,7 @@ module.exports = app => {
         }
     });
 
-    app.post('/api/getUserInfo',async (req, res) => {
+    app.post('/api/getUserInfo', requireLogin, async (req, res) => {
         const { userId } = req.body;
         //console.log(req.body.userId);
         try {
@@ -47,8 +48,8 @@ module.exports = app => {
         }
     });
 
-    app.post('/api/findUser', async (req, res) =>{
 
+    app.post('/api/findUser', requireLogin, async (req, res) =>{
         if(req.body) {
             console.log(req.body.userName);
             try{
@@ -61,6 +62,7 @@ module.exports = app => {
             }
         }
     });
+
 
     app.get('/addName' , async (req, res) => {
         await User.updateOne(

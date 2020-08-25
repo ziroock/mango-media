@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/ziroock/mango-media#readme",
   "dependencies": {
+    "@sendgrid/mail": "^7.2.4",
     "bcryptjs": "^2.4.3",
     "concurrently": "^5.2.0",
     "connect-flash": "^0.1.1",

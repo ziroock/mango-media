@@ -3,7 +3,6 @@ const { Schema } = mongoose;
 const InviteRecipientSchema = require('./InviteRecipient');
 
 const invitesSchema = new Schema({
-    title: String, // Set by default, dynamically with the name from the persons email ???
     body: String, // At first just do default statement like, Alexander invites oyu to join mongo media ...
     subject: String,
     recipients: [InviteRecipientSchema],

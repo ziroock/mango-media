@@ -6,13 +6,12 @@ const inviteTemplate = require('../services/emailTemplates/inviteTemplate');
 const Invite = mongoose.model('invites');
 
 module.exports = app => {
-    app.post('/api/invite', requireLogin, (req, res) => {
-        const { title, subject, body, recipients } = req.body;
+    app.post('/api/invite', requireLogin, async (req, res) => {
+        const { recipients } = req.body;
 
         const invite = new Invite({
-            title,
-            subject,
-            body,
+            subject: "You have been invited to join Mongo Media!",
+            body: req.user.name,
             recipients: recipients.split(',').map(email => ({ email: email.trim() })),
             _user: req.user.id,
             dateSent: Date.now()
@@ -20,6 +19,15 @@ module.exports = app => {
 
         //Great place to send an email
         const mailer = new Mailer(invite, inviteTemplate(invite));
-        mailer.send();
+        try {
+            await mailer.send();
+            //await invite.save();
+            // req.user.invites sent += recipients ( need to figure out how to get # recipients )
+            // const user = await req.user.save();
+            //res.send(user);
+        } catch (err) {
+            res.status(422).send(err.message);
+        }
+
     });
 };

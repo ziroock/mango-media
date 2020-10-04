@@ -16,7 +16,7 @@ https://github.com/ziroock/mango-media.git
 2. Make sure you have Node and NPM installed.
 3. Run **npm install** inside the root folder to install the server side   
 dependencies.
-4. Ron **npm install** inside the client folder to install the client side  
+4. Run **npm install** inside the client folder to install the client side  
 dependencies.
 5. Create a file inside the *config* folder called *dev.js* with the following  
  content:  
@@ -35,8 +35,8 @@ dependencies.
 ###Future Changes
 **TODO: Finish Section**
 ### TODO List
-- Finish/Update README.mn consistently   
-- Access control on back end
+- Finish/Update README.md consistently   
+- Access control on back end ( Created requireLogin check )
 - Access control on front end
 - Figure out how to store photos
 - Figure out how to let user change profile and cover photos

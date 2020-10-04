@@ -6,6 +6,7 @@ const flash = require('connect-flash');
 const keys = require('./config/keys');
 require('./models/User');
 require('./models/Post');
+require('./models/Invite');
 require('./services/passport');
 
 /**
@@ -39,6 +40,7 @@ app.use(passport.session());
 require('./routes/authRoutes')(app);
 require('./routes/postRoutes')(app);
 require('./routes/userRoutes')(app);
+require('./routes/inviteRoutes')(app);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT);

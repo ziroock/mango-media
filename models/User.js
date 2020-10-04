@@ -17,6 +17,12 @@ const userSchema = new Schema({
         minlength: 6
     },
     name: { type: String, trim: true, required: 'Name is required!'},
+    totalNumInvSent: { type: Number, default: 0 },
+    totalNumInvAccept: { type: Number, default: 0 },
+    invitedBy: { type: String, defalut: null }
 });
+
+// once inv sent update totalNumInviteSent, by searching all db entries for invites model
+// 
 
 mongoose.model('users', userSchema);

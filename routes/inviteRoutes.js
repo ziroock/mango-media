@@ -21,13 +21,13 @@ module.exports = app => {
         const mailer = new Mailer(invite, inviteTemplate(invite));
         try {
             await mailer.send();
-            //await invite.save();
-            // req.user.invites sent += recipients ( need to figure out how to get # recipients )
-            // const user = await req.user.save();
-            //res.send(user);
+            console.log("There are " + invite.recipients.length + " recipients.");
+            await invite.save();
+            req.user.totalNumInvSent += invite.recipients.length;
+            const user = await req.user.save();
+            res.send(user);
         } catch (err) {
             res.status(422).send(err.message);
         }
-
     });
 };

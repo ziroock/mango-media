@@ -6,6 +6,12 @@ const inviteTemplate = require('../services/emailTemplates/inviteTemplate');
 const Invite = mongoose.model('invites');
 
 module.exports = app => {
+
+    app.get('/api/invite/mango', (req, res) => {
+        res.send('Thanks for registering!');
+    })
+
+
     app.post('/api/invite', requireLogin, async (req, res) => {
         const { recipients } = req.body;
 

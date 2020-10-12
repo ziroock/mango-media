@@ -17,6 +17,8 @@ const defaultPostValue = 'Write a post...';
 *   + If the body is not empty and the body is not equal to default send
 *     request to createPost. Then update the body of the text area to default
 *   + TODO: add submit on enter, not just on the button click
+*   + TODO: access control works but need to hide the option
+*      to edit and delete if not the same user from the front end
 * */
 
 

@@ -7,6 +7,7 @@ import Header from './header/Header';
 import Register from './auth/Register';
 import Login from "./auth/Login";
 import ProfileDashboard from './dashboard/ProfileDashboard';
+import InviationNew from './invitation/InvitationNew';
 import '../style/style.css';
 const Home = () => <h2>Home</h2>;
 
@@ -36,6 +37,7 @@ class App extends Component {
                         <Route exact path="/dashboard/:userId" component={ProfileDashboard}/>
                         <Route path="/login" component={Login}/>
                         <Route path="/register" component={Register}/>
+                        <Route path="/invitation/new" component={InviationNew}/>
                     </div>
                 </BrowserRouter>
             </div>

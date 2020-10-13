@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {FETCH_USER, FETCH_MESSAGE, FETCH_POST} from "./types";
+import {FETCH_USER, FETCH_MESSAGE, FETCH_POST, FETCH_INVITE} from "./types";
 
 export const fetchUser = () => {
     return async dispatch => {
@@ -13,6 +13,12 @@ export const fetchUser = () => {
         dispatch({ type: FETCH_USER, payload: payload });
     };
 };
+
+export const fetchInvite = () => async dispatch => {
+    const res = await axios.get('/api/invite');
+
+    dispatch({ type: FETCH_INVITE, payload: res.data});
+}
 
 export const registerUser = (userInfo) => {
     return async dispatch => {

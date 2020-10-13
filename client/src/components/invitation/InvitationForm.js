@@ -10,7 +10,7 @@ import InvitationField from './invitationField';
 
 
 const FIELDS =[
-    { label: 'Invite Your Friends To Mango Media!', name: 'recipients'}
+    { label: 'Invite Your Friends To Mango Media!', name: 'recipients', errorMsg: 'You must input recipients emails!'}
 ];
 
 class InvitationForm extends Component {
@@ -32,7 +32,7 @@ class InvitationForm extends Component {
     render() {
         return(
             <div>
-                <form onSubmit={this.props.handleSubmit(values => console.log(values))}>
+                <form onSubmit={this.props.handleSubmit( this.props.onSurveySubmit)}>
                     {this.renderFields()}
                     <Link to="/" className="red btn-flat left white-text">
                         Cancel

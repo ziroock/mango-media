@@ -10,7 +10,9 @@ class InvitationNew extends Component {
 
     renderContent() {
         if (this.state.showFormReview) {
-            return <InvitationFormReview/>;
+            return <InvitationFormReview
+                onCancel={() => this.setState({showFormReview: false})}
+            />;
         }
 
         return <InvitationForm

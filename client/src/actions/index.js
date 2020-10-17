@@ -14,8 +14,9 @@ export const fetchUser = () => {
     };
 };
 
-export const submitInvite = () => async dispatch => {
-    const res = await axios.get('/api/invite');
+//does the same as the rest, but contracted syntax
+export const submitInvite = values => async dispatch => {
+    const res = await axios.post('/api/invite', values);
 
     dispatch({ type: FETCH_INVITE, payload: res.data});
 }

@@ -14,7 +14,7 @@ export const fetchUser = () => {
     };
 };
 
-export const fetchInvite = () => async dispatch => {
+export const submitInvite = () => async dispatch => {
     const res = await axios.get('/api/invite');
 
     dispatch({ type: FETCH_INVITE, payload: res.data});

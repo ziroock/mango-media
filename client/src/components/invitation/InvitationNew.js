@@ -3,6 +3,7 @@ import InvitationForm from "./InvitationForm";
 import InvitationFormReview from "./InvitationFormReview";
 /**
  * InvitationNew shows InvitationForm and InvitationFormReview
+ * If there are problems watch 175. Dumping Form Values
  * **/
 
 class InvitationNew extends Component {

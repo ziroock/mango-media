@@ -63,5 +63,6 @@ function validate(values) {
 
 export default reduxForm({
     validate,
-    form: 'invitationForm'
+    form: 'invitationForm',
+    destroyOnUnmount: false
 })(InvitationForm);

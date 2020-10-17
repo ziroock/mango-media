@@ -15,9 +15,11 @@ export const fetchUser = () => {
 };
 
 //does the same as the rest, but contracted syntax
-export const submitInvite = values => async dispatch => {
+export const submitInvite = (values, history) => async dispatch => {
     const res = await axios.post('/api/invite', values);
 
+    // Redirects to home after submit on an invite send
+    history.push('/');
     dispatch({ type: FETCH_INVITE, payload: res.data});
 }
 

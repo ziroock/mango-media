@@ -19,7 +19,8 @@ const userSchema = new Schema({
     name: { type: String, trim: true, required: 'Name is required!'},
     totalNumInvSent: { type: Number, default: 0 },
     totalNumInvAccept: { type: Number, default: 0 },
-    invitedBy: { type: String, defalut: null }
+    totalNumInvClicked: { type: Number, default: 0},
+    invitedBy: { type: String, default: null }
 });
 
 // once inv sent update totalNumInviteSent, by searching all db entries for invites model

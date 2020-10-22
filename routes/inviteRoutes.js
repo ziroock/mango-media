@@ -1,3 +1,6 @@
+const _ = require('lodash');
+const { Path } = require('path-parser');
+const { URL } = require('url');
 const mongoose = require('mongoose');
 const requireLogin = require('../middleware/requireLogin');
 const Mailer = require('../services/Mailer');
@@ -7,8 +10,25 @@ const Invite = mongoose.model('invites');
 
 module.exports = app => {
 
-    app.get('/api/invite/mango', (req, res) => {
+    app.get('/api/invite/:inviteId', (req, res) => {
         res.send('Thanks for registering!');
+    })
+
+
+    app.post('/api/invite/webhooks', (req, res) => {
+        const events = _.map(req.body, ({email, url}) => {
+            console.log("URL: " + new URL(url).pathname);
+            console.log("PATHNAME: " + url)
+            const pathname = new URL(url).pathname;
+            const p = new Path('/api/invite/:inviteId');
+            const match = p.test(pathname);
+
+            if (match) {
+                return { email: email, surveyId: match.surveyId };
+            }
+        });
+        console.log(events);
+        res.send({});
     })
 
 

@@ -24,10 +24,13 @@ module.exports = app => {
             const match = p.test(pathname);
 
             if (match) {
-                return { email: email, surveyId: match.surveyId };
+                return { email: email, inviteId: match.inviteId };
             }
         });
-        console.log(events);
+
+        const compactEvents = _.compact(events);
+        const uniqueEvents = _.uniqBy(compactEvents, 'email', 'inviteId');
+        console.log(uniqueEvents);
         res.send({});
     })
 

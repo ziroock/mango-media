@@ -16,21 +16,20 @@ module.exports = app => {
 
 
     app.post('/api/invite/webhooks', (req, res) => {
-        const events = _.map(req.body, ({email, url}) => {
-            console.log("URL: " + new URL(url).pathname);
-            console.log("PATHNAME: " + url)
-            const pathname = new URL(url).pathname;
-            const p = new Path('/api/invite/:inviteId');
-            const match = p.test(pathname);
+        const p = new Path('/api/invite/:inviteId');
 
-            if (match) {
-                return { email: email, inviteId: match.inviteId };
-            }
-        });
+        const events = _.chain(req.body)
+            .map(({email, url}) => {
+                const match = p.test(new URL(url).pathname);
+                if (match) {
+                    return { email: email, inviteId: match.inviteId };
+                }
+            })
+            .compact()
+            .uniqBy('email', 'inviteId')
+            .value();//return value aka array
 
-        const compactEvents = _.compact(events);
-        const uniqueEvents = _.uniqBy(compactEvents, 'email', 'inviteId');
-        console.log(uniqueEvents);
+        console.log(events);
         res.send({});
     })
 

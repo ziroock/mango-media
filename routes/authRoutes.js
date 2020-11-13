@@ -33,14 +33,14 @@ const requireLogin = require('../middleware/requireLogin');
 
 module.exports = app => {
     app.post('/api/register', async (req, res) => {
-        let { email, password } = req.body;
+        let { email, password, name } = req.body;
         if (!email || !password) {
-            res.send({message: 'Please enter username and password!'});
+            res.send({message: 'Please enter name, email and password!'});
             return null;
         }
         //TODO: Fix user validation errors to better ones
         password = bcrypt.hashSync(password);
-        const user = new User({ email: email, password: password });
+        const user = new User({ email: email, password: password, name: name });
 
         try {
             await user.save();

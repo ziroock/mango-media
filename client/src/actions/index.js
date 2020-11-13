@@ -24,6 +24,7 @@ export const submitInvite = (values, history) => async dispatch => {
 }
 
 export const registerUser = (userInfo) => {
+    console.log(userInfo.email);
     return async dispatch => {
         const res = await axios.post('/api/register', userInfo);
 

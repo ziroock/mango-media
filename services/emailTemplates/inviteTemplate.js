@@ -8,7 +8,7 @@ module.exports = invite => {
                 <h3>Would you like to join Mongo Media?</h3>
                 <p> Your friend ${invite.body} has sent you an invite!</p>
                 <div>
-                    <a href="${keys.mailRedirectDomain}/api/invite/${invite.id}">Register</a>
+                    <a href="${keys.mailRedirectDomain}/registerInvite?inviteId=${invite.id}">Register</a>
                 </div>
             </div>
         </body>

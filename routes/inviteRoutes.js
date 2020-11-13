@@ -10,9 +10,9 @@ const Invite = mongoose.model('invites');
 
 module.exports = app => {
 
-    app.get('/api/invite/:inviteId', (req, res) => {
-        res.send('Thanks for registering!');
-    })
+    // app.get('/registrationInvitation:inviteId', (req, res) => {
+    //     res.send('Thanks for registering!');
+    // })
 
 
     app.post('/api/invite/webhooks', (req, res) => {

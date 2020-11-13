@@ -36,7 +36,7 @@ import { registerUser } from '../../actions';
 class Register extends Component {
     constructor(props) {
         super(props);
-        this.state = {email: '', password: ''};
+        this.state = {email: '', password: '', name: ''};
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -64,6 +64,10 @@ class Register extends Component {
                     {this.props.message}
                 </p>
                 <form onSubmit={this.handleSubmit} method="post">
+                    <div>
+                        <label>Name</label>
+                        <input type="text" name="name" autoComplete="name" onChange={this.handleChange}/>
+                    </div>
                     <div>
                         <label>Email:</label>
                         <input type="text" name="email" autoComplete="username" onChange={this.handleChange}/>

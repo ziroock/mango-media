@@ -2,6 +2,7 @@ const passport = require('passport');
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const User = mongoose.model('users');
+const Invite = mongoose.model('invites');
 const requireLogin = require('../middleware/requireLogin');
 
 /**
@@ -31,6 +32,12 @@ const requireLogin = require('../middleware/requireLogin');
 *
 * */
 
+function updateInvite(inviteId) {
+    // TODO:
+    //  Need to get and update the user's invvitationsAccepted count on mongo side
+    //  Also I need the newly registered usere's ID !!!
+}
+
 module.exports = app => {
     app.post('/api/register', async (req, res) => {
         let { email, password, name, inviteId } = req.body;
@@ -46,6 +53,7 @@ module.exports = app => {
             await user.save();
             //updateCount write a function for that
             console.log('inviteId: ' + inviteId);
+            updateInvite(inviteId);
 
             res.send({message: 'Registration successful!'});
         } catch(err) {

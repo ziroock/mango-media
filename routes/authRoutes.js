@@ -33,7 +33,7 @@ const requireLogin = require('../middleware/requireLogin');
 
 module.exports = app => {
     app.post('/api/register', async (req, res) => {
-        let { email, password, name } = req.body;
+        let { email, password, name, inviteId } = req.body;
         if (!email || !password) {
             res.send({message: 'Please enter name, email and password!'});
             return null;
@@ -44,6 +44,9 @@ module.exports = app => {
 
         try {
             await user.save();
+            //updateCount write a function for that
+            console.log('inviteId: ' + inviteId);
+
             res.send({message: 'Registration successful!'});
         } catch(err) {
             res.send(

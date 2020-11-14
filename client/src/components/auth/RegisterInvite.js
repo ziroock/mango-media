@@ -2,10 +2,15 @@ import React, {Component} from "react";
 import {connect} from "react-redux";
 import {registerUser} from "../../actions";
 
+
 class RegisterInvite extends Component {
+
     constructor(props) {
         super(props);
-        this.state = {email: '', password: '', name: ''};
+        this.state = {email: '', password: '', name: '', inviteId: ''};
+        let inviteId = (window.location.pathname).split("/")[2];
+        console.log(inviteId);
+        this.state.inviteId = inviteId;
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);

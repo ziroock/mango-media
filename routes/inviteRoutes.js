@@ -16,7 +16,7 @@ module.exports = app => {
 
 
     app.post('/api/invite/webhooks', (req, res) => {
-        const p = new Path('/api/invite/:inviteId');
+        const p = new Path('/registerInvite/:inviteId');
 
         const events = _.chain(req.body)
             .map(({email, url}) => {

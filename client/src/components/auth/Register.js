@@ -36,7 +36,7 @@ import { registerUser } from '../../actions';
 class Register extends Component {
     constructor(props) {
         super(props);
-        this.state = {email: '', password: '', name: ''};
+        this.state = {email: '', password: '', name: '', inviteId: 'none'};
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);

@@ -1,9 +1,10 @@
 const passport = require('passport');
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
+const requireLogin = require('../middleware/requireLogin');
+
 const User = mongoose.model('users');
 const Invite = mongoose.model('invites');
-const requireLogin = require('../middleware/requireLogin');
 
 /**
 * The file is containing all the auth server routes.
@@ -36,6 +37,7 @@ function updateInvite(inviteId) {
     // TODO:
     //  Need to get and update the user's invvitationsAccepted count on mongo side
     //  Also I need the newly registered usere's ID !!!
+
 }
 
 module.exports = app => {

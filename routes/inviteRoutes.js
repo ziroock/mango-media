@@ -7,6 +7,7 @@ const Mailer = require('../services/Mailer');
 const inviteTemplate = require('../services/emailTemplates/inviteTemplate');
 
 const Invite = mongoose.model('invites');
+const User = mongoose.model('users');
 
 module.exports = app => {
 
@@ -15,7 +16,7 @@ module.exports = app => {
     // })
 
 
-    app.post('/api/invite/webhooks', (req, res) => {
+    app.post('/api/invite/webhooks',(req, res) => {
         const p = new Path('/registerInvite/:inviteId');
         // console.log("parseObject: ", p);
         // console.log(req.body);
@@ -35,6 +36,29 @@ module.exports = app => {
             })
             .compact()
             .uniqBy('email', 'inviteId')
+            .forEach( async ({ email, inviteId }) => {
+
+                let inviteUpdate = await Invite.findOneAndUpdate({
+                    _id: inviteId,
+                    recipients: {
+                        $elemMatch: { email: email, responded: false }
+                    }
+                },
+                //Update the invite after it was found. IT is done in mongoDB so
+                //   express doesn't need to deal with it.
+                {
+                    $set: { 'recipients.$.responded': true }
+                }).exec();
+                console.log("BATEEEE: ", inviteUpdate);
+                //update clickedInv
+                if(inviteUpdate) {
+                    User.updateOne({
+                        _id: inviteUpdate._user
+                    }, {
+                        $inc: { totalNumInvClicked: 1 }
+                    }).exec();
+                }
+            })
             .value();//return value aka array
 
         console.log("SENDGRID WEBHOOK EVENTS: ", events);

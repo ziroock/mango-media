@@ -17,19 +17,27 @@ module.exports = app => {
 
     app.post('/api/invite/webhooks', (req, res) => {
         const p = new Path('/registerInvite/:inviteId');
+        // console.log("parseObject: ", p);
+        // console.log(req.body);
 
         const events = _.chain(req.body)
             .map(({email, url}) => {
-                const match = p.test(new URL(url).pathname);
-                if (match) {
-                    return { email: email, inviteId: match.inviteId };
+                //if the url exists, b/c it is not always present
+                if(url) {
+                    const match = p.test(new URL(url).pathname);
+                    if (match) {
+                        return {email: email, inviteId: match.inviteId};
+                    }
+                }
+                else {
+                    console.log("THE URL IS NOT PRESENT IN WEBHOOK DATA!")
                 }
             })
             .compact()
             .uniqBy('email', 'inviteId')
             .value();//return value aka array
 
-        console.log(events);
+        console.log("SENDGRID WEBHOOK EVENTS: ", events);
         res.send({});
     })
 

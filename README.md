@@ -1,13 +1,40 @@
 # MANGO-MEDIA
 
-## Project Intent & Functionality
+## I.  Project Intent & Functionality
 ### Intent
 This project is created so I can further develop my web development skills.  
 By using frameworks like React, Mongooese, Express and more. It is a great  
 learning experience, because it gives me the opportunity to architect and  
 then encode the envisioned feature.  
 ### Functionality
-#### Invitations
+
+#### Personal Page
+
+- **Search**
+    - Currently, a user can search for other users. 
+    - Once the user gets found and clicked on, the current user gets redirected   
+      to the page of the user found.
+    - **TODO: Need to figure out how to suggest users on search. To do this I
+    need to implement the friends' functionality for MM.**
+
+- **Profile Picture**
+    - **TODO: Need to implement currently it is static.**
+ 
+- **Profile Cover Picture**
+    - **TODO: Need to implement currently it is static.**
+ 
+- **Profile Posts**
+    - Each user can post on their profile. A user can edit and delete their posts.
+    - **TODO: Need to test that only the user, which owns the post, can edit and    
+    delete their posts.**
+
+#### 4. Local Authentication Strategy
+   - Mongo Media uses Passport authentication API to for the user creation.
+   - Specifically I used Passport Local Strategy, which gives me the ability to
+     let hte user to authenticate with a username and password. The login   
+     information gets stored inside a MongoDB Cluster on Atlas.
+     
+#### 5. Invitations
    - Mongo Media (MM) provides an **invitations** property that allows users to    
    invite friends to join MM by email.    
    - To achieve this I used React Redux Form to create an input form and review.   
@@ -36,7 +63,8 @@ then encode the envisioned feature.
      
 **TODO: Finish Section**
 
-## How to run the project
+## II. How to run the project
+
 ### For the first time
 1. Clone the project folder from the following repository:   
 https://github.com/ziroock/mango-media.git
@@ -58,7 +86,8 @@ dependencies.
 2. To access the project type http://localhost:3000 in a new browser window.
 3. To stop the server, and the client press **CTRL^C** twice inside terminal. 
 
-## Future Changes & TODO List
+## III. Future Changes & TODO List
+
 ###Future Changes
 **TODO: Finish Section**
 ### TODO List
@@ -66,14 +95,19 @@ dependencies.
 - Access control on back end ( Created requireLogin check )
 - Access control on front end
 - Figure out how to store photos   
-- Figure out how to let user change profile and cover photos   
+- Figure out how to let user change profile and cover photos  
+- After I am done with the above tasks I can start working on the friends functionality.    
+- Need to figure out how to suggest users on search. To do this I need to implement   
+ the friends' functionality for MM.
+- Need to test that only the user, which owns the post, can edit and delete their posts.
+
+
 - (DONE) Add the ability for users to send out invitations for people to join the site
 - (DONE) Add the ability for users to track invitations sent and invitations accepted
-
-## Versions used to implement the project
+## IV. Versions used to implement the project
 - Node v12.18.0
 - NPM v6.14.4
 
-## Time Spent
+## V. Time Spent
 **TODO: Finish Section**
 

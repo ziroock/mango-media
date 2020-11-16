@@ -8,7 +8,7 @@ const userSchema = new Schema({
         trim: true,
         unique: true,
         lowercase: true,
-        match: [/^\w+([-]?\w+)*@\w+([-]?\w+)*(\.\w{2,3})+$/, 'Please enter a valid email address!']
+        match: [/^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/, 'Please enter a valid email address!']
     },
     password: {
         type: String,
@@ -18,7 +18,7 @@ const userSchema = new Schema({
     },
     name: { type: String, trim: true, required: 'Name is required!'},
     totalNumInvSent: { type: Number, default: 0 },
-    totalNumInvAccept: { type: Number, default: 0 },
+    totalNumRegistered: { type: Number, default: 0 },
     totalNumInvClicked: { type: Number, default: 0},
     invitedBy: { type: String, default: null }
 });

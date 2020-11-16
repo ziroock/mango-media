@@ -10,12 +10,6 @@ const Invite = mongoose.model('invites');
 const User = mongoose.model('users');
 
 module.exports = app => {
-
-    // app.get('/registrationInvitation:inviteId', (req, res) => {
-    //     res.send('Thanks for registering!');
-    // })
-
-
     app.post('/api/invite/webhooks',(req, res) => {
         const p = new Path('/registerInvite/:inviteId');
         // console.log("parseObject: ", p);
@@ -38,22 +32,22 @@ module.exports = app => {
             .uniqBy('email', 'inviteId')
             .forEach( async ({ email, inviteId }) => {
 
-                let inviteUpdate = await Invite.findOneAndUpdate({
+                const inviteUpdated = await Invite.findOneAndUpdate({
                     _id: inviteId,
                     recipients: {
-                        $elemMatch: { email: email, responded: false }
+                        $elemMatch: { email: email, opened: false }
                     }
                 },
                 //Update the invite after it was found. IT is done in mongoDB so
                 //   express doesn't need to deal with it.
                 {
-                    $set: { 'recipients.$.responded': true }
+                    $set: { 'recipients.$.opened': true }
                 }).exec();
-                console.log("BATEEEE: ", inviteUpdate);
+                console.log("BATEEEE: ", inviteUpdated);
                 //update clickedInv
-                if(inviteUpdate) {
+                if(inviteUpdated) {
                     User.updateOne({
-                        _id: inviteUpdate._user
+                        _id: inviteUpdated._user
                     }, {
                         $inc: { totalNumInvClicked: 1 }
                     }).exec();

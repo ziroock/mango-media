@@ -4,7 +4,8 @@ const { Schema } = mongoose;
 //TODO: add comments, star instead of a like... or better mango?
 const inviteSchema = new Schema( {
     email: String,
-    responded: {type: Boolean, default: false},
+    opened: { type: Boolean, default: false },
+    registered: { type: Boolean, default: false }
 });
 
 module.exports = inviteSchema;

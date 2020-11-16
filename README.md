@@ -25,6 +25,14 @@ then encode the envisioned feature.
         invitation by the current user (the user that sent the invites)
         3. totalNumInvClicked - Tracks the number of users that opened the invitation    
         sent by the current user.
+        
+   - TODO: Need to think of away to carry invitationId and email, so I can make the
+     invitation flow easier to count, so the user doesn't need to use the same email
+     in which the invitation gets received.
+     IMPORTANT: The to count a successful registration and avoid
+     over counting the email entered needs to be the same email
+     like the one in which the user received the invitation.
+     
      
 **TODO: Finish Section**
 
@@ -57,10 +65,10 @@ dependencies.
 - Finish/Update README.md consistently   
 - Access control on back end ( Created requireLogin check )
 - Access control on front end
-- Figure out how to store photos
-- Figure out how to let user change profile and cover photos
-- Add the ability for users to send out invitations for people to join the site
-- Add the ability for users to track invitations sent and invitations accepted
+- Figure out how to store photos   
+- Figure out how to let user change profile and cover photos   
+- (DONE) Add the ability for users to send out invitations for people to join the site
+- (DONE) Add the ability for users to track invitations sent and invitations accepted
 
 ## Versions used to implement the project
 - Node v12.18.0

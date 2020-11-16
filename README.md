@@ -28,13 +28,13 @@ then encode the envisioned feature.
     - **TODO: Need to test that only the user, which owns the post, can edit and    
     delete their posts.**
 
-#### 4. Local Authentication Strategy
+#### Local Authentication Strategy
    - Mongo Media uses Passport authentication API to for the user creation.
    - Specifically I used Passport Local Strategy, which gives me the ability to
      let hte user to authenticate with a username and password. The login   
      information gets stored inside a MongoDB Cluster on Atlas.
      
-#### 5. Invitations
+#### Invitations
    - Mongo Media (MM) provides an **invitations** property that allows users to    
    invite friends to join MM by email.    
    - To achieve this I used React Redux Form to create an input form and review.   

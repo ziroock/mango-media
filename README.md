@@ -7,6 +7,25 @@ By using frameworks like React, Mongooese, Express and more. It is a great
 learning experience, because it gives me the opportunity to architect and  
 then encode the envisioned feature.  
 ### Functionality
+#### Invitations
+   - Mongo Media (MM) provides an **invitations** property that allows users to    
+   invite friends to join MM by email.    
+   - To achieve this I used React Redux Form to create an input form and review.   
+    The user can write down arbitrary amount of emails in CSV format. Then once  
+    the review button gets clicked, a validation function checks the emails,   
+    and given they have a valid format. The state of the input form gets preserved   
+    and shown to the user on the review form. Once the user reviews their input,    
+    they press send the invitations get sent.   
+   - I used SendGrid API for their email services. Also, I used their webhook data   
+   to monitor and record the total number of clicked invitations.
+   - Each user has 3 trackers for the invitation:
+        1. totalNumInvSent - Tracks the number of invitations sent by each user.    
+        ( For now it counts faulty emails that are not received. **TODO: Fix this**)
+        2. totalNumRegistered - Tracks the number of users that registered from an 
+        invitation by the current user (the user that sent the invites)
+        3. totalNumInvClicked - Tracks the number of users that opened the invitation    
+        sent by the current user.
+     
 **TODO: Finish Section**
 
 ## How to run the project

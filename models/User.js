@@ -20,7 +20,7 @@ const userSchema = new Schema({
     totalNumInvSent: { type: Number, default: 0 },
     totalNumRegistered: { type: Number, default: 0 },
     totalNumInvClicked: { type: Number, default: 0},
-    invitedBy: { type: String, default: null }
+    invitedBy: { type: String, default: null },
 });
 
 // once inv sent update totalNumInviteSent, by searching all db entries for invites model

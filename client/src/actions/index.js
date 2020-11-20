@@ -33,7 +33,7 @@ export const registerUser = (userInfo) => {
 };
 
 export const createPost = (postBody) => {
-    console.log('postBody: ' + JSON.stringify(postBody));
+    console.log('posoststBody: ' + JSON.stringify(postBody));
     return async dispatch => {
         const res = await axios.post('/api/postCreate', postBody);
 

@@ -35,9 +35,12 @@ module.exports = app => {
     });
 
     // A Function that uploads a picture
-    app.post('/api/pictureUpload', requireLogin, async (req, res) => {
-        const { href } = req.href;
-        const picture = new Picture({ href: href, dateUploaded: new Date(), _user: req.user.id });
+    // need to check the href for validity
+    // Also need to figure out the api(service) for pictures that I will use
+    app.post('/api/pictureUpload', async (req, res) => {
+        console.log(req.body);
+        const { href, userId } = req.body;
+        const picture = new Picture({ href: href, dateUploaded: new Date(), _user: userId});
 
         try {
             if (href) {

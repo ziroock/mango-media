@@ -4,7 +4,7 @@ const PictureSchema = require('./Picture');
 
 const albumsSchema = new Schema({
     name: String,
-    description: { String, default: "Add description to your Album!"},
+    description: { String, default: ''},
     album: [PictureSchema],
     numPictures: { type: Number, default: 0 },
     _user: { type: Schema.Types.ObjectId, ref:'User' },

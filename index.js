@@ -7,6 +7,7 @@ const keys = require('./config/keys');
 require('./models/User');
 require('./models/Post');
 require('./models/Invite');
+require('./models/Picture');
 require('./services/passport');
 
 /**
@@ -41,6 +42,7 @@ require('./routes/authRoutes')(app);
 require('./routes/postRoutes')(app);
 require('./routes/userRoutes')(app);
 require('./routes/inviteRoutes')(app);
+require('./routes/pictureRoutes')(app);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT);

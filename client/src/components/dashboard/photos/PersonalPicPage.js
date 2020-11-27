@@ -12,9 +12,10 @@ import React, { Component } from "react";
 import { connect } from 'react-redux';
 import Gallery from "react-photo-gallery";
 import Carousel, { Modal, ModalGateway } from "react-images";
-import { fetchPhotos } from '../../../actions';
+import { fetchPicture } from '../../../actions';
+import PictureGallery from "./PictureGallery";
 
-class PhotoGallery extends Component{
+class PersonalPicPage extends Component{
     constructor(props) {
         super(props);
 
@@ -22,21 +23,21 @@ class PhotoGallery extends Component{
             currentImage: 0,
             viewerIsOpen: false,
         }
-        console.log(props);
-        console.log( "KOKO: " + props.photo);
+        // console.log(props);
+        // console.log( "KOKO: " + props.photo);
         this.closeLightbox = this.closeLightbox.bind(this);
         this.openLightbox = this.openLightbox.bind(this);
     }
 
     componentDidMount() {
-        this.props.fetchPhotos( {userId: this.props.match.params.userId} );
-        console.log( this.props.match.params.userId );
+        this.props.fetchPicture( {userId: this.props.match.params.userId} );
+        //console.log( this.props.match.params.userId );
     }
 
     openLightbox = (event, { photo, index }) => {
         this.setState({ currentImage: index });
         this.setState({ viewerIsOpen: true});
-        console.log('Clicked!');
+        //console.log('Clicked!');
     };
 
     closeLightbox = () => {
@@ -45,7 +46,7 @@ class PhotoGallery extends Component{
     };
 
     renderPictureModal() {
-        console.log('Picutre! ', this.state.viewerIsOpen);
+        //console.log('Picutre! ', this.state.viewerIsOpen);
         return (
             <div>
                 <ModalGateway>
@@ -53,10 +54,10 @@ class PhotoGallery extends Component{
                         <Modal onClose={this.closeLightbox}>
                             <Carousel
                                 currentIndex = {this.state.currentImage}
-                                views = { this.props.photo.map( x => ({
-                                    ...x,
-                                    srcset: x.src,
-                                    caption: x.desc
+                                views = { this.props.picture.map( x => ({
+                                        ...x,
+                                        srcset: x.src,
+                                        caption: x.desc
                                     })
                                 )}
                             />
@@ -69,9 +70,10 @@ class PhotoGallery extends Component{
 
     renderGallery() {
         return(
-            <div className="pictaaa" style={{ zIndex: "40000" }}>
-                <Gallery photos={this.props.photo} onClick={this.openLightbox} />
+            <div>
+                <Gallery photos={this.props.picture} onClick={this.openLightbox} />
                 {this.renderPictureModal()}
+                <PictureGallery userId={this.props.match.params.userId}/>
             </div>
         )
     }
@@ -89,7 +91,7 @@ class PhotoGallery extends Component{
 }
 
 function mapStateToProps(state) {
-    return { photo: state.photo, auth: state.auth };
+    return { picture: state.picture, auth: state.auth };
 }
 
-export default connect(mapStateToProps, { fetchPhotos })(PhotoGallery);
+export default connect(mapStateToProps, { fetchPicture })(PersonalPicPage);

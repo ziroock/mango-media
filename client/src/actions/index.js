@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {FETCH_USER, FETCH_MESSAGE, FETCH_POST, FETCH_INVITE, FETCH_PHOTO} from "./types";
+import {FETCH_USER, FETCH_MESSAGE, FETCH_POST, FETCH_INVITE, FETCH_PICTURE} from "./types";
 
 export const fetchUser = () => {
     return async dispatch => {
@@ -66,13 +66,13 @@ export const editPost = (postInfo) => {
 };
 
 
-export const fetchPhotos= (userId) => {
+export const fetchPicture = (userId) => {
     console.log("USER ID INSIDE ACTION:");
     console.log(userId);
     return async dispatch => {
         const res = await axios.post('/api/pictureSend', userId);
 
-        dispatch({ type: FETCH_PHOTO, payload: res.data });
+        dispatch({ type: FETCH_PICTURE, payload: res.data });
     };
 };
 

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchPosts } from '../../../actions';
-import ProfilePostMenu from './ProfilePostMenu';
+import { fetchPicture } from '../../../actions';
 
 /*
 * ProfilePostList handles the fetching and rendering of all of the users posts.
@@ -20,9 +19,9 @@ import ProfilePostMenu from './ProfilePostMenu';
 * */
 
 
-class ProfilePostList extends Component {
+class PictureGallery extends Component {
     componentDidMount() {
-        this.props.fetchPosts({userId: this.props.userId});
+        this.props.fetchPicture({userId: this.props.userId});
         console.log(this.props.userId);
     }
 
@@ -38,7 +37,8 @@ class ProfilePostList extends Component {
         return date;
     }
 
-    renderPostList(){
+    /*
+        renderPictures(){
         let numberPosts = this.props.posts.length;
         if(numberPosts > 0) {
             return this.props.posts.reverse().map((post, i) => {
@@ -46,12 +46,6 @@ class ProfilePostList extends Component {
                     <div className="card blue-grey" key={post._id}>
                         <div className="card-content white-text">
                             <span className="card-title">Mango Post #{numberPosts - i}</span>
-                            <ProfilePostMenu
-                                id={post._id}
-                                title={'Mongo Post #' + (numberPosts - i).toString()}
-                                body={post.body}
-                                date={'Posted On:' + this.toDateString(new Date(post.dateCreated))}
-                            />
                             <p>{post.body}</p>
                             <p className="right">
                                 Posted On: {this.toDateString(new Date(post.dateCreated))}
@@ -63,19 +57,36 @@ class ProfilePostList extends Component {
         } else {
             return <h3> Write your first Post! </h3>;
         }
+    }*/
+
+    renderPictures(){
+        let numberPosts = this.props.picture.length;
+        if(numberPosts > 0) {
+            return this.props.picture.reverse().map((picture, i) => {
+                return (
+                    <img src={picture.src} height={picture.height} width={picture.width} alt={picture.desc}
+                        style={{
+
+                        }}
+                    />
+                );
+            });
+        } else {
+            return <h3> Upload Your First Picture. </h3>;
+        }
     }
 
     render() {
         return(
-            <div className="PostList">
-                {this.renderPostList()}
+            <div className="pictureGallery" style={{ display: "flex", flexFlow: "row wrap" }} >
+                {this.renderPictures()}
             </div>
         )
     }
 }
 
 function mapStateToProps(state) {
-    return { posts: state.post };
+    return { picture: state.picture };
 }
 
-export default connect(mapStateToProps, { fetchPosts })(ProfilePostList);
+export default connect(mapStateToProps, { fetchPicture})(PictureGallery);

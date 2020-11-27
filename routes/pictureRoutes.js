@@ -29,21 +29,28 @@ const requireLogin = require('../middleware/requireLogin');
 module.exports = app => {
     // A Function that sends all user photos and sends the photo back
     app.post('/api/pictureSend', requireLogin, async (req,res) => {
-        const pictures = await Picture.find({ _user: req.href.userId });
-
+        console.log(req.body);
+        const pictures = await Picture.find({ _user: req.body.userId });
+        console.log(pictures);
         res.send(pictures);
     });
 
     // A Function that uploads a picture
     // need to check the href for validity
     // Also need to figure out the api(service) for pictures that I will use
-    app.post('/api/pictureUpload', async (req, res) => {
-        console.log(req.body);
-        const { href, userId } = req.body;
-        const picture = new Picture({ href: href, dateUploaded: new Date(), _user: userId});
+    app.post('/api/pictureUpload', requireLogin, async (req, res) => {
+        const { src, height, width, desc } = req.body;
+        const picture = new Picture({
+            src: src,
+            dateUploaded: new Date(),
+            _user: req.user._id,
+            height: height,
+            width: width,
+            desc: desc
+        });
 
         try {
-            if (href) {
+            if (src) {
                 await picture.save();
                 res.send(picture);
             } else {
@@ -58,7 +65,7 @@ module.exports = app => {
     app.post('/api/pictureDelete', requireLogin, async (req, res) => {
         await Picture.deleteOne({ _user: req.user.id, _id: req.href.postId });
         // const pictures = await Picture.find({ _user: req.user.id });
-        console.log(req.href);
+        //console.log(req.href);
         // res.send(pictures);
     });
 };

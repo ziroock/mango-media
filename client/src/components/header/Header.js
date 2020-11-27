@@ -28,6 +28,7 @@ class Header extends Component {
             default:
                 return [
                     <SearchBar key="1" />,
+                    <li key="5"> <a href={ `/photoGallery/${this.props.auth._id}` }><i className="material-icons right">star</i></a></li>,
                     <li key="4"><a style={{fontSize: '20px' }} href="/invitation/new">Invitations</a></li>,
                     <li key="2"><a style={{fontSize: '20px' }} href={ `/dashboard/${this.props.auth._id}` }>Profile</a></li>,
                     <li key="3"><a style={{fontSize: '20px' }} href="/api/logout">Log Out</a></li>

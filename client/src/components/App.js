@@ -41,7 +41,7 @@ class App extends Component {
                         <Route path="/register" component={Register}/>
                         <Route path="/registerInvite*" component={RegisterInvite}/>
                         <Route path="/invitation/new" component={InvitationNew}/>
-                        <Route path="/photoGallery" component={PhotoGallery}/>
+                        <Route path="/photoGallery/:userId" component={PhotoGallery}/>
                     </div>
                 </BrowserRouter>
             </div>

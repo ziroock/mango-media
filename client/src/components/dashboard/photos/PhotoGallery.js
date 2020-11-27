@@ -47,27 +47,29 @@ class PhotoGallery extends Component{
     renderPictureModal() {
         console.log('Picutre! ', this.state.viewerIsOpen);
         return (
-            <ModalGateway>
-                {this.state.viewerIsOpen ? (
-                    <Modal onClose={this.closeLightbox}>
-                        <Carousel
-                            currentIndex = {this.state.currentImage}
-                            views = { this.props.photo.map( x => ({
-                                ...x,
-                                srcset: x.src,
-                                caption: x.desc
-                                })
-                            )}
-                        />
-                    </Modal>
-                ) : null}
-            </ModalGateway>
+            <div>
+                <ModalGateway>
+                    {this.state.viewerIsOpen ? (
+                        <Modal onClose={this.closeLightbox}>
+                            <Carousel
+                                currentIndex = {this.state.currentImage}
+                                views = { this.props.photo.map( x => ({
+                                    ...x,
+                                    srcset: x.src,
+                                    caption: x.desc
+                                    })
+                                )}
+                            />
+                        </Modal>
+                    ) : null}
+                </ModalGateway>
+            </div>
         )
     }
 
     renderGallery() {
         return(
-            <div>
+            <div className="pictaaa" style={{ zIndex: "40000" }}>
                 <Gallery photos={this.props.photo} onClick={this.openLightbox} />
                 {this.renderPictureModal()}
             </div>

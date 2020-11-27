@@ -29,9 +29,9 @@ class Header extends Component {
                 return [
                     <SearchBar key="1" />,
                     <li key="5"> <a href={ `/photoGallery/${this.props.auth._id}` }><i className="material-icons right">star</i></a></li>,
-                    <li key="4"><a style={{fontSize: '20px' }} href="/invitation/new">Invitations</a></li>,
-                    <li key="2"><a style={{fontSize: '20px' }} href={ `/dashboard/${this.props.auth._id}` }>Profile</a></li>,
-                    <li key="3"><a style={{fontSize: '20px' }} href="/api/logout">Log Out</a></li>
+                    <li key="4"><a style={{ fontSize: '20px' }} href="/invitation/new">Invitations</a></li>,
+                    <li key="2"><a style={{ fontSize: '20px' }} href={ `/dashboard/${this.props.auth._id}` }>Profile</a></li>,
+                    <li key="3"><a style={{ fontSize: '20px' }} href="/api/logout">Log Out</a></li>
                     ];
         }
     }
@@ -43,7 +43,7 @@ class Header extends Component {
                 <nav>
                     <div className="nav-wrapper  green darken-2">
                         <div style={{ margin: '0 1em' }}>
-                            <a href="/" className="left brand-logo" style={{fontSize: '30px' }}>Mango</a>
+                            <a href="/" className="left brand-logo" style={{ fontSize: '30px' }}>Mango</a>
                             <ul id="nav-mobile" className="right">
                                 { this.renderContent() }
                             </ul>

@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import ProfileCover from "./ProfileCover";
-import ProfilePost from "./ProfilePost";
-import ProfilePostList from "./ProfilePostList";
+import ProfilePost from "./Posts/ProfilePost";
+import ProfilePostList from "./Posts/ProfilePostList";
 
 /*
 * ProfileDashboard is the component that holds all the User Profile Components!

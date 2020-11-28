@@ -9,8 +9,9 @@ import Login from "./auth/Login";
 import ProfileDashboard from './dashboard/ProfileDashboard';
 import InvitationNew from './invitation/InvitationNew';
 import RegisterInvite from './auth/RegisterInvite';
-import PersonalPicPage from './dashboard/photos/PersonalPicPage';
 import '../style/style.css';
+import '../style/style.personalGallery.css';
+import PersonalGallery from "./dashboard/photos/PersonalGallery";
 const Home = () => <h2>Home</h2>;
 
 /*
@@ -41,7 +42,7 @@ class App extends Component {
                         <Route path="/register" component={Register}/>
                         <Route path="/registerInvite*" component={RegisterInvite}/>
                         <Route path="/invitation/new" component={InvitationNew}/>
-                        <Route path="/photoGallery/:userId" component={PersonalPicPage}/>
+                        <Route path="/photoGallery/:userId" component={PersonalGallery}/>
                     </div>
                 </BrowserRouter>
             </div>

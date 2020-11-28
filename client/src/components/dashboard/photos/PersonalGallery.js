@@ -14,7 +14,7 @@ import Gallery from "react-photo-gallery";
 import Carousel, { Modal, ModalGateway } from "react-images";
 import { fetchPicture } from '../../../actions';
 
-class PersonalPicPage extends Component{
+class PersonalGallery extends Component{
     constructor(props) {
         super(props);
 
@@ -44,32 +44,20 @@ class PersonalPicPage extends Component{
         this.setState({ viewerIsOpen: false});
     };
 
-    renderPictureModal() {
-        //console.log('Picutre! ', this.state.viewerIsOpen);
+    Title() {
         return (
-            <ModalGateway>
-                {this.state.viewerIsOpen ? (
-                    <Modal onClose={this.closeLightbox}>
-                        <Carousel
-                            currentIndex = {this.state.currentImage}
-                            views = { this.props.picture.map( x => ({
-                                    ...x,
-                                    srcset: x.src,
-                                    caption: x.desc
-                                })
-                            )}
-                        />
-                    </Modal>
-                ) : null}
-            </ModalGateway>
+            <div className="title">
+                <h2>Your Pictures</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
         )
     }
 
     renderGallery() {
         return(
             <div className="photoGallery">
+                {this.Title()}
                 <Gallery photos={this.props.picture} onClick={this.openLightbox} />
-                {this.renderPictureModal()}
             </div>
         )
     }
@@ -90,4 +78,4 @@ function mapStateToProps(state) {
     return { picture: state.picture, auth: state.auth };
 }
 
-export default connect(mapStateToProps, { fetchPicture })(PersonalPicPage);
+export default connect(mapStateToProps, { fetchPicture })(PersonalGallery);

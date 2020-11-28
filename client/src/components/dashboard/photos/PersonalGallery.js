@@ -4,15 +4,12 @@ import React, { Component } from "react";
 import { connect } from 'react-redux';
 import Gallery from "react-photo-gallery";
 import { fetchPicture } from '../../../actions';
+import UploadButton from "./UploadButton";
 
 class PersonalGallery extends Component{
-    constructor(props) {
-        super(props);
-    }
 
     componentDidMount() {
         this.props.fetchPicture( {userId: this.props.match.params.userId} );
-        //console.log( this.props.match.params.userId );
     }
 
     Title() {
@@ -28,7 +25,8 @@ class PersonalGallery extends Component{
         return(
             <div className="photoGallery">
                 {this.Title()}
-                <Gallery photos={this.props.picture} onClick={this.openLightbox} />
+                <UploadButton/>
+                <Gallery photos={this.props.picture}/>
             </div>
         )
     }

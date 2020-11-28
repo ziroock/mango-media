@@ -9,8 +9,26 @@ class UploadButton extends Component {
         this.toggleEdit = this.toggleEdit.bind(this);
     }
 
-    handleChange(event) {
-        let chosen = event.target.files[0];
+    //https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsDataURL
+    previewFile() {
+        console.log("Na maika ti putkata");
+        const preview = document.getElementById('previewPic');
+        if(preview) {
+            const file = document.getElementById('picField').files[0];
+            const reader = new FileReader();
+            console.log(preview);
+            console.log(file);
+
+            reader.addEventListener("load", function () {
+                preview.src = reader.result;
+            }, false);
+            reader.readAsDataURL(file);
+        }
+        return null;
+    }
+
+    async handleChange() {
+        let chosen = document.getElementById('picField').files[0];
         console.log(chosen);
         if(chosen && this.types.includes(chosen.type)) {
             this.setState( { file: chosen, error: '', showUploadReview: !this.state.showUploadReview});
@@ -20,10 +38,9 @@ class UploadButton extends Component {
     }
 
     toggleEdit() {
-        this.setState({ showUploadReview: !this.state.showUploadReview });
+        this.setState({ showUploadReview: !this.state.showUploadReview, showPic: false });
     }
-
-    //<UploadPicReview toggleUpload={this.toggleEdit} uploadPic={this.state.file}/>
+//https://stackoverflow.com/questions/3814231/loading-an-image-to-a-img-from-input-file
     renderModal() {
         if(this.state.file && this.state.showUploadReview) {
             return (
@@ -38,7 +55,7 @@ class UploadButton extends Component {
                        }}
                        className='material-icons'
                     > close </i>
-                    <h1> BATE BOIKO </h1>
+
                 </div>
             </div>
             )
@@ -51,18 +68,17 @@ class UploadButton extends Component {
         return([
             <form>
                 <label>
-                    <input type="file" onChange={this.handleChange}/>
+                    <input type="file" name="picField" id="picField" onChange={this.previewFile}/>
                     <span>+</span>
                 </label>
                 <div className="output">
                     { this.state.error && <div className="error">{ this.state.error }</div>}
                     { this.state.file && <div>{ this.state.file.name }</div> }
                 </div>
-
+                <img id="previewPic" src="" height="200" alt="Image preview ..."/>
             </form>,
             this.renderModal()
         ])
-
     }
 }
 

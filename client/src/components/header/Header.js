@@ -38,10 +38,13 @@ class Header extends Component {
 
     render() {
         // console.log(this.props);
+        //style={{
+        //                 paddingBottom: "10px", display: "absolute"
+        //             }}
         return (
-            <div className="navbar-fixed">
-                <nav>
-                    <div className="nav-wrapper  green darken-2">
+            <div className="navbar-fixed" >
+                <nav className="green darken-2">
+                    <div className="nav-wrapper">
                         <div style={{ margin: '0 1em' }}>
                             <a href="/" className="left brand-logo" style={{ fontSize: '30px' }}>Mango</a>
                             <ul id="nav-mobile" className="right">

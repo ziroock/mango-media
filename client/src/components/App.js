@@ -11,7 +11,6 @@ import InvitationNew from './invitation/InvitationNew';
 import RegisterInvite from './auth/RegisterInvite';
 import PersonalPicPage from './dashboard/photos/PersonalPicPage';
 import '../style/style.css';
-import '../style/pictureGalleryStyle.css';
 const Home = () => <h2>Home</h2>;
 
 /*

@@ -13,7 +13,6 @@ import { connect } from 'react-redux';
 import Gallery from "react-photo-gallery";
 import Carousel, { Modal, ModalGateway } from "react-images";
 import { fetchPicture } from '../../../actions';
-import PictureGallery from "./PictureGallery";
 
 class PersonalPicPage extends Component{
     constructor(props) {
@@ -48,32 +47,29 @@ class PersonalPicPage extends Component{
     renderPictureModal() {
         //console.log('Picutre! ', this.state.viewerIsOpen);
         return (
-            <div>
-                <ModalGateway>
-                    {this.state.viewerIsOpen ? (
-                        <Modal onClose={this.closeLightbox}>
-                            <Carousel
-                                currentIndex = {this.state.currentImage}
-                                views = { this.props.picture.map( x => ({
-                                        ...x,
-                                        srcset: x.src,
-                                        caption: x.desc
-                                    })
-                                )}
-                            />
-                        </Modal>
-                    ) : null}
-                </ModalGateway>
-            </div>
+            <ModalGateway>
+                {this.state.viewerIsOpen ? (
+                    <Modal onClose={this.closeLightbox}>
+                        <Carousel
+                            currentIndex = {this.state.currentImage}
+                            views = { this.props.picture.map( x => ({
+                                    ...x,
+                                    srcset: x.src,
+                                    caption: x.desc
+                                })
+                            )}
+                        />
+                    </Modal>
+                ) : null}
+            </ModalGateway>
         )
     }
 
     renderGallery() {
         return(
-            <div>
+            <div className="photoGallery">
                 <Gallery photos={this.props.picture} onClick={this.openLightbox} />
                 {this.renderPictureModal()}
-                <PictureGallery userId={this.props.match.params.userId}/>
             </div>
         )
     }

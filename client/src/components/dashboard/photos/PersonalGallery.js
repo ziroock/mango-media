@@ -4,7 +4,7 @@ import React, { Component } from "react";
 import { connect } from 'react-redux';
 import Gallery from "react-photo-gallery";
 import { fetchPicture } from '../../../actions';
-import UploadButton from "./UploadButton";
+import UploadPicModal from "./UploadPicModal";
 
 class PersonalGallery extends Component{
 
@@ -25,7 +25,7 @@ class PersonalGallery extends Component{
         return(
             <div className="photoGallery">
                 {this.Title()}
-                <UploadButton/>
+                <UploadPicModal/>
                 <Gallery photos={this.props.picture}/>
             </div>
         )

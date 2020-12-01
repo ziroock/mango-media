@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-// For now I am using just a temporary image that is not displayed to upload the src temporarilly
-// because I cannot use setState inside an event listener.
+// - Need to connect the upload process to the back end.
+// - Connect reducer, create action, and back end rout.
 
 //This however, is a security threat because If the image is changed a wrongful file src might be appointed.
 // to get rid of it I can verify sources before I load them in my code, and check where the src is being executed.
@@ -13,12 +13,16 @@ class UploadPicModal extends Component {
         this.types = ['image/png', 'image/jpeg'];
         this.state = { file: null, error: null, showUploadReview: false, showPic: null};
         this.handleChange = this.handleChange.bind(this);
+        this.handleClick = this.handleClick.bind(this);
         this.toggleEdit = this.toggleEdit.bind(this);
         this.previewFile = this.previewFile.bind(this);
+        //https://stackoverflow.com/questions/12081493/capturing-the-close-of-the-browse-for-file-window-with-javascript/12133295#12133295
+        this.tmpFile = null;
     }
 
 
     //https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsDataURL
+    ///
     previewFile(chosen) {
         const preview = document.getElementById('hiddenPic');
         const self = this;
@@ -36,15 +40,22 @@ class UploadPicModal extends Component {
         return null;
     }
 
+    handleClick(e) {
+        console.log(e.target);
+        console.log(e.target.value);
+        this.tmpFile = e.target.value;
+        e.target.value = null;
+    }
 
-    handleChange() {
+
+    handleChange(e) {
         console.log("BAT BOIKO");
-        let chosen = document.getElementById('picField').files[0];
+        let chosen = e.target.files[0];
+        console.log(e.target.value);
         console.log(chosen);
-        if(chosen && this.types.includes(chosen.type)) {
-            this.setState( { file: chosen, error: '', showUploadReview: !this.state.showUploadReview});
-            this.previewFile(chosen);
-            console.log("ShowModal: ", this.state.showUploadReview );
+        if(this.tmpFile === e.target.value && chosen && this.types.includes(chosen.type)) {
+                this.setState( { file: chosen, error: '', showUploadReview: !this.state.showUploadReview});
+                this.previewFile(chosen);
         } else {
             this.setState( { file: null, error: 'Please select an (.png or .jpg) image.'});
             console.log("ShowModal!!!!: ", this.state.showUploadReview );
@@ -115,7 +126,7 @@ class UploadPicModal extends Component {
         return([
             <form key="UploadModal123">
                 <label>
-                    <input type="file" name="picField" id="picField" onChange={this.handleChange}/>
+                    <input type="file" className="picField" id="picField" onClick={this.handleClick} onChange={this.handleChange}/>
                     <span>+</span>
                 </label>
                 <div className="output">

@@ -53,9 +53,11 @@ class UploadPicModal extends Component {
         let chosen = e.target.files[0];
         console.log(e.target.value);
         console.log(chosen);
-        if(this.tmpFile === e.target.value && chosen && this.types.includes(chosen.type)) {
+        if((this.tmpFile === e.target.value && ( chosen && this.types.includes(chosen.type) )) ||
+            (chosen && this.types.includes(chosen.type) )) {
                 this.setState( { file: chosen, error: '', showUploadReview: !this.state.showUploadReview});
                 this.previewFile(chosen);
+                console.log("ShowMODALLLLLL");
         } else {
             this.setState( { file: null, error: 'Please select an (.png or .jpg) image.'});
             console.log("ShowModal!!!!: ", this.state.showUploadReview );

@@ -49,7 +49,7 @@ class UploadPicModal extends Component {
 
 
     handleChange(e) {
-        console.log("BAT BOIKO");
+        console.log("HANDLE CHANGE");
         let chosen = e.target.files[0];
         console.log(e.target.value);
         console.log(chosen);
@@ -68,32 +68,7 @@ class UploadPicModal extends Component {
     toggleEdit() {
         this.setState({ showUploadReview: !this.state.showUploadReview, showPic: null, file: null });
         console.log("ShowModal: ", this.state.showUploadReview );
-        //TODO: Need to clear the field info on close.
-        let chosen = document.getElementById('picField').files[0];
-        //this.clearInputFile(chosen);
-        chosen.value = "";
-        console.log(chosen);
     }
-
-
-    //https://stackoverflow.com/questions/1703228/how-can-i-clear-an-html-file-input-with-javascript
-    //https://jsbin.com/muhipoye/1/edit?html,js,output
-    clearInputFile(f){
-        if(f.value){
-            try{
-                f.value = ''; //for IE11, latest Chrome/Firefox/Opera...
-            }catch(err){
-            }
-            if(f.value){ //for IE5 ~ IE10
-                let form = document.createElement('form'), ref = f.nextSibling;
-                form.appendChild(f);
-                form.reset();
-                ref.parentNode.insertBefore(f,ref);
-            }
-        }
-    }
-
-
 
 //https://stackoverflow.com/questions/3814231/loading-an-image-to-a-img-from-input-file
     renderModal() {

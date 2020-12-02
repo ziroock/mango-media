@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import {createPost, uploadPicture} from '../../../actions';
 // - Need to connect the upload process to the back end.
 // - Connect reducer, create action, and back end rout.
 
@@ -15,6 +17,7 @@ class UploadPicModal extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleClick = this.handleClick.bind(this);
         this.toggleEdit = this.toggleEdit.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
         this.previewFile = this.previewFile.bind(this);
         //https://stackoverflow.com/questions/12081493/capturing-the-close-of-the-browse-for-file-window-with-javascript/12133295#12133295
         this.tmpFile = null;
@@ -39,6 +42,7 @@ class UploadPicModal extends Component {
         }
         return null;
     }
+
 
     handleClick(e) {
         console.log(e.target);
@@ -65,11 +69,33 @@ class UploadPicModal extends Component {
     }
 
 
+    // // TODO: add submit on enter, not just on the button click
+    async handleSubmit(event) {
+        event.preventDefault();
+        if(this.state.file) {
+            console.log("The picture state is: ");
+            console.log(this.state.file);
+            //https://www.pluralsight.com/guides/asynchronous-file-upload-react
+            //Change file before sending
+            const file = this.state.file;
+            const toBase64 = file => new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = () => resolve(reader.result);
+                reader.onerror = error => reject(error);
+            });
+
+            this.props.uploadPicture({file: await toBase64(file)});
+            this.toggleEdit();
+        }
+    }
+
+
     toggleEdit() {
         this.setState({ showUploadReview: !this.state.showUploadReview, showPic: null, file: null });
         console.log("ShowModal: ", this.state.showUploadReview );
     }
-
+//onClick={this.handleSubmit}
 //https://stackoverflow.com/questions/3814231/loading-an-image-to-a-img-from-input-file
     renderModal() {
         if(this.state.file && this.state.showUploadReview && this.state.showPic) {
@@ -86,6 +112,9 @@ class UploadPicModal extends Component {
                            }}
                            className='material-icons'
                         > close </i>
+                        <button onClick={this.handleSubmit}><i className='material-icons'>
+                            submit
+                        </i></button>
                         <div className="center" id="preview-uploaded-pic" >
                             <img id="previewPic" src={this.state.showPic} alt="Upload Pic Preview."/>
                         </div>
@@ -99,21 +128,37 @@ class UploadPicModal extends Component {
     }
 
 
+    renderButton() {
+        if(this.props.auth._id === this.props.userId) {
+            return([
+                <form key="UploadModal123">
+                    <label>
+                        <input type="file" className="picField" id="picField" onClick={this.handleClick} onChange={this.handleChange}/>
+                        <span>+</span>
+                    </label>
+                    <div className="output">
+                        { this.state.error && <div className="error">{ this.state.error }</div> }
+                    </div>
+                    <img id="hiddenPic" src="" height="200" alt="Image preview ..." style={{display: "none"}}/>
+                </form>,
+                this.renderModal()
+            ])
+        }
+        else {
+            return null;
+        }
+    }
+
+
     render() {
-        return([
-            <form key="UploadModal123">
-                <label>
-                    <input type="file" className="picField" id="picField" onClick={this.handleClick} onChange={this.handleChange}/>
-                    <span>+</span>
-                </label>
-                <div className="output">
-                    { this.state.error && <div className="error">{ this.state.error }</div> }
-                </div>
-                <img id="hiddenPic" src="" height="200" alt="Image preview ..." style={{display: "none"}}/>
-            </form>,
-            this.renderModal()
-        ])
+        return( this.renderButton());
     }
 }
 
-export default UploadPicModal;
+
+function mapStateToProps(state) {
+    return { auth: state.auth };
+}
+
+
+export default connect(mapStateToProps, { uploadPicture })(UploadPicModal);

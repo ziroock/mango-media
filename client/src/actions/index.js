@@ -77,4 +77,15 @@ export const fetchPicture = (userId) => {
 };
 
 
+export const uploadPicture = (pictureBody) => {
+    return async dispatch => {
+        console.log('pictureBody: ');
+        console.log(pictureBody);
+        const res = await axios.post('/api/uploadPicture', pictureBody);
+
+        dispatch({ type: FETCH_PICTURE, payload: res.data });
+    };
+};
+
+
 

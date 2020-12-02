@@ -25,7 +25,7 @@ class PersonalGallery extends Component{
         return(
             <div className="photoGallery">
                 {this.Title()}
-                <UploadPicModal/>
+                <UploadPicModal userId={this.props.match.params.userId}/>
                 <Gallery photos={this.props.picture}/>
             </div>
         )

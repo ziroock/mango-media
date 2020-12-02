@@ -4,11 +4,13 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const flash = require('connect-flash');
 const keys = require('./config/keys');
+
 require('./models/User');
 require('./models/Post');
 require('./models/Invite');
 require('./models/Picture');
 require('./services/passport');
+require('./services/picture-upload-s3');
 
 /**
  * This file sets up the server and connects all the needed files to it like:

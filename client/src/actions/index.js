@@ -76,12 +76,23 @@ export const fetchPicture = (userId) => {
     };
 };
 
+// await axios.post(
+//     '/api/login',
+//     {email: email, password: password},
+//     {headers: {'content-type': 'application/json'}}
+// )
+
+//,
+//             {headers: {'content-type': 'multipart/form-data'}}
 
 export const uploadPicture = (pictureBody) => {
     return async dispatch => {
         console.log('pictureBody: ');
         console.log(pictureBody);
-        const res = await axios.post('/api/uploadPicture', pictureBody);
+        const res = await axios.post(
+            '/api/uploadPicture',
+            pictureBody,
+            {headers: {'content-type': 'multipart/form-data'}});
 
         dispatch({ type: FETCH_PICTURE, payload: res.data });
     };

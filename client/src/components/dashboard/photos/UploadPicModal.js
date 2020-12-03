@@ -78,14 +78,9 @@ class UploadPicModal extends Component {
             //https://www.pluralsight.com/guides/asynchronous-file-upload-react
             //Change file before sending
             const file = this.state.file;
-            const toBase64 = file => new Promise((resolve, reject) => {
-                const reader = new FileReader();
-                reader.readAsDataURL(file);
-                reader.onload = () => resolve(reader.result);
-                reader.onerror = error => reject(error);
-            });
-
-            this.props.uploadPicture({file: await toBase64(file)});
+            const formData = new FormData();
+            formData.append("image", file);
+            this.props.uploadPicture(formData);
             this.toggleEdit();
         }
     }
@@ -133,7 +128,7 @@ class UploadPicModal extends Component {
             return([
                 <form key="UploadModal123">
                     <label>
-                        <input type="file" className="picField" id="picField" onClick={this.handleClick} onChange={this.handleChange}/>
+                        <input type="file" className="image" id="picField" onClick={this.handleClick} onChange={this.handleChange}/>
                         <span>+</span>
                     </label>
                     <div className="output">

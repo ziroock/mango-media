@@ -3,7 +3,7 @@ const Picture = mongoose.model('pictures');
 const requireLogin = require('../middleware/requireLogin');
 const upload = require('../services/picture-upload-s3');
 
-const singleImageUpload = upload.single('image');
+//const singleImageUpload = upload.single('image');
 
 module.exports = app => {
     // A Function that sends all user photos and sends the photo back
@@ -17,9 +17,9 @@ module.exports = app => {
     // A Function that uploads a picture
     // need to check the href for validity
     // Also need to figure out the api(service) for pictures that I will use
-    app.post('/api/uploadPicture', requireLogin, async (req, res) => {
+    app.post('/api/uploadPicture', requireLogin, upload.single('image'), function (req, res, next) {
         console.log(req.body);
-        console.log((req.body.file));
+        console.log((req.file));
         // singleImageUpload(req, res, (err) => {
         //     return res.json({'imageURL': req.file.location});
         // });

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {createPost, uploadPicture} from '../../../actions';
+//const sizeOf = require('image-size');
 // - Need to connect the upload process to the back end.
 // - Connect reducer, create action, and back end rout.
 
@@ -35,6 +36,10 @@ class UploadPicModal extends Component {
             console.log(chosen);
             reader.addEventListener("load", function () {
                 preview.src = reader.result;
+                const img = new Image();
+                img.src = preview.src;
+                console.log("img.width: ", img.width, "img.height: ", img.height);
+
                 self.setState({ showPic: preview.src });
                 console.log(preview.src);
             }, false);

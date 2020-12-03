@@ -2,6 +2,9 @@ const mongoose = require('mongoose');
 const Picture = mongoose.model('pictures');
 const requireLogin = require('../middleware/requireLogin');
 const upload = require('../services/picture-upload-s3');
+const sizeOf = require('image-size');
+const url = require('url');
+const https = require('https');
 
 //const singleImageUpload = upload.single('image');
 
@@ -14,36 +17,52 @@ module.exports = app => {
         res.send(pictures);
     });
 
+    let uploadToDB = async (dimensions, imageUrl, userId) => {
+        const { height, width } = dimensions;
+        const picture = new Picture({
+            src: imageUrl,
+            dateUploaded: new Date(),
+            _user: userId,
+            height: height,
+            width: width,
+            desc: ''
+        });
+
+        try {
+            if (imageUrl) {
+                await picture.save();
+                // res.send(picture);
+                return await Picture.find({ _user: userId });
+            } else {
+                console.log({message: 'Empty req href: Picture, did not upload!'});
+            }
+        } catch(err) {
+            console.log({ message: err.message });
+        }
+    }
+
     // A Function that uploads a picture
     // need to check the href for validity
     // Also need to figure out the api(service) for pictures that I will use
-    app.post('/api/uploadPicture', requireLogin, upload.single('image'), function (req, res, next) {
-        console.log(req.body);
-        console.log((req.file));
-        // singleImageUpload(req, res, (err) => {
-        //     return res.json({'imageURL': req.file.location});
-        // });
-        // res.send(null);
-    //     const { src, height, width, desc } = req.body;
-    //     const picture = new Picture({
-    //         src: src,
-    //         dateUploaded: new Date(),
-    //         _user: req.user._id,
-    //         height: height,
-    //         width: width,
-    //         desc: desc
-    //     });
-    //
-    //     try {
-    //         if (src) {
-    //             await picture.save();
-    //             res.send(picture);
-    //         } else {
-    //             console.log({message: 'Empty req href: Picture, did not upload!'});
-    //         }
-    //     } catch(err) {
-    //         console.log({ message: err.message });
-    //     }
+    app.post('/api/uploadPicture', requireLogin, upload.single('image'), async (req, res, next) => {
+        // console.log(req.file);
+        const imageUrl = req.file.location;
+        let options = url.parse(imageUrl);
+
+        await https.get(options, (response) => {
+            let chunks =[];
+            response.on('data', (chunk) => {
+                chunks.push(chunk);
+            }).on('end', async () => {
+                let buffer = Buffer.concat(chunks);
+                // console.log("Buffer: ");
+                let dimensions = sizeOf(buffer);
+                // console.log(dimensions);
+                let picsData = await uploadToDB(dimensions, imageUrl, req.user._id);
+                // console.log(picsData);
+                res.send(picsData);
+            });
+        });
     });
 
     //deletes a picture

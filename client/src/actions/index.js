@@ -67,8 +67,8 @@ export const editPost = (postInfo) => {
 
 
 export const fetchPicture = (userId) => {
-    console.log("USER ID INSIDE ACTION:");
-    console.log(userId);
+    // console.log("USER ID INSIDE ACTION:");
+    // console.log(userId);
     return async dispatch => {
         const res = await axios.post('/api/pictureSend', userId);
 
@@ -76,23 +76,15 @@ export const fetchPicture = (userId) => {
     };
 };
 
-// await axios.post(
-//     '/api/login',
-//     {email: email, password: password},
-//     {headers: {'content-type': 'application/json'}}
-// )
-
-//,
-//             {headers: {'content-type': 'multipart/form-data'}}
 
 export const uploadPicture = (pictureBody) => {
     return async dispatch => {
-        console.log('pictureBody: ');
-        console.log(pictureBody);
         const res = await axios.post(
             '/api/uploadPicture',
             pictureBody,
             {headers: {'content-type': 'multipart/form-data'}});
+        // console.log("DATAAAATATATATA");
+        // console.log(res.data);
 
         dispatch({ type: FETCH_PICTURE, payload: res.data });
     };

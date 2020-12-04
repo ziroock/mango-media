@@ -2,9 +2,9 @@
 
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-import Gallery from "react-photo-gallery";
 import { fetchPicture } from '../../../actions';
 import UploadPicModal from "./UploadPicModal";
+import PictureGrid from './PictureGrid';
 
 class PersonalGallery extends Component{
 
@@ -15,8 +15,7 @@ class PersonalGallery extends Component{
     Title() {
         return (
             <div className="title">
-                <h2>Your Pictures</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <h2>Picture Gallery</h2>
             </div>
         )
     }
@@ -26,7 +25,7 @@ class PersonalGallery extends Component{
             <div className="photoGallery">
                 {this.Title()}
                 <UploadPicModal userId={this.props.match.params.userId}/>
-                <Gallery photos={this.props.picture}/>
+                <PictureGrid photos={this.props.picture}/>
             </div>
         )
     }

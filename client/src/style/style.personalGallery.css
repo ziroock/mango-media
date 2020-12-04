@@ -1,5 +1,41 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap');
 
+
+/* upload form styles */
+.button-add-photo {
+    text-align: center;
+}
+label input{
+    height: 0;
+    width: 0;
+    opacity: 0;
+}
+
+label{
+    display: block;
+    width: 30px;
+    height: 30px;
+    border: 1px solid var(--primary);
+    border-radius: 50%;
+    margin: 10px auto;
+    line-height: 30px;
+    color: var(--primary);
+    font-weight: bold;
+    font-size: 24px;
+}
+label:hover{
+    background: var(--primary);
+    color: white;
+}
+.output{
+    height: 60px;
+    font-size: 0.8rem;
+}
+.error{
+    color: var(--error);
+}
+
+
 .title {
     font-family: "Open Sans";
 }
@@ -13,7 +49,7 @@
     text-align: center;
 }
 .title h2{
-    margin-top: 60px;
+    margin-top: 10px;
     font-size: 2.6rem;
 }
 
@@ -49,4 +85,39 @@
 #previewPic {
     width: 50%;
     height: auto;
+}
+
+/* image grid styles */
+
+.gallery-frame {
+    padding: 20px;
+    /*background-color: black;*/
+    background: linear-gradient(
+            to bottom,
+            #388e3c,
+            transparent
+    );
+    margin-top: -50px;
+}
+
+.img-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 10px;
+}
+.img-wrap{
+    overflow: hidden;
+    height: 0;
+    padding: 50% 0;
+    /* padding controls height, will always be perfectly square regardless of width */
+    position: relative;
+}
+
+.img-wrap img{
+    min-height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: scale-down;
 }

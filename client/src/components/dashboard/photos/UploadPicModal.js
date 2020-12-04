@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {createPost, uploadPicture} from '../../../actions';
-//const sizeOf = require('image-size');
 // - Need to connect the upload process to the back end.
 // - Connect reducer, create action, and back end rout.
 
@@ -131,7 +130,7 @@ class UploadPicModal extends Component {
     renderButton() {
         if(this.props.auth._id === this.props.userId) {
             return([
-                <form key="UploadModal123">
+                <form className="button-add-photo" key="UploadModal123">
                     <label>
                         <input type="file" className="image" id="picField" onClick={this.handleClick} onChange={this.handleChange}/>
                         <span>+</span>

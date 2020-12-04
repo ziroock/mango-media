@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Picture = mongoose.model('pictures');
 const requireLogin = require('../middleware/requireLogin');
-const upload = require('../services/picture-upload-s3');
+const awsS3 = require('../services/picture-upload-s3');
 const sizeOf = require('image-size');
 const url = require('url');
 const https = require('https');
@@ -44,7 +44,7 @@ module.exports = app => {
     // A Function that uploads a picture
     // need to check the href for validity
     // Also need to figure out the api(service) for pictures that I will use
-    app.post('/api/uploadPicture', requireLogin, upload.single('image'), async (req, res, next) => {
+    app.post('/api/uploadPicture', requireLogin, awsS3.upload.single('image'), async (req, res, next) => {
         // console.log(req.file);
         const imageUrl = req.file.location;
         let options = url.parse(imageUrl);
@@ -67,9 +67,19 @@ module.exports = app => {
 
     //deletes a picture
     app.post('/api/pictureDelete', requireLogin, async (req, res) => {
-        await Picture.deleteOne({ _user: req.user.id, _id: req.href.postId });
-        // const pictures = await Picture.find({ _user: req.user.id });
-        //console.log(req.href);
-        // res.send(pictures);
+        const picture = await Picture.findOne({ _user: req.user._id, _id: req.body.picId });
+        await Picture.deleteOne({ _user: req.user._id, _id: req.body.picId });
+        console.log(picture);
+        const srcParse = picture.src.split("/");
+        const awsKey = srcParse[srcParse.length - 1];
+        console.log(awsKey);
+        console.log("awsKey:" + awsKey);
+        // cut the src string at the end to get the img id and use it to delete object.
+        awsS3.s3.deleteObject(
+            { Bucket:"mango-media-album", Key: awsKey},
+            (err, data) => {
+                if(err) console.log(err, err.stack); // error
+                else    console.log("Deleted");
+            });
     });
 };

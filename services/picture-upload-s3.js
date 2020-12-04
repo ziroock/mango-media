@@ -29,5 +29,7 @@ const upload = multer({
 
 // const upload = multer({ dest: 'uploads/' });
 
-
-module.exports = upload;
+module.exports ={
+    upload: upload,
+    s3: s3
+}

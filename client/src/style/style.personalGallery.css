@@ -5,13 +5,13 @@
 .button-add-photo {
     text-align: center;
 }
-label input{
+.button-add-photo label input{
     height: 0;
     width: 0;
     opacity: 0;
 }
 
-label{
+.button-add-photo label{
     display: block;
     width: 30px;
     height: 30px;
@@ -23,7 +23,7 @@ label{
     font-weight: bold;
     font-size: 24px;
 }
-label:hover{
+.button-add-photo label:hover{
     background: var(--primary);
     color: white;
 }

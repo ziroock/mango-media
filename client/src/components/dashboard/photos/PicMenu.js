@@ -50,8 +50,8 @@ class PicMenu extends Component {
 
     render() {
         return [
-            <div style={{position: 'absolute', top: "0px", right: "0px", zIndex: "3"}} key='dropDownMenu'>
-                <p style={{cursor: 'pointer', marginBottom: '10px'}} onClick={this.showMenu}><i className="material-icons right"> arrow_drop_down </i></p>
+            <div className="pic-menu-button" style={{position: 'absolute', top: "0px", right: "0px", zIndex: "2"}} key='dropDownMenu'>
+                <p style={{cursor: 'pointer', marginBottom: '10px'}} onClick={this.showMenu}><i className="material-icons right black circle"> arrow_drop_down </i></p>
                 {this.renderMenu()}
             </div>
         ];

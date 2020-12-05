@@ -7,8 +7,8 @@ class ImageGrid extends Component {
         return this.props.photos.reverse().map( pic => {
             return(
                 <div className="img-wrap" key={pic._id}>
-                    <PicMenu picId={pic._id}/>
                     <div className="img-box">
+                        <PicMenu picId={pic._id}/>
                         <img id="gallery-img" src={pic.src} alt={pic.desc}/>
                     </div>
                 </div>

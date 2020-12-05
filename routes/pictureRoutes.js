@@ -11,9 +11,7 @@ const https = require('https');
 module.exports = app => {
     // A Function that sends all user photos and sends the photo back
     app.post('/api/pictureSend', requireLogin, async (req,res) => {
-        console.log(req.body);
         const pictures = await Picture.find({ _user: req.body.userId });
-        console.log(pictures);
         res.send(pictures);
     });
 
@@ -31,7 +29,6 @@ module.exports = app => {
         try {
             if (imageUrl) {
                 await picture.save();
-                // res.send(picture);
                 return await Picture.find({ _user: userId });
             } else {
                 console.log({message: 'Empty req href: Picture, did not upload!'});
@@ -45,7 +42,6 @@ module.exports = app => {
     // need to check the href for validity
     // Also need to figure out the api(service) for pictures that I will use
     app.post('/api/uploadPicture', requireLogin, awsS3.upload.single('image'), async (req, res, next) => {
-        // console.log(req.file);
         const imageUrl = req.file.location;
         let options = url.parse(imageUrl);
 
@@ -55,11 +51,8 @@ module.exports = app => {
                 chunks.push(chunk);
             }).on('end', async () => {
                 let buffer = Buffer.concat(chunks);
-                // console.log("Buffer: ");
                 let dimensions = sizeOf(buffer);
-                // console.log(dimensions);
                 let picsData = await uploadToDB(dimensions, imageUrl, req.user._id);
-                // console.log(picsData);
                 res.send(picsData);
             });
         });
@@ -67,19 +60,20 @@ module.exports = app => {
 
     //deletes a picture
     app.post('/api/pictureDelete', requireLogin, async (req, res) => {
-        const picture = await Picture.findOne({ _user: req.user._id, _id: req.body.picId });
-        await Picture.deleteOne({ _user: req.user._id, _id: req.body.picId });
-        console.log(picture);
+        const userId = req.user._id;
+        const picture = await Picture.findOne({ _user: userId, _id: req.body.picId });
+        await Picture.deleteOne({ _user: userId, _id: req.body.picId });
+        // cut the src string at the end to get the img id and use it to delete object.
         const srcParse = picture.src.split("/");
         const awsKey = srcParse[srcParse.length - 1];
-        console.log(awsKey);
-        console.log("awsKey:" + awsKey);
-        // cut the src string at the end to get the img id and use it to delete object.
+
         awsS3.s3.deleteObject(
             { Bucket:"mango-media-album", Key: awsKey},
             (err, data) => {
                 if(err) console.log(err, err.stack); // error
                 else    console.log("Deleted");
             });
+        const pictures = await Picture.find({ _user: userId });
+        res.send(pictures);
     });
 };

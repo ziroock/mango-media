@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-// import { connect } from 'react-redux';
-// import { deletePost } from '../../../actions';
+import { connect } from 'react-redux';
+import {deletePicture, deletePost} from '../../../actions';
 
 
 class PicMenu extends Component {
@@ -9,7 +9,7 @@ class PicMenu extends Component {
         this.state = {
             showMenu: false,
         }
-        this.postId = props.id;
+        this.picId = props.picId;
         this.showMenu = this.showMenu.bind(this);
         this.closeMenu = this.closeMenu.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
@@ -17,7 +17,7 @@ class PicMenu extends Component {
 
 
     showMenu(event) {
-        // console.log('postID: ' + this.postId);
+        console.log("show it mofo!");
         event.preventDefault();
         this.setState({ showMenu: true }, () => {
             document.addEventListener('click', this.closeMenu);
@@ -33,16 +33,16 @@ class PicMenu extends Component {
 
 
     handleDelete() {
-        this.props.deletePost({ postId: this.postId });
+        this.props.deletePicture({ picId: this.picId });
     }
 
-
+    // <li style={{cursor: 'pointer'}} onClick={this.handleDelete}>Delete</li>
     // TODO: add hover!
     renderMenu() {
         if(this.state.showMenu) {
+            console.log("RenderMenu");
             return(
                 <ul className="blue-grey darken-1" style={{marginTop: '25px', zIndex: '2'}}>
-                    <li style={{cursor: 'pointer'}} onClick={this.toggleEdit}>Edit</li>
                     <li style={{cursor: 'pointer'}} onClick={this.handleDelete}>Delete</li>
                 </ul>
             );
@@ -52,12 +52,13 @@ class PicMenu extends Component {
 
     render() {
         return [
-            <div style={{position: 'absolute', top: "0px", right: "0px"}} key='dropDownMenu'>
+            <div style={{position: 'absolute', top: "0px", right: "0px", zIndex: "3"}} key='dropDownMenu'>
                 <p style={{cursor: 'pointer', marginBottom: '10px'}} onClick={this.showMenu}><i className="material-icons right"> arrow_drop_down </i></p>
+                {console.log("Render triangle!")}
                 {this.renderMenu()}
             </div>
         ];
     }
 }
 
-export default PicMenu;
+export default connect(null, { deletePicture })(PicMenu);

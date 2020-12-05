@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+import PicMenu from "./PicMenu";
 // import { motion } from 'framer-motion';
 
 class ImageGrid extends Component {
     mapImages() {
-        return this.props.photos.map( pic => {
+        return this.props.photos.reverse().map( pic => {
             return(
                 <div className="img-wrap" key={pic._id}>
+                    <PicMenu picId={pic._id}/>
                     <div className="img-box">
                         <img id="gallery-img" src={pic.src} alt={pic.desc}/>
                     </div>

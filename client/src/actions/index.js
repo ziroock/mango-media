@@ -1,6 +1,10 @@
 import axios from 'axios';
 import {FETCH_USER, FETCH_MESSAGE, FETCH_POST, FETCH_INVITE, FETCH_PICTURE} from "./types";
 
+
+// =====================================================================
+// ==============================USER===================================
+// =====================================================================
 export const fetchUser = () => {
     return async dispatch => {
         const res = await axios.get('/api/current_user');
@@ -31,6 +35,10 @@ export const registerUser = (userInfo) => {
         dispatch({ type: FETCH_MESSAGE, payload: res.data.message });
     };
 };
+
+// =====================================================================
+// ==============================POST===================================
+// =====================================================================
 
 export const createPost = (postBody) => {
     console.log('posoststBody: ' + JSON.stringify(postBody));
@@ -65,6 +73,9 @@ export const editPost = (postInfo) => {
     };
 };
 
+// =====================================================================
+// =============================PICTURE=================================
+// =====================================================================
 
 export const fetchPicture = (userId) => {
     // console.log("USER ID INSIDE ACTION:");
@@ -85,6 +96,15 @@ export const uploadPicture = (pictureBody) => {
             {headers: {'content-type': 'multipart/form-data'}});
         // console.log("DATAAAATATATATA");
         // console.log(res.data);
+
+        dispatch({ type: FETCH_PICTURE, payload: res.data });
+    };
+};
+
+export const deletePicture = (picId) => {
+    console.log("PicID: ", picId);
+    return async dispatch => {
+        const res = await axios.post('/api/pictureDelete', picId);
 
         dispatch({ type: FETCH_PICTURE, payload: res.data });
     };

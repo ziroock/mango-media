@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {createPost, uploadPicture} from '../../../actions';
+import { uploadPicture } from '../../../actions';
 // - Need to connect the upload process to the back end.
 // - Connect reducer, create action, and back end rout.
 
@@ -100,7 +100,7 @@ class UploadPicModal extends Component {
                             submit
                         </i></button>
                         <div className="center" id="preview-uploaded-pic" >
-                            <img id="previewPic" src={this.state.showPic} alt="Upload Pic Preview."/>
+                            <img id="previewPic" src={this.state.showPic} alt="Upload Preview."/>
                         </div>
                     </div>
                 </div>
@@ -123,7 +123,7 @@ class UploadPicModal extends Component {
                     <div className="output">
                         { this.state.error && <div className="error">{ this.state.error }</div> }
                     </div>
-                    <img id="hiddenPic" src="" height="200" alt="Image preview ..." style={{display: "none"}}/>
+                    <img id="hiddenPic" src="" height="200" alt="Preview ..." style={{display: "none"}}/>
                 </form>,
                 this.renderModal()
             ])

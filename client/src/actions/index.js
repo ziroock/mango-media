@@ -9,7 +9,7 @@ export const fetchUser = () => {
     return async dispatch => {
         const res = await axios.get('/api/current_user');
         let payload = res.data;
-        console.log(res.data);
+        // console.log(res.data);
         if(!res.data) {
             payload = {_id: false, email: false };
         }
@@ -28,7 +28,7 @@ export const submitInvite = (values, history) => async dispatch => {
 }
 
 export const registerUser = (userInfo) => {
-    console.log(userInfo.email);
+    // console.log(userInfo.email);
     return async dispatch => {
         const res = await axios.post('/api/register', userInfo);
 
@@ -41,7 +41,7 @@ export const registerUser = (userInfo) => {
 // =====================================================================
 
 export const createPost = (postBody) => {
-    console.log('posoststBody: ' + JSON.stringify(postBody));
+    // console.log('posoststBody: ' + JSON.stringify(postBody));
     return async dispatch => {
         const res = await axios.post('/api/postCreate', postBody);
 
@@ -98,7 +98,7 @@ export const uploadPicture = (pictureBody) => {
 };
 
 export const deletePicture = (picId) => {
-    console.log("PicID: ", picId);
+    // console.log("PicID: ", picId);
     return async dispatch => {
         const res = await axios.post('/api/pictureDelete', picId);
 

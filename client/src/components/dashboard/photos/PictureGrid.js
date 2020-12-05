@@ -20,7 +20,6 @@ class ImageGrid extends Component {
         return (
             <div className="gallery-frame">
                 <div className="img-grid">
-                    {console.log(this.props.photos)}
                     {this.mapImages()}
                 </div>
             </div>

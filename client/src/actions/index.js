@@ -78,8 +78,6 @@ export const editPost = (postInfo) => {
 // =====================================================================
 
 export const fetchPicture = (userId) => {
-    // console.log("USER ID INSIDE ACTION:");
-    // console.log(userId);
     return async dispatch => {
         const res = await axios.post('/api/pictureSend', userId);
 
@@ -94,8 +92,6 @@ export const uploadPicture = (pictureBody) => {
             '/api/uploadPicture',
             pictureBody,
             {headers: {'content-type': 'multipart/form-data'}});
-        // console.log("DATAAAATATATATA");
-        // console.log(res.data);
 
         dispatch({ type: FETCH_PICTURE, payload: res.data });
     };

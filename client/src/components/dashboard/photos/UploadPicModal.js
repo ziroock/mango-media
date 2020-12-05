@@ -25,22 +25,16 @@ class UploadPicModal extends Component {
 
 
     //https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsDataURL
-    ///
     previewFile(chosen) {
         const preview = document.getElementById('hiddenPic');
         const self = this;
         if(preview) {
             const reader = new FileReader();
-            console.log(preview);
-            console.log(chosen);
             reader.addEventListener("load", function () {
                 preview.src = reader.result;
                 const img = new Image();
                 img.src = preview.src;
-                console.log("img.width: ", img.width, "img.height: ", img.height);
-
                 self.setState({ showPic: preview.src });
-                console.log(preview.src);
             }, false);
             reader.readAsDataURL(chosen);
         }
@@ -49,26 +43,19 @@ class UploadPicModal extends Component {
 
 
     handleClick(e) {
-        console.log(e.target);
-        console.log(e.target.value);
         this.tmpFile = e.target.value;
         e.target.value = null;
     }
 
 
     handleChange(e) {
-        console.log("HANDLE CHANGE");
         let chosen = e.target.files[0];
-        console.log(e.target.value);
-        console.log(chosen);
         if((this.tmpFile === e.target.value && ( chosen && this.types.includes(chosen.type) )) ||
             (chosen && this.types.includes(chosen.type) )) {
                 this.setState( { file: chosen, error: '', showUploadReview: !this.state.showUploadReview});
                 this.previewFile(chosen);
-                console.log("ShowMODALLLLLL");
         } else {
             this.setState( { file: null, error: 'Please select an (.png or .jpg) image.'});
-            console.log("ShowModal!!!!: ", this.state.showUploadReview );
         }
     }
 
@@ -77,8 +64,6 @@ class UploadPicModal extends Component {
     async handleSubmit(event) {
         event.preventDefault();
         if(this.state.file) {
-            console.log("The picture state is: ");
-            console.log(this.state.file);
             //https://www.pluralsight.com/guides/asynchronous-file-upload-react
             //Change file before sending
             const file = this.state.file;
@@ -92,9 +77,9 @@ class UploadPicModal extends Component {
 
     toggleEdit() {
         this.setState({ showUploadReview: !this.state.showUploadReview, showPic: null, file: null });
-        console.log("ShowModal: ", this.state.showUploadReview );
     }
-//onClick={this.handleSubmit}
+
+
 //https://stackoverflow.com/questions/3814231/loading-an-image-to-a-img-from-input-file
     renderModal() {
         if(this.state.file && this.state.showUploadReview && this.state.showPic) {

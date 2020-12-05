@@ -71,7 +71,7 @@ module.exports = app => {
             { Bucket:"mango-media-album", Key: awsKey},
             (err, data) => {
                 if(err) console.log(err, err.stack); // error
-                else    console.log("Deleted");
+                else    console.log("Picture was Deleted Successfully!");
             });
         const pictures = await Picture.find({ _user: userId });
         res.send(pictures);

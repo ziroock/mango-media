@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {fetchFriend} from '../../actions/index';
 import ProfileCover from "./ProfileCover";
 import ProfilePost from "./Posts/ProfilePost";
 import ProfilePostList from "./Posts/ProfilePostList";
@@ -13,7 +13,23 @@ import ProfilePostList from "./Posts/ProfilePostList";
 
 
 class ProfileDashboard extends Component {
-    renderContent() {
+    constructor(props) {
+        super(props);
+        let pathnameElem = window.location.pathname.split("/");
+        console.log(pathnameElem[pathnameElem.length - 1]);
+        this.dashboardId = pathnameElem[pathnameElem.length - 1];
+    }
+
+    componentDidMount() {
+        this.props.fetchFriend({friendId: this.dashboardId});
+    }
+
+    renderUserProfile() {
+        console.log("The friendId is: ", this.props);
+        if(this.props.friend) {
+            console.log(this.props.friend);
+        }
+        console.log("The dashboardId is: ", this.dashboardId);
         switch(this.props.auth._id) {
             case null:
                 return <h2>Please Sign In to access dashboard!</h2>;
@@ -31,11 +47,11 @@ class ProfileDashboard extends Component {
     }
 
     render() {
-        return this.renderContent();
+        return this.renderUserProfile();
     }
 }
-function mapStateToProps(state) {
-    return { auth: state.auth, post: state.post };
+function mapStateToProps({auth, friend, post}) {
+    return { auth: auth, post: post, friend: friend };
 }
 
-export default connect(mapStateToProps)(ProfileDashboard);
+export default connect(mapStateToProps, {fetchFriend})(ProfileDashboard);

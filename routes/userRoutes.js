@@ -34,6 +34,19 @@ module.exports = app => {
         }
     });
 
+
+    app.post('/api/current_friend',async (req, res) => {
+        const friendId = req.body.friendId;
+        console.log("FriendId: ", friendId);
+        const friendName = await User.findOne({_id: friendId});
+        if(friendId && friendName) {
+            res.send({_id: friendId, name: friendName.name});
+        } else {
+            res.send({ error: "No valid friendId or friendName!"});
+        }
+    });
+
+
     app.post('/api/getUserInfo', requireLogin, async (req, res) => {
         const { userId } = req.body;
         //console.log(req.body.userId);

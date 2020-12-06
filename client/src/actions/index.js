@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {FETCH_USER, FETCH_MESSAGE, FETCH_POST, FETCH_INVITE, FETCH_PICTURE} from "./types";
+import {FETCH_USER, FETCH_MESSAGE, FETCH_POST, FETCH_INVITE, FETCH_PICTURE, FETCH_FRIEND} from "./types";
 
 
 // =====================================================================
@@ -15,6 +15,20 @@ export const fetchUser = () => {
         }
 
         dispatch({ type: FETCH_USER, payload: payload });
+    };
+};
+
+export const fetchFriend = (friendId) => {
+    console.log(friendId);
+    return async dispatch => {
+        const res = await axios.post('/api/current_friend', friendId);
+        let payload = res.data;
+        console.log(res.data);
+        if(!res.data) {
+            payload = {friendId: false, name: false };
+        }
+
+        dispatch({ type: FETCH_FRIEND, payload: payload });
     };
 };
 

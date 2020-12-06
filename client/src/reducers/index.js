@@ -4,11 +4,13 @@ import authReducer from './authReducer';
 import messageReducer from "./messageReducer";
 import postReducer from "./postReducer";
 import pictureReducer from "./pictureReducer";
+import friendReducer from "./friendReducer";
 
 export default combineReducers({
    auth: authReducer,
    message: messageReducer,
    post: postReducer,
    picture: pictureReducer,
-   form: reduxForm
+   form: reduxForm,
+   friend: friendReducer
 });

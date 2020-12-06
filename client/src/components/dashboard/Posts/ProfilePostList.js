@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchPosts } from '../../../actions';
 import ProfilePostMenu from './ProfilePostMenu';
-
+import { isAuth } from '../../../utils/mango.utils'
 /*
 * ProfilePostList handles the fetching and rendering of all of the users posts.
 *
@@ -38,6 +38,27 @@ class ProfilePostList extends Component {
         return date;
     }
 
+    renderPostMenu(post, numberPosts, i) {
+
+
+        console.log(window.location.pathname);
+        const pathElem = window.location.pathname.split("/");
+        const urlUserId = pathElem[pathElem.length-1];
+        console.log( this.props.userId, urlUserId);
+        console.log(isAuth(this.props.userId, urlUserId));
+        if(isAuth(this.props.userId, urlUserId)) {
+            return (
+                <ProfilePostMenu
+                    id={post._id}
+                    title={'Mongo Post #' + (numberPosts - i).toString()}
+                    body={post.body}
+                    date={'Posted On:' + this.toDateString(new Date(post.dateCreated))}
+                />
+            )
+        }
+        return null
+    }
+
     renderPostList(){
         let numberPosts = this.props.posts.length;
         if(numberPosts > 0) {
@@ -46,12 +67,7 @@ class ProfilePostList extends Component {
                     <div className="card blue-grey" key={post._id}>
                         <div className="card-content white-text">
                             <span className="card-title">Mango Post #{numberPosts - i}</span>
-                            <ProfilePostMenu
-                                id={post._id}
-                                title={'Mongo Post #' + (numberPosts - i).toString()}
-                                body={post.body}
-                                date={'Posted On:' + this.toDateString(new Date(post.dateCreated))}
-                            />
+                            {this.renderPostMenu(post, numberPosts, i)}
                             <p>{post.body}</p>
                             <p className="right">
                                 Posted On: {this.toDateString(new Date(post.dateCreated))}

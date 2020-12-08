@@ -10,39 +10,22 @@ import profileAvatar from '../../images/profile-avatar.jpg';
 class ProfileCover extends Component {
     render() {
         return(
-            <div style={{
-                position: "relative",
-                textAlign: "center",
-                marginTop: "0.5em",
-                height: "312px",
-                width: "820px"}}>
+            <div id="profile-cover">
                 <div style={{ display: "inline-block" }}>
-                    <img src={mangoCover} alt="mango-cover" style={{
-                        objectFit: "cover",
-                        width: "820px",
-                        height: "312px"
-                    }}/>
-                    <img src={profileAvatar} alt="profile-avatar" style={{
-                        objectFit: "cover",
-                        width: "100px",
-                        height: "100px",
-                        position: "absolute",
-                        top: "205px",
-                        left: "10px"
-                    }}/>
-                    <h2 style={{
-                        position: "absolute",
-                        top: "205px",
-                        left: "150px",
-                        color: 'black'
-                    }}> {this.props.userName} </h2>,
-                    <div style={{
-                        position: "absolute",
-                        top: "250px",
-                        right: "50px"}}>
+                    <img src={mangoCover} alt="profile-cover" id="profile-cover-pic"/>
+                    <img src={profileAvatar} alt="profile-avatar" id="profile-avatar"/>
+                    <h2 id="cover-name"
+                    > {this.props.userName} </h2>,
+                    <div id="photo-gallery">
                         <a href={ `/photoGallery/${this.props.userId}` }>
-                            <i className="material-icons right medium" style={{color: "black"}}>collections</i>
+                            <i className="material-icons right medium"
+                               style={{color: "white"}}>
+                                collections
+                            </i>
                         </a>
+                    </div>
+                    <div id="edit-photo">
+                        <i className="material-icons small">settings</i>
                     </div>
                     </div>
             </div>

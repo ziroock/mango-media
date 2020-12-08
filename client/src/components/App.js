@@ -9,9 +9,10 @@ import Login from "./auth/Login";
 import ProfileDashboard from './dashboard/ProfileDashboard';
 import InvitationNew from './invitation/InvitationNew';
 import RegisterInvite from './auth/RegisterInvite';
+import PersonalGallery from "./dashboard/photos/PersonalGallery";
 import '../style/style.css';
 import '../style/style.personalGallery.css';
-import PersonalGallery from "./dashboard/photos/PersonalGallery";
+import '../style/style.profileDashboard.css';
 const Home = () => <h2>Home</h2>;
 
 /*
@@ -46,7 +47,10 @@ class App extends Component {
                         <Route path="/login" component={Login}/>
                         <Route path="/register" component={Register}/>
                         <Route path="/registerInvite*" component={RegisterInvite}/>
-                        <Route path="/invitation/new" component={InvitationNew}/>
+                        <Route path="/invitation/new"
+                               render={ (props) => (
+                                   <InvitationNew {...props} userId={this.props.auth._id} />
+                               )}/>
                         <Route path="/photoGallery/:userId" component={PersonalGallery}/>
                     </div>
                 </BrowserRouter>

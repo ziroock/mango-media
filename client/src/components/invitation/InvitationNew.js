@@ -22,11 +22,10 @@ class InvitationNew extends Component {
     }
 
     render() {
-        return(
-        <div>
-            {this.renderContent()}
-        </div>
-        );
+        if(this.props.userId) {
+            return this.renderContent();
+        }
+        return <h2> Please log in! </h2>
     }
 }
 

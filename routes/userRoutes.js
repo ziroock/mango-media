@@ -47,19 +47,19 @@ module.exports = app => {
     });
 
 
-    app.post('/api/getUserInfo', requireLogin, async (req, res) => {
-        const { userId } = req.body;
-        //console.log(req.body.userId);
-        try {
-            let userInfoFull = await User.findOne({_id: userId});
-            // console.log( '###userInfo: ' + JSON.stringify(userInfoFull, null, 4) );
-            const {_id, email, name} = userInfoFull;
-            res.send({ _id, email, name });
-        } catch(error) {
-            console.log(error.message);
-            res.send(null);
-        }
-    });
+    // app.post('/api/getUserInfo', requireLogin, async (req, res) => {
+    //     const { userId } = req.body;
+    //     //console.log(req.body.userId);
+    //     try {
+    //         let userInfoFull = await User.findOne({_id: userId});
+    //         // console.log( '###userInfo: ' + JSON.stringify(userInfoFull, null, 4) );
+    //         const {_id, email, name} = userInfoFull;
+    //         res.send({ _id, email, name });
+    //     } catch(error) {
+    //         console.log(error.message);
+    //         res.send(null);
+    //     }
+    // });
 
 
     app.post('/api/findUser', requireLogin, async (req, res) =>{

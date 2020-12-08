@@ -1,0 +1,45 @@
+#cover-name {
+    position: absolute;
+    top: 205px;
+    left: 200px;
+    color: white;
+}
+
+#profile-avatar {
+    object-fit: cover;
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    top: 150px;
+    left: 20px;
+}
+
+#profile-cover-pic{
+    object-fit: cover;
+    width: 820px;
+    height: 312px;
+}
+
+#photo-gallery {
+    position: absolute;
+    top: 250px;
+    right: 20px;
+}
+
+#profile-cover {
+    position: relative;
+    text-align: center;
+    margin-top: 0.5em;
+    height: 312px;
+    width: 820px;
+}
+
+#edit-photo {
+    position: absolute;
+    top: 10px;
+    right: 30px;
+}
+
+#edit-photo i {
+    color: white;
+}

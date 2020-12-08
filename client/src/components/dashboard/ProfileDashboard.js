@@ -34,7 +34,7 @@ class ProfileDashboard extends Component {
             default:
                 return (
                     <div className="container green lighten-4">
-                        <ProfileCover userId={userId} personalPage={personalPage}/>
+                        <ProfileCover userId={userId} personalPage={personalPage} userName={this.props.friend.name}/>
                         <ProfilePost userId={userId} personalPage={personalPage}/>
                         <ProfilePostList userId={userId} personalPage={personalPage}/>
                     </div>

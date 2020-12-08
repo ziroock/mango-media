@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import mangoCover from '../../images/mango-cover.jpg';
-import profileAvatar from '../../images/profile-avatar.jpg';
+import mangoCover from '../../../images/mango-cover.jpg';
+import profileAvatar from '../../../images/profile-avatar.jpg';
+import CoverPictureSettings from "./CoverPictureSettings";
 
 /*
 *   This component contains the ProfileCover items: Cover Photo, Profile Photo
@@ -15,19 +16,17 @@ class ProfileCover extends Component {
                     <img src={mangoCover} alt="profile-cover" id="profile-cover-pic"/>
                     <img src={profileAvatar} alt="profile-avatar" id="profile-avatar"/>
                     <h2 id="cover-name"
-                    > {this.props.userName} </h2>,
+                    > { this.props.userName } </h2>
                     <div id="photo-gallery">
-                        <a href={ `/photoGallery/${this.props.userId}` }>
+                        <a href={ `/photoGallery/${ this.props.userId }` }>
                             <i className="material-icons right medium"
                                style={{color: "white"}}>
                                 collections
                             </i>
                         </a>
                     </div>
-                    <div id="edit-photo">
-                        <i className="material-icons small">settings</i>
-                    </div>
-                    </div>
+                    <CoverPictureSettings personalPage={ this.props.personalPage }/>
+                </div>
             </div>
         )
     }

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {fetchFriend} from '../../actions/index';
-import ProfileCover from "./ProfileCover";
+import ProfileCover from "./Cover/ProfileCover";
 import ProfilePost from "./Posts/ProfilePost";
 import ProfilePostList from "./Posts/ProfilePostList";
 import { isPersonal } from "../../utils/mango.utils";

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchPosts } from '../../../actions';
 import ProfilePostMenu from './ProfilePostMenu';
-import { isAuth } from '../../../utils/mango.utils'
+import { isPersonal } from '../../../utils/mango.utils'
 /*
 * ProfilePostList handles the fetching and rendering of all of the users posts.
 *
@@ -45,8 +45,8 @@ class ProfilePostList extends Component {
         const pathElem = window.location.pathname.split("/");
         const urlUserId = pathElem[pathElem.length-1];
         console.log( this.props.userId, urlUserId);
-        console.log(isAuth(this.props.userId, urlUserId));
-        if(isAuth(this.props.userId, urlUserId)) {
+        console.log(isPersonal(this.props.userId, urlUserId));
+        if(isPersonal(this.props.userId, urlUserId)) {
             return (
                 <ProfilePostMenu
                     id={post._id}

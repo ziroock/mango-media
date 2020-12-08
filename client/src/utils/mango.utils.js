@@ -1,11 +1,11 @@
-let isAuth = (reqUserId, urlUserId) => {
+let isPersonal = (reqUserId, urlUserId) => {
     if(reqUserId && urlUserId) {
-        return reqUserId === urlUserId;
+        return reqUserId.toString() === urlUserId.toString();
     }
     return false;
 }
 
-module.exports = { isAuth }
+module.exports = { isPersonal }
 
 
 

@@ -31,13 +31,18 @@ class App extends Component {
     }
 
     render() {
+        console.log(this.props.auth._id);
         return (
             <div id="App">
                 <BrowserRouter>
                     <div>
                         <Header id="header"/>
                         <Route exact path="/" component={Home}/>
-                        <Route exact path="/dashboard/:userId" component={ProfileDashboard}/>
+                        <Route exact path="/dashboard/:userId"
+                            render={ (props) => (
+                                <ProfileDashboard {...props} userId={this.props.auth._id} />
+                            )}
+                        />
                         <Route path="/login" component={Login}/>
                         <Route path="/register" component={Register}/>
                         <Route path="/registerInvite*" component={RegisterInvite}/>
@@ -50,4 +55,11 @@ class App extends Component {
     }
 }
 
-export default connect(null, { fetchUser })(App);
+
+// Moving the auth reducer and the auth state to App so I can have the user info
+// through out all the components...
+function mapStateToProps ({ auth }) {
+    return { auth: auth };
+}
+
+export default connect(mapStateToProps, { fetchUser })(App);

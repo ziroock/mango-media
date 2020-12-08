@@ -19,49 +19,46 @@ class ProfileDashboard extends Component {
         this.dashboardId = this.props.match.params.userId;
     }
 
+
     componentDidMount() {
         this.props.fetchFriend({friendId: this.dashboardId});
     }
 
-    renderUserProfile() {
-        if (this.props.friend) {
-            console.log(this.props.friend);
-        }
-        console.log("The dashboardId is: ", this.dashboardId);
-        console.log("The userId isZZZ: ", this.props.userId);
-        let kur =  isPersonal(this.props.userId, this.dashboardId);
-        console.log("Personal: ", kur);
 
-
-        if ( (this.props.friend && this.props.userId) && kur ) {
-
-            console.log( (this.props.friend.toString() === this.props.userId.toString()) );
-            switch (this.props.userId) {
-                case null:
-                    return <h2>Please Sign In to access dashboard!</h2>;
-                case false:
-                    return <h2>Please Sign In to access dashboard!</h2>;
-                default:
-                    return (
-                        <div className="container green lighten-4">
-                            <ProfileCover userId={ this.dashboardId }/>
-                            <ProfilePost userId={ this.dashboardId }/>
-                            <ProfilePostList userId={ this.dashboardId }/>
-                        </div>
-                    );
-            }
-        }
-        else{
-            return <h2>NOT Ya Page ; )</h2>;
+    renderProfileDashboard(userId, personalPage) {
+        switch (userId) {
+            case null:
+                return <h2>Please Sign In to access dashboard!</h2>;
+            case false:
+                return <h2>Please Sign In to access dashboard!</h2>;
+            default:
+                return (
+                    <div className="container green lighten-4">
+                        <ProfileCover userId={userId} personalPage={personalPage}/>
+                        <ProfilePost userId={userId} personalPage={personalPage}/>
+                        <ProfilePostList userId={userId} personalPage={personalPage}/>
+                    </div>
+                );
         }
     }
+
 
     render() {
-        return this.renderUserProfile();
+        let personalPage =  isPersonal(this.props.userId, this.dashboardId);
+        if ( personalPage ) {
+            return this.renderProfileDashboard(this.props.userId, personalPage);
+        } else if (this.props.userId && this.dashboardId){
+            return this.renderProfileDashboard(this.dashboardId, personalPage);
+        } else {
+            return <h2>Not Logged in : )</h2>
+        }
     }
 }
+
+
 function mapStateToProps({ friend, post }) {
     return { post: post, friend: friend };
 }
+
 
 export default connect(mapStateToProps, {fetchFriend})(ProfileDashboard);

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchPosts } from '../../../actions';
 import ProfilePostMenu from './ProfilePostMenu';
-import { isPersonal } from '../../../utils/mango.utils'
+
 /*
 * ProfilePostList handles the fetching and rendering of all of the users posts.
 *
@@ -39,14 +39,7 @@ class ProfilePostList extends Component {
     }
 
     renderPostMenu(post, numberPosts, i) {
-
-
-        console.log(window.location.pathname);
-        const pathElem = window.location.pathname.split("/");
-        const urlUserId = pathElem[pathElem.length-1];
-        console.log( this.props.userId, urlUserId);
-        console.log(isPersonal(this.props.userId, urlUserId));
-        if(isPersonal(this.props.userId, urlUserId)) {
+        if(this.props.personalPage) {
             return (
                 <ProfilePostMenu
                     id={post._id}
@@ -56,7 +49,7 @@ class ProfilePostList extends Component {
                 />
             )
         }
-        return null
+        return null;
     }
 
     renderPostList(){

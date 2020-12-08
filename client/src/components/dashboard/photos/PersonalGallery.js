@@ -24,7 +24,7 @@ class PersonalGallery extends Component{
         return(
             <div className="photoGallery">
                 {this.Title()}
-                <UploadPicModal userId={this.props.match.params.userId}/>
+                <UploadPicModal toggle={null} userId={this.props.match.params.userId}/>
                 <PictureGrid photos={this.props.picture}/>
             </div>
         )

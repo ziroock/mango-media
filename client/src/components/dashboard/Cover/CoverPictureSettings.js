@@ -48,7 +48,7 @@ z
 
     renderModal(){
         if(this.state.showModal) {
-            return <CoverSettingsModal toggle={this.toggleModal}/>;
+            return <CoverSettingsModal toggle={this.toggleModal} userId={this.props.userId}/>;
         } else {
             return null;
         }

@@ -71,6 +71,9 @@ class UploadPicModal extends Component {
             formData.append("image", file);
             this.props.uploadPicture(formData);
             this.toggleEdit();
+            if(this.props.toggle) {
+                this.props.toggle();
+            }
         }
     }
 
@@ -113,6 +116,7 @@ class UploadPicModal extends Component {
 
 
     renderButton() {
+        console.log("blahBlah: ", this.props.auth._id, "usrId: ", this.props.userId)
         if(this.props.auth._id === this.props.userId) {
             return([
                 <form className="button-add-photo" key="UploadModal123">

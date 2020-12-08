@@ -25,7 +25,7 @@ class ProfileCover extends Component {
                             </i>
                         </a>
                     </div>
-                    <CoverPictureSettings personalPage={ this.props.personalPage }/>
+                    <CoverPictureSettings personalPage={ this.props.personalPage } userId={ this.props.userId }/>
                 </div>
             </div>
         )

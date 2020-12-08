@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import UploadPicModal from "../photos/UploadPicModal";
 
 // TODO: When I come back to fasten up my work process, create a base popup component gist
 
@@ -19,11 +20,9 @@ class CoverSettingsModal extends Component {
                            }}
                            className='material-icons'
                         > close </i>
-                        <button>
-                            <i className='material-icons'>
-                                submit
-                            </i>
-                        </button>
+                        <div style={{zIndex: "5"}}>
+                            <UploadPicModal userId={this.props.userId} toggle={this.props.toggle}/>
+                        </div>
                     </div>
                 </div>
             </div>

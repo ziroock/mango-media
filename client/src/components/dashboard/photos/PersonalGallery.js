@@ -20,12 +20,19 @@ class PersonalGallery extends Component{
         )
     }
 
+    renderGrid() {
+        if(this.props.picture) {
+            return <PictureGrid photos={this.props.picture}/>
+        }
+        return <PictureGrid photos={[]}/>;
+    }
+
     renderGallery() {
         return(
             <div className="photoGallery">
                 {this.Title()}
                 <UploadPicModal toggle={null} userId={this.props.match.params.userId}/>
-                <PictureGrid photos={this.props.picture}/>
+                {this.renderGrid()}
             </div>
         )
     }

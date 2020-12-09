@@ -21,6 +21,8 @@ const userSchema = new Schema({
     totalNumRegistered: { type: Number, default: 0 },
     totalNumInvClicked: { type: Number, default: 0},
     invitedBy: { type: String, default: null },
+    avatarSrc: { type: String, default: null },
+    coverSrc: { type: String, default: null }
 });
 
 // once inv sent update totalNumInviteSent, by searching all db entries for invites model

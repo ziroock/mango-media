@@ -12,7 +12,7 @@ module.exports = app => {
     // A Function that sends all user photos and sends the photo back
     app.post('/api/pictureSend', requireLogin, async (req,res) => {
         const pictures = await Picture.find({ _user: req.body.userId });
-        res.send(pictures);
+        res.send({ pictures: pictures, pic: null });
     });
 
     let uploadToDB = async (dimensions, imageUrl, userId) => {
@@ -28,8 +28,9 @@ module.exports = app => {
 
         try {
             if (imageUrl) {
-                await picture.save();
-                return await Picture.find({ _user: userId });
+                let pic = await picture.save();
+
+                return { pic: pic, pictures: await Picture.find({ _user: userId })};
             } else {
                 console.log({message: 'Empty req href: Picture, did not upload!'});
             }
@@ -44,6 +45,9 @@ module.exports = app => {
     app.post('/api/uploadPicture', requireLogin, awsS3.upload.single('image'), async (req, res, next) => {
         const imageUrl = req.file.location;
         let options = url.parse(imageUrl);
+        // add a flag variable that holds the type of upload.
+        // is it to change profile pic, cover pic, or regular???
+        // based on the flag update the proper value in the user model.
 
         await https.get(options, (response) => {
             let chunks =[];
@@ -52,8 +56,8 @@ module.exports = app => {
             }).on('end', async () => {
                 let buffer = Buffer.concat(chunks);
                 let dimensions = sizeOf(buffer);
-                let picsData = await uploadToDB(dimensions, imageUrl, req.user._id);
-                res.send(picsData);
+                let uploadInfo = await uploadToDB(dimensions, imageUrl, req.user._id);
+                res.send(uploadInfo);
             });
         });
     });
@@ -74,6 +78,6 @@ module.exports = app => {
                 else    console.log("Picture was Deleted Successfully!");
             });
         const pictures = await Picture.find({ _user: userId });
-        res.send(pictures);
+        res.send({ pictures: pictures, pic: null });
     });
 };

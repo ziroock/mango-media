@@ -21,8 +21,8 @@ class PersonalGallery extends Component{
     }
 
     renderGrid() {
-        if(this.props.picture) {
-            return <PictureGrid photos={this.props.picture}/>
+        if(this.props.picture && this.props.picture.pictures) {
+            return <PictureGrid photos={this.props.picture.pictures}/>
         }
         return <PictureGrid photos={[]}/>;
     }
@@ -53,8 +53,8 @@ class PersonalGallery extends Component{
     }
 }
 
-function mapStateToProps(state) {
-    return { picture: state.picture, auth: state.auth };
+function mapStateToProps({picture, auth}) {
+    return { picture: picture, auth: auth };
 }
 
 export default connect(mapStateToProps, { fetchPicture })(PersonalGallery);

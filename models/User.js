@@ -22,7 +22,7 @@ const userSchema = new Schema({
     totalNumInvClicked: { type: Number, default: 0},
     invitedBy: { type: String, default: null },
     avatarSrc: { type: String, default: null },
-    coverSrc: { type: String, default: null }
+    coverSrc: { type: String, default: "https://mango-media-album.s3.us-west-2.amazonaws.com/1607477768085" }
 });
 
 // once inv sent update totalNumInviteSent, by searching all db entries for invites model

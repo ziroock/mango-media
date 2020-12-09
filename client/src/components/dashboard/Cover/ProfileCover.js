@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import mangoCover from '../../../images/mango-cover.jpg';
+import { connect } from "react-redux";
 import profileAvatar from '../../../images/profile-avatar.jpg';
 import CoverPictureSettings from "./CoverPictureSettings";
 
@@ -9,11 +9,23 @@ import CoverPictureSettings from "./CoverPictureSettings";
  */
 
 class ProfileCover extends Component {
+
     render() {
+        console.log("The src is: ", this.props.friend.coverSrc);
+        console.log(this.props.picture);
+        let coverImgSrc = '';
+        if(this.props.picture && this.props.picture.pic &&
+            this.props.picture.uploadType === 'cover') {
+            coverImgSrc = this.props.picture.pic.src;
+            console.log("picture type: ", this.props.picture.uploadType);
+        } else {
+            coverImgSrc = this.props.friend.coverSrc;
+        }
+
         return(
             <div id="profile-cover">
                 <div style={{ display: "inline-block" }}>
-                    <img src={mangoCover} alt="profile-cover" id="profile-cover-pic"/>
+                    <img src={ coverImgSrc } alt="profile-cover" id="profile-cover-pic"/>
                     <img src={profileAvatar} alt="profile-avatar" id="profile-avatar"/>
                     <h2 id="cover-name"
                     > { this.props.userName } </h2>
@@ -32,4 +44,8 @@ class ProfileCover extends Component {
     }
 }
 
-export default ProfileCover;
+function mapStateToProps({friend, picture}) {
+    return { friend: friend, picture: picture }
+}
+
+export default connect(mapStateToProps)(ProfileCover);

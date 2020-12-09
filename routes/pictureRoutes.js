@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Picture = mongoose.model('pictures');
+const User = mongoose.model('users');
 const requireLogin = require('../middleware/requireLogin');
 const awsS3 = require('../services/picture-upload-s3');
 const sizeOf = require('image-size');
@@ -15,7 +16,7 @@ module.exports = app => {
         res.send({ pictures: pictures, pic: null });
     });
 
-    let uploadToDB = async (dimensions, imageUrl, userId) => {
+    let uploadToDB = async (dimensions, imageUrl, userId, uploadType) => {
         const { height, width } = dimensions;
         const picture = new Picture({
             src: imageUrl,
@@ -29,8 +30,21 @@ module.exports = app => {
         try {
             if (imageUrl) {
                 let pic = await picture.save();
-
-                return { pic: pic, pictures: await Picture.find({ _user: userId })};
+                switch (uploadType){
+                    case "cover":
+                        await User.updateOne(
+                            { _id: userId },
+                            { $set: { 'coverSrc': imageUrl }});
+                        console.log("Cover");
+                        break;
+                    case "avatar":
+                        console.log("Avatar");
+                        break;
+                    default:
+                        console.log("Gallery");
+                        break;
+                }
+                return { pic: pic, pictures: await Picture.find({ _user: userId }), uploadType: uploadType};
             } else {
                 console.log({message: 'Empty req href: Picture, did not upload!'});
             }
@@ -45,7 +59,8 @@ module.exports = app => {
     app.post('/api/uploadPicture', requireLogin, awsS3.upload.single('image'), async (req, res, next) => {
         console.log("I AM HERE");
         console.log(req.file);
-        console.log(req.body.uploadType);
+        console.log("Upload Type: ", req.body.uploadType);
+        console.log("The coverSrc", req.user.coverSrc);
         const imageUrl = req.file.location;
         let options = url.parse(imageUrl);
         // add a flag variable that holds the type of upload.
@@ -59,7 +74,8 @@ module.exports = app => {
             }).on('end', async () => {
                 let buffer = Buffer.concat(chunks);
                 let dimensions = sizeOf(buffer);
-                let uploadInfo = await uploadToDB(dimensions, imageUrl, req.user._id);
+                let uploadInfo = await uploadToDB(dimensions, imageUrl, req.user._id, req.body.uploadType);
+                console.log("afdsa: ", uploadInfo);
                 res.send(uploadInfo);
             });
         });

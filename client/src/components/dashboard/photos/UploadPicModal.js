@@ -69,7 +69,7 @@ class UploadPicModal extends Component {
             const file = this.state.file;
             const formData = new FormData();
             formData.append("image", file);
-            this.props.uploadPicture(formData);
+            this.props.uploadPicture(formData, this.props.uploadType );
             this.toggleEdit();
             if(this.props.toggle) {
                 this.props.toggle();

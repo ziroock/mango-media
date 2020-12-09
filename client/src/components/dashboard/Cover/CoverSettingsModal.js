@@ -21,7 +21,11 @@ class CoverSettingsModal extends Component {
                            className='material-icons'
                         > close </i>
                         <div style={{zIndex: "5"}}>
-                            <UploadPicModal userId={this.props.userId} toggle={this.props.toggle}/>
+                            <UploadPicModal
+                                userId={this.props.userId}
+                                toggle={this.props.toggle}
+                                uploadType={"cover"}
+                            />
                         </div>
                     </div>
                 </div>

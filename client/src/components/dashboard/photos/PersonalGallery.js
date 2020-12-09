@@ -31,7 +31,11 @@ class PersonalGallery extends Component{
         return(
             <div className="photoGallery">
                 {this.Title()}
-                <UploadPicModal toggle={null} userId={this.props.match.params.userId}/>
+                <UploadPicModal
+                    toggle={null}
+                    userId={this.props.match.params.userId}
+                    uploadType={"gallery"}
+                />
                 {this.renderGrid()}
             </div>
         )

@@ -99,8 +99,30 @@ export const fetchPicture = (userId) => {
     };
 };
 
+// const data = JSON.stringify({
+//     description: 'description',
+// })
+// const fd = new FormData();
+// // append directly as part of the postData in plain text
+// fd.append('data', data);
+//
+// console.log(...fd); // [key, value]
 
-export const uploadPicture = (pictureBody) => {
+
+export const uploadPicture = (pictureBody, uploadType) => {
+    console.log(uploadType);
+    const json = JSON.stringify(uploadType);
+    const blob = new Blob([json], {
+        type: 'application/json'
+    });
+
+    console.log(blob);
+    // pictureBody.append("document", blob);
+
+    pictureBody.append('uploadType', uploadType);
+
+
+    console.log(pictureBody);
     return async dispatch => {
         const res = await axios.post(
             '/api/uploadPicture',

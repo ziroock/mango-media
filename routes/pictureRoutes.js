@@ -43,6 +43,9 @@ module.exports = app => {
     // need to check the href for validity
     // Also need to figure out the api(service) for pictures that I will use
     app.post('/api/uploadPicture', requireLogin, awsS3.upload.single('image'), async (req, res, next) => {
+        console.log("I AM HERE");
+        console.log(req.file);
+        console.log(req.body.uploadType);
         const imageUrl = req.file.location;
         let options = url.parse(imageUrl);
         // add a flag variable that holds the type of upload.

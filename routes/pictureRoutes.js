@@ -38,13 +38,20 @@ module.exports = app => {
                         console.log("Cover");
                         break;
                     case "avatar":
+                        await User.updateOne(
+                            { _id: userId },
+                            { $set: { 'avatarSrc': imageUrl }});
                         console.log("Avatar");
                         break;
                     default:
                         console.log("Gallery");
                         break;
                 }
-                return { pic: pic, pictures: await Picture.find({ _user: userId }), uploadType: uploadType};
+                return {
+                    pic: pic,
+                    pictures: await Picture.find({ _user: userId }),
+                    uploadType: uploadType
+                };
             } else {
                 console.log({message: 'Empty req href: Picture, did not upload!'});
             }

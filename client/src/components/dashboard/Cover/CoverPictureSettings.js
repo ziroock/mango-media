@@ -4,19 +4,55 @@ import CoverSettingsModal from "./CoverSettingsModal";
 class CoverPictureSettings extends Component {
     constructor(props) {
         super(props);
-        this.state = { showMenu: false, showUploadReview: false, showModal: false };
+        this.state = {
+            showMenu: false,
+            showUploadReview: false,
+            showCoverModal: false,
+            showAvatarModal: false,
+            uploadType: 'gallery'
+        };
+        // this.uploadType = 'gallery';
         this.toggleSettings = this.toggleSettings.bind(this);
         this.showMenu       = this.showMenu.bind(this);
         this.closeMenu      = this.closeMenu.bind(this);
-        this.toggleModal    = this.toggleModal.bind(this);
-        this.renderModal    = this.renderModal.bind(this);
+        this.toggleCoverModal    = this.toggleCoverModal.bind(this);
+        this.renderCoverModal    = this.renderCoverModal.bind(this);
+        this.toggleAvatarModal    = this.toggleAvatarModal.bind(this);
+        this.renderAvatarModal    = this.renderAvatarModal.bind(this);
     }
 
-    toggleModal() {
-        console.log("RENDER STATE IS===: " , this.state.showModal);
-        this.setState({ showModal: !this.state.showModal });
-        console.log("RENDER STATE IS=: " , this.state.showModal);
+    toggleCoverModal() {
+
+        console.log("ReventENDER STATE IS===: " , this.state.showCoverModal);
+        this.setState({ showCoverModal: !this.state.showCoverModal, uploadType: "cover" });
+        console.log("RENDER STATE IS=: " , this.state.showCoverModal);
     }
+
+    renderCoverModal(){
+        if(this.state.showCoverModal) {
+            return <CoverSettingsModal toggle={this.toggleCoverModal} userId={this.props.userId} uploadType={this.state.uploadType}/>;
+        } else {
+            return null;
+        }
+    }
+
+
+    toggleAvatarModal() {
+
+        console.log("ReventENDER STATE IS===: " , this.state.showAvatarModal);
+        this.setState({ showAvatarModal: !this.state.showAvatarModal, uploadType: "avatar" });
+        console.log("RENDER STATE IS=: " , this.state.showAvatarModal);
+    }
+
+
+    renderAvatarModal(){
+        if(this.state.showAvatarModal) {
+            return <CoverSettingsModal toggle={this.toggleAvatarModal} userId={this.props.userId} uploadType={this.state.uploadType}/>;
+        } else {
+            return null;
+        }
+    }
+
 
     showMenu(event) {
         event.preventDefault();
@@ -40,17 +76,10 @@ z
         if(this.state.showMenu) {
             return(
                 <ul className="blue-grey darken-1" style={{marginTop: '25px', zIndex: '2'}}>
-                    <li style={{cursor: 'pointer'}} onClick={this.toggleModal}>EditCover</li>
+                    <li style={{cursor: 'pointer'}} onClick={this.toggleCoverModal}>EditCover</li>
+                    <li style={{cursor: 'pointer'}} onClick={this.toggleAvatarModal}>EditProfilePic</li>
                 </ul>
             );
-        }
-    }
-
-    renderModal(){
-        if(this.state.showModal) {
-            return <CoverSettingsModal toggle={this.toggleModal} userId={this.props.userId}/>;
-        } else {
-            return null;
         }
     }
 
@@ -63,7 +92,8 @@ z
                         <i className="material-icons small" onClick={this.showMenu}>settings</i>
                     </div>
                     {this.renderSettingsMenu()}
-                    {this.renderModal()}
+                    {this.renderCoverModal()}
+                    {this.renderAvatarModal()}
                 </div>
             );
         }

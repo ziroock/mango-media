@@ -7,6 +7,7 @@ class CoverSettingsModal extends Component {
 
 
     renderModal() {
+        console.log(this.props.uploadType);
         return (
             <div id='pic_upload' className='popup' key="upload-pop-up">
                 <div className='popup_inner'>
@@ -21,10 +22,11 @@ class CoverSettingsModal extends Component {
                            className='material-icons'
                         > close </i>
                         <div style={{zIndex: "5"}}>
+                            <h2>Upload {this.props.uploadType}</h2>
                             <UploadPicModal
                                 userId={this.props.userId}
                                 toggle={this.props.toggle}
-                                uploadType={"cover"}
+                                uploadType={this.props.uploadType}
                             />
                         </div>
                     </div>

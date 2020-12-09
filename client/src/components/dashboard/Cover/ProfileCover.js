@@ -14,19 +14,30 @@ class ProfileCover extends Component {
         console.log("The src is: ", this.props.friend.coverSrc);
         console.log(this.props.picture);
         let coverImgSrc = '';
-        if(this.props.picture && this.props.picture.pic &&
-            this.props.picture.uploadType === 'cover') {
-            coverImgSrc = this.props.picture.pic.src;
-            console.log("picture type: ", this.props.picture.uploadType);
+        let avatarImgSrc = '';
+        if(this.props.picture && this.props.picture.pic) {
+            console.log()
+            if(this.props.picture.uploadType === 'cover') {
+                coverImgSrc = this.props.picture.pic.src;
+                avatarImgSrc = this.props.friend.avatarSrc;
+                console.log("picture type: ", this.props.picture.uploadType);
+            }else if(this.props.picture.uploadType === 'avatar') {
+                avatarImgSrc = this.props.picture.pic.src;
+                coverImgSrc = this.props.friend.coverSrc;
+                console.log("picture type: ", this.props.picture.uploadType);
+            }
         } else {
+            console.log("FRIEND");
+            console.log(this.props.friend);
             coverImgSrc = this.props.friend.coverSrc;
+            avatarImgSrc = this.props.friend.avatarSrc;
         }
 
         return(
             <div id="profile-cover">
                 <div style={{ display: "inline-block" }}>
                     <img src={ coverImgSrc } alt="profile-cover" id="profile-cover-pic"/>
-                    <img src={profileAvatar} alt="profile-avatar" id="profile-avatar"/>
+                    <img src={ avatarImgSrc } alt="profile-avatar" id="profile-avatar"/>
                     <h2 id="cover-name"
                     > { this.props.userName } </h2>
                     <div id="photo-gallery">

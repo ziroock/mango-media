@@ -41,7 +41,12 @@ module.exports = app => {
         const friend = await User.findOne({_id: friendId});
         console.log("FriendSrc: ", friend.coverSrc);
         if(friendId && friend) {
-            res.send({_id: friendId, name: friend.name, coverSrc: friend.coverSrc});
+            res.send({
+                _id: friendId,
+                name: friend.name,
+                coverSrc: friend.coverSrc,
+                avatarSrc: friend.avatarSrc
+            });
         } else {
             res.send({ error: "No valid friendId or friendName!"});
         }

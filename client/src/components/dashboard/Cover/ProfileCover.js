@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import CoverPictureSettings from "./CoverPictureSettings";
+import {fetchFriend} from '../../../actions/index';
 
 /*
 *   This component contains the ProfileCover items: Cover Photo, Profile Photo
@@ -8,30 +9,34 @@ import CoverPictureSettings from "./CoverPictureSettings";
  */
 
 class ProfileCover extends Component {
+    constructor(props) {
+        super(props);
+        this.state = { updateInfo: false };
+    }
+
+
+    updateProfileCover() {
+        if(this.props.picture && this.props.picture.pic) {
+            if(this.props.picture.uploadType === 'cover') {
+                if(this.props.friend.avatarSrc !== this.props.picture.pic.src){
+                    this.props.fetchFriend({friendId: this.props.dashboardId});
+                }
+                this.props.picture.uploadType = 'gallery';
+            }else if(this.props.picture.uploadType === 'avatar') {
+                if(this.props.friend.coverSrc !== this.props.picture.pic.src){
+                    this.props.fetchFriend({friendId: this.props.dashboardId});
+                }
+                this.props.picture.uploadType = 'gallery';
+            }
+        }
+    }
+
 
     render() {
-        console.log("The src is: ", this.props.friend.coverSrc);
-        console.log(this.props.picture);
-        let coverImgSrc = '';
-        let avatarImgSrc = '';
-        if(this.props.picture && this.props.picture.pic) {
-            console.log()
-            if(this.props.picture.uploadType === 'cover') {
-                coverImgSrc = this.props.picture.pic.src;
-                avatarImgSrc = this.props.friend.avatarSrc;
-                console.log("picture type: ", this.props.picture.uploadType);
-            }else if(this.props.picture.uploadType === 'avatar') {
-                avatarImgSrc = this.props.picture.pic.src;
-                coverImgSrc = this.props.friend.coverSrc;
-                console.log("picture type: ", this.props.picture.uploadType);
-            }
-        } else {
-            console.log("FRIEND");
-            console.log(this.props.friend);
-            coverImgSrc = this.props.friend.coverSrc;
-            avatarImgSrc = this.props.friend.avatarSrc;
-        }
+        let coverImgSrc = this.props.friend.coverSrc;
+        let avatarImgSrc = this.props.friend.avatarSrc;
 
+        this.updateProfileCover();
         return(
             <div id="profile-cover">
                 <div style={{ display: "inline-block" }}>
@@ -47,7 +52,10 @@ class ProfileCover extends Component {
                             </i>
                         </a>
                     </div>
-                    <CoverPictureSettings personalPage={ this.props.personalPage } userId={ this.props.dashboardId }/>
+                    <CoverPictureSettings
+                        personalPage={ this.props.personalPage }
+                        userId={ this.props.dashboardId }
+                    />
                 </div>
             </div>
         )
@@ -58,4 +66,4 @@ function mapStateToProps({friend, picture}) {
     return { friend: friend, picture: picture }
 }
 
-export default connect(mapStateToProps)(ProfileCover);
+export default connect(mapStateToProps, {fetchFriend})(ProfileCover);

@@ -14,6 +14,7 @@ class CoverPictureSettings extends Component {
         // this.uploadType = 'gallery';
         this.toggleSettings = this.toggleSettings.bind(this);
         this.showMenu       = this.showMenu.bind(this);
+        this.resetUploadType = this.resetUploadType.bind(this);
         this.closeMenu      = this.closeMenu.bind(this);
         this.toggleCoverModal    = this.toggleCoverModal.bind(this);
         this.renderCoverModal    = this.renderCoverModal.bind(this);
@@ -24,7 +25,12 @@ class CoverPictureSettings extends Component {
     toggleCoverModal() {
 
         console.log("ReventENDER STATE IS===: " , this.state.showCoverModal);
-        this.setState({ showCoverModal: !this.state.showCoverModal, uploadType: "cover" });
+        //on close
+        if(this.state.showCoverModal && this.state.uploadType === "cover" ){
+            this.setState({ showCoverModal: !this.state.showCoverModal, uploadType: "gallery" });
+        } else {
+            this.setState({ showCoverModal: !this.state.showCoverModal, uploadType: "cover" });
+        }
         console.log("RENDER STATE IS=: " , this.state.showCoverModal);
     }
 
@@ -40,14 +46,29 @@ class CoverPictureSettings extends Component {
     toggleAvatarModal() {
 
         console.log("ReventENDER STATE IS===: " , this.state.showAvatarModal);
-        this.setState({ showAvatarModal: !this.state.showAvatarModal, uploadType: "avatar" });
+        //on close
+        if(this.state.showAvatarModal && this.state.uploadType === "avatar" ){
+            this.setState({ showAvatarModal: !this.state.showAvatarModal, uploadType: "gallery" });
+        } else {
+            this.setState({ showAvatarModal: !this.state.showAvatarModal, uploadType: "avatar" });
+        }
         console.log("RENDER STATE IS=: " , this.state.showAvatarModal);
+    }
+
+    resetUploadType() {
+        this.setState({ uploadType: 'gallery' });
+        console.log("DID A RESET", this.state.uploadType);
     }
 
 
     renderAvatarModal(){
         if(this.state.showAvatarModal) {
-            return <CoverSettingsModal toggle={this.toggleAvatarModal} userId={this.props.userId} uploadType={this.state.uploadType}/>;
+            return <CoverSettingsModal
+                reset={this.resetUploadType}
+                toggle={this.toggleAvatarModal}
+                userId={this.props.userId}
+                uploadType={this.state.uploadType}
+            />;
         } else {
             return null;
         }

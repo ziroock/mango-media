@@ -38,7 +38,6 @@ class ProfileDashboard extends Component {
                             dashboardId={userId}
                             personalPage={personalPage}
                             userName={this.props.friend.name}
-                            coverSrc={this.props.friend.coverSrc}
                         />
                         <ProfilePost userId={userId} personalPage={personalPage}/>
                         <ProfilePostList userId={userId} personalPage={personalPage}/>

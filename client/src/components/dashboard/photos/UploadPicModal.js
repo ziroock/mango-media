@@ -71,6 +71,10 @@ class UploadPicModal extends Component {
             formData.append("image", file);
             this.props.uploadPicture(formData, this.props.uploadType );
             this.toggleEdit();
+
+            // set invisible img src to null
+            const preview = document.getElementById('hiddenPic');
+            preview.src = "";
             if(this.props.toggle) {
                 this.props.toggle();
             }

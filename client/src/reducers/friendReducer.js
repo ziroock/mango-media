@@ -4,7 +4,12 @@ import {FETCH_FRIEND} from '../actions/types';
 // action.payload || false returns the user_id or if '' returns false
 
 // TODO: Need to make sure that only the user_id or username is what is seen
-export default function(state = {friendId: null, name: null}, action) {
+export default function(state = {
+        friendId: null,
+        name: null,
+        avatarSrc: null,
+        coverSrc: null
+    }, action) {
     console.log('Action type; ', action.type);
     switch (action.type) {
         case FETCH_FRIEND:

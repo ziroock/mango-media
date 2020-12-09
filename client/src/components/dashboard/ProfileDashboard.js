@@ -35,7 +35,7 @@ class ProfileDashboard extends Component {
                 return (
                     <div className="container green lighten-4">
                         <ProfileCover
-                            userId={userId}
+                            dashboardId={userId}
                             personalPage={personalPage}
                             userName={this.props.friend.name}
                             coverSrc={this.props.friend.coverSrc}

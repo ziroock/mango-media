@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { fetchPicture } from '../../../actions';
 import UploadPicModal from "./UploadPicModal";
 import PictureGrid from './PictureGrid';
+import { isPersonal } from "../../../utils/mango.utils";
 
 class PersonalGallery extends Component{
 
@@ -22,20 +23,30 @@ class PersonalGallery extends Component{
 
     renderGrid() {
         if(this.props.picture && this.props.picture.pictures) {
-            return <PictureGrid photos={this.props.picture.pictures}/>
+            return <PictureGrid photos={this.props.picture.pictures} personal={isPersonal(this.props.auth._id, this.props.match.params.userId)}/>
         }
         return <PictureGrid photos={[]}/>;
     }
+
+    renderUpload() {
+        if(isPersonal(this.props.auth._id, this.props.match.params.userId)) {
+             return (
+                 <UploadPicModal
+                    toggle={null}
+                    userId={this.props.match.params.userId}
+                    uploadType={"gallery"}
+                />
+            )
+        }
+        return null;
+    }
+
 
     renderGallery() {
         return(
             <div className="photoGallery">
                 {this.Title()}
-                <UploadPicModal
-                    toggle={null}
-                    userId={this.props.match.params.userId}
-                    uploadType={"gallery"}
-                />
+                {this.renderUpload()}
                 {this.renderGrid()}
             </div>
         )

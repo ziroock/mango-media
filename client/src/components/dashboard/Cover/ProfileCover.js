@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import profileAvatar from '../../../images/profile-avatar.jpg';
 import CoverPictureSettings from "./CoverPictureSettings";
 
 /*
@@ -41,14 +40,14 @@ class ProfileCover extends Component {
                     <h2 id="cover-name"
                     > { this.props.userName } </h2>
                     <div id="photo-gallery">
-                        <a href={ `/photoGallery/${ this.props.userId }` }>
+                        <a href={ `/photoGallery/${ this.props.dashboardId }` }>
                             <i className="material-icons right medium"
                                style={{color: "white"}}>
                                 collections
                             </i>
                         </a>
                     </div>
-                    <CoverPictureSettings personalPage={ this.props.personalPage } userId={ this.props.userId }/>
+                    <CoverPictureSettings personalPage={ this.props.personalPage } userId={ this.props.dashboardId }/>
                 </div>
             </div>
         )

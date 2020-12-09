@@ -21,7 +21,7 @@ const userSchema = new Schema({
     totalNumRegistered: { type: Number, default: 0 },
     totalNumInvClicked: { type: Number, default: 0},
     invitedBy: { type: String, default: null },
-    avatarSrc: { type: String, default: null },
+    avatarSrc: { type: String, default: "https://mango-media-album.s3.us-west-2.amazonaws.com/1607485963493"},
     coverSrc: { type: String, default: "https://mango-media-album.s3.us-west-2.amazonaws.com/1607477768085" }
 });
 

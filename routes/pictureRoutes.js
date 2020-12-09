@@ -16,6 +16,29 @@ module.exports = app => {
         res.send({ pictures: pictures, pic: null });
     });
 
+    let updateUserPic = async (type, userId, imageUrl) => {
+        switch (type) {
+            case "cover":
+                if (!imageUrl)  imageUrl = "https://mango-media-album.s3.us-west-2.amazonaws.com/1607477768085";
+                await User.updateOne(
+                    {_id: userId},
+                    {$set: {'coverSrc': imageUrl}});
+                console.log("Cover");
+                break;
+            case "avatar":
+                if (!imageUrl)  imageUrl = "https://mango-media-album.s3.us-west-2.amazonaws.com/1607485963493";
+                await User.updateOne(
+                    {_id: userId},
+                    {$set: {'avatarSrc': imageUrl}});
+                console.log("Avatar");
+                break;
+            default:
+                console.log("Gallery");
+                break;
+        }
+    }
+
+
     let uploadToDB = async (dimensions, imageUrl, userId, uploadType) => {
         const { height, width } = dimensions;
         const picture = new Picture({
@@ -26,27 +49,10 @@ module.exports = app => {
             width: width,
             desc: ''
         });
-
+        await updateUserPic(uploadType, userId, imageUrl);
         try {
             if (imageUrl) {
                 let pic = await picture.save();
-                switch (uploadType){
-                    case "cover":
-                        await User.updateOne(
-                            { _id: userId },
-                            { $set: { 'coverSrc': imageUrl }});
-                        console.log("Cover");
-                        break;
-                    case "avatar":
-                        await User.updateOne(
-                            { _id: userId },
-                            { $set: { 'avatarSrc': imageUrl }});
-                        console.log("Avatar");
-                        break;
-                    default:
-                        console.log("Gallery");
-                        break;
-                }
                 return {
                     pic: pic,
                     pictures: await Picture.find({ _user: userId }),
@@ -91,11 +97,20 @@ module.exports = app => {
     //deletes a picture
     app.post('/api/pictureDelete', requireLogin, async (req, res) => {
         const userId = req.user._id;
+        console.log(req.body.picId);
         const picture = await Picture.findOne({ _user: userId, _id: req.body.picId });
         await Picture.deleteOne({ _user: userId, _id: req.body.picId });
         // cut the src string at the end to get the img id and use it to delete object.
         const srcParse = picture.src.split("/");
         const awsKey = srcParse[srcParse.length - 1];
+        let foundCover = await User.findOne({ coverSrc: picture.src});
+        let foundProfile = await User.findOne({ avatarSrc: picture.src});
+        let type = 'gallery';
+        if (foundCover) {
+            type = 'cover';
+        } else if(foundProfile) {
+            type = 'avatar';
+        }
 
         awsS3.s3.deleteObject(
             { Bucket:"mango-media-album", Key: awsKey},
@@ -104,6 +119,7 @@ module.exports = app => {
                 else    console.log("Picture was Deleted Successfully!");
             });
         const pictures = await Picture.find({ _user: userId });
+        await updateUserPic( type, userId, null);
         res.send({ pictures: pictures, pic: null });
     });
 };

@@ -1,10 +1,8 @@
 //https://github.com/iamshaunjp/firegram/tree/final-files
-
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { fetchPicture } from '../../../actions';
 import UploadPicModal from "./UploadPicModal";
-import PictureGrid from './PictureGrid';
 import { isPersonal } from "../../../utils/mango.utils";
 import Gallery from '../../../utils/GalleryAPI/Gallery';
 import jsonp from 'jsonp';
@@ -70,12 +68,12 @@ class PersonalGallery extends Component{
         )
     }
 
-    renderGrid() {
-        if(this.props.picture && this.props.picture.pictures) {
-            return <PictureGrid photos={this.props.picture.pictures} personal={isPersonal(this.props.auth._id, this.props.match.params.userId)}/>
-        }
-        return <PictureGrid photos={[]}/>;
-    }
+    // renderGrid() {
+    //     if(this.props.picture && this.props.picture.pictures) {
+    //         return <PictureGrid photos={this.props.picture.pictures} personal={isPersonal(this.props.auth._id, this.props.match.params.userId)}/>
+    //     }
+    //     return <PictureGrid photos={[]}/>;
+    // }
 
     renderUpload() {
         if(isPersonal(this.props.auth._id, this.props.match.params.userId)) {
@@ -89,23 +87,22 @@ class PersonalGallery extends Component{
         }
         return null;
     }
-    renderBatBoiko() {
-            if(this.state.photos) {
-                return (
-                    <Gallery photos={this.state.photos.slice(60, 75)}/>
-
-                );
-            }
-            return null;
+    renderGallery() {
+        if(this.props.picture && this.props.picture.pictures) {
+            return <Gallery
+                photos={this.props.picture.pictures}
+                personal={isPersonal(this.props.auth._id, this.props.match.params.userId)}
+            />
+        }
+        return <Gallery photos={[]}/>;
     }
 
-    renderGallery() {
+    renderPage() {
         return(
             <div className="photoGallery">
                 {this.Title()}
                 {this.renderUpload()}
-                {this.renderGrid()}
-                {this.renderBatBoiko()}
+                {this.renderGallery()}
             </div>
         )
     }
@@ -117,7 +114,7 @@ class PersonalGallery extends Component{
             case false:
                 return <h2>Please Sign In to access dashboard!</h2>;
             default:
-                return this.renderGallery();
+                return this.renderPage();
         }
     }
 }

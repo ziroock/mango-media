@@ -21,6 +21,7 @@ const Photo = ({ index, onClick, photo, margin, direction, top, left, key, perso
     <div style={{position: "relative"}}>
       <PicMenu picId={photo._id} personal={personal}/>
       <img
+        className="gallery-image"
         key={key}
         style={onClick ? { ...imgStyle, ...imgWithClick } : imgStyle}
         {...photo}

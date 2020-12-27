@@ -25,6 +25,7 @@ const Photo = ({ index, onClick, photo, margin, direction, top, left, key, perso
         style={onClick ? { ...imgStyle, ...imgWithClick } : imgStyle}
         {...photo}
         onClick={onClick ? handleClick : null}
+        alt={photo._id}
       />
     </div>
   );

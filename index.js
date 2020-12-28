@@ -9,6 +9,7 @@ require('./models/User');
 require('./models/Post');
 require('./models/Invite');
 require('./models/Picture');
+require('./models/Connection');
 require('./services/passport');
 require('./services/picture-upload-s3');
 
@@ -45,6 +46,7 @@ require('./routes/postRoutes')(app);
 require('./routes/userRoutes')(app);
 require('./routes/inviteRoutes')(app);
 require('./routes/pictureRoutes')(app);
+require('./routes/connectionRoutes')(app);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT);

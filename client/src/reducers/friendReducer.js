@@ -8,7 +8,9 @@ export default function(state = {
         friendId: null,
         name: null,
         avatarSrc: null,
-        coverSrc: null
+        coverSrc: null,
+        numFollowing: 0,
+        numFollowers: 0
     }, action) {
     console.log('Action type; ', action.type);
     switch (action.type) {

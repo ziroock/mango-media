@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const User = mongoose.model('users');
+const Connection = mongoose.model('connections');
 const requireLogin = require('../middleware/requireLogin');
 
 /**
@@ -39,13 +40,16 @@ module.exports = app => {
         const friendId = req.body.friendId;
         console.log("FriendId: ", friendId);
         const friend = await User.findOne({_id: friendId});
+        const connect = await Connection.findOne({_user: friendId});
         console.log("FriendSrc: ", friend.coverSrc);
         if(friendId && friend) {
             res.send({
                 _id: friendId,
                 name: friend.name,
                 coverSrc: friend.coverSrc,
-                avatarSrc: friend.avatarSrc
+                avatarSrc: friend.avatarSrc,
+                numFollowers: connect.numFollowers,
+                numFollowing: connect.numFollowing
             });
         } else {
             res.send({ error: "No valid friendId or friendName!"});

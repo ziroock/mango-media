@@ -44,3 +44,36 @@
     color: white;
     cursor: pointer;
 }
+
+#connect-box {
+    width: 100px;
+    height: 50px;
+    border-style: solid;
+    position: absolute;
+    top: 250px;
+    right: 155px;
+    color: black;
+}
+
+#connect-button {
+    top: 250px;
+    right: 85px;
+    position: absolute;
+}
+
+#following-box {
+    top: 0;
+    left: 5px;
+}
+
+#connect-box label {
+    position: absolute;
+    color: black;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+#followers-box {
+    left: 5px;
+    bottom: 0;
+}

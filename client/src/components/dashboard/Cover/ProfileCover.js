@@ -11,7 +11,6 @@ import {fetchFriend} from '../../../actions/index';
 class ProfileCover extends Component {
     constructor(props) {
         super(props);
-        this.state = { updateInfo: false };
     }
 
 
@@ -35,8 +34,7 @@ class ProfileCover extends Component {
     render() {
         let coverImgSrc = this.props.friend.coverSrc;
         let avatarImgSrc = this.props.friend.avatarSrc;
-
-        this.updateProfileCover();
+    this.updateProfileCover();
         return(
             <div id="profile-cover">
                 <div style={{ display: "inline-block" }}>
@@ -44,6 +42,16 @@ class ProfileCover extends Component {
                     <img src={ avatarImgSrc } alt="profile-avatar" id="profile-avatar"/>
                     <h2 id="cover-name"
                     > { this.props.userName } </h2>
+                    <div id="connect-box">
+                        <label id="following-box">Following: {this.props.friend.numFollowing}</label>
+                        <label id="followers-box">Followers: {this.props.friend.numFollowers}</label>
+                    </div>
+                    <div id="connect-button">
+                        <i className="material-icons medium"
+                           style={{color: "white"}}>
+                            loop
+                        </i>
+                    </div>
                     <div id="photo-gallery">
                         <a href={ `/photoGallery/${ this.props.dashboardId }` }>
                             <i className="material-icons right medium"

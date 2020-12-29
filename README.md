@@ -1,6 +1,23 @@
 # MANGO-MEDIA
 
 ## I.  Project Intent & Functionality
+### IDEAS !!!!!!!!!!!!!!!!!!!!!!!
+- Make the app focused towards group activities for people inside the clique.
+- Add music playing on your page
+- add group playlists 
+- give the user the ability to make and share music playlists
+- once I add stories make stories show in feed rather than on the po-up!!
+  (That would force user activity because it will make the user scroll to see stories)
+- implement swipe activity to like !!!
+- ability to pin posts
+- how to make users join in cliques ????
+    - group playlists 
+    - group event planning with votes
+    - calendar for event organizing
+    - show calendar with activities coming up as a cover ??? or on the side ??
+    - live group chat on the right side !!!
+- sell exclusive themes
+- make customizable themes
 ### Intent
 This project is created so I can further develop my web development skills.  
 By using frameworks like React, Mongooese, Express and more. It is a great  

@@ -43,13 +43,19 @@ module.exports = app => {
         const connect = await Connection.findOne({_user: friendId});
         console.log("FriendSrc: ", friend.coverSrc);
         if(friendId && friend) {
+            let numfollowers = 0;
+            let numfollowing = 0;
+            if(connect) {
+                numfollowers = connect.numFollowers;
+                numfollowing = connect.numFollowing;
+            }
             res.send({
                 _id: friendId,
                 name: friend.name,
                 coverSrc: friend.coverSrc,
                 avatarSrc: friend.avatarSrc,
-                numFollowers: connect.numFollowers,
-                numFollowing: connect.numFollowing
+                numFollowers: numfollowers,
+                numFollowing: numfollowing
             });
         } else {
             res.send({ error: "No valid friendId or friendName!"});

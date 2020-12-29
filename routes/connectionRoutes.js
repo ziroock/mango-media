@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Connection = mongoose.model('connections');
+const User = mongoose.model('users');
 const requireLogin = require('../middleware/requireLogin');
 
 //1. Start by doing follow
@@ -11,6 +12,8 @@ const requireLogin = require('../middleware/requireLogin');
 module.exports = app => {
     // in: follower: update following, followee: update followers
     app.post('/api/followUpdate', requireLogin, async (req, res) => {
+        // connect to user //
+        // connect to fetch_friend and update info
         // follower is current user, followee is the user being followed
         const { followerId, followeeId } = req.body;
         if(followerId == req.user._id) {
@@ -45,13 +48,21 @@ module.exports = app => {
                         }, { upsert: true }
                     );
                 }
+                const friend = await User.findOne({_id: followeeId});
+                const connection = await Connection.findOne({_user: followeeId});
+                res.send({
+                    _id: followeeId,
+                    name: friend.name,
+                    coverSrc: friend.coverSrc,
+                    avatarSrc: friend.avatarSrc,
+                    numFollowers: connection.numFollowers,
+                    numFollowing: connection.numFollowing
+                });
             }catch(e) {
                 console.log(e.message);
             }
 
-
         }
-        res.send(req.body);
     });
 
 

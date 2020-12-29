@@ -25,7 +25,7 @@ class ProfileDashboard extends Component {
     }
 
 
-    renderProfileDashboard(userId, personalPage) {
+    renderProfileDashboard(userId, dashboardId, personalPage) {
         switch (userId) {
             case null:
                 return <h2>Please Sign In to access dashboard!</h2>;
@@ -35,7 +35,8 @@ class ProfileDashboard extends Component {
                 return (
                     <div className="container green lighten-4">
                         <ProfileCover
-                            dashboardId={userId}
+                            userId={userId}
+                            dashboardId={dashboardId}
                             personalPage={personalPage}
                             userName={this.props.friend.name}
                         />
@@ -50,9 +51,9 @@ class ProfileDashboard extends Component {
     render() {
         let personalPage =  isPersonal(this.props.userId, this.dashboardId);
         if ( personalPage ) {
-            return this.renderProfileDashboard(this.props.userId, personalPage);
+            return this.renderProfileDashboard(this.props.userId, this.props.userId, personalPage);
         } else if (this.props.userId && this.dashboardId){
-            return this.renderProfileDashboard(this.dashboardId, personalPage);
+            return this.renderProfileDashboard(this.props.userId, this.dashboardId, personalPage);
         } else {
             return <h2>Not Logged in : )</h2>
         }

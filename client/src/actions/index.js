@@ -32,6 +32,23 @@ export const fetchFriend = (friendId) => {
     };
 };
 
+export const newFollow = (followingId, followeeId) => async dispatch => {
+    console.log(followingId);
+    console.log(followeeId);
+    const res = await axios.post('/api/followUpdate', {
+        followerId: followingId,
+        followeeId: followeeId
+    });
+    let payload = res.data;
+    console.log(res.data);
+    if(!res.data) {
+        payload = {friendId: false, name: false };
+    }
+
+    dispatch({ type: FETCH_FRIEND, payload: payload });
+}
+
+
 //does the same as the rest, but contracted syntax
 export const submitInvite = (values, history) => async dispatch => {
     const res = await axios.post('/api/invite', values);

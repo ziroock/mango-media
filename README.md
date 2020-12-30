@@ -25,6 +25,7 @@ learning experience, because it gives me the opportunity to architect and
 then encode the envisioned feature.  
 ### Functionality
 
+
 #### Personal Page
 
 - **Search**

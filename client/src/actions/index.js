@@ -1,5 +1,6 @@
 import axios from 'axios';
-import {FETCH_USER, FETCH_MESSAGE, FETCH_POST, FETCH_INVITE, FETCH_PICTURE, FETCH_FRIEND} from "./types";
+import {FETCH_USER, FETCH_MESSAGE, FETCH_POST, FETCH_INVITE, FETCH_PICTURE, FETCH_FRIEND, FETCH_FEED} from "./types";
+
 
 
 // =====================================================================
@@ -46,6 +47,13 @@ export const newFollow = (followingId, followeeId) => async dispatch => {
     }
 
     dispatch({ type: FETCH_FRIEND, payload: payload });
+}
+
+
+export const fetchFeed = () => async dispatch => {
+    const res = await axios.post('/api/feed');
+    let payload = res.data;
+    dispatch({ type: FETCH_FEED, payload: payload});
 }
 
 

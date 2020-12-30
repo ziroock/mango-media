@@ -10,10 +10,10 @@ import ProfileDashboard from './dashboard/ProfileDashboard';
 import InvitationNew from './invitation/InvitationNew';
 import RegisterInvite from './auth/RegisterInvite';
 import PersonalGallery from "./dashboard/photos/PersonalGallery";
+import MangoFeed from "./feed/MangoFeed";
 import '../style/style.css';
 import '../style/style.personalGallery.css';
 import '../style/style.profileDashboard.css';
-const Home = () => <h2>Home</h2>;
 
 /*
 * The App Component is the what puts everything together! It is where the
@@ -38,7 +38,10 @@ class App extends Component {
                 <BrowserRouter>
                     <div>
                         <Header id="header"/>
-                        <Route exact path="/" component={Home}/>
+                        <Route exact path="/"
+                           render={ (props) => (
+                               <MangoFeed {...props} userId={this.props.auth._id} />
+                            )}/>
                         <Route exact path="/dashboard/:userId"
                             render={ (props) => (
                                 <ProfileDashboard {...props} userId={this.props.auth._id} />

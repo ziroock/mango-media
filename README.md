@@ -6,7 +6,7 @@
 - Add music playing on your page
 - add group playlists 
 - give the user the ability to make and share music playlists
-- once I add stories make stories show in feed rather than on the po-up!!
+- once I add stories make stories show in feed rather than on the pop-up!!
   (That would force user activity because it will make the user scroll to see stories)
 - implement swipe activity to like !!!
 - ability to pin posts

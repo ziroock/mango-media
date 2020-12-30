@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const User = mongoose.model('users');
+const Post = mongoose.model('posts');
 const Connection = mongoose.model('connections');
 const requireLogin = require('../middleware/requireLogin');
 
@@ -59,6 +60,27 @@ module.exports = app => {
             });
         } else {
             res.send({ error: "No valid friendId or friendName!"});
+        }
+    });
+
+    //
+    app.post('/api/feed', requireLogin, async (req, res) => {
+        // 1. get all the curr usr friends
+        try {
+            let connection = await Connection.findOne({_user: req.user._id}).select('following');
+            let following = connection.following.map( ({followeeId}) => {
+                return mongoose.Types.ObjectId(followeeId);
+            });
+            // console.log(following);
+            // 2. get all posts from all friends
+            let posts = await Post.find({_user: { $in: following}});
+            // 3. order the posts by date
+            let orderedPosts = posts.reverse();
+            // 4. send all posts ordered
+            res.send(orderedPosts);
+        } catch (e){
+            console.log(e.message);
+            res.send(null);
         }
     });
 

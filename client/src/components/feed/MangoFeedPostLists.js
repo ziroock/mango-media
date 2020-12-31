@@ -41,7 +41,7 @@ class MangoFeedPostLists extends Component {
         let numberPosts = this.props.feed.length;
         if(numberPosts > 0) {
             return this.props.feed.reverse().map((post, i) => {
-                return (
+                return [
                     <div className="card blue-grey" key={post._id}>
                         <div className="card-content white-text">
                             <span className="card-title">Mango Post #{numberPosts - i}</span>
@@ -50,8 +50,23 @@ class MangoFeedPostLists extends Component {
                                 Posted On: {this.toDateString(new Date(post.dateCreated))}
                             </p>
                         </div>
+                    </div>,
+                    <div className="mangoPost">
+                        <label className="post-owner-title">
+                            Test User
+                        </label>
+                        <label className="post-date">
+                            {this.toDateString(new Date(post.dateCreated))}
+                        </label>
+                        <div className="text-box">
+                            <form className="text-area">
+                                <textarea className="text-area">
+                                    {post.body}
+                                </textarea>
+                            </form>
+                        </div>
                     </div>
-                );
+                ];
             });
         } else {
             return <h3> No new posts from your friends! </h3>;
@@ -60,7 +75,7 @@ class MangoFeedPostLists extends Component {
 
     render() {
         return(
-            <div className="PostList">
+            <div className="mango-post-list">
                 {this.renderPostList()}
             </div>
         )

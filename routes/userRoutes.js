@@ -63,7 +63,8 @@ module.exports = app => {
         }
     });
 
-    //
+    //TODO: NEED to send the user name with the post msg so I can show it
+    // TODO: OPTION2 or add name in the db so I can get it directly
     app.post('/api/feed', requireLogin, async (req, res) => {
         // 1. get all the curr usr friends
         try {

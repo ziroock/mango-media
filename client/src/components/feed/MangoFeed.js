@@ -4,7 +4,7 @@ import MangoFeedPostLists from "./MangoFeedPostLists";
 class MangoFeed extends Component {
 
 
-    renderProfileDashboard() {
+    renderFeed() {
         switch (this.props.userId) {
             case null:
                 return <h2>Please Sign In to access dashboard!</h2>;
@@ -12,9 +12,15 @@ class MangoFeed extends Component {
                 return <h2>Please Sign In to access dashboard!</h2>;
             default:
                 return (
-                    <div className="container green lighten-4 container-background">
-                        <h2>FEED</h2>
+                    <div className="feed-page-container green lighten-4">
+                        <div className="left-pane">
+                            <div className="avatar-box">
+                                avatar box
+                            </div>
+                        </div>
                         <MangoFeedPostLists/>
+                        <div className="right-pane">
+                        </div>
                     </div>
                 );
         }
@@ -22,7 +28,7 @@ class MangoFeed extends Component {
 
 
     render() {
-        return this.renderProfileDashboard();
+        return this.renderFeed();
     }
 }
 

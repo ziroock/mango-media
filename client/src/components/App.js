@@ -14,6 +14,7 @@ import MangoFeed from "./feed/MangoFeed";
 import '../style/style.css';
 import '../style/style.personalGallery.css';
 import '../style/style.profileDashboard.css';
+import '../style/style.mangoPost.css';
 
 /*
 * The App Component is the what puts everything together! It is where the
@@ -32,7 +33,6 @@ class App extends Component {
     }
 
     render() {
-        console.log(this.props.auth._id);
         return (
             <div id="App">
                 <BrowserRouter>

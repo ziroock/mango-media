@@ -35,7 +35,12 @@ module.exports = app => {
 
     app.post('/api/postCreate', requireLogin, async (req, res) => {
         const { body } = req.body;
-        const post = new Post({ body: body, dateCreated: new Date(), _user: req.user.id });
+        const post = new Post({
+            body: body,
+            dateCreated: new Date(),
+            _user: req.user._id,
+            userName: req.user.name
+        });
 
         try {
             if (body) {

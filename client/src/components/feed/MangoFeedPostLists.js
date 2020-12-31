@@ -41,6 +41,7 @@ class MangoFeedPostLists extends Component {
         let numberPosts = this.props.feed.length;
         if(numberPosts > 0) {
             return this.props.feed.reverse().map((post, i) => {
+                console.log(post)
                 return [
                     <div className="card blue-grey" key={post._id}>
                         <div className="card-content white-text">
@@ -53,7 +54,7 @@ class MangoFeedPostLists extends Component {
                     </div>,
                     <div className="mangoPost">
                         <label className="post-owner-title">
-                            Test User
+                            {post.userName}
                         </label>
                         <label className="post-date">
                             {this.toDateString(new Date(post.dateCreated))}

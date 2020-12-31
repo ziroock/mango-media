@@ -5,6 +5,7 @@ const { Schema } = mongoose;
 const postSchema = new Schema( {
     body: String,
     dateCreated: Date,
+    userName: String,
     _user: { type: Schema.Types.ObjectId, ref:'User' }
 });
 

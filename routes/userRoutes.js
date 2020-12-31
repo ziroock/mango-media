@@ -81,11 +81,7 @@ module.exports = app => {
             for(let i = 0; i < postsLen; i++) {
                 let ownerId = posts[i]._user;
                 posts[i]['avatarSrc'] = usersDict[ownerId];
-                console.log(posts[i]); console.log("blah");
-            console.log(usersDict);
             }
-            //console.log(posts);
-            //let orderedPosts = posts.reverse();
             // 4. send all posts ordered
             res.send(posts);
         } catch (e){

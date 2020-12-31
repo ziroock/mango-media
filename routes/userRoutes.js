@@ -72,13 +72,22 @@ module.exports = app => {
             let following = connection.following.map( ({followeeId}) => {
                 return mongoose.Types.ObjectId(followeeId);
             });
-            // console.log(following);
+            let users = await User.find({_id: {$in: following}}).select('avatarSrc');
+            let usersDict =  Object.assign({}, ...users.map((x) => ({[x._id]: x.avatarSrc})));
             // 2. get all posts from all friends
-            let posts = await Post.find({_user: { $in: following}});
+            let posts = await Post.find({_user: { $in: following}}).lean();
+            let postsLen = Object.keys(posts).length;
             // 3. order the posts by date
-            let orderedPosts = posts.reverse();
+            for(let i = 0; i < postsLen; i++) {
+                let ownerId = posts[i]._user;
+                posts[i]['avatarSrc'] = usersDict[ownerId];
+                console.log(posts[i]); console.log("blah");
+            console.log(usersDict);
+            }
+            //console.log(posts);
+            //let orderedPosts = posts.reverse();
             // 4. send all posts ordered
-            res.send(orderedPosts);
+            res.send(posts);
         } catch (e){
             console.log(e.message);
             res.send(null);

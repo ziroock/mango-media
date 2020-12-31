@@ -42,32 +42,27 @@ class MangoFeedPostLists extends Component {
         if(numberPosts > 0) {
             return this.props.feed.reverse().map((post, i) => {
                 console.log(post)
-                return [
-                    <div className="card blue-grey" key={post._id}>
-                        <div className="card-content white-text">
-                            <span className="card-title">Mango Post #{numberPosts - i}</span>
-                            <p>{post.body}</p>
-                            <p className="right">
-                                Posted On: {this.toDateString(new Date(post.dateCreated))}
-                            </p>
-                        </div>
-                    </div>,
+                return(
                     <div className="mangoPost">
-                        <label className="post-owner-title">
-                            {post.userName}
-                        </label>
+                        <div className="post-usr-box">
+                            <label className="post-owner-title">
+                                {post.userName}
+                            </label>
+                            <img src={post.avatarSrc} className="post-avatar-img" />
+                        </div>
                         <label className="post-date">
                             {this.toDateString(new Date(post.dateCreated))}
                         </label>
                         <div className="text-box">
-                            <form className="text-area">
-                                <textarea className="text-area">
-                                    {post.body}
-                                </textarea>
-                            </form>
+                            <textarea disabled className="text-area">
+                                {post.body}
+                            </textarea>
+                        </div>
+                        <div className="post-reply-container">
+
                         </div>
                     </div>
-                ];
+                );
             });
         } else {
             return <h3> No new posts from your friends! </h3>;

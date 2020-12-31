@@ -30,28 +30,21 @@
     border-collapse: collapse;
 }
 
-
+/*==========================MONGO-POST==========================*/
 .mangoPost{
-    height: 100px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    height: 300px;
+    margin: 10px;
     background-color: purple;
     border-radius: 5.5px;
     position: relative;
 }
 
-.post-owner-title{
-    position: absolute;
-    top: 3px;
-    left: 7px;
-}
-
 .text-box{
     position: absolute;
-    top: 30%;
-    height: 40px;
+    top: 40px;
+    height: 60px;
     background-color: white;
-    left: 5%;
+    left: 130px;
     right: 5%;
 }
 
@@ -64,6 +57,39 @@
 
 .post-date{
     position: absolute;
-    top: 3px;
+    top: 5px;
     right: 11px;
+    font-size: 15px;
+    color: white;
 }
+.post-owner-title{
+    font-size: 19px;
+    text-align: center;
+    color: white;
+}
+
+.post-avatar-img {
+    height: 100px;
+    width: 100px;
+    object-fit: cover;
+    border-radius: 29px;
+}
+
+.post-usr-box{
+    position: absolute;
+    left: 2%;
+    top: 1%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.post-reply-container {
+    position: absolute;
+    top: 120px;
+    left: 130px;
+    height: 160px;
+    width: 475px;
+    background-color: deepskyblue;
+}
+/*==========================MONGO-POST-END==========================*/

@@ -59,7 +59,22 @@ class MangoFeedPostLists extends Component {
                             </textarea>
                         </div>
                         <div className="post-reply-container">
-
+                            <div className="post-reply-box">
+                                <div className="post-reply-avatar"></div>
+                                <div className="post-reply-text-box">
+                                    <textarea disabled className="text-area">
+                                        {post.body}
+                                    </textarea>
+                                </div>
+                            </div>
+                            <div className="post-reply-box">
+                                <div className="post-reply-avatar"></div>
+                                <div className="post-reply-text-box">
+                                    <textarea disabled className="text-area">
+                                        {post.body}
+                                    </textarea>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 );

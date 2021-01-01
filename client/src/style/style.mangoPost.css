@@ -88,8 +88,32 @@
     position: absolute;
     top: 120px;
     left: 130px;
-    height: 160px;
+    right: 5%;
+    height: 170px;
     width: 475px;
     background-color: deepskyblue;
+    display: flex;
+    flex-direction: column;
+}
+
+.post-reply-box {
+    margin-top: 10px;
+    margin-left: 15px;
+    width: 447px;
+    height: 70px;
+    display: flex;
+    flex-direction: row;
+}
+
+.post-reply-avatar{
+    width: 60px;
+    height: 60px;
+    background-color: blue;
+}
+
+.post-reply-text-box{
+    background-color: white;
+    margin-left: 20px;
+    width: 370px;
 }
 /*==========================MONGO-POST-END==========================*/

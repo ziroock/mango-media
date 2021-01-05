@@ -42,8 +42,10 @@ class MangoFeedPostLists extends Component {
         if(numberPosts > 0) {
             return this.props.feed.reverse().map((post, i) => {
                 console.log(post)
+                let postId = "mango-post-" + post._id;
+                let postReplyID = "post-reply-container-" + post._id;
                 return(
-                    <div className="mangoPost">
+                    <div key = {post._id} id={postId} className="mangoPost">
                         <div className="post-usr-box">
                             <label className="post-owner-title">
                                 {post.userName}
@@ -54,27 +56,25 @@ class MangoFeedPostLists extends Component {
                             {this.toDateString(new Date(post.dateCreated))}
                         </label>
                         <div className="text-box">
-                            <textarea disabled className="text-area">
-                                {post.body}
-                            </textarea>
+                            <textarea disabled className="text-area" value={post.body}/>
                         </div>
-                        <div className="post-reply-container">
+                        <div id={postReplyID} className="post-reply-container">
                             <div className="post-reply-box">
                                 <div className="post-reply-avatar"></div>
                                 <div className="post-reply-text-box">
-                                    <textarea disabled className="text-area">
-                                        {post.body}
-                                    </textarea>
+                                    <textarea disabled className="text-area" value={post.body}/>
                                 </div>
                             </div>
                             <div className="post-reply-box">
                                 <div className="post-reply-avatar"></div>
                                 <div className="post-reply-text-box">
-                                    <textarea disabled className="text-area">
-                                        {post.body}
-                                    </textarea>
+                                    <textarea disabled className="text-area" value={post.body}/>
                                 </div>
                             </div>
+                            <button type="button" onClick={ () => {
+                                document.getElementById(postId).style.height = '400px';
+                                document.getElementById(postReplyID).style.height = '66%';
+                            }}>Click Me!</button>
                         </div>
                     </div>
                 );
@@ -84,10 +84,27 @@ class MangoFeedPostLists extends Component {
         }
     }
 
+    showMoreToggle() {
+        let coll = document.getElementsByClassName("collapsible");
+        for (let i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                let content = this.nextElementSibling;
+                if (content.style.display === "block") {
+                    content.style.display = "none";
+                } else {
+                    content.style.display = "block";
+                }
+            });
+        }
+        return null;
+    }
+
     render() {
         return(
             <div className="mango-post-list">
                 {this.renderPostList()}
+                {this.showMoreToggle()}
             </div>
         )
     }

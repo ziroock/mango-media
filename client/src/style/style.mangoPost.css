@@ -32,11 +32,14 @@
 
 /*==========================MONGO-POST==========================*/
 .mangoPost{
-    height: 300px;
+    height: auto;
+    min-height: 300px;
     margin: 10px;
     background-color: purple;
     border-radius: 5.5px;
     position: relative;
+    padding-bottom: 10px;
+    padding-top: 10px;
 }
 
 .text-box{
@@ -94,10 +97,12 @@
     background-color: deepskyblue;
     display: flex;
     flex-direction: column;
+    overflow-y: hidden;
 }
 
 .post-reply-box {
     margin-top: 10px;
+    margin-bottom: 10px;
     margin-left: 15px;
     width: 447px;
     height: 70px;
@@ -113,8 +118,12 @@
 
 .post-reply-text-box{
     background-color: white;
-    margin-left: 20px;
-    width: 370px;
+    margin-left: 10px;
+    width: 367px;
+}
+.show-more {
+    bottom: 0;
+    position: absolute;
 }
 
 /*==========================MONGO-POST-END==========================*/

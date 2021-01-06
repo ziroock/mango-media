@@ -148,10 +148,17 @@
     margin-left: 50%;
     margn-right: 50%;
     position: absolute;
-    background:none;
+    background: none;
     cursor: pointer;
-    border:none;
+    border: none;
     color: white;
 }
 
+
 /*==========================MONGO-POST-END==========================*/
+.avatar-box {
+    width: 100px;
+    height: 100px;
+    background-color: white;
+    border-radius: 47px;
+}

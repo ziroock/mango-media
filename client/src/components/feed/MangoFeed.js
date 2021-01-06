@@ -15,7 +15,6 @@ class MangoFeed extends Component {
                     <div className="feed-page-container">
                         <div className="left-pane">
                             <div className="avatar-box">
-                                avatar box
                             </div>
                         </div>
                         <MangoFeedPostLists/>

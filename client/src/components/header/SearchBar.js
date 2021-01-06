@@ -72,7 +72,12 @@ class SearchBar extends Component {
             return this.state.userArray.map((user, i) => {
                 let userPageHref = `/dashboard/${user._id}`;
                 return (
-                    <li key={i} style={{display: 'block'}}><a href={userPageHref}>{user.name}</a></li>
+                    <li key={i}>
+                        <div className="search-usr-box">
+                            <img src={user.avatarSrc} className="search-result-avatar"/>
+                            <a href={userPageHref}>{user.name}</a>
+                        </div>
+                    </li>
                 );
             });
         } else if (this.state.renderResults) {

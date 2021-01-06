@@ -83,22 +83,16 @@ class SearchBar extends Component {
     // TODO: Need to make the list ul into a column instead of a row???
     render() {
         return(
-            <div id="searchBar" className='left'
-                 style={{
-                    top: "10px", left: "180px", position:"absolute", zIndex: '1',
-                     fontSize: '20px', backgroundColor: "rgba(56,142,60, 0.5)"
-                 }}
-            >
-                <textarea className="white left" onChange={this.handleChange} name="body"
-                          style={{ width: "250px", height: "30px", border: "none", resize: "none"}}
+            <div id="search-bar" className='left'>
+                <textarea className="left"
+                          onChange={this.handleChange}
+                          name="body"
                           value={this.state.body}
                 />
-                <li style={{ top: "-10px", right: " -70px", position:"absolute", cursor: 'pointer' }}
-                    className="right" onClick={this.handleSubmit}
-                >
-                    Search
-                </li>
-                <div id="searchResults" style={{ width: "250px" }}>
+                <i className='material-icons right'
+                   onClick={this.handleSubmit}
+                > search </i>
+                <div id="search-results">
                     <ul> {this.renderSearchResults()} </ul>
                 </div>
             </div>

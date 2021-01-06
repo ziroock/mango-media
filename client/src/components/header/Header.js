@@ -38,7 +38,7 @@ class Header extends Component {
     render() {
         return (
             <div className="navbar-fixed" style={{zIndex: "10"}}>
-                <nav className="green darken-2" style={{zIndex: "10"}}>
+                <nav style={{zIndex: "10"}}>
                     <div className="nav-wrapper" style={{zIndex: "10"}}>
                         <div style={{ margin: '0 1em' }}>
                             <a href="/" className="left brand-logo" style={{ fontSize: '30px' }}>Mango</a>

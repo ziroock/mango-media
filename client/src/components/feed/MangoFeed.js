@@ -1,10 +1,25 @@
 import React, {Component} from 'react';
-import MangoFeedPostLists from "./MangoFeedPostLists";
+import MangoPost from "./MangoPost";
+import { connect } from 'react-redux';
+import { fetchFeed } from '../../actions';
 
 class MangoFeed extends Component {
+    componentDidMount() {
+        this.props.fetchFeed();
+    }
 
+    renderPostList() {
+        let numberPosts = this.props.feed.length;
+        if (numberPosts > 0) {
+            return this.props.feed.reverse().map((post, i) => {
+                return <MangoPost post={post}/>;
+            });
+        } else {
+            return <h3> No new posts from your friends! </h3>;
+        }
+    }
 
-    renderFeed() {
+    render() {
         switch (this.props.userId) {
             case null:
                 return <h2>Please Sign In to access dashboard!</h2>;
@@ -17,18 +32,19 @@ class MangoFeed extends Component {
                             <div className="avatar-box">
                             </div>
                         </div>
-                        <MangoFeedPostLists/>
+                        <div className="mango-post-list">
+                            {this.renderPostList()}
+                        </div>
                         <div className="right-pane">
                         </div>
                     </div>
                 );
         }
     }
-
-
-    render() {
-        return this.renderFeed();
-    }
 }
 
-export default MangoFeed;
+function mapStateToProps(state) {
+    return { feed: state.feed };
+}
+
+export default connect(mapStateToProps, { fetchFeed })(MangoFeed);

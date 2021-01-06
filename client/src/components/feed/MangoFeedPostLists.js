@@ -36,7 +36,9 @@ class MangoFeedPostLists extends Component {
     componentDidMount() {
         this.props.fetchFeed();
     }
-
+// <div className="post-comment-avatar avatar">
+// <img className="post-comment-avatar avatar"src="https://mango-media-album.s3.us-west-2.amazonaws.com/1607485963493"/>
+// </div>
 
     // function that auto generates n number of comments
     genComments = (n) => {
@@ -49,7 +51,7 @@ class MangoFeedPostLists extends Component {
             return commentsBody.map((body) => {
                 return(
                     <div className="post-comment-box">
-                        <div className="post-comment-avatar avatar"></div>
+                            <img alt="comment-avatar" className="post-comment-avatar avatar"src="https://mango-media-album.s3.us-west-2.amazonaws.com/1607485963493"/>
                         <div className="post-comment-text-box">
                             <textarea disabled className="text-area" value={body}/>
                         </div>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { deletePost } from '../../../actions';
-import ProfilePostEdit from "./ProfilePostEdit";
+import { deletePost } from '../../actions';
+import ProfilePostEdit from "../dashboard/Posts/ProfilePostEdit";
 
 
 /*
@@ -31,7 +31,7 @@ import ProfilePostEdit from "./ProfilePostEdit";
 * */
 
 
-class ProfilePostMenu extends Component {
+class MangoPostMenu extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -113,4 +113,4 @@ class ProfilePostMenu extends Component {
     }
 }
 
-export default connect(null, { deletePost })(ProfilePostMenu);
+export default connect(null, { deletePost })(MangoPostMenu);

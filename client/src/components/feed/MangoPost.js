@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchFeed } from '../../actions';
-
+import MangoPostMenu from "./MangoPostMenu";
 /*
 * MangoPost handles the fetching and rendering of all of the users posts.
 *
@@ -14,8 +14,8 @@ import { fetchFeed } from '../../actions';
 * - render():
 *   + If there are existing posts for this user, map over in
 *     reverse order
-*   + Then the information relative to each post is sent to <ProfilePostMenu/>.
-*     <ProfilePostMenu/> handles edits and deletes based on the info received.
+*   + Then the information relative to each post is sent to <MangoPostMenu/>.
+*     <MangoPostMenu/> handles edits and deletes based on the info received.
 * */
 
 /** TODO TODO TODO TODO TODO
@@ -72,14 +72,50 @@ class MangoPost extends Component {
         return date;
     }
 
+    toggleComments = (buttonId, postReplyID, postId) => {
+        console.log(buttonId)
+        let buttonElem = document.getElementById(buttonId);
+        let commentElem = document.getElementById(postReplyID);
+        let postElem = document.getElementById(postId);
+        if (buttonElem.innerText === 'show more') {
+            postElem.style.height = '450px';
+            commentElem.style.height = '66%';
+            commentElem.style.overflowY = 'auto';
+            commentElem.style.overflowX = 'hidden';
+            buttonElem.innerText = 'show less';
+        } else if (buttonElem.innerText === 'show less') {
+            postElem.style.height = '340px';
+            commentElem.style.height = '170px';
+            commentElem.style.overflowY = 'hidden';
+            buttonElem.innerText = "show more";
+            buttonElem.style.background = 'none';
+        }
+    }
+
+    renderPostMenu() {
+        const post = this.props.post;
+        if(this.props.isPersonal) {
+            return (
+                <MangoPostMenu
+                    id={post._id}
+                    title={'Mongo Post'}
+                    body={post.body}
+                    date={'Posted On:' + this.toDateString(new Date(post.dateCreated))}
+                />
+            )
+        }
+        return null;
+    }
+
     render() {
         const post = this.props.post;
-        console.log(post);
+        console.log(post.avatarSrc);
         let postId = "mango-post-" + post._id;
         let postReplyID = "post-comment-container-" + post._id;
         let buttonId = "post-button-" + post._id;
         return (
             <div key={post._id} id={postId} className="mangoPost">
+                {this.renderPostMenu()}
                 <div className="post-usr-box">
                     <label className="post-owner-title">
                         {post.userName}
@@ -95,24 +131,9 @@ class MangoPost extends Component {
                 <div id={postReplyID} className="post-comment-container">
                     {this.genComments(5)}
                 </div>
-                <button id={buttonId} className="show-more" type="button" onClick={() => {
-                    let buttonElem = document.getElementById(buttonId);
-                    let commentElem = document.getElementById(postReplyID);
-                    let postElem = document.getElementById(postId);
-                    if (buttonElem.innerText === 'show more') {
-                        postElem.style.height = '450px';
-                        commentElem.style.height = '66%';
-                        commentElem.style.overflowY = 'auto';
-                        commentElem.style.overflowX = 'hidden';
-                        buttonElem.innerText = 'show less';
-                    } else if (buttonElem.innerText === 'show less') {
-                        postElem.style.height = '340px';
-                        commentElem.style.height = '170px';
-                        commentElem.style.overflowY = 'hidden';
-                        buttonElem.innerText = "show more";
-                        buttonElem.style.background = 'none';
-                    }
-                }}>show more
+                <button  onClick={() => {this.toggleComments(buttonId, postReplyID, postId)}}
+                         id={buttonId} className="show-more" type="button">
+                    show more
                 </button>
             </div>
         );

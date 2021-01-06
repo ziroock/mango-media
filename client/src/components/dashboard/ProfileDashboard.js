@@ -5,7 +5,6 @@ import ProfileCover from "./Cover/ProfileCover";
 import ProfilePost from "./Posts/ProfilePost";
 import ProfilePostList from "./Posts/ProfilePostList";
 import { isPersonal } from "../../utils/mango.utils";
-
 /*
 * ProfileDashboard is the component that holds all the User Profile Components!
 * It holds: <ProfileCover/>, <ProfilePost/> and <ProfilePostList/>
@@ -17,13 +16,12 @@ class ProfileDashboard extends Component {
     constructor(props) {
         super(props);
         this.dashboardId = this.props.match.params.userId;
+        this.userId = this.props.userId;
     }
-
 
     componentDidMount() {
         this.props.fetchFriend({friendId: this.dashboardId});
     }
-
 
     renderProfileDashboard(userId, dashboardId, personalPage) {
         switch (userId) {
@@ -41,12 +39,11 @@ class ProfileDashboard extends Component {
                             userName={this.props.friend.name}
                         />
                         <ProfilePost userId={userId} personalPage={personalPage}/>
-                        <ProfilePostList userId={userId} personalPage={personalPage}/>
+                        <ProfilePostList userId={dashboardId} personalPage={personalPage}/>
                     </div>
                 );
         }
     }
-
 
     render() {
         let personalPage =  isPersonal(this.props.userId, this.dashboardId);
@@ -60,10 +57,8 @@ class ProfileDashboard extends Component {
     }
 }
 
-
 function mapStateToProps({ friend, post }) {
     return { post: post, friend: friend };
 }
-
 
 export default connect(mapStateToProps, {fetchFriend})(ProfileDashboard);

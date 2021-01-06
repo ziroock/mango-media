@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Post = mongoose.model('posts');
+const User = mongoose.model('users');
 const requireLogin = require('../middleware/requireLogin');
 
 //TODO: create requireLogin middleware and add to: create, delete, edit and send
@@ -28,8 +29,13 @@ const requireLogin = require('../middleware/requireLogin');
 
 module.exports = app => {
     app.post('/api/postSend', requireLogin, async (req,res) => {
-        const posts = await Post.find({ _user: req.body.userId });
-
+        const posts = await Post.find({ _user: req.body.userId }).lean();
+        let postsLen = Object.keys(posts).length;
+        const user = await User.findOne({_id: req.user._id}).select('avatarSrc');
+        for(let i = 0; i < postsLen; i++) {
+            let ownerId = posts[i]._user;
+            posts[i]['avatarSrc'] = user.avatarSrc;
+        }
         res.send(posts);
     });
 

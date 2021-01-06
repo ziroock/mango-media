@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchPosts } from '../../../actions';
-import ProfilePostMenu from './ProfilePostMenu';
+import MangoPost from "../../feed/MangoPost";
 
 /*
 * ProfilePostList handles the fetching and rendering of all of the users posts.
@@ -38,35 +38,13 @@ class ProfilePostList extends Component {
         return date;
     }
 
-    renderPostMenu(post, numberPosts, i) {
-        if(this.props.personalPage) {
-            return (
-                <ProfilePostMenu
-                    id={post._id}
-                    title={'Mongo Post #' + (numberPosts - i).toString()}
-                    body={post.body}
-                    date={'Posted On:' + this.toDateString(new Date(post.dateCreated))}
-                />
-            )
-        }
-        return null;
-    }
-
     renderPostList(){
         let numberPosts = this.props.posts.length;
         if(numberPosts > 0) {
             return this.props.posts.reverse().map((post, i) => {
+                console.log(post);
                 return (
-                    <div className="card blue-grey" key={post._id}>
-                        <div className="card-content white-text">
-                            <span className="card-title">Mango Post #{numberPosts - i}</span>
-                            {this.renderPostMenu(post, numberPosts, i)}
-                            <p>{post.body}</p>
-                            <p className="right">
-                                Posted On: {this.toDateString(new Date(post.dateCreated))}
-                            </p>
-                        </div>
-                    </div>
+                    <MangoPost post={post} isPersonal={this.props.personalPage}/>
                 );
             });
         } else {

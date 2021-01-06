@@ -1,13 +1,15 @@
 .feed-page-container{
     width: 100%;
     height: 100%;
+    overflow: hidden;
+    background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
 }
 
 .left-pane {
     width: 15%;
     height: 100%;
     float: left;
-    background-color: white;
+    background: none;
     border-collapse: collapse;
 }
 
@@ -15,10 +17,10 @@
     width: 70%;
     height: auto;
     float: left;
-    background-color: royalblue;
     border-collapse: collapse;
     display: flex;
     flex-direction: column;
+    background: rgba(0,0,0,0.05);
 }
 
 .right-pane {
@@ -26,16 +28,15 @@
     height: 100%;
     position: relative;
     float: right;
-    background-color: white;
     border-collapse: collapse;
 }
 
-/*==========================MONGO-POST==========================*/
+/*==========================MONGO-POST========================== */
 .mangoPost{
     height: auto;
-    min-height: 300px;
+    min-height: 340px;
     margin: 10px;
-    background-color: purple;
+    background-image: linear-gradient(120deg, rgba(194,233,251,0.5) 0%, rgba(127,255,212,0.5) 100%);
     border-radius: 5.5px;
     position: relative;
     padding-bottom: 10px;
@@ -49,6 +50,7 @@
     background-color: white;
     left: 130px;
     right: 5%;
+    border-radius: 5px;
 }
 
 .text-area{
@@ -87,20 +89,21 @@
     justify-content: center;
 }
 
-.post-reply-container {
+.post-comment-container {
     position: absolute;
     top: 120px;
     left: 130px;
     right: 5%;
-    height: 170px;
+    height: 180px;
     width: 475px;
     background-color: deepskyblue;
     display: flex;
     flex-direction: column;
     overflow-y: hidden;
+    border-radius: 10px;
 }
 
-.post-reply-box {
+.post-comment-box {
     margin-top: 10px;
     margin-bottom: 10px;
     margin-left: 15px;
@@ -110,20 +113,28 @@
     flex-direction: row;
 }
 
-.post-reply-avatar{
+.post-comment-avatar{
     width: 60px;
     height: 60px;
     background-color: blue;
+    border-radius: 17px;
 }
 
-.post-reply-text-box{
+.post-comment-text-box{
     background-color: white;
     margin-left: 10px;
     width: 367px;
+    border-radius: 7px;
 }
 .show-more {
-    bottom: 0;
+    bottom: 10px;
+    margin-left: 50%;
+    margn-right: 50%;
     position: absolute;
+    background:none;
+    cursor: pointer;
+    border:none;
+    color: white;
 }
 
 /*==========================MONGO-POST-END==========================*/

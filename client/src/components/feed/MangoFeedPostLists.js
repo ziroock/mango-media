@@ -48,9 +48,9 @@ class MangoFeedPostLists extends Component {
         if(commentsBody.length > 0) {
             return commentsBody.map((body) => {
                 return(
-                    <div className="post-reply-box">
-                        <div className="post-reply-avatar"></div>
-                        <div className="post-reply-text-box">
+                    <div className="post-comment-box">
+                        <div className="post-comment-avatar avatar"></div>
+                        <div className="post-comment-text-box">
                             <textarea disabled className="text-area" value={body}/>
                         </div>
                     </div>
@@ -79,7 +79,8 @@ class MangoFeedPostLists extends Component {
             return this.props.feed.reverse().map((post, i) => {
                 console.log(post)
                 let postId = "mango-post-" + post._id;
-                let postReplyID = "post-reply-container-" + post._id;
+                let postReplyID = "post-comment-container-" + post._id;
+                let buttonId = "post-button-" + post._id;
                 return(
                     <div key = {post._id} id={postId} className="mangoPost">
                         <div className="post-usr-box">
@@ -94,14 +95,26 @@ class MangoFeedPostLists extends Component {
                         <div className="text-box">
                             <textarea disabled className="text-area" value={post.body}/>
                         </div>
-                        <div id={postReplyID} className="post-reply-container">
+                        <div id={postReplyID} className="post-comment-container">
                             {this.genComments(5)}
                         </div>
-                        <button className="show-more" type="button" onClick={ () => {
-                            document.getElementById(postId).style.height = '400px';
-                            document.getElementById(postReplyID).style.height = '66%';
-                            document.getElementById(postReplyID).style.overflowY = 'auto';
-                            document.getElementById(postReplyID).style.overflowX = 'hidden';
+                        <button id={buttonId} className="show-more" type="button" onClick={ () => {
+                            let buttonElem = document.getElementById(buttonId);
+                            let commentElem = document.getElementById(postReplyID);
+                            let postElem = document.getElementById(postId);
+                            if(buttonElem.innerText === 'show more') {
+                                postElem.style.height = '450px';
+                                commentElem.style.height = '66%';
+                                commentElem.style.overflowY = 'auto';
+                                commentElem.style.overflowX = 'hidden';
+                                buttonElem.innerText = 'show less';
+                            } else if(buttonElem.innerText === 'show less') {
+                                postElem.style.height = '340px';
+                                commentElem.style.height = '170px';
+                                commentElem.style.overflowY = 'hidden';
+                                buttonElem.innerText = "show more";
+                                buttonElem.style.background = 'none';
+                            }
                         }}>show more</button>
                     </div>
                 );

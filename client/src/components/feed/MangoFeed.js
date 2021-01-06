@@ -12,7 +12,7 @@ class MangoFeed extends Component {
                 return <h2>Please Sign In to access dashboard!</h2>;
             default:
                 return (
-                    <div className="feed-page-container green lighten-4">
+                    <div className="feed-page-container">
                         <div className="left-pane">
                             <div className="avatar-box">
                                 avatar box

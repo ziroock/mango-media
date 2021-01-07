@@ -20,22 +20,23 @@ require('./services/picture-upload-s3');
  *  for the passport services.
  * */
 
-
 mongoose.connect(keys.mongoURI, {
-    useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true
+   useNewUrlParser: true,
+   useUnifiedTopology: true,
+   useCreateIndex: true,
 });
-
 
 const app = express();
 app.use(express.json());
 
 app.use(flash());
-app.use(session({
-        maxAge: 30 * 24 * 60 * 60 * 1000,
-        secret: ['mango'],
-        resave: false,
-        saveUninitialized: false,
-    })
+app.use(
+   session({
+      maxAge: 30 * 24 * 60 * 60 * 1000,
+      secret: ['mango'],
+      resave: false,
+      saveUninitialized: false,
+   })
 );
 
 app.use(passport.initialize());

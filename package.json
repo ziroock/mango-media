@@ -7,7 +7,9 @@
     "start": "node index.js",
     "server": "nodemon index.js",
     "client": "npm run start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "lint": "eslint -c ./.eslintrc.js ./src",
+    "eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check"
   },
   "repository": {
     "type": "git",
@@ -22,10 +24,16 @@
   "dependencies": {
     "@sendgrid/mail": "^7.2.6",
     "aws-sdk": "^2.802.0",
+    "babel-eslint": "^9.0.0",
     "bcryptjs": "^2.4.3",
     "concurrently": "^5.2.0",
     "connect-flash": "^0.1.1",
     "cookie-session": "^1.4.0",
+    "eslint": "^4.19.1",
+    "eslint-config-prettier": "^2.3.0",
+    "eslint-plugin-prettier": "^2.2.0",
+    "eslint-plugin-react": "^7.3.0",
+    "eslint-plugin-react-hooks": "^1.6.0",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
     "http": "0.0.1-security",
@@ -39,6 +47,7 @@
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "path-parser": "^6.1.0",
+    "prettier": "^1.6.1",
     "sendgrid": "^5.2.3",
     "url": "^0.11.0"
   }

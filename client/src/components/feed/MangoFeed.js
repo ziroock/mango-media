@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import MangoPost from "./MangoPost";
+import MangoPost from "../dashboard/posts/MangoPost";
 import { connect } from 'react-redux';
 import { fetchFeed } from '../../actions';
+import { isPersonal } from '../../utils/mango.utils';
 
 class MangoFeed extends Component {
     componentDidMount() {
@@ -10,9 +11,11 @@ class MangoFeed extends Component {
 
     renderPostList() {
         let numberPosts = this.props.feed.length;
+        // console.log(this.props.feed);
         if (numberPosts > 0) {
-            return this.props.feed.reverse().map((post, i) => {
-                return <MangoPost post={post} isPersonal={true}/>;
+            return this.props.feed.reverse().map((post) => {
+                let personalPost = isPersonal( this.props.userId, post._user);
+                return <MangoPost key={post._user} post={post} isPersonal={personalPost}/>;
             });
         } else {
             return <h3> No new posts from your friends! </h3>;

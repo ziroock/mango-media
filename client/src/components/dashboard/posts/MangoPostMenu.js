@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { deletePost } from '../../actions';
-import ProfilePostEdit from "../dashboard/Posts/ProfilePostEdit";
+import { deletePost } from '../../../actions';
+import MangoPostEdit from "./MangoPostEdit";
 
 
 /*
@@ -11,7 +11,7 @@ import ProfilePostEdit from "../dashboard/Posts/ProfilePostEdit";
 *
 * - renderPostEdit():
 *   + Given the current state of showEdit is true, then open up the
-*     <ProfilePostEdit/> Component Page.
+*     <MangoPostEdit/> Component Page.
 *       + All the information
 * - handleDelete():
 *   + This function calls the deletePost action, when the delete button is clicked.
@@ -20,7 +20,7 @@ import ProfilePostEdit from "../dashboard/Posts/ProfilePostEdit";
 *  + TODO: Add on hover styling!
 * - toggleEdit():
 *   + This function sets showEdit state to opposite value which forces a re-render.
-*     This is used inside <ProfilePostEdit/> to handle close menu onClick and inside
+*     This is used inside <MangoPostEdit/> to handle close menu onClick and inside
 *     renderMenu() to open <ProfilePostEit/>.
 * - showMenu(event):
 *   + This function sets the showMenu state to true and calls an event listener
@@ -65,19 +65,19 @@ class MangoPostMenu extends Component {
     }
 
     toggleEdit() {
-        console.log("title: " + this.props.title);
-        console.log("body: " + this.props.body);
-        console.log("date: " + this.props.date);
+        // console.log("title: " + this.props.title);
+        // console.log("body: " + this.props.body);
+        // console.log("date: " + this.props.date);
 
         this.setState({ showEdit: !this.state.showEdit });
-        console.log('The showEdit state: ' + this.state.showEdit);
+        // console.log('The showEdit state: ' + this.state.showEdit);
     }
 
     renderPostEdit() {
-        console.log('The postEdit state: ' + this.state.showEdit);
+        // console.log('The postEdit state: ' + this.state.showEdit);
         if(this.state.showEdit) {
-            return <ProfilePostEdit
-                key='ProfilePostEdit'
+            return <MangoPostEdit
+                key='MangoPostEdit'
                 closePopUp={this.toggleEdit}
                 postTitle={this.props.title}
                 postBody={this.props.body}

@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchFeed } from '../../actions';
+import { fetchFeed } from '../../../actions';
 import MangoPostMenu from "./MangoPostMenu";
 /*
 * MangoPost handles the fetching and rendering of all of the users posts.
 *
 * - componentDidMount():
-*   + This function handles action call to get all user Posts based on userId.
+*   + This function handles action call to get all user posts based on userId.
 * - toDateString(newDate):
 *   + This function transforms to the following date form hh:mm mm/dd/yy based
 *     on the incoming newDate.
@@ -73,7 +73,6 @@ class MangoPost extends Component {
     }
 
     toggleComments = (buttonId, postReplyID, postId) => {
-        console.log(buttonId)
         let buttonElem = document.getElementById(buttonId);
         let commentElem = document.getElementById(postReplyID);
         let postElem = document.getElementById(postId);
@@ -95,21 +94,18 @@ class MangoPost extends Component {
     renderPostMenu() {
         const post = this.props.post;
         if(this.props.isPersonal) {
-            return (
-                <MangoPostMenu
+            return (<MangoPostMenu
                     id={post._id}
                     title={'Mongo Post'}
                     body={post.body}
                     date={'Posted On:' + this.toDateString(new Date(post.dateCreated))}
-                />
-            )
+                />);
         }
         return null;
     }
 
     render() {
         const post = this.props.post;
-        console.log(post.avatarSrc);
         let postId = "mango-post-" + post._id;
         let postReplyID = "post-comment-container-" + post._id;
         let buttonId = "post-button-" + post._id;

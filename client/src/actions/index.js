@@ -20,11 +20,11 @@ export const fetchUser = () => {
 };
 
 export const fetchFriend = (friendId) => {
-    console.log(friendId);
+    // console.log(friendId);
     return async dispatch => {
         const res = await axios.post('/api/current_friend', friendId);
         let payload = res.data;
-        console.log(res.data);
+        // console.log(res.data);
         if(!res.data) {
             payload = {friendId: false, name: false };
         }
@@ -34,14 +34,14 @@ export const fetchFriend = (friendId) => {
 };
 
 export const newFollow = (followingId, followeeId) => async dispatch => {
-    console.log(followingId);
-    console.log(followeeId);
+    // console.log(followingId);
+    // console.log(followeeId);
     const res = await axios.post('/api/followUpdate', {
         followerId: followingId,
         followeeId: followeeId
     });
     let payload = res.data;
-    console.log(res.data);
+    // console.log(res.data);
     if(!res.data) {
         payload = {friendId: false, name: false };
     }
@@ -125,10 +125,10 @@ export const fetchPicture = (userId) => {
 };
 
 export const uploadPicture = (pictureBody, uploadType) => {
-    console.log(uploadType);
+    // console.log(uploadType);
     // https://stackoverflow.com/questions/54997224/formdata-append-json
     pictureBody.append('uploadType', uploadType);
-    console.log(pictureBody);
+    // console.log(pictureBody);
     return async dispatch => {
         const res = await axios.post(
             '/api/uploadPicture',

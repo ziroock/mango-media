@@ -4,7 +4,7 @@ import { editPost } from '../../../actions';
 
 
 /*
-* The Component ProfilePostEdit is a new page that opens up a new text are, and
+* The Component MangoPostEdit is a new page that opens up a new text are, and
 * takes care of post edits and sends them using the editPost(body, postId) action
 * TODO: Add css to handle scaling issue, create diff page based on diff device.
 *
@@ -20,7 +20,7 @@ import { editPost } from '../../../actions';
 * */
 
 
-class ProfilePostEdit extends Component {
+class MangoPostEdit extends Component {
     constructor(props) {
         super(props);
         this.state = {body: this.props.postBody};
@@ -84,4 +84,4 @@ class ProfilePostEdit extends Component {
         );
     }
 }
-export default connect(null, { editPost })(ProfilePostEdit);
+export default connect(null, { editPost })(MangoPostEdit);

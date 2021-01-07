@@ -12,10 +12,10 @@ export default function(state = {
         numFollowing: 0,
         numFollowers: 0
     }, action) {
-    console.log('Action type; ', action.type);
+    // console.log('Action type; ', action.type);
     switch (action.type) {
         case FETCH_FRIEND:
-            console.log(action.payload);
+            // console.log(action.payload);
             return action.payload;
         default:
             return state;

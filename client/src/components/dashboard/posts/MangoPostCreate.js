@@ -5,7 +5,7 @@ import { createPost } from '../../../actions';
 const defaultPostValue = 'Write a post...';
 
 /*
-* ProfilePost handles everything behind creating a new post on the client side.
+* MangoPostCreate handles everything behind creating a new post on the client side.
 *
 * - handleChange():
 *   + This is a generic function to handle changes inside the text area.
@@ -22,7 +22,7 @@ const defaultPostValue = 'Write a post...';
 * */
 
 
-class ProfilePost extends Component {
+class MangoPostCreate extends Component {
     constructor(props) {
         super(props);
         this.state = {body: defaultPostValue};
@@ -79,4 +79,4 @@ function mapStateToProps(state) {
     return { auth: state.auth };
 }
 
-export default connect(mapStateToProps, { createPost })(ProfilePost);
+export default connect(mapStateToProps, { createPost })(MangoPostCreate);

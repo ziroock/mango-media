@@ -2,12 +2,12 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {fetchFriend, fetchPosts } from '../../actions';
 import ProfileCover from "./Cover/ProfileCover";
-import ProfilePost from "./Posts/ProfilePost";
+import MangoPostCreate from "./posts/MangoPostCreate";
 import { isPersonal } from "../../utils/mango.utils";
-import MangoPost from "../feed/MangoPost";
+import MangoPost from "./posts/MangoPost";
 /*
 * ProfileDashboard is the component that holds all the User Profile Components!
-* It holds: <ProfileCover/>, <ProfilePost/> and <ProfilePostList/>
+* It holds: <ProfileCover/>, <MangoPostCreate/> and <MangoPostCreateList/>
 * TODO: Good for now, but need to make scalable keeping the same resolution
 * */
 
@@ -28,7 +28,7 @@ class ProfileDashboard extends Component {
         let numberPosts = this.props.post.length;
         if(numberPosts > 0) {
             return this.props.post.reverse().map((post) => {
-                return <MangoPost post={post} isPersonal={personalPage}/>;
+                return <MangoPost key={post._user} post={post} isPersonal={personalPage}/>;
             });
         } else {
             return <h3> Write your first Post! </h3>;
@@ -50,7 +50,7 @@ class ProfileDashboard extends Component {
                             personalPage={personalPage}
                             userName={this.props.friend.name}
                         />
-                        <ProfilePost userId={userId} personalPage={personalPage}/>
+                        <MangoPostCreate userId={userId} personalPage={personalPage}/>
                         {this.renderPostList(personalPage)}
                     </div>
                 );

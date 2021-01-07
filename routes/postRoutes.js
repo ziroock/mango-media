@@ -6,7 +6,7 @@ const requireLogin = require('../middleware/requireLogin');
 //TODO: create requireLogin middleware and add to: create, delete, edit and send
 
 /**
- * This file takes care of the requests for Profile Posts
+ * This file takes care of the requests for Profile posts
  * TODO: need to block /api/login and /api/register for when a user is logged in!
  *  a.k.a. add the appropriate middleware to handle server side access control.
  *

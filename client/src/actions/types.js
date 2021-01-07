@@ -6,3 +6,4 @@ export const FETCH_FEED = 'fetch_feed';
 //export const FETCH_USERINFO = 'submit_post';
 export const FETCH_INVITE = 'submit_invite';
 export const FETCH_PICTURE = 'fetch_picture';
+

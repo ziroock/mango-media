@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import PicMenu from './PicMenu';
 
-
 const imgWithClick = { cursor: 'pointer' };
 const Photo = ({ index, onClick, photo, margin, direction, top, left, key, personal }) => {
   let photoShow = { src: photo.src, desc: photo.desc, width: photo.width, height: photo.height };
@@ -18,8 +17,8 @@ const Photo = ({ index, onClick, photo, margin, direction, top, left, key, perso
   };
 
   return (
-    <div key={key} style={{position: "relative"}}>
-      <PicMenu picId={photo._id} personal={personal}/>
+    <div key={key} style={{ position: 'relative' }}>
+      <PicMenu picId={photo._id} personal={personal} />
       <img
         className="gallery-image"
         style={onClick ? { ...imgStyle, ...imgWithClick } : imgStyle}

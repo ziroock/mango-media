@@ -26,24 +26,20 @@ const requireLogin = require('../middleware/requireLogin');
  *     to update hte page.
  */
 
-
-
-
 module.exports = app => {
-
-    let getPosts = async (userId) => {
-        const posts = await Post.find({ _user:  userId}).lean();
+    let getPosts = async userId => {
+        const posts = await Post.find({ _user: userId }).lean();
         let postsLen = Object.keys(posts).length;
-        const user = await User.findOne({_id: userId}).select('avatarSrc');
-        for(let i = 0; i < postsLen; i++) {
+        const user = await User.findOne({ _id: userId }).select('avatarSrc');
+        for (let i = 0; i < postsLen; i++) {
             //this is specific post ownerId so I cna get avatar if needed...
             let ownerId = posts[i]._user;
             posts[i]['avatarSrc'] = user.avatarSrc;
         }
         return posts;
-    }
+    };
 
-    app.post('/api/postSend', requireLogin, async (req,res) => {
+    app.post('/api/postSend', requireLogin, async (req, res) => {
         const posts = await getPosts(req.body.userId);
         res.send(posts);
     });
@@ -54,16 +50,16 @@ module.exports = app => {
             body: body,
             dateCreated: new Date(),
             _user: req.user._id,
-            userName: req.user.name
+            userName: req.user.name,
         });
 
         try {
             if (body) {
                 await post.save();
             } else {
-                console.log({message: 'Empty post, do not add!'});
+                console.log({ message: 'Empty post, do not add!' });
             }
-        } catch(err) {
+        } catch (err) {
             console.log({ message: err.message });
         }
         const posts = await getPosts(req.user._id);
@@ -79,9 +75,7 @@ module.exports = app => {
     app.post('/api/postEdit', requireLogin, async (req, res) => {
         // console.log('the update is: ' + req.body.body);
         // console.log('the update postId is: ' + req.body.postId);
-        await Post.updateOne(
-            { _user: req.user.id, _id: req.body.postId },
-            { $set: { 'body': req.body.body }});
+        await Post.updateOne({ _user: req.user.id, _id: req.body.postId }, { $set: { body: req.body.body } });
         const posts = await getPosts(req.user._id);
         res.send(posts);
     });

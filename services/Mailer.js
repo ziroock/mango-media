@@ -29,7 +29,7 @@ class Mailer extends helper.Mail {
         const clickTracking = new helper.ClickTracking(true, true);
 
         trackingSettings.setClickTracking(clickTracking);
-        this.addTrackingSettings(trackingSettings)
+        this.addTrackingSettings(trackingSettings);
     }
 
     addRecipients() {
@@ -45,11 +45,10 @@ class Mailer extends helper.Mail {
         const request = this.sgApi.emptyRequest({
             method: 'POST',
             path: '/v3/mail/send',
-            body: this.toJSON()
+            body: this.toJSON(),
         });
 
-        const response = await this.sgApi.API(request);
-        return response;
+        return await this.sgApi.API(request);
     }
 }
 

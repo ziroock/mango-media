@@ -2,9 +2,9 @@
 // it is called next because it indicates that it will pass on to hte next middleware
 // we don't call next if the current middleware is not executing as needed, otherwise call next
 module.exports = (req, res, next) => {
-    if(!req.user) {
+    if (!req.user) {
         //401 unauthorized aka forbidden
-        return res.status(401).send({ error: 'You must log in!' })
+        return res.status(401).send({ error: 'You must log in!' });
     }
 
     next();

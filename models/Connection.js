@@ -2,9 +2,9 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const connectionSchema = new Schema({
-    _user: { type: Schema.Types.ObjectId, ref:'User', unique: true},
-    followers: [{ followerId: { type: Schema.Types.ObjectId, ref: 'User'} }],
-    following: [{ followeeId: { type: Schema.Types.ObjectId, ref: 'User'} }],
+    _user: { type: Schema.Types.ObjectId, ref: 'User', unique: true },
+    followers: [{ followerId: { type: Schema.Types.ObjectId, ref: 'User' } }],
+    following: [{ followeeId: { type: Schema.Types.ObjectId, ref: 'User' } }],
     //cliques: [{ cliqueId: {type: Schema.Types.ObjectId, ref:'Clique'} }],
     numFollowers: { type: Number, default: 0 },
     numFollowing: { type: Number, default: 0 },
@@ -12,7 +12,6 @@ const connectionSchema = new Schema({
 });
 
 mongoose.model('connections', connectionSchema);
-
 
 /**
  * RELEASE PLAN

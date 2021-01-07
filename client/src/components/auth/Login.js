@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import loginRedirectAndMessages from "../../utils/loginRedirectAndMessages";
+import loginRedirectAndMessages from '../../utils/loginRedirectAndMessages';
 
 /*
 * The Login component handles user changes to the Login form  and fields.
@@ -25,69 +25,65 @@ import loginRedirectAndMessages from "../../utils/loginRedirectAndMessages";
 * */
 
 const test_users = {
-    'test_user': {email: 'test@gmail.com', password: 'password'},
-    'tristan': {email: 'tristan@gmail.com', password: 'password'}
+  test_user: { email: 'test@gmail.com', password: 'password' },
+  tristan: { email: 'tristan@gmail.com', password: 'password' },
 };
 
 const curr_user = test_users.test_user;
 
-
 class Login extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {email: curr_user.email, password: curr_user.password, message:''};
+  constructor(props) {
+    super(props);
+    this.state = { email: curr_user.email, password: curr_user.password, message: '' };
 
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
 
-    handleChange (event) {
-        this.setState({ [event.target.name]: event.target.value });
-    }
+  handleChange(event) {
+    this.setState({ [event.target.name]: event.target.value });
+  }
 
-    async handleSubmit(event) {
-        event.preventDefault();
-        let loginMessage = await loginRedirectAndMessages(this.state);
-        this.setState({ message: loginMessage });
-    }
+  async handleSubmit(event) {
+    event.preventDefault();
+    let loginMessage = await loginRedirectAndMessages(this.state);
+    this.setState({ message: loginMessage });
+  }
 
-    render() {
-        return (
-            <div className="container">
-                <h3>
-                    SIGN IN FORM
-                </h3>
-                <p className="red-text">
-                    { this.state.message }
-                </p>
+  render() {
+    return (
+      <div className="container">
+        <h3>SIGN IN FORM</h3>
+        <p className="red-text">{this.state.message}</p>
 
-                <form onSubmit={this.handleSubmit} method="post" action="/api/login">
-                    <div>
-                        <label>Email:</label>
-                        <input
-                            type="text"
-                            name="email"
-                            autoComplete="username"
-                            onChange={this.handleChange}
-                            placeholder={curr_user.email}
-                        />
-                    </div>
-                    <div>
-                        <label>Password:</label>
-                        <input
-                            type="password"
-                            name="password"
-                            autoComplete="new-password"
-                            onChange={this.handleChange}
-                            placeholder={curr_user.password}
-                        />
-
-                    </div>
-                    <button className="btn waves-effect waves-light teal accent-3" type="Submit" >Sign In</button>
-                </form>
-            </div>
-        );
-    }
+        <form onSubmit={this.handleSubmit} method="post" action="/api/login">
+          <div>
+            <label>Email:</label>
+            <input
+              type="text"
+              name="email"
+              autoComplete="username"
+              onChange={this.handleChange}
+              placeholder={curr_user.email}
+            />
+          </div>
+          <div>
+            <label>Password:</label>
+            <input
+              type="password"
+              name="password"
+              autoComplete="new-password"
+              onChange={this.handleChange}
+              placeholder={curr_user.password}
+            />
+          </div>
+          <button className="btn waves-effect waves-light teal accent-3" type="Submit">
+            Sign In
+          </button>
+        </form>
+      </div>
+    );
+  }
 }
 
 export default Login;

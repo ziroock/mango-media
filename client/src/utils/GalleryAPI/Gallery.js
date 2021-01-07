@@ -16,7 +16,6 @@ const Gallery = React.memo(function Gallery({
   columns,
   renderImage,
   personal,
-
 }) {
   const [containerWidth, setContainerWidth] = useState(0);
   const galleryEl = useRef(null);
@@ -108,7 +107,7 @@ const Gallery = React.memo(function Gallery({
             direction,
             onClick: onClick ? handleClick : null,
             photo,
-            personal
+            personal,
           });
         })}
       </div>

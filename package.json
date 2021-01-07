@@ -3,20 +3,25 @@
   "version": "1.0.0",
   "description": "Simple Social Media",
   "main": "index.js",
+  "engines": {
+    "node": "12.16.3",
+    "npm": "6.14.4"
+  },
   "scripts": {
     "start": "node index.js",
     "server": "nodemon index.js",
     "client": "npm run start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "lint": "eslint -c ./.eslintrc.js ./src",
-    "eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check"
+    "eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ziroock/mango-media.git"
   },
   "author": "Zaprin Ignatiev",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/ziroock/mango-media/issues"
   },

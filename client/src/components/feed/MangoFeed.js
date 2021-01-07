@@ -13,9 +13,9 @@ class MangoFeed extends Component {
         let numberPosts = this.props.feed.length;
         // console.log(this.props.feed);
         if (numberPosts > 0) {
-            return this.props.feed.reverse().map((post) => {
+            return this.props.feed.reverse().map((post, i) => {
                 let personalPost = isPersonal( this.props.userId, post._user);
-                return <MangoPost key={post._user} post={post} isPersonal={personalPost}/>;
+                return <MangoPost key={post._id} post={post} isPersonal={personalPost}/>;
             });
         } else {
             return <h3> No new posts from your friends! </h3>;

@@ -19,7 +19,7 @@ class PersonalGallery extends Component{
             </div>
         )
     }
-
+Body
     renderUpload() {
         if(isPersonal(this.props.auth._id, this.props.match.params.userId)) {
              return (

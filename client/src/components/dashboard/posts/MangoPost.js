@@ -38,16 +38,21 @@ class MangoPost extends Component {
     }
 
     // function that auto generates n number of comments
-    genComments = (n) => {
-        let commentsBody = [];
+    genComments = (n, postId) => {
+        let comments = [];
         for (let i = 0; i < n; i++) {
             let str = "This is comment " + i + " and I like it";
-            commentsBody.push(str)
+            let key = postId + i.toString();
+            let tmp = {
+                body: str,
+                key: key
+            }
+            comments.push(tmp)
         }
-        if (commentsBody.length > 0) {
-            return commentsBody.map((body) => {
+        if (comments.length > 0) {
+            return comments.map(({body, key}) => {
                 return (
-                    <div className="post-comment-box">
+                    <div key={key} className="post-comment-box">
                         <img alt="comment-avatar" className="post-comment-avatar avatar"
                              src="https://mango-media-album.s3.us-west-2.amazonaws.com/1607485963493"/>
                         <div className="post-comment-text-box">
@@ -116,7 +121,7 @@ class MangoPost extends Component {
                     <label className="post-owner-title">
                         {post.userName}
                     </label>
-                    <img src={post.avatarSrc} className="post-avatar-img"/>
+                    <img alt="post-avatar" src={post.avatarSrc} className="post-avatar-img"/>
                 </div>
                 <label className="post-date">
                     {this.toDateString(new Date(post.dateCreated))}
@@ -125,7 +130,7 @@ class MangoPost extends Component {
                     <textarea disabled className="text-area" value={post.body}/>
                 </div>
                 <div id={postReplyID} className="post-comment-container">
-                    {this.genComments(5)}
+                    {this.genComments(5, post._id)}
                 </div>
                 <button  onClick={() => {this.toggleComments(buttonId, postReplyID, postId)}}
                          id={buttonId} className="show-more" type="button">

@@ -11,7 +11,7 @@ module.exports = {
       'error',
       {
         printWidth: 120,
-        tabWidth: 3,
+        tabWidth: 4,
         singleQuote: true,
         trailingComma: 'es5',
         bracketSpacing: true,

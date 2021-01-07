@@ -74,7 +74,7 @@ class SearchBar extends Component {
                 return (
                     <li key={i}>
                         <div className="search-usr-box">
-                            <img src={user.avatarSrc} className="search-result-avatar"/>
+                            <img alt="avatar-pic" src={user.avatarSrc} className="search-result-avatar"/>
                             <a href={userPageHref}>{user.name}</a>
                         </div>
                     </li>

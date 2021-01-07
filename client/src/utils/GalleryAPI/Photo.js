@@ -4,8 +4,8 @@ import PicMenu from './PicMenu';
 
 
 const imgWithClick = { cursor: 'pointer' };
-
 const Photo = ({ index, onClick, photo, margin, direction, top, left, key, personal }) => {
+  let photoShow = { src: photo.src, desc: photo.desc, width: photo.width, height: photo.height };
   const imgStyle = { margin: margin, display: 'block' };
   if (direction === 'column') {
     imgStyle.position = 'absolute';
@@ -18,13 +18,12 @@ const Photo = ({ index, onClick, photo, margin, direction, top, left, key, perso
   };
 
   return (
-    <div style={{position: "relative"}}>
+    <div key={key} style={{position: "relative"}}>
       <PicMenu picId={photo._id} personal={personal}/>
       <img
         className="gallery-image"
-        key={key}
         style={onClick ? { ...imgStyle, ...imgWithClick } : imgStyle}
-        {...photo}
+        {...photoShow}
         onClick={onClick ? handleClick : null}
         alt={photo._id}
       />

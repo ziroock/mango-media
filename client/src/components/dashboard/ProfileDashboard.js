@@ -28,7 +28,8 @@ class ProfileDashboard extends Component {
         let numberPosts = this.props.post.length;
         if(numberPosts > 0) {
             return this.props.post.reverse().map((post) => {
-                return <MangoPost key={post._user} post={post} isPersonal={personalPage}/>;
+                console.log(post._id);
+                return <MangoPost key={post._id} post={post} isPersonal={personalPage}/>;
             });
         } else {
             return <h3> Write your first Post! </h3>;

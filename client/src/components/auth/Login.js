@@ -24,11 +24,18 @@ import loginRedirectAndMessages from "../../utils/loginRedirectAndMessages";
         + https://www.chromium.org/developers/design-documents/create-amazing-password-forms
 * */
 
+const test_users = {
+    'test_user': {email: 'test@gmail.com', password: 'password'},
+    'tristan': {email: 'tristan@gmail.com', password: 'password'}
+};
+
+const curr_user = test_users.test_user;
+
 
 class Login extends Component {
     constructor(props) {
         super(props);
-        this.state = {email: '', password: '', message:''};
+        this.state = {email: curr_user.email, password: curr_user.password, message:''};
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -57,11 +64,24 @@ class Login extends Component {
                 <form onSubmit={this.handleSubmit} method="post" action="/api/login">
                     <div>
                         <label>Email:</label>
-                        <input type="text" name="email" autoComplete="username" onChange={this.handleChange}/>
+                        <input
+                            type="text"
+                            name="email"
+                            autoComplete="username"
+                            onChange={this.handleChange}
+                            placeholder={curr_user.email}
+                        />
                     </div>
                     <div>
                         <label>Password:</label>
-                        <input type="password" name="password" autoComplete="new-password" onChange={this.handleChange}/>
+                        <input
+                            type="password"
+                            name="password"
+                            autoComplete="new-password"
+                            onChange={this.handleChange}
+                            placeholder={curr_user.password}
+                        />
+
                     </div>
                     <button className="btn waves-effect waves-light teal accent-3" type="Submit" >Sign In</button>
                 </form>

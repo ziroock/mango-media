@@ -27,15 +27,24 @@ const requireLogin = require('../middleware/requireLogin');
  */
 
 
+
+
 module.exports = app => {
-    app.post('/api/postSend', requireLogin, async (req,res) => {
-        const posts = await Post.find({ _user: req.body.userId }).lean();
+
+    let getPosts = async (userId) => {
+        const posts = await Post.find({ _user:  userId}).lean();
         let postsLen = Object.keys(posts).length;
-        const user = await User.findOne({_id: req.user._id}).select('avatarSrc');
+        const user = await User.findOne({_id: userId}).select('avatarSrc');
         for(let i = 0; i < postsLen; i++) {
+            //this is specific post ownerId so I cna get avatar if needed...
             let ownerId = posts[i]._user;
             posts[i]['avatarSrc'] = user.avatarSrc;
         }
+        return posts;
+    }
+
+    app.post('/api/postSend', requireLogin, async (req,res) => {
+        const posts = await getPosts(req.body.userId);
         res.send(posts);
     });
 
@@ -57,15 +66,13 @@ module.exports = app => {
         } catch(err) {
             console.log({ message: err.message });
         }
-
-        const posts = await Post.find({ _user: req.user.id });
+        const posts = await getPosts(req.user._id);
         res.send(posts);
     });
 
     app.post('/api/postDelete', requireLogin, async (req, res) => {
         await Post.deleteOne({ _user: req.user.id, _id: req.body.postId });
-        const posts = await Post.find({ _user: req.user.id });
-        console.log(req.body);
+        const posts = await getPosts(req.user._id);
         res.send(posts);
     });
 
@@ -75,8 +82,7 @@ module.exports = app => {
         await Post.updateOne(
             { _user: req.user.id, _id: req.body.postId },
             { $set: { 'body': req.body.body }});
-        const posts = await Post.find({ _user: req.user.id });
-        // console.log(req.body);
+        const posts = await getPosts(req.user._id);
         res.send(posts);
     });
 };

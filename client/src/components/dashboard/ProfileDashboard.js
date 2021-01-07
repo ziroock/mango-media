@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {fetchFriend} from '../../actions/index';
+import {fetchFriend, fetchPosts } from '../../actions';
 import ProfileCover from "./Cover/ProfileCover";
 import ProfilePost from "./Posts/ProfilePost";
-import ProfilePostList from "./Posts/ProfilePostList";
 import { isPersonal } from "../../utils/mango.utils";
+import MangoPost from "../feed/MangoPost";
 /*
 * ProfileDashboard is the component that holds all the User Profile Components!
 * It holds: <ProfileCover/>, <ProfilePost/> and <ProfilePostList/>
@@ -21,6 +21,18 @@ class ProfileDashboard extends Component {
 
     componentDidMount() {
         this.props.fetchFriend({friendId: this.dashboardId});
+        this.props.fetchPosts({userId: this.dashboardId});
+    }
+
+    renderPostList(personalPage) {
+        let numberPosts = this.props.post.length;
+        if(numberPosts > 0) {
+            return this.props.post.reverse().map((post) => {
+                return <MangoPost post={post} isPersonal={personalPage}/>;
+            });
+        } else {
+            return <h3> Write your first Post! </h3>;
+        }
     }
 
     renderProfileDashboard(userId, dashboardId, personalPage) {
@@ -39,7 +51,7 @@ class ProfileDashboard extends Component {
                             userName={this.props.friend.name}
                         />
                         <ProfilePost userId={userId} personalPage={personalPage}/>
-                        <ProfilePostList userId={dashboardId} personalPage={personalPage}/>
+                        {this.renderPostList(personalPage)}
                     </div>
                 );
         }
@@ -61,4 +73,4 @@ function mapStateToProps({ friend, post }) {
     return { post: post, friend: friend };
 }
 
-export default connect(mapStateToProps, {fetchFriend})(ProfileDashboard);
+export default connect(mapStateToProps, {fetchFriend, fetchPosts})(ProfileDashboard);

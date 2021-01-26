@@ -50,6 +50,7 @@ class Login extends Component {
     this.setState({ message: loginMessage });
   }
 
+  // create an ellement that is the login first page from sketch
   render() {
     return (
       <div className="container">

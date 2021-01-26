@@ -25,8 +25,10 @@ class MangoFeed extends Component {
   render() {
     switch (this.props.userId) {
       case null:
+        // create an ellement that is the login first page from sketch
         return <h2>Please Sign In to access dashboard!</h2>;
       case false:
+        // create an ellement that is the login first page from sketch
         return <h2>Please Sign In to access dashboard!</h2>;
       default:
         return (

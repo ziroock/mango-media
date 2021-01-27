@@ -1,7 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap');
+.body {
+    margin: 0;
+    background: rgba(24, 38, 31, 1);
 
+}
 #App {
-    background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+    margin: 0;
+    background: rgba(24, 38, 31, 1);
+    /*background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);*/
     min-height: 100vh;
     height: auto;
 }

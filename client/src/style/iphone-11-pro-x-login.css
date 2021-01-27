@@ -1,0 +1,598 @@
+/* screen - iphone-11-pro-x-login */
+
+.iphone-11-pro-x-login {
+  align-items: flex-start;
+  background-color: var(--celtic-2);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: 812px;
+  justify-content: flex-start;
+  overflow: hidden;
+  overflow-x: hidden;
+  position: relative;
+  width: 375px;
+}
+.iphone-11-pro-x-login .email-RH0WJ5 {
+  background-color: transparent;
+  height: auto;
+  left: 104px;
+  letter-spacing: 0.00px;
+  line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: 104px;
+  width: 179px;
+}
+.iphone-11-pro-x-login .email-entry-RH0WJ5 {
+  background-color: var(--black);
+  border: 0;
+  height: 42px;
+  left: 81px;
+  padding: 0;
+  pointer-events: auto;
+  position: absolute;
+  resize: none;
+  top: 141px;
+  transition: all 0.2s ease;
+  width: 220px;
+}
+.iphone-11-pro-x-login .email-entry-RH0WJ5:hover {
+
+transform: scale(1.1);
+}
+.iphone-11-pro-x-login .g-oath-RH0WJ5 {
+  align-items: center;
+  background-color: rgba(229,229,229,0.2);
+  border-radius: 20px;
+  box-shadow: 0px 4px 4px rgba(0,0,0,0.25);;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  height: 38px;
+  justify-content: flex-start;
+  left: 72px;
+  overflow: hidden;
+  padding: 4.9px 12px;
+  position: absolute;
+  top: 357px;
+  width: 242px;
+}
+.iphone-11-pro-x-login .google201-gperiod-1-OxrrSj {
+  align-items: flex-start;
+  align-self: flex-end;
+  background-color: transparent;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  flex-shrink: 1;
+  height: 27px;
+  justify-content: flex-start;
+  margin-left: 11px;
+  overflow: hidden;
+  position: relative;
+  width: 80px;
+}
+.iphone-11-pro-x-login .log-in-RH0WJ5 {
+  background-color: transparent;
+  height: auto;
+  left: 158px;
+  letter-spacing: 0.00px;
+  line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: 271px;
+  width: 71px;
+}
+.iphone-11-pro-x-login .log-in-entrry-RH0WJ5 {
+  background-color: var(--black);
+  border: 0;
+  height: 42px;
+  left: 83px;
+  padding: 0;
+  pointer-events: auto;
+  position: absolute;
+  resize: none;
+  top: 223px;
+  transition: all 0.2s ease;
+  width: 220px;
+}
+.iphone-11-pro-x-login .log-in-entrry-RH0WJ5:hover {
+
+transform: scale(1.1);
+}
+.iphone-11-pro-x-login .mango-body-1-RH0WJ5 {
+  background-color: transparent;
+  height: 593px;
+  left: 0px;
+  position: absolute;
+  top: 6px;
+  width: 384px;
+}
+.iphone-11-pro-x-login .mango-body-2-RH0WJ5 {
+  background-color: transparent;
+  height: 593px;
+  left: 8px;
+  position: absolute;
+  top: 0px;
+  width: 384px;
+}
+.iphone-11-pro-x-login .mango-leaf-1-4eduM0 {
+  align-items: flex-start;
+  background-color: transparent;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  height: 205px;
+  justify-content: flex-start;
+  left: 0px;
+  opacity: 0.3;
+  overflow: hidden;
+  position: absolute;
+  top: 6px;
+  transform: rotate(-107.75deg);
+  width: 244px;
+}
+.iphone-11-pro-x-login .mango-leaf-2-4eduM0 {
+  background-color: transparent;
+  height: 205px;
+  left: 0px;
+  opacity: 0.3;
+  overflow: hidden;
+  position: absolute;
+  top: 0px;
+  transform: rotate(-107.75deg);
+  width: 244px;
+}
+.iphone-11-pro-x-login .mango-logo-1-h7jCNL {
+  background-color: transparent;
+  height: 260px;
+  left: -27px;
+  overflow: hidden;
+  position: absolute;
+  top: 58px;
+  transform: rotate(107.75deg);
+  width: 325px;
+}
+.iphone-11-pro-x-login .mango-logo-4eduM0 {
+  align-items: center;
+  background-color: transparent;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  height: 37px;
+  justify-content: flex-start;
+  left: 84px;
+  overflow: hidden;
+  position: absolute;
+  top: 36px;
+  width: 215px;
+}
+.iphone-11-pro-x-login .overlap-group-C61RwL {
+  background-color: transparent;
+  flex-shrink: 1;
+  height: 211px;
+  margin-left: -5.13px;
+  margin-top: -3px;
+  position: relative;
+  width: 299px;
+}
+.iphone-11-pro-x-login .overlap-group1-C61RwL {
+  background-color: transparent;
+  flex-shrink: 1;
+  height: 599px;
+  margin-left: -5px;
+  margin-top: 4px;
+  position: relative;
+  width: 392px;
+}
+.iphone-11-pro-x-login .overlap-group2-j5tZqK {
+  align-self: center;
+  background-color: transparent;
+  flex-shrink: 1;
+  height: 14px;
+  margin-left: 0px;
+  margin-top: 0.69px;
+  position: relative;
+  width: 29px;
+}
+.iphone-11-pro-x-login .password-RH0WJ5 {
+  background-color: transparent;
+  height: auto;
+  left: 104px;
+  letter-spacing: 0.00px;
+  line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: 189px;
+  width: 179px;
+}
+.iphone-11-pro-x-login .sign-up-RH0WJ5 {
+  background-color: transparent;
+  height: auto;
+  left: 158px;
+  letter-spacing: 0.00px;
+  line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: 321px;
+  width: 71px;
+}
+.iphone-11-pro-x-login .sign-up-with-OxrrSj {
+  background-color: transparent;
+  flex-shrink: 1;
+  height: auto;
+  letter-spacing: 0.00px;
+  line-height: normal;
+  min-height: 22px;
+  position: relative;
+  text-align: center;
+  width: 123px;
+}
+.iphone-11-pro-x-login .vector-2exuDX {
+  align-self: flex-end;
+  background-color: transparent;
+  flex-shrink: 1;
+  height: 20px;
+  margin-bottom: 0.26px;
+  margin-left: 0px;
+  position: relative;
+  width: 13px;
+}
+.iphone-11-pro-x-login .vector-ITwlaw {
+  background-color: transparent;
+  flex-shrink: 1;
+  height: 30px;
+  margin-bottom: 1.57px;
+  position: relative;
+  width: 41px;
+}
+.iphone-11-pro-x-login .vector-L9OufT {
+  background-color: transparent;
+  height: 14px;
+  left: 15px;
+  position: absolute;
+  top: 0px;
+  width: 14px;
+}
+.iphone-11-pro-x-login .vector-M9ep39 {
+  background-color: transparent;
+  flex-shrink: 1;
+  height: 30px;
+  margin-bottom: 1.09px;
+  margin-left: 5px;
+  position: relative;
+  width: 34px;
+}
+.iphone-11-pro-x-login .vector-RSbzDa {
+  align-self: flex-start;
+  background-color: transparent;
+  flex-shrink: 1;
+  height: 34px;
+  margin-left: 5px;
+  margin-top: -0.13px;
+  position: relative;
+  width: 45px;
+}
+.iphone-11-pro-x-login .vector-UmjNA0 {
+  background-color: transparent;
+  flex-shrink: 1;
+  height: 192px;
+  margin-left: -23px;
+  margin-top: -20.9px;
+  position: relative;
+  transform: rotate(107.75deg);
+  width: 184px;
+}
+.iphone-11-pro-x-login .vector-cOJLMb {
+  background-color: transparent;
+  flex-shrink: 1;
+  height: 30px;
+  margin-bottom: 1.5px;
+  margin-left: 6px;
+  position: relative;
+  width: 33px;
+}
+.iphone-11-pro-x-login .vector-fxDdQu {
+  background-color: transparent;
+  height: 14px;
+  left: 0px;
+  position: absolute;
+  top: 0px;
+  width: 15px;
+}
+.iphone-11-pro-x-login .vector-h7jCNL {
+  background-color: transparent;
+  height: 192px;
+  left: -23px;
+  position: absolute;
+  top: -21px;
+  transform: rotate(107.75deg);
+  width: 184px;
+}
+.iphone-11-pro-x-login .vector-j5tZqK {
+  background-color: transparent;
+  flex-shrink: 1;
+  height: 21px;
+  margin-left: 0px;
+  margin-top: -0.23px;
+  position: relative;
+  width: 20px;
+}
+.iphone-11-pro-x-login .vector-kB2ba9 {
+  align-self: center;
+  background-color: transparent;
+  flex-shrink: 1;
+  height: 14px;
+  margin-left: 0px;
+  margin-top: 0.69px;
+  position: relative;
+  width: 13px;
+}
+.iphone-11-pro-x-login .vector-kF3OYB {
+  background-color: transparent;
+  flex-shrink: 1;
+  height: 30px;
+  margin-bottom: 1.27px;
+  margin-left: 6px;
+  position: relative;
+  width: 32px;
+}
+.iphone-11-pro-x-login .vector-x5hCTx {
+  background-color: transparent;
+  flex-shrink: 1;
+  height: 20px;
+  margin-left: 0px;
+  margin-top: 0.44px;
+  position: relative;
+  width: 4px;
+}
+.iphone-11-pro-x-login .x-or-RH0WJ5 {
+  background-color: transparent;
+  height: auto;
+  left: 95px;
+  letter-spacing: 0.00px;
+  line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: 299px;
+  width: 196px;
+}
+.roboto-normal-screamin-green-13px {
+  color: var(--screamin-green);
+  font-family: 'Roboto', Helvetica, Arial, serif;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+}
+.roboto-normal-screamin-green-18px {
+  color: var(--screamin-green);
+  font-family: 'Roboto', Helvetica, Arial, serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+}
+.roboto-normal-white-11px {
+  color: var(--white);
+  font-family: 'Roboto', Helvetica, Arial, serif;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 400;
+}
+.roboto-normal-white-13px {
+  color: var(--white);
+  font-family: 'Roboto', Helvetica, Arial, serif;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+}
+.roboto-normal-white-15px {
+  color: var(--white);
+  font-family: 'Roboto', Helvetica, Arial, serif;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+}
+.roboto-normal-white-18px {
+  color: var(--white);
+  font-family: 'Roboto', Helvetica, Arial, serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+}
+.roboto-normal-white-21px {
+  color: var(--white);
+  font-family: 'Roboto', Helvetica, Arial, serif;
+  font-size: 21px;
+  font-style: normal;
+  font-weight: 400;
+}
+.roboto-normal-white-27px {
+  color: var(--white);
+  font-family: 'Roboto', Helvetica, Arial, serif;
+  font-size: 27px;
+  font-style: normal;
+  font-weight: 400;
+}
+:root {
+  --black: rgba(0,0,0,0.27);
+  --black-2: rgba(0,0,0,0.31);
+  --celtic: rgba(24,38,31,0.89);
+  --celtic-2: rgba(24,38,31,1.0);
+  --celtic-3: rgba(24,38,31,0.31);
+  --eerie-black: rgba(21,27,26,0.83);
+  --mist-gray: rgba(196,196,196,1.0);
+  --roti: rgba(204,169,79,0.28);
+  --screamin-green: rgba(62,255,116,1.0);
+  --white: rgba(255,255,255,1.0);
+}
+
+/* ------------------- */
+@import url("https://fonts.googleapis.com/css?family=Roboto:400");
+
+.component-wrapper a,
+.screen a {
+  text-decoration: none;
+  display: contents;
+}
+
+.full-width-a {
+  width: 100%;
+}
+
+.full-height-a {
+  height: 100%;
+}
+
+.screen textarea:focus,
+.screen input:focus {
+  outline: none;
+}
+
+.screen *,
+.component-wrapper * {
+  box-sizing: border-box;
+}
+
+.screen div {
+  -webkit-text-size-adjust: none;
+}
+
+.container-center-vertical,
+.container-center-horizontal {
+  pointer-events: none;
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+  margin: 0;
+}
+
+.container-center-vertical {
+  align-items: center;
+  height: 100%;
+}
+
+.container-center-horizontal {
+  justify-content: center;
+  width: 100%;
+}
+
+.container-center-vertical > *,
+.container-center-horizontal > * {
+  pointer-events: auto;
+  flex-shrink: 0;
+}
+
+.component-wrapper,
+.screen {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-all;
+  word-break: break-word;
+}
+
+.auto-animated div {
+  opacity: 0;
+  position: absolute;
+  --z-index: -1;
+}
+
+.auto-animated .container-center-vertical,
+.auto-animated .container-center-horizontal {
+  opacity: 1;
+}
+
+.overlay {
+  position: absolute;
+  opacity: 0;
+  display: none;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+}
+
+.animate-appear {
+  opacity: 0;
+  display: block;
+  animation: reveal 0.3s ease-in-out 1 normal forwards;
+}
+
+.animate-disappear {
+  opacity: 1;
+  display: block;
+  animation: reveal 0.3s ease-in-out 1 reverse forwards;
+}
+
+.animate-nodelay {
+  animation-delay: 0s;
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.align-self-flex-start {
+  align-self: flex-start;
+}
+.align-self-flex-end {
+  align-self: flex-end;
+}
+.align-self-flex-center {
+  align-self: center;
+}
+.valign-text-middle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.valign-text-bottom {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+input:focus {
+  outline: none;
+}
+.component-wrapper,
+.component-wrapper * {
+  pointer-events: none;
+}
+
+.component-wrapper a *,
+.component-wrapper a,
+.component-wrapper input,
+.component-wrapper video,
+.component-wrapper iframe,
+.listeners-active,
+.listeners-active * {
+  pointer-events: auto;
+}
+
+.hidden,
+.hidden * {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.smart-layers-pointers,
+.smart-layers-pointers * {
+  pointer-events: auto;
+  visibility: visible;
+}
+
+.component-wrapper.not-ready,
+.component-wrapper.not-ready * {
+  visibility: hidden !important;
+}
+
+.listeners-active-click,
+.listeners-active-click * {
+  cursor: pointer;
+}
+
+

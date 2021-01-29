@@ -1,0 +1,97 @@
+/* screen - iphone-11-pro-x-profile */
+.iphone-11-pro-x-profile .mango-profile-cover-info {
+  align-items: flex-start;
+  background-color: transparent;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 1;
+  height: auto;
+  justify-content: flex-start;
+  margin-left: 41px;
+  min-height: 42px;
+  position: relative;
+  width: 106px;
+}
+.iphone-11-pro-x-profile .mango-profile-cover-info-box {
+  align-items: center;
+  background-color: transparent;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  flex-shrink: 1;
+  height: 42px;
+  justify-content: flex-start;
+  margin-top: 7px;
+  min-width: 346px;
+  position: relative;
+  width: auto;
+}
+.iphone-11-pro-x-profile .mango-profile-cover-followers {
+  background-color: transparent;
+  flex-shrink: 1;
+  height: auto;
+  letter-spacing: 0.00px;
+  line-height: normal;
+  min-height: 21px;
+  position: relative;
+  text-align: left;
+  width: 106px;
+}
+.iphone-11-pro-x-profile .mango-profile-cover-following {
+  background-color: transparent;
+  flex-shrink: 1;
+  height: auto;
+  letter-spacing: 0.00px;
+  line-height: normal;
+  margin-top: 0px;
+  min-height: 21px;
+  position: relative;
+  text-align: left;
+  width: 106px;
+}
+.iphone-11-pro-x-profile .mango-profile-cover {
+  align-items: flex-end;
+  background-color: var(--black-2);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: 199px;
+  justify-content: flex-start;
+  overflow: hidden;
+  padding: 4.0px 9.0px;
+  position: relative;
+  margin: auto;
+  width: 375px;
+}
+.iphone-11-pro-x-profile .mango-profile-cover-photo {
+  align-self: center;
+  background-color: transparent;
+  flex-shrink: 1;
+  height: 134px;
+  margin-right: 0.0px;
+  position: relative;
+  width: 353px;
+}
+.mango-profile-icons-bar{
+  margin: 0.3rem auto;
+  width: 375px;
+  position: relative;
+}
+.mango-profile-icons{
+  display: flex;
+  position: relative;
+  margin-left: 15rem;
+  margin-top: 0.3rem;
+  width: 7rem;
+}
+.mango-profile-icon-add{
+  position: relative;
+}
+.mango-profile-icon-add-people{
+  position: relative;
+}
+.mango-profile-icon-gallery{
+  position: relative;
+}
+

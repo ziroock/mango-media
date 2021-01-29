@@ -1,16 +1,6 @@
 import React, { Component } from 'react';
 import loginRedirectAndMessages from '../../utils/loginRedirectAndMessages';
-import logoM from '../../images/img/vector-3@2x.svg';
-import logoA from '../../images/img/vector-4@2x.svg';
-import logoN from '../../images/img/vector-5@2x.svg';
-import logoG from '../../images/img/vector-6@2x.svg';
-import logoO from '../../images/img/vector-2@2x.svg';
-import googleG from '../../images/img/vector-12@2x.svg';
-import googleO1 from '../../images/img/vector-7@2x.svg';
-import googleO2 from '../../images/img/vector-8@2x.svg';
-import googleG2 from '../../images/img/vector-9@2x.svg';
-import googleL from '../../images/img/vector-10@2x.svg';
-import googleE from '../../images/img/vector-11@2x.svg';
+import mangoSVGS from '../../utils/imporImages';
 
 /*
 * The Login component handles user changes to the Login form  and fields.
@@ -66,11 +56,11 @@ class Login extends Component {
       <div className="iphone-11-pro-x screen">
         <div className="login-header">
           <div className="login-mango-logo">
-            <img className="vector-ITwlaw" src={logoM} />
-            <img className="vector-kF3OYB" src={logoA} />
-            <img className="vector-cOJLMb" src={logoN} />
-            <img className="vector-M9ep39" src={logoG} />
-            <img className="vector-RSbzDa" src={logoO} />
+            <img className="vector-ITwlaw" src={mangoSVGS.logo.logoM} />
+            <img className="vector-kF3OYB" src={mangoSVGS.logo.logoA} />
+            <img className="vector-cOJLMb" src={mangoSVGS.logo.logoN} />
+            <img className="vector-M9ep39" src={mangoSVGS.logo.logoG} />
+            <img className="vector-RSbzDa" src={mangoSVGS.logo.logoO} />
           </div>
         </div>
         <form className="login-mango-form" onSubmit={this.handleSubmit} method="post" action="/api/login">
@@ -98,14 +88,14 @@ class Login extends Component {
           <div className="g-oath-RH0WJ5">
             <div className="sign-up-with-OxrrSj roboto-normal-white-18px">Sign up with</div>
             <div className="google201-gperiod-1-OxrrSj">
-              <img className="vector-j5tZqK" src={googleG} />
+              <img className="vector-j5tZqK" src={mangoSVGS.google.googleG} />
               <div className="overlap-group2-j5tZqK">
-                <img className="vector-fxDdQu" src={googleO1} />
-                <img className="vector-L9OufT" src={googleO2} />
+                <img className="vector-fxDdQu" src={mangoSVGS.google.googleO1} />
+                <img className="vector-L9OufT" src={mangoSVGS.google.googleO2} />
               </div>
-              <img className="vector-2exuDX" src={googleG2} />
-              <img className="vector-x5hCTx" src={googleL} />
-              <img className="vector-kB2ba9" src={googleE} />
+              <img className="vector-2exuDX" src={mangoSVGS.google.googleG2} />
+              <img className="vector-x5hCTx" src={mangoSVGS.google.googleL} />
+              <img className="vector-kB2ba9" src={mangoSVGS.google.googleE} />
             </div>
           </div>
         </form>

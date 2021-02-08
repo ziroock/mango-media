@@ -50,15 +50,23 @@ class MangoPost extends Component {
     }
     if (comments.length > 0) {
       return comments.map(({ body, key }) => {
+        //post-comment-box
         return (
-          <div key={key} className="post-comment-box">
-            <img
-              alt="comment-avatar"
-              className="post-comment-avatar avatar"
-              src="https://mango-media-album.s3.us-west-2.amazonaws.com/1607485963493"
-            />
-            <div className="post-comment-text-box">
-              <textarea disabled className="text-area" value={body} />
+          <div key={key} className="mango-post-reply">
+            <div className="mango-post-reply-name-and-date">
+              <div className="mango-post-reply-name roboto-normal-white-15px">Jonny Doe</div>
+              <div className="mango-post-reply-date roboto-normal-white-11px">1:50 01/07/20201</div>
+            </div>
+            <div className="mango-post-reply-avatar-and-text">
+              <img
+                alt="mango-post-reply-avatar"
+                className="mango-post-reply-avatar avatar"
+                src="https://mango-media-album.s3.us-west-2.amazonaws.com/1607485963493"
+              />
+              <div className="mango-post-reply-inner-text-container">
+                <div className="mango-post-reply-inner-text-box" />
+                <div className="mango-post-reply-inner-text roboto-normal-white-13px">{body}</div>
+              </div>
             </div>
           </div>
         );
@@ -111,8 +119,8 @@ class MangoPost extends Component {
       commentElem.style.overflowX = 'hidden';
       buttonElem.innerText = 'show less';
     } else if (buttonElem.innerText === 'show less') {
-      postElem.style.height = '340px';
-      commentElem.style.height = '170px';
+      postElem.style.height = '207px';
+      commentElem.style.height = '74px';
       commentElem.style.overflowY = 'hidden';
       buttonElem.innerText = 'show more';
       buttonElem.style.background = 'none';
@@ -140,25 +148,30 @@ class MangoPost extends Component {
     let postReplyID = 'post-comment-container-' + post._id;
     let buttonId = 'post-button-' + post._id;
     return (
-      <div key={post._id} id={postId} className="mangoPost">
+      <div key={post._id} id={postId} className="mango-post">
         {this.renderPostMenu()}
-        <div className="post-usr-box">
-          <label className="post-owner-title">{post.userName}</label>
-          <img alt="post-avatar" src={post.avatarSrc} className="post-avatar-img" />
+        <div className="post-name-and-date">
+          <div className="mango-post-name roboto-normal-white-18px">{post.userName}</div>
+          <div className="mango-post-date roboto-normal-white-13px">
+            {this.toDateString(new Date(post.dateCreated))}
+          </div>
         </div>
-        <label className="post-date">{this.toDateString(new Date(post.dateCreated))}</label>
-        <div className="text-box">
-          <textarea disabled className="text-area" value={post.body} />
+        <div className="mango-post-avatar-and-text">
+          <img alt="mango-post-avatar" src={post.avatarSrc} className="mango-post-avatar" />
+          <div className="mango-post-inner-text-container">
+            <div className="mango-post-inner-text-box" />
+            <div className="mango-post-inner-text roboto-normal-white-13px">This is a post that says bla bla</div>
+          </div>
         </div>
         <div id={postReplyID} className="post-comment-container">
-          {this.genComments(5, post._id)}
+          {this.genComments(5, postReplyID)}
         </div>
         <button
           onClick={() => {
             this.toggleComments(buttonId, postReplyID, postId);
           }}
           id={buttonId}
-          className="show-more"
+          className="show-more roboto-normal-screamin-green-13px"
           type="button"
         >
           show more

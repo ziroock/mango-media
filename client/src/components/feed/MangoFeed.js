@@ -34,11 +34,11 @@ class MangoFeed extends Component {
           <div className="feed-page-container">
             <div className="profile-header">
               <div className="login-mango-logo">
-                <img className="vector-ITwlaw" src={mangoSVGS.logo.logoM} />
-                <img className="vector-kF3OYB" src={mangoSVGS.logo.logoA} />
-                <img className="vector-cOJLMb" src={mangoSVGS.logo.logoN} />
-                <img className="vector-M9ep39" src={mangoSVGS.logo.logoG} />
-                <img className="vector-RSbzDa" src={mangoSVGS.logo.logoO} />
+                <img className="mango-logo-m" src={mangoSVGS.logo.logoM} />
+                <img className="mango-logo-a" src={mangoSVGS.logo.logoA} />
+                <img className="mango-logo-n" src={mangoSVGS.logo.logoN} />
+                <img className="mango-logo-g" src={mangoSVGS.logo.logoG} />
+                <img className="mango-logo-mango" src={mangoSVGS.logo.logoO} />
               </div>
             </div>
             <div className="mango-post-list">{this.renderPostList()}</div>

@@ -56,11 +56,11 @@ class Login extends Component {
       <div className="iphone-11-pro-x screen">
         <div className="login-header">
           <div className="login-mango-logo">
-            <img className="vector-ITwlaw" src={mangoSVGS.logo.logoM} />
-            <img className="vector-kF3OYB" src={mangoSVGS.logo.logoA} />
-            <img className="vector-cOJLMb" src={mangoSVGS.logo.logoN} />
-            <img className="vector-M9ep39" src={mangoSVGS.logo.logoG} />
-            <img className="vector-RSbzDa" src={mangoSVGS.logo.logoO} />
+            <img className="mango-logo-m" src={mangoSVGS.logo.logoM} />
+            <img className="mango-logo-a" src={mangoSVGS.logo.logoA} />
+            <img className="mango-logo-n" src={mangoSVGS.logo.logoN} />
+            <img className="mango-logo-g" src={mangoSVGS.logo.logoG} />
+            <img className="mango-logo-mango" src={mangoSVGS.logo.logoO} />
           </div>
         </div>
         <form className="login-mango-form" onSubmit={this.handleSubmit} method="post" action="/api/login">
@@ -109,11 +109,11 @@ export default Login;
 // {/*<div className="iphone-11-pro-x-login screen">*/}
 // {/*  <div className="overlap-group-C61RwL">*/}
 // {/*    <div className="mango-logo-4eduM0">*/}
-// {/*      <img className="vector-ITwlaw" src={logoM} />*/}
-// {/*      <img className="vector-kF3OYB" src={logoA} />*/}
-// {/*      <img className="vector-cOJLMb" src={logoN} />*/}
-// {/*      <img className="vector-M9ep39" src={logoG} />*/}
-// {/*      <img className="vector-RSbzDa" src={logoO} />*/}
+// {/*      <img className="mango-logo-m" src={logoM} />*/}
+// {/*      <img className="mango-logo-a" src={logoA} />*/}
+// {/*      <img className="mango-logo-n" src={logoN} />*/}
+// {/*      <img className="mango-logo-g" src={logoG} />*/}
+// {/*      <img className="mango-logo-mango" src={logoO} />*/}
 // {/*    </div>*/}
 // {/*  </div>*/}
 // {/*  <div className="overlap-group1-C61RwL">*/}

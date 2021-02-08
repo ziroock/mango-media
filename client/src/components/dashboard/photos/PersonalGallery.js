@@ -5,6 +5,7 @@ import { fetchPicture } from '../../../actions';
 import UploadPicModal from './UploadPicModal';
 import { isPersonal } from '../../../utils/mango.utils';
 import Gallery from '../../../utils/GalleryAPI/Gallery';
+import mangoSVGS from '../../../utils/imporImages';
 
 class PersonalGallery extends Component {
   componentDidMount() {
@@ -40,10 +41,30 @@ class PersonalGallery extends Component {
 
   renderPage() {
     return (
-      <div className="photoGallery">
-        {this.Title()}
-        {this.renderUpload()}
-        {this.renderGallery()}
+      <div id="feed-page-container">
+        <div className="profile-header">
+          <div className="login-mango-logo">
+            <img className="mango-logo-m" src={mangoSVGS.logo.logoM} />
+            <img className="mango-logo-a" src={mangoSVGS.logo.logoA} />
+            <img className="mango-logo-n" src={mangoSVGS.logo.logoN} />
+            <img className="mango-logo-g" src={mangoSVGS.logo.logoG} />
+            <img className="mango-logo-mango" src={mangoSVGS.logo.logoO} />
+          </div>
+        </div>
+        <div id="photo-gallery-inner-container">
+          <div className="mango-tabular-title roboto-normal-white-27px">
+            <div className="auto-flex-ZlKwdM">
+              <div className="zaprins-gallery-soxRx6 roboto-normal-white-27px">Zaprin’s Gallery</div>
+              <div className="addtophotos-24px-1-soxRx6">
+                <img className="mango-gallery-icon-pic-add-1" src={mangoSVGS.mangoIconAddPic.mangoIconAddPic1} />
+                <img className="mango-gallery-icon-pic-add-2" src={mangoSVGS.mangoIconAddPic.mangoIconAddPic2} />
+              </div>
+            </div>
+          </div>
+          {this.Title()}
+          {this.renderUpload()}
+          {this.renderGallery()}
+        </div>
       </div>
     );
   }

@@ -15,6 +15,8 @@ import mangoIconAddPeople1 from '../images/img/vector-8@2x.png';
 import mangoIconAddPeople2 from '../images/img/vector-27@2x.svg';
 import mangoIconGallery1 from '../images/img/vector-8@2x.png';
 import mangoIconGallery2 from '../images/img/vector-36@2x.svg';
+import mangoIconAddPic1 from '../images/img/vector-8@2x.png';
+import mangoIconAddPic2 from '../images/img/vector-49@2x.svg';
 
 const logo = {
   logoM,
@@ -48,4 +50,9 @@ const mangoIconGallery = {
   mangoIconGallery2,
 };
 
-export default { logo, google, mangoIconAdd, mangoIconAddPeople, mangoIconGallery };
+const mangoIconAddPic = {
+  mangoIconAddPic1,
+  mangoIconAddPic2,
+};
+
+export default { logo, google, mangoIconAdd, mangoIconAddPeople, mangoIconGallery, mangoIconAddPic };

@@ -16,6 +16,7 @@ import '../style/style.personalGallery.css';
 import '../style/style.profileDashboard.css';
 import '../style/style.mangoPost.css';
 // import '../style/iphone-11-pro-x-login.css';
+import '../style/mango-profile.css';
 import '../style/mango-login.css';
 import '../style/mango.css';
 

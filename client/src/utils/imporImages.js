@@ -9,6 +9,12 @@ import googleO2 from '../images/img/vector-8@2x.svg';
 import googleG2 from '../images/img/vector-9@2x.svg';
 import googleL from '../images/img/vector-10@2x.svg';
 import googleE from '../images/img/vector-11@2x.svg';
+import mangoIconAdd1 from '../images/img/vector-8@2x.png';
+import mangoIconAdd2 from '../images/img/vector-25@2x.svg';
+import mangoIconAddPeople1 from '../images/img/vector-8@2x.png';
+import mangoIconAddPeople2 from '../images/img/vector-27@2x.svg';
+import mangoIconGallery1 from '../images/img/vector-8@2x.png';
+import mangoIconGallery2 from '../images/img/vector-36@2x.svg';
 
 const logo = {
   logoM,
@@ -26,4 +32,20 @@ const google = {
   googleL,
   googleE,
 };
-export default { logo, google };
+
+const mangoIconAdd = {
+  mangoIconAdd1,
+  mangoIconAdd2,
+};
+
+const mangoIconAddPeople = {
+  mangoIconAddPeople1,
+  mangoIconAddPeople2,
+};
+
+const mangoIconGallery = {
+  mangoIconGallery1,
+  mangoIconGallery2,
+};
+
+export default { logo, google, mangoIconAdd, mangoIconAddPeople, mangoIconGallery };

@@ -317,11 +317,11 @@
 .mango-post-inner-text {
     background-color: transparent;
     height: auto;
-    left: 0px;
+    left: 2em;
     letter-spacing: 0.00px;
     line-height: normal;
     position: absolute;
-    text-align: center;
+    text-align: left;
     top: 10px;
     width: 229px;
 }

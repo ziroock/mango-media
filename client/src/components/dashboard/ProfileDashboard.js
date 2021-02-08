@@ -5,6 +5,7 @@ import ProfileCover from './Cover/ProfileCover';
 import MangoPostCreate from './posts/MangoPostCreate';
 import { isPersonal } from '../../utils/mango.utils';
 import MangoPost from './posts/MangoPost';
+import mangoSVGS from '../../utils/imporImages';
 /*
  * ProfileDashboard is the component that holds all the User Profile Components!
  * It holds: <ProfileCover/>, <MangoPostCreate/> and <MangoPostCreateList/>
@@ -35,6 +36,8 @@ class ProfileDashboard extends Component {
     }
   }
 
+  //TODO: Fix the Post Creat css to match the theme!
+  // Unfortunately, I forgot to create a mock up for this part of the code :(
   renderProfileDashboard(userId, dashboardId, personalPage) {
     switch (userId) {
       case null:
@@ -43,7 +46,16 @@ class ProfileDashboard extends Component {
         return <h2>Please Sign In to access dashboard!</h2>;
       default:
         return (
-          <div className="container green lighten-4">
+          <div id="feed-page-container">
+            <div className="profile-header">
+              <div className="login-mango-logo">
+                <img className="mango-logo-m" src={mangoSVGS.logo.logoM} />
+                <img className="mango-logo-a" src={mangoSVGS.logo.logoA} />
+                <img className="mango-logo-n" src={mangoSVGS.logo.logoN} />
+                <img className="mango-logo-g" src={mangoSVGS.logo.logoG} />
+                <img className="mango-logo-mango" src={mangoSVGS.logo.logoO} />
+              </div>
+            </div>
             <ProfileCover
               userId={userId}
               dashboardId={dashboardId}

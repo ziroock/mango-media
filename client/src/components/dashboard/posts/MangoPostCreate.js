@@ -51,26 +51,15 @@ class MangoPostCreate extends Component {
   render() {
     if (this.props.auth._id === this.props.userId) {
       return (
-        <div style={{ textAlign: 'center' }}>
-          <label style={{ fontSize: '20px' }}>Post</label>
+        <div id="mango-profile-post-create-container" style={{ textAlign: 'center' }}>
           <form onSubmit={this.handleSubmit} method="post">
             <textarea
-              className="white"
+              id="mango-profile-post-create-textarea"
               onChange={this.handleChange}
               name="body"
-              style={{
-                width: '700px',
-                height: '100px',
-                border: 'none',
-                resize: 'none',
-              }}
               value={this.state.body}
             />
-            <button
-              style={{ fontSize: '20px', top: '-20px', left: '10px', zIndex: '1' }}
-              className="btn waves-effect waves-light teal accent-3"
-              type="submit"
-            >
+            <button className="btn waves-effect waves-light" id="mango-profile-post-create-submit" type="submit">
               Post
             </button>
           </form>

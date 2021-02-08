@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import CoverPictureSettings from './CoverPictureSettings';
 import { fetchFriend } from '../../../actions/index';
 import { newFollow } from '../../../actions/index';
+import mangoSVGS from '../../../utils/imporImages';
 
 /*
  *   This component contains the ProfileCover items: Cover Photo, Profile Photo
@@ -39,10 +40,9 @@ class ProfileCover extends Component {
   renderConnectButton() {
     if (!this.props.personalPage) {
       return (
-        <div id="connect-button">
-          <i className="material-icons medium" style={{ color: 'white', cursor: 'pointer' }} onClick={this.follow}>
-            loop
-          </i>
+        <div className="mango-profile-icon-add">
+          <img className="mango-profile-icon-add-1" src={mangoSVGS.mangoIconAdd.mangoIconAdd1} />
+          <img className="mango-profile-icon-add-2" src={mangoSVGS.mangoIconAdd.mangoIconAdd2} />
         </div>
       );
     }
@@ -54,24 +54,47 @@ class ProfileCover extends Component {
     let avatarImgSrc = this.props.friend.avatarSrc;
     this.updateProfileCover();
     return (
-      <div id="profile-cover">
-        <div style={{ display: 'inline-block' }}>
-          <img src={coverImgSrc} alt="profile-cover" id="profile-cover-pic" />
-          <img src={avatarImgSrc} alt="profile-avatar" id="profile-avatar" />
-          <h2 id="cover-name"> {this.props.userName} </h2>
-          <div id="connect-box">
-            <label id="following-box">Following: {this.props.friend.numFollowing}</label>
-            <label id="followers-box">Followers: {this.props.friend.numFollowers}</label>
+      <div>
+        <div id="mango-profile-cover">
+          <div style={{ display: 'inline-block' }}>
+            {/*<img src={coverImgSrc} alt="profile-cover" id="profile-cover-pic" />*/}
+            <img alt="profile-cover" className="mango-profile-cover-photo" src={coverImgSrc} />
+            <div className="mango-profile-cover-info-box">
+              <div className="mango-profile-cover-name roboto-normal-white-27px">{this.props.userName}</div>
+              <div className="mango-profile-cover-info">
+                <div className="mango-profile-cover-followers roboto-normal-white-13px">
+                  Followers {this.props.friend.numFollowers}
+                </div>
+                <div className="mango-profile-cover-following roboto-normal-white-13px">
+                  Following {this.props.friend.numFollowing}
+                </div>
+              </div>
+            </div>
+            <CoverPictureSettings personalPage={this.props.personalPage} userId={this.props.dashboardId} />
           </div>
-          {this.renderConnectButton()}
-          <div id="photo-gallery">
-            <a href={`/photoGallery/${this.props.dashboardId}`}>
-              <i className="material-icons right medium" style={{ color: 'white' }}>
-                collections
-              </i>
-            </a>
+        </div>
+        <div className="mango-profile-icons-bar">
+          <div className="mango-profile-icons">
+            {this.renderConnectButton()}
+            <div className="mango-profile-icon-add-people">
+              <a href={`/invitation/new`}>
+                <img
+                  className="mango-profile-icon-add-people-1"
+                  src={mangoSVGS.mangoIconAddPeople.mangoIconAddPeople1}
+                />
+                <img
+                  className="mango-profile-icon-add-people-2"
+                  src={mangoSVGS.mangoIconAddPeople.mangoIconAddPeople2}
+                />
+              </a>
+            </div>
+            <div className="mango-profile-icon-gallery">
+              <a href={`/photoGallery/${this.props.dashboardId}`}>
+                <img className="mango-profile-icon-gallery-1" src={mangoSVGS.mangoIconGallery.mangoIconGallery1} />
+                <img className="mango-profile-icon-gallery-2" src={mangoSVGS.mangoIconGallery.mangoIconGallery2} />
+              </a>
+            </div>
           </div>
-          <CoverPictureSettings personalPage={this.props.personalPage} userId={this.props.dashboardId} />
         </div>
       </div>
     );

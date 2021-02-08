@@ -160,7 +160,7 @@ class MangoPost extends Component {
           <img alt="mango-post-avatar" src={post.avatarSrc} className="mango-post-avatar" />
           <div className="mango-post-inner-text-container">
             <div className="mango-post-inner-text-box" />
-            <div className="mango-post-inner-text roboto-normal-white-13px">This is a post that says bla bla</div>
+            <div className="mango-post-inner-text roboto-normal-white-13px">{post.body}</div>
           </div>
         </div>
         <div id={postReplyID} className="post-comment-container">

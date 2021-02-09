@@ -7,8 +7,7 @@
     flex-direction: column;
     justify-content: flex-start;
     overflow: hidden;
-    overflow-x: hidden;
-    position: relative;
+    position: absolute;
     width: 100%;
 }
 .profile-header {
@@ -17,17 +16,7 @@
     position: relative;
     margin-top: 2rem;
 }
-/*.iphone-11-pro-x*/
-.mango-nav {
-    background-color: transparent;
-    height: 46px;
-    overflow: hidden;
-    position: fixed;
-    width: 53px;
-    top: 2.4rem;
-    right: 1.5rem;
-    z-index: 5;
-}
+
 .login-mango-logo {
     align-items: center;
     background-color: transparent;
@@ -39,7 +28,9 @@
     overflow: hidden;
     position: relative;
     width: 215px;
-    margin: auto;
+    margin-left: auto;
+    margin-right: auto;
+
 }
 /**************************  COMMON TEXT,BUTTONS,ENTRIES, ETC  ************************/
 .iphone-11-pro-x .login-text-button {
@@ -309,7 +300,7 @@
     background-color: var(--celtic);
     border-radius: 10px;
     height: 64px;
-    left: 15px;
+    left: 15px;  position: relative;
     position: absolute;
     top: 0px;
     width: 241px;
@@ -515,7 +506,7 @@
 }
 
 .mango-tabular-inner-container {
-    background-color: rgba(196,196,196,0.35);
+    background-colfeed-paor: rgba(196,196,196,0.35);
     border-radius: 5px;
     min-height: 72vh;'http://stackoverflow.com'
     height: auto;
@@ -610,5 +601,12 @@
 }
 
 .mango-nav {
-
+    background-color: transparent;
+    height: 46px;
+    overflow: hidden;
+    position: fixed;
+    width: 53px;
+    top: 2.4rem;
+    right: 1.5rem;
+    z-index: 5;
 }

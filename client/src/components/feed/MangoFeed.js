@@ -32,7 +32,7 @@ class MangoFeed extends Component {
         return null;
       default:
         return (
-          <div className="feed-page-container">
+          <div className="iphone-11-pro-x screen">
             <div className="profile-header">
               <div className="login-mango-logo">
                 <img className="mango-logo-m" src={mangoSVGS.logo.logoM} />

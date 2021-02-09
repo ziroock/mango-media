@@ -47,14 +47,8 @@ class PicMenu extends Component {
   render() {
     if (this.props.personal) {
       return (
-        <div
-          className="pic-menu-button"
-          style={{ position: 'absolute', top: '0px', right: '0px', zIndex: '20' }}
-          key="dropDownMenu"
-        >
-          <p style={{ cursor: 'pointer', marginBottom: '10px' }} onClick={this.showMenu}>
-            <i className="material-icons right black circle"> arrow_drop_down </i>
-          </p>
+        <div className="pic-menu-button" key="dropDownMenu" onClick={this.showMenu}>
+          <i className="material-icons right black circle pic-menu-icon"> arrow_drop_down </i>
           {this.renderMenu()}
         </div>
       );

@@ -66,7 +66,7 @@ const Gallery = React.memo(function Gallery({
     // set how many neighboring nodes the graph will visit
     if (limitNodeSearch === undefined) {
       limitNodeSearch = 2;
-      if (containerWidth >= 450) {
+      if (containerWidth >= 375) {
         limitNodeSearch = findIdealNodeSearch({ containerWidth, targetRowHeight });
       }
     }
@@ -82,7 +82,7 @@ const Gallery = React.memo(function Gallery({
     // set default breakpoints if user doesn't specify columns prop
     if (columns === undefined) {
       columns = 1;
-      if (containerWidth >= 500) columns = 2;
+      if (containerWidth >= 375) columns = 2;
       if (containerWidth >= 900) columns = 3;
       if (containerWidth >= 1500) columns = 4;
     }
@@ -93,7 +93,7 @@ const Gallery = React.memo(function Gallery({
 
   const renderComponent = renderImage || Photo;
   return (
-    <div className="react-photo-gallery--gallery gallery-frame">
+    <div className="react-photo-gallery--gallery mango-tabular-inner-container">
       <div ref={galleryEl} style={galleryStyle}>
         {thumbs.map((thumb, index) => {
           const { left, top, containerHeight, ...photo } = thumb;
@@ -129,7 +129,7 @@ Gallery.propTypes = {
 Gallery.defaultProps = {
   margin: 2,
   direction: 'row',
-  targetRowHeight: 300,
+  targetRowHeight: 80,
 };
 export { Photo };
 export default Gallery;

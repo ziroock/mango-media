@@ -1,0 +1,22 @@
+/* screen - iphone-11-pro-x-profile-gallery */
+
+.mango-gallery-icon-pic-add {
+  background-color: transparent;
+  margin: auto;
+  position: relative;
+}
+.mango-tabular-title-inner-box {
+  background-color: transparent;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  height: 37px;
+  justify-content: center;
+  min-width: 281px;
+  position: relative;
+  width: auto;
+  margin: auto;
+}
+.mango-profile-gallery-title {
+  position: relative;
+}

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { uploadPicture } from '../../../actions';
+import mangoSVGS from '../../../utils/imporImages';
 // - Need to connect the upload process to the back end.
 // - Connect reducer, create action, and back end rout.
 
@@ -58,7 +59,7 @@ class UploadPicModal extends Component {
       this.setState({ file: chosen, error: '', showUploadReview: !this.state.showUploadReview });
       this.previewFile(chosen);
     } else {
-      this.setState({ file: null, error: 'Please select an (.png or .jpg) image.' });
+      this.setState({ file: null, error: 'Please select a (.png or .jpg) image.' });
     }
   }
 
@@ -126,8 +127,12 @@ class UploadPicModal extends Component {
     console.log('blahBlah: ', this.props.auth._id, 'usrId: ', this.props.userId);
     if (this.props.auth._id === this.props.userId) {
       return [
+        // <div className="mango-gallery-icon-pic-add">
+        //   <img className="mango-gallery-icon-pic-add-1" src={mangoSVGS.mangoIconAddPic.mangoIconAddPic1} />
+        //   <img className="mango-gallery-icon-pic-add-2" src={mangoSVGS.mangoIconAddPic.mangoIconAddPic2} />
+        // </div>,
         <form className="button-add-photo" key="UploadModal123">
-          <label>
+          <label className="mango-gallery-icon-pic-add">
             <input
               type="file"
               className="image"
@@ -135,7 +140,8 @@ class UploadPicModal extends Component {
               onClick={this.handleClick}
               onChange={this.handleChange}
             />
-            <span>+</span>
+            <img className="mango-gallery-icon-pic-add-1" src={mangoSVGS.mangoIconAddPic.mangoIconAddPic1} />
+            <img className="mango-gallery-icon-pic-add-2" src={mangoSVGS.mangoIconAddPic.mangoIconAddPic2} />
           </label>
           <div className="output">{this.state.error && <div className="error">{this.state.error}</div>}</div>
           <img id="hiddenPic" src="" height="200" alt="Preview ..." style={{ display: 'none' }} />

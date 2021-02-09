@@ -14,12 +14,15 @@ class PersonalGallery extends Component {
 
   Title() {
     return (
-      <div className="title">
-        <h2>Picture Gallery</h2>
+      <div className="mango-tabular-title-box">
+        <div className="mango-tabular-title-inner-box">
+          <div className="mango-profile-gallery-title roboto-normal-white-27px">Zaprin’s Gallery</div>
+          {this.renderUpload()}
+        </div>
       </div>
     );
   }
-  Body;
+
   renderUpload() {
     if (isPersonal(this.props.auth._id, this.props.match.params.userId)) {
       return <UploadPicModal toggle={null} userId={this.props.match.params.userId} uploadType={'gallery'} />;
@@ -52,17 +55,7 @@ class PersonalGallery extends Component {
           </div>
         </div>
         <div id="photo-gallery-inner-container">
-          <div className="mango-tabular-title roboto-normal-white-27px">
-            <div className="auto-flex-ZlKwdM">
-              <div className="zaprins-gallery-soxRx6 roboto-normal-white-27px">Zaprin’s Gallery</div>
-              <div className="addtophotos-24px-1-soxRx6">
-                <img className="mango-gallery-icon-pic-add-1" src={mangoSVGS.mangoIconAddPic.mangoIconAddPic1} />
-                <img className="mango-gallery-icon-pic-add-2" src={mangoSVGS.mangoIconAddPic.mangoIconAddPic2} />
-              </div>
-            </div>
-          </div>
           {this.Title()}
-          {this.renderUpload()}
           {this.renderGallery()}
         </div>
       </div>

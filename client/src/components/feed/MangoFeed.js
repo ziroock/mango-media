@@ -26,9 +26,10 @@ class MangoFeed extends Component {
   render() {
     switch (this.props.userId) {
       case null:
-        return <h2>Please Sign In to access dashboard!</h2>;
+        return null;
       case false:
-        return <h2>Please Sign In to access dashboard!</h2>;
+        window.location.href = '/login';
+        return null;
       default:
         return (
           <div className="feed-page-container">

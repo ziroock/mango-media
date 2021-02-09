@@ -85,14 +85,15 @@ class SearchBar extends Component {
 
   // TODO: Need to make the list ul into a column instead of a row???
   render() {
+    //div id = search-bar
+    //<div id="search-results">
     return (
-      <div id="search-bar" className="left">
+      <div id="mango-search-field">
         <textarea className="left" onChange={this.handleChange} name="body" value={this.state.body} />
-        <i className="material-icons right" onClick={this.handleSubmit}>
-          {' '}
-          search{' '}
+        <i className="material-icons" onClick={this.handleSubmit}>
+          search
         </i>
-        <div id="search-results">
+        <div id="mango-search-field-result-list">
           <ul> {this.renderSearchResults()} </ul>
         </div>
       </div>

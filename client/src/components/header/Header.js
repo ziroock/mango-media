@@ -14,6 +14,22 @@ import SearchBar from './SearchBar';
  * */
 
 class Header extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showMenu: false,
+    };
+  }
+
+  toggleMenu() {
+    // console.log("title: " + this.props.title);
+    // console.log("body: " + this.props.body);
+    // console.log("date: " + this.props.date);
+
+    this.setState({ showMenu: !this.state.showMenu });
+    // console.log('The showEdit state: ' + this.state.showEdit);
+  }
+
   renderContent() {
     switch (this.props.auth._id) {
       case null:
@@ -32,42 +48,51 @@ class Header extends Component {
           </li>,
         ];
       default:
-        return [
-          <SearchBar key="1" />,
-          <li key="4">
-            <a style={{ fontSize: '20px' }} href="/invitation/new">
-              Invitations
+        return null;
+    }
+  }
+  renderSidebar() {
+    //  && this.props.auth._id < -- add this after done testing
+    if (this.state.showMenu) {
+      return (
+        <div className="mango-sidenav" id="mango-mobile-side-nav">
+          <ul className="roboto-normal-white-21px" id="mango-sidenav-list">
+            <li>
+              <SearchBar />
+            </li>
+            <li>
+              <a href={`/dashboard/${this.props.auth._id}`}>Profile</a>
+            </li>
+            <li>
+              <a href="/">Dashboard</a>
+            </li>
+            <a href={`/photoGallery/${this.props.auth._id}`}>
+              <li>Photo Gallery</li>
             </a>
-          </li>,
-          <li key="2">
-            <a style={{ fontSize: '20px' }} href={`/dashboard/${this.props.auth._id}`}>
-              Profile
-            </a>
-          </li>,
-          <li key="3">
-            <a style={{ fontSize: '20px' }} href="/api/logout">
-              Log Out
-            </a>
-          </li>,
-        ];
+            <li>
+              <a href="/invitation/new">Invite Friends</a>
+            </li>
+            <li>Settings</li>
+            <li>
+              <a href="/api/logout">Log Out</a>
+            </li>
+          </ul>
+        </div>
+      );
+    } else {
+      return null;
     }
   }
 
   render() {
     return (
-      <div className="navbar-fixed" style={{ zIndex: '10' }}>
-        <nav style={{ zIndex: '10' }}>
-          <div className="nav-wrapper" style={{ zIndex: '10' }}>
-            <div style={{ margin: '0 1em' }}>
-              <a href="/" className="left brand-logo" style={{ fontSize: '30px' }}>
-                Mango
-              </a>
-              <ul id="nav-mobile" className="right">
-                {this.renderContent()}
-              </ul>
-            </div>
-          </div>
-        </nav>
+      <div className="mango-nav" style={{ zIndex: '10' }}>
+        <div id="mango-menu-button">
+          <i className="material-icons" onClick={() => this.toggleMenu()}>
+            menu
+          </i>
+        </div>
+        {this.renderSidebar()}
       </div>
     );
   }

@@ -517,11 +517,13 @@
 .mango-tabular-inner-container {
     background-color: rgba(196,196,196,0.35);
     border-radius: 5px;
-    height: 72vh;
+    min-height: 72vh;'http://stackoverflow.com'
+    height: auto;
     position: relative;
-    width: 329px;
+    width: 355px;
     margin: 1rem auto;
     overflow: auto;
+    padding: 10px;
 }
 
 .pic-menu-button {
@@ -535,12 +537,78 @@
     height: 15px;
 }
 
+#mango-menu-button {
+    position: absolute;
+    color: green;
+    right: 5px;
+    z-index:15;
+    cursor: pointer;
+}
 
-/*style={{ */
-/*    position: 'absolute', */
-/*    top: '0px', */
-/*    right: '0px', */
-/*    zIndex: '20' */
-/*}}*/
+.mango-sidenav {
+    position: fixed;
+    width: 279px;
+    background: rgba(0,0,0,0.9);
+    height: 100vh;
+    top: 0;
+    right: 0;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    visibility: visible;
+}
 
-/*style={{ cursor: 'pointer', marginBottom: '10px' }}*/
+#mango-sidenav-list {
+    position: relative;
+    margin-top: 3em;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+#mango-sidenav-list a {
+    color: white;
+}
+
+#mango-search-field {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: relative;
+    width: 13em;
+    z-index: 1;
+    font-size: 20px;
+    border-radius: 10px;
+    flex-wrap: wrap;
+
+}
+
+#mango-search-field i{
+    cursor: pointer;
+    width: 1em;
+    right: 0;
+    position: relative;
+}
+
+#mango-search-field textarea{
+    width: 11em;
+    height: 27px;
+    border: none;
+    resize: none;
+    color: white;
+    background: rgba(95, 158, 160,0.1);
+    padding-left: 7px;
+    border-radius: 10px;
+}
+
+#mango-search-field-result-list {
+    top:-1px;
+    left: 0.5rem;
+    position: relative;
+    width: 15rem;
+}
+
+.mango-nav {
+
+}

@@ -31,6 +31,7 @@ import MangoPostMenu from './MangoPostMenu';
  *
  * **/
 
+// https://stackoverflow.com/questions/118241/calculate-text-width-with-javascript
 function getTextWidth(text, font) {
   // re-use canvas object for better performance
   let canvas = getTextWidth.canvas || (getTextWidth.canvas = document.createElement('canvas'));
@@ -49,7 +50,10 @@ class MangoPost extends Component {
   genComments = (n, postId) => {
     let comments = [];
     for (let i = 0; i < n; i++) {
-      let str = 'This is comment ' + i + ' and I like it';
+      let str =
+        'This is comment ' +
+        i +
+        ' and I like italkfnasfnlansflasnfl adlk;fnaklfnlka alkdnlkansd kaslnfdlk andklans klsand kansdlk ansdn ';
       let key = postId + i.toString();
       let tmp = {
         body: str,
@@ -70,7 +74,7 @@ class MangoPost extends Component {
           <div key={key} className="mango-post-reply">
             <div className="mango-post-reply-name-and-date">
               <div className="mango-post-reply-name roboto-normal-white-15px">Jonny Doe</div>
-              <div className="mango-post-reply-date roboto-normal-white-11px">1:50 01/07/20201</div>
+              <div className="mango-post-reply-date roboto-normal-white-11px">1:50 01/07/2021</div>
             </div>
             <div className="mango-post-reply-avatar-and-text">
               <img

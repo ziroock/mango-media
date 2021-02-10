@@ -20,6 +20,7 @@ import '../style/mango-profile.css';
 import '../style/mango-login.css';
 import '../style/mango.css';
 import '../style/mango-profile-gallery.css';
+import '../style/mango-post.css';
 
 /*
  * The App Component is the what puts everything together! It is where the

@@ -452,18 +452,6 @@
     display: flex;
     flex-direction: column;
 }
-.mango-tabular-title-box {
-    background-color: transparent;
-    flex-shrink: 1;
-    height: auto;
-    letter-spacing: 0.00px;
-    line-height: normal;
-    min-height: 37px;
-    position: relative;
-    text-align: center;
-    width: 199px;
-    margin: auto;
-}
 .mango-tabular {
     align-items: flex-start;
     background-color: var(--black-2);

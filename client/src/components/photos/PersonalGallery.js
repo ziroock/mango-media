@@ -1,24 +1,24 @@
 //https://github.com/iamshaunjp/firegram/tree/final-files
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchPicture } from '../../actions';
+import { fetchPicture, fetchFriend } from '../../actions';
 import UploadPicModal from './UploadPicModal';
 import { isPersonal } from '../../utils/mango.utils';
 import Gallery from '../../utils/GalleryAPI/Gallery';
-import mangoSVGS from '../../utils/imporImages';
 
 class PersonalGallery extends Component {
   componentDidMount() {
+    this.props.fetchFriend({ friendId: this.props.match.params.userId });
     this.props.fetchPicture({ userId: this.props.match.params.userId });
   }
 
   Title() {
     return (
       <div className="mango-tabular-title-box">
-        <div className="mango-tabular-title-inner-box">
-          <div className="mango-profile-gallery-title roboto-normal-white-27px">Zaprin’s Gallery</div>
-          {this.renderUpload()}
-        </div>
+        {/*<div className="mango-tabular-title-inner-box">*/}
+        <div className="mango-profile-gallery-title roboto-normal-white-27px">{this.props.friend.name}’s Gallery</div>
+        {this.renderUpload()}
+        {/*</div>*/}
       </div>
     );
   }
@@ -65,8 +65,9 @@ class PersonalGallery extends Component {
   }
 }
 
-function mapStateToProps({ picture, auth }) {
-  return { picture: picture, auth: auth };
+function mapStateToProps({ picture, auth, friend }) {
+  console.log(friend);
+  return { picture: picture, auth: auth, friend: friend };
 }
 
-export default connect(mapStateToProps, { fetchPicture })(PersonalGallery);
+export default connect(mapStateToProps, { fetchPicture, fetchFriend })(PersonalGallery);

@@ -5,7 +5,6 @@ import ProfileCover from '../cover/ProfileCover';
 import MangoPostCreate from '../posts/MangoPostCreate';
 import { isPersonal } from '../../utils/mango.utils';
 import MangoPost from '../posts/MangoPost';
-import mangoSVGS from '../../utils/imporImages';
 /*
  * ProfileDashboard is the component that holds all the User Profile Components!
  * It holds: <ProfileCover/>, <MangoPostCreate/> and <MangoPostCreateList/>

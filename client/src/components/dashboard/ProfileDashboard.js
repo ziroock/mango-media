@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchFriend, fetchPosts } from '../../actions';
-import ProfileCover from './Cover/ProfileCover';
-import MangoPostCreate from './posts/MangoPostCreate';
+import ProfileCover from '../cover/ProfileCover';
+import MangoPostCreate from '../posts/MangoPostCreate';
 import { isPersonal } from '../../utils/mango.utils';
-import MangoPost from './posts/MangoPost';
+import MangoPost from '../posts/MangoPost';
 import mangoSVGS from '../../utils/imporImages';
 /*
  * ProfileDashboard is the component that holds all the User Profile Components!

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { editPost } from '../../../actions';
+import { editPost } from '../../actions';
 
 /*
  * The Component MangoPostEdit is a new page that opens up a new text are, and

@@ -21,7 +21,7 @@ module.exports = app => {
             case 'cover':
                 if (!imageUrl) imageUrl = 'https://mango-media-album.s3.us-west-2.amazonaws.com/1607477768085';
                 await User.updateOne({ _id: userId }, { $set: { coverSrc: imageUrl } });
-                console.log('Cover');
+                console.log('cover');
                 break;
             case 'avatar':
                 if (!imageUrl) imageUrl = 'https://mango-media-album.s3.us-west-2.amazonaws.com/1607485963493';

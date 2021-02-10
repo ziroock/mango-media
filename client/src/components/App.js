@@ -9,7 +9,7 @@ import Login from './auth/Login';
 import ProfileDashboard from './dashboard/ProfileDashboard';
 import InvitationNew from './invitation/InvitationNew';
 import RegisterInvite from './auth/RegisterInvite';
-import PersonalGallery from './dashboard/photos/PersonalGallery';
+import PersonalGallery from './photos/PersonalGallery';
 import MangoFeed from './feed/MangoFeed';
 import '../style/style.css';
 import '../style/style.personalGallery.css';

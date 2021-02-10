@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import CoverPictureSettings from './CoverPictureSettings';
-import { fetchFriend } from '../../../actions/index';
-import { newFollow } from '../../../actions/index';
-import mangoSVGS from '../../../utils/imporImages';
+import { fetchFriend } from '../../actions';
+import { newFollow } from '../../actions';
+import mangoSVGS from '../../utils/imporImages';
 
 /*
- *   This component contains the ProfileCover items: Cover Photo, Profile Photo
+ *   This component contains the ProfileCover items: cover Photo, Profile Photo
  *  and User's Name.
  */
 

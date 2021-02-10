@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchFeed } from '../../../actions';
+import { fetchFeed } from '../../actions';
 import MangoPostMenu from './MangoPostMenu';
 /*
  * MangoPost handles the fetching and rendering of all of the users posts.

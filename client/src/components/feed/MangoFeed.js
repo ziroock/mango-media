@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import MangoPost from '../dashboard/posts/MangoPost';
+import MangoPost from '../posts/MangoPost';
 import { connect } from 'react-redux';
 import { fetchFeed } from '../../actions';
 import { isPersonal } from '../../utils/mango.utils';

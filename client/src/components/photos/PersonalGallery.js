@@ -1,11 +1,11 @@
 //https://github.com/iamshaunjp/firegram/tree/final-files
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchPicture } from '../../../actions';
+import { fetchPicture } from '../../actions';
 import UploadPicModal from './UploadPicModal';
-import { isPersonal } from '../../../utils/mango.utils';
-import Gallery from '../../../utils/GalleryAPI/Gallery';
-import mangoSVGS from '../../../utils/imporImages';
+import { isPersonal } from '../../utils/mango.utils';
+import Gallery from '../../utils/GalleryAPI/Gallery';
+import mangoSVGS from '../../utils/imporImages';
 
 class PersonalGallery extends Component {
   componentDidMount() {

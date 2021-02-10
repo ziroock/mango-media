@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { createPost } from '../../../actions';
+import { createPost } from '../../actions';
 
 const defaultPostValue = 'Write a post...';
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { uploadPicture } from '../../../actions';
-import mangoSVGS from '../../../utils/imporImages';
+import { uploadPicture } from '../../actions';
+import mangoSVGS from '../../utils/imporImages';
 // - Need to connect the upload process to the back end.
 // - Connect reducer, create action, and back end rout.
 

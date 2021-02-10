@@ -1,14 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap');
 .body {
     margin: 0;
-    background: rgba(24, 38, 31, 1);
-
 }
 #App {
     margin: 0;
+}
+
+#mango-background {
     background: var(--celtic-2);
-    min-height: 100vh;
-    height: auto;
+    margin: 0;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
 }
 
 :root{

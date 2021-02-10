@@ -40,6 +40,7 @@ class App extends Component {
   render() {
     return (
       <div id="App">
+        <div id="mango-background" />
         <BrowserRouter>
           <div>
             <Header id="header" />

@@ -31,6 +31,15 @@ import MangoPostMenu from './MangoPostMenu';
  *
  * **/
 
+function getTextWidth(text, font) {
+  // re-use canvas object for better performance
+  let canvas = getTextWidth.canvas || (getTextWidth.canvas = document.createElement('canvas'));
+  let context = canvas.getContext('2d');
+  context.font = font;
+  let metrics = context.measureText(text);
+  return Math.floor(metrics.width);
+}
+
 class MangoPost extends Component {
   componentDidMount() {
     this.props.fetchFeed();
@@ -50,6 +59,12 @@ class MangoPost extends Component {
     }
     if (comments.length > 0) {
       return comments.map(({ body, key }) => {
+        let font = "normal 14px 'Roboto'";
+        let textWidth = getTextWidth(body, font);
+        let textWidthWithPadding = textWidth + 10;
+        let replyWidth = textWidthWithPadding.toString() + 'px';
+        console.log(replyWidth);
+        console.log(textWidthWithPadding);
         //post-comment-box
         return (
           <div key={key} className="mango-post-reply">
@@ -63,10 +78,13 @@ class MangoPost extends Component {
                 className="mango-post-reply-avatar avatar"
                 src="https://mango-media-album.s3.us-west-2.amazonaws.com/1607485963493"
               />
-              <div className="mango-post-reply-inner-text-container">
-                <div className="mango-post-reply-inner-text-box" />
-                <div className="mango-post-reply-inner-text roboto-normal-white-13px">{body}</div>
-              </div>
+              <text style={{ width: { replyWidth } }} className="mango-post-reply-text-area roboto-normal-white-13px">
+                {body}
+              </text>
+              {/*<div className="mango-post-reply-inner-text-container">*/}
+              {/*  <div className="mango-post-reply-inner-text-box" />*/}
+              {/*  <div className="mango-post-reply-inner-text roboto-normal-white-13px">{body}</div>*/}
+              {/*</div>*/}
             </div>
           </div>
         );

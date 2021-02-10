@@ -54,7 +54,7 @@ class ProfileCover extends Component {
     let avatarImgSrc = this.props.friend.avatarSrc;
     this.updateProfileCover();
     return (
-      <div>
+      <div id="mango-profile-cover-box">
         <div id="mango-profile-cover">
           <div style={{ display: 'inline-block' }}>
             {/*<img src={coverImgSrc} alt="profile-cover" id="profile-cover-pic" />*/}

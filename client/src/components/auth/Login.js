@@ -53,16 +53,7 @@ class Login extends Component {
 
   render() {
     return (
-      <div className="iphone-11-pro-x screen">
-        <div className="login-header">
-          <div className="login-mango-logo">
-            <img className="mango-logo-m" src={mangoSVGS.logo.logoM} />
-            <img className="mango-logo-a" src={mangoSVGS.logo.logoA} />
-            <img className="mango-logo-n" src={mangoSVGS.logo.logoN} />
-            <img className="mango-logo-g" src={mangoSVGS.logo.logoG} />
-            <img className="mango-logo-mango" src={mangoSVGS.logo.logoO} />
-          </div>
-        </div>
+      <div className="iphone-11-pro-x screen mango-login-page">
         <form className="login-mango-form" onSubmit={this.handleSubmit} method="post" action="/api/login">
           <div className="login-label-title roboto-normal-white-18px">Email</div>
           <input

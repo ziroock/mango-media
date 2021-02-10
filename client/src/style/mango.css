@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:400");
 .screen {
     align-items: flex-start;
-    background-color: var(--celtic-2);
+    /*background-color: var(--celtic-2);*/
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -528,14 +528,6 @@
     height: 15px;
 }
 
-#mango-menu-button {
-    position: absolute;
-    color: green;
-    right: 5px;
-    z-index:15;
-    cursor: pointer;
-}
-
 .mango-sidenav {
     position: fixed;
     width: 279px;
@@ -600,13 +592,41 @@
     width: 15rem;
 }
 
-.mango-nav {
+#mango-nav {
     background-color: transparent;
-    height: 46px;
     overflow: hidden;
+    position: absolute;
+    z-index: 15;
+    width: 100%;
+}
+
+#mango-logo {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2em;
+    position: relative;
+    width: 215px;
+}
+
+#mango-menu-button {
     position: fixed;
-    width: 53px;
-    top: 2.4rem;
-    right: 1.5rem;
-    z-index: 5;
+    color: green;
+    right: 1em;
+    top: 2em;
+    z-index:20;
+    cursor: pointer;
+}
+
+.mango-login-page {
+    margin-top: 10em;
+}
+
+.mango-feed-page {
+    margin-top: 6em;
+}
+
+.mango-friends-invite-form {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10em;
 }

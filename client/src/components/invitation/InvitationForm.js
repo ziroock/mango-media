@@ -21,8 +21,8 @@ class InvitationForm extends Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.props.handleSubmit(this.props.onSurveySubmit)}>
+      <div className="screen mango-feed-page">
+        <form className="mango-friends-invite-form" onSubmit={this.props.handleSubmit(this.props.onSurveySubmit)}>
           {this.renderFields()}
           <Link to="/" className="red btn-flat left white-text">
             Cancel

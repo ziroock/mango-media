@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import SearchBar from './SearchBar';
+import mangoSVGS from '../../utils/imporImages';
 
 /**
  * The Header Component is a navigation bar fixed at the top of every page. It renders
@@ -86,7 +87,14 @@ class Header extends Component {
 
   render() {
     return (
-      <div className="mango-nav" style={{ zIndex: '10' }}>
+      <div id="mango-nav">
+        <div id="mango-logo">
+          <img className="mango-logo-m" src={mangoSVGS.logo.logoM} />
+          <img className="mango-logo-a" src={mangoSVGS.logo.logoA} />
+          <img className="mango-logo-n" src={mangoSVGS.logo.logoN} />
+          <img className="mango-logo-g" src={mangoSVGS.logo.logoG} />
+          <img className="mango-logo-mango" src={mangoSVGS.logo.logoO} />
+        </div>
         <div id="mango-menu-button">
           <i className="material-icons" onClick={() => this.toggleMenu()}>
             menu

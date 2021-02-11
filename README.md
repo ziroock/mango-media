@@ -18,6 +18,19 @@
     - live group chat on the right side !!!
 - sell exclusive themes
 - make customizable themes
+- optimize the load process by saving the number of messages to load etc... 
+  this way I will optimize the load process.
+  - Also, in big lists if possible save the number of items 
+    on creation ( a.k.a. save the length/size of object). 
+    Again as the parent statement, the following will optimize the 
+    load process in the cost of a few bites and an extra layer of logic?
+    (Test if this idea actually boosts the performance or with modern computer it barely leaves a dent.)
+
+- Remove premature loading, because as user usage and information growes premature loading will
+destroy my performance... I need to load only N amount of user information and load N data when X = N-N(seen) is reached,
+  where N is the proper length for items loaded (photos, messages, posts etc.. ) and X is the messages left before 
+  the user runs out of content. N(seen) is the number of itmes that the user has already seen.
+  
 ### Intent
 This project is created so I can further develop my web development skills.  
 By using frameworks like React, Mongooese, Express and more. It is a great  

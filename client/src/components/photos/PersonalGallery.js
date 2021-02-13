@@ -5,11 +5,21 @@ import { fetchPicture, fetchFriend } from '../../actions';
 import UploadPicModal from './UploadPicModal';
 import { isPersonal } from '../../utils/mango.utils';
 import Gallery from '../../utils/GalleryAPI/Gallery';
+import mangoSVGS from '../../utils/imporImages';
 
 class PersonalGallery extends Component {
   componentDidMount() {
     this.props.fetchFriend({ friendId: this.props.match.params.userId });
     this.props.fetchPicture({ userId: this.props.match.params.userId });
+  }
+
+  renderButton() {
+    return (
+      <div className="mango-picture-add-button-galley">
+        <img className="mango-gallery-icon-pic-add-1" src={mangoSVGS.mangoIconAddPic.mangoIconAddPic1} />
+        <img className="mango-gallery-icon-pic-add-2" src={mangoSVGS.mangoIconAddPic.mangoIconAddPic2} />
+      </div>
+    );
   }
 
   Title() {
@@ -25,7 +35,14 @@ class PersonalGallery extends Component {
 
   renderUpload() {
     if (isPersonal(this.props.auth._id, this.props.match.params.userId)) {
-      return <UploadPicModal toggle={null} userId={this.props.match.params.userId} uploadType={'gallery'} />;
+      return (
+        <UploadPicModal
+          toggleDropDown={null}
+          userId={this.props.match.params.userId}
+          uploadType={'gallery'}
+          submitElement={this.renderButton()}
+        />
+      );
     }
     return null;
   }

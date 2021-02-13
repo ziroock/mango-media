@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import CoverSettingsModal from './CoverSettingsModal';
+import UploadPicModal from '../photos/UploadPicModal';
+import mangoSVGS from '../../utils/imporImages';
 
 class CoverPictureSettings extends Component {
   constructor(props) {
@@ -13,9 +15,9 @@ class CoverPictureSettings extends Component {
     };
     // this.uploadType = 'gallery';
     this.toggleSettings = this.toggleSettings.bind(this);
-    this.showMenu = this.showMenu.bind(this);
-    this.resetUploadType = this.resetUploadType.bind(this);
-    this.closeMenu = this.closeMenu.bind(this);
+    // this.showMenu = this.showMenu.bind(this);
+    // this.closeMenu = this.closeMenu.bind(this);
+    this.toggleMenu = this.toggleMenu.bind(this);
     this.toggleCoverModal = this.toggleCoverModal.bind(this);
     this.renderCoverModal = this.renderCoverModal.bind(this);
     this.toggleAvatarModal = this.toggleAvatarModal.bind(this);
@@ -35,13 +37,7 @@ class CoverPictureSettings extends Component {
 
   renderCoverModal() {
     if (this.state.showCoverModal) {
-      return (
-        <CoverSettingsModal
-          toggle={this.toggleCoverModal}
-          userId={this.props.userId}
-          uploadType={this.state.uploadType}
-        />
-      );
+      return <UploadPicModal toggleDropDown={null} userId={this.props.userId} uploadType={this.state.uploadType} />;
     } else {
       return null;
     }
@@ -58,17 +54,12 @@ class CoverPictureSettings extends Component {
     console.log('RENDER STATE IS=: ', this.state.showAvatarModal);
   }
 
-  resetUploadType() {
-    this.setState({ uploadType: 'gallery' });
-    console.log('DID A RESET', this.state.uploadType);
-  }
-
   renderAvatarModal() {
     if (this.state.showAvatarModal) {
       return (
         <CoverSettingsModal
-          reset={this.resetUploadType}
-          toggle={this.toggleAvatarModal}
+          // reset={this.resetUploadType}
+          toggleDropDown={this.toggleAvatarModal}
           userId={this.props.userId}
           uploadType={this.state.uploadType}
         />
@@ -78,30 +69,45 @@ class CoverPictureSettings extends Component {
     }
   }
 
-  showMenu(event) {
-    event.preventDefault();
-    this.setState({ showMenu: true }, () => {
-      document.addEventListener('click', this.closeMenu);
-    });
+  toggleMenu() {
+    // console.log("title: " + this.props.title);
+    // console.log("body: " + this.props.body);
+    // console.log("date: " + this.props.date);
+
+    this.setState({ showMenu: !this.state.showMenu });
+    // console.log('The showEdit state: ' + this.state.showEdit);
   }
 
-  closeMenu() {
-    this.setState({ showMenu: false }, () => {
-      document.removeEventListener('click', this.closeMenu);
-    });
-  }
+  // showMenu(event) {
+  //   event.preventDefault();
+  //   this.setState({ showMenu: true }, () => {
+  //     document.addEventListener('click', this.closeMenu);
+  //   });
+  // }
+  //
+  // closeMenu() {
+  //   this.setState({ showMenu: false }, () => {
+  //     document.removeEventListener('click', this.closeMenu);
+  //   });
+  // }
 
   toggleSettings() {
     this.setState({ showUploadReview: !this.state.showUploadReview });
   }
 
-  z;
   renderSettingsMenu() {
     if (this.state.showMenu) {
+      console.log('BLAJ BLAH: cover');
       return (
+        // onClick={this.toggleCoverModal}>
         <ul className="blue-grey darken-1" style={{ marginTop: '25px', zIndex: '2' }}>
-          <li style={{ cursor: 'pointer' }} onClick={this.toggleCoverModal}>
-            EditCover
+          <li style={{ cursor: 'pointer' }}>
+            <UploadPicModal
+              toggleDropDown={this.toggleMenu}
+              userId={this.props.userId}
+              uploadType={'cover'}
+              submitElement={<div className="mango-picture-add-button-cover">Change Profile Cover</div>}
+            />
           </li>
           <li style={{ cursor: 'pointer' }} onClick={this.toggleAvatarModal}>
             EditProfilePic
@@ -116,12 +122,12 @@ class CoverPictureSettings extends Component {
       return (
         <div id="cover-settings">
           <div id="cover-settings-button">
-            <i className="material-icons small" onClick={this.showMenu}>
+            <i className="material-icons small" onClick={this.toggleMenu}>
               settings
             </i>
           </div>
           {this.renderSettingsMenu()}
-          {this.renderCoverModal()}
+          {/*{this.renderCoverModal()}*/}
           {this.renderAvatarModal()}
         </div>
       );

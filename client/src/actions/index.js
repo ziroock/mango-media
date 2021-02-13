@@ -121,7 +121,7 @@ export const fetchPicture = userId => {
 };
 
 export const uploadPicture = (pictureBody, uploadType) => {
-  // console.log(uploadType);
+  console.log(uploadType);
   // https://stackoverflow.com/questions/54997224/formdata-append-json
   pictureBody.append('uploadType', uploadType);
   // console.log(pictureBody);

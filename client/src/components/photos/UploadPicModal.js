@@ -17,7 +17,7 @@ class UploadPicModal extends Component {
     this.state = { file: null, error: null, showUploadReview: false, showPic: null };
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
-    this.toggleEdit = this.toggleEdit.bind(this);
+    this.closeModal = this.closeModal.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.previewFile = this.previewFile.bind(this);
     //https://stackoverflow.com/questions/12081493/capturing-the-close-of-the-browse-for-file-window-with-javascript/12133295#12133295
@@ -46,11 +46,13 @@ class UploadPicModal extends Component {
   }
 
   handleClick(e) {
+    console.log('I am here bate: Handle click');
     this.tmpFile = e.target.value;
     e.target.value = null;
   }
 
   handleChange(e) {
+    console.log('I am here bate: handle change');
     let chosen = e.target.files[0];
     if (
       (this.tmpFile === e.target.value && chosen && this.types.includes(chosen.type)) ||
@@ -72,20 +74,24 @@ class UploadPicModal extends Component {
       const file = this.state.file;
       const formData = new FormData();
       formData.append('image', file);
+      console.log('The upload type is: ' + this.props.uploadType);
       this.props.uploadPicture(formData, this.props.uploadType);
-      this.toggleEdit();
+      this.closeModal();
 
       // set invisible img src to null
       const preview = document.getElementById('hiddenPic');
       preview.src = '';
-      if (this.props.toggle) {
-        this.props.toggle();
+      if (this.props.toggleDropDown) {
+        this.props.toggleDropDown();
       }
     }
   }
 
-  toggleEdit() {
+  closeModal() {
     this.setState({ showUploadReview: !this.state.showUploadReview, showPic: null, file: null });
+    if (this.props.toggleDropDown) {
+      this.props.toggleDropDown();
+    }
   }
 
   //https://stackoverflow.com/questions/3814231/loading-an-image-to-a-img-from-input-file
@@ -96,7 +102,7 @@ class UploadPicModal extends Component {
           <div className="popup_inner">
             <div id="preview-uploaded-pic-frame">
               <i
-                onClick={this.toggleEdit}
+                onClick={this.closeModal}
                 style={{
                   cursor: 'pointer',
                   position: 'absolute',
@@ -123,25 +129,21 @@ class UploadPicModal extends Component {
     }
   }
 
-  renderButton() {
+  render() {
     console.log('blahBlah: ', this.props.auth._id, 'usrId: ', this.props.userId);
     if (this.props.auth._id === this.props.userId) {
+      console.log('blahBlah: ', this.props.auth._id, 'usrId: ', this.props.userId);
       return [
-        // <div className="mango-gallery-icon-pic-add">
-        //   <img className="mango-gallery-icon-pic-add-1" src={mangoSVGS.mangoIconAddPic.mangoIconAddPic1} />
-        //   <img className="mango-gallery-icon-pic-add-2" src={mangoSVGS.mangoIconAddPic.mangoIconAddPic2} />
-        // </div>,
         <form className="button-add-photo" key="UploadModal123">
-          <label className="mango-gallery-icon-pic-add">
+          <label>
             <input
               type="file"
-              className="image"
+              // className="image"
               id="picField"
               onClick={this.handleClick}
               onChange={this.handleChange}
             />
-            <img className="mango-gallery-icon-pic-add-1" src={mangoSVGS.mangoIconAddPic.mangoIconAddPic1} />
-            <img className="mango-gallery-icon-pic-add-2" src={mangoSVGS.mangoIconAddPic.mangoIconAddPic2} />
+            {this.props.submitElement}
           </label>
           <div className="output">{this.state.error && <div className="error">{this.state.error}</div>}</div>
           <img id="hiddenPic" src="" height="200" alt="Preview ..." style={{ display: 'none' }} />
@@ -151,10 +153,6 @@ class UploadPicModal extends Component {
     } else {
       return null;
     }
-  }
-
-  render() {
-    return this.renderButton();
   }
 }
 

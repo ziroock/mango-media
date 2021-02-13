@@ -1,9 +1,36 @@
 /* screen - iphone-11-pro-x-profile-gallery */
 
-.mango-gallery-icon-pic-add {
-  background-color: transparent;
-  margin: auto;
+/*.mango-gallery-icon-pic-add {*/
+/*  background-color: transparent;*/
+/*  margin: auto;*/
+/*  position: relative;*/
+/*}*/
+.mango-picture-add-button-cover{
   position: relative;
+  margin-top: -1em;
+  color: black;
+  font-size: 1.2em;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.mango-picture-add-button-galley {
+  position: relative;
+  margin-top: -1.3em;
+  margin-right: -5em;
+}
+
+.button-add-photo {
+  position: relative;
+  height: 40px;
+  width: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.button-add-photo input{
+  height: 0;
+  width: 0;
+  opacity: 0;
 }
 .mango-tabular-title-box {
   background-color: transparent;

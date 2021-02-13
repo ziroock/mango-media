@@ -1,10 +1,5 @@
 /* screen - iphone-11-pro-x-profile-gallery */
 
-/*.mango-gallery-icon-pic-add {*/
-/*  background-color: transparent;*/
-/*  margin: auto;*/
-/*  position: relative;*/
-/*}*/
 .mango-picture-add-button-cover{
   position: relative;
   margin-top: -1em;
@@ -12,11 +7,14 @@
   font-size: 1.2em;
   padding-left: 5px;
   padding-right: 5px;
+  cursor: pointer;
+
 }
 .mango-picture-add-button-galley {
   position: relative;
   margin-top: -1.3em;
   margin-right: -5em;
+  cursor: pointer;
 }
 
 .button-add-photo {

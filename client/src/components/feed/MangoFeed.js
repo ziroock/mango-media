@@ -7,6 +7,7 @@ import mangoSVGS from '../../utils/imporImages';
 
 class MangoFeed extends Component {
   componentDidMount() {
+    console.log('running');
     this.props.fetchFeed();
   }
 
@@ -24,6 +25,7 @@ class MangoFeed extends Component {
   }
 
   render() {
+    let start = performance.now();
     switch (this.props.userId) {
       case null:
         return null;
@@ -34,6 +36,7 @@ class MangoFeed extends Component {
         return (
           <div className="iphone-11-pro-x screen mango-feed-page">
             <div className="mango-post-list">{this.renderPostList()}</div>
+            {console.log('test: ', performance.now() - start)}
           </div>
         );
     }

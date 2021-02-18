@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchFeed } from '../../actions';
 import MangoPostMenu from './MangoPostMenu';
 /*
  * MangoPost handles the fetching and rendering of all of the users posts.
@@ -42,10 +41,6 @@ function getTextWidth(text, font) {
 }
 
 class MangoPost extends Component {
-  componentDidMount() {
-    this.props.fetchFeed();
-  }
-
   // function that auto generates n number of comments
   genComments = (n, postId) => {
     let comments = [];
@@ -67,9 +62,6 @@ class MangoPost extends Component {
         let textWidth = getTextWidth(body, font);
         let textWidthWithPadding = textWidth + 10;
         let replyWidth = textWidthWithPadding.toString() + 'px';
-        console.log(replyWidth);
-        console.log(textWidthWithPadding);
-        //post-comment-box
         return (
           <div key={key} className="mango-post-reply">
             <div className="mango-post-reply-name-and-date">
@@ -207,4 +199,4 @@ function mapStateToProps(state) {
   return { feed: state.feed };
 }
 
-export default connect(mapStateToProps, { fetchFeed })(MangoPost);
+export default connect(mapStateToProps)(MangoPost);

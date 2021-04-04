@@ -3,7 +3,7 @@ import MangoPost from '../posts/MangoPost';
 import { connect } from 'react-redux';
 import { fetchFeed } from '../../actions';
 import { isPersonal } from '../../utils/mango.utils';
-import mangoSVGS from '../../utils/imporImages';
+// import mangoSVGS from '../../utils/imporImages';
 
 class MangoFeed extends Component {
   componentDidMount() {

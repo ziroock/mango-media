@@ -16,8 +16,16 @@ class PersonalGallery extends Component {
   renderButton() {
     return (
       <div className="mango-picture-add-button-galley">
-        <img className="mango-gallery-icon-pic-add-1" src={mangoSVGS.mangoIconAddPic.mangoIconAddPic1} />
-        <img className="mango-gallery-icon-pic-add-2" src={mangoSVGS.mangoIconAddPic.mangoIconAddPic2} />
+        <img
+          alt="add-pic-button"
+          className="mango-gallery-icon-pic-add-1"
+          src={mangoSVGS.mangoIconAddPic.mangoIconAddPic1}
+        />
+        <img
+          alt="add-pic-button2"
+          className="mango-gallery-icon-pic-add-2"
+          src={mangoSVGS.mangoIconAddPic.mangoIconAddPic2}
+        />
       </div>
     );
   }

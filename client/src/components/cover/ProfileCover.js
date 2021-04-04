@@ -33,7 +33,7 @@ class ProfileCover extends Component {
   }
 
   follow() {
-    console.log('madafakaaaa');
+    // console.log('madafakaaaa');
     this.props.newFollow(this.props.userId, this.props.dashboardId);
   }
 
@@ -41,8 +41,8 @@ class ProfileCover extends Component {
     if (!this.props.personalPage) {
       return (
         <div className="mango-profile-icon-add">
-          <img className="mango-profile-icon-add-1" src={mangoSVGS.mangoIconAdd.mangoIconAdd1} />
-          <img className="mango-profile-icon-add-2" src={mangoSVGS.mangoIconAdd.mangoIconAdd2} />
+          <img alt="svg" className="mango-profile-icon-add-1" src={mangoSVGS.mangoIconAdd.mangoIconAdd1} />
+          <img alt="svg" className="mango-profile-icon-add-2" src={mangoSVGS.mangoIconAdd.mangoIconAdd2} />
         </div>
       );
     }
@@ -51,7 +51,7 @@ class ProfileCover extends Component {
 
   render() {
     let coverImgSrc = this.props.friend.coverSrc;
-    let avatarImgSrc = this.props.friend.avatarSrc;
+    // let avatarImgSrc = this.props.friend.avatarSrc;
     this.updateProfileCover();
     return (
       <div id="mango-profile-cover-box">
@@ -79,10 +79,12 @@ class ProfileCover extends Component {
             <div className="mango-profile-icon-add-people">
               <a href={`/invitation/new`}>
                 <img
+                  alt={'add-ppl-icon'}
                   className="mango-profile-icon-add-people-1"
                   src={mangoSVGS.mangoIconAddPeople.mangoIconAddPeople1}
                 />
                 <img
+                  alt={'add-ppl-icon'}
                   className="mango-profile-icon-add-people-2"
                   src={mangoSVGS.mangoIconAddPeople.mangoIconAddPeople2}
                 />
@@ -90,8 +92,16 @@ class ProfileCover extends Component {
             </div>
             <div className="mango-profile-icon-gallery">
               <a href={`/photoGallery/${this.props.dashboardId}`}>
-                <img className="mango-profile-icon-gallery-1" src={mangoSVGS.mangoIconGallery.mangoIconGallery1} />
-                <img className="mango-profile-icon-gallery-2" src={mangoSVGS.mangoIconGallery.mangoIconGallery2} />
+                <img
+                  alt={'gallery-icon'}
+                  className="mango-profile-icon-gallery-1"
+                  src={mangoSVGS.mangoIconGallery.mangoIconGallery1}
+                />
+                <img
+                  alt={'gallery-icon'}
+                  className="mango-profile-icon-gallery-2"
+                  src={mangoSVGS.mangoIconGallery.mangoIconGallery2}
+                />
               </a>
             </div>
           </div>

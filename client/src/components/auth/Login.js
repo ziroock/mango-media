@@ -79,14 +79,14 @@ class Login extends Component {
           <div className="g-oath-RH0WJ5">
             <div className="sign-up-with-OxrrSj roboto-normal-white-18px">Sign up with</div>
             <div className="google201-gperiod-1-OxrrSj">
-              <img className="vector-j5tZqK" src={mangoSVGS.google.googleG} />
+              <img alt="google" className="vector-j5tZqK" src={mangoSVGS.google.googleG} />
               <div className="overlap-group2-j5tZqK">
-                <img className="vector-fxDdQu" src={mangoSVGS.google.googleO1} />
-                <img className="vector-L9OufT" src={mangoSVGS.google.googleO2} />
+                <img alt="google" className="vector-fxDdQu" src={mangoSVGS.google.googleO1} />
+                <img alt="google" className="vector-L9OufT" src={mangoSVGS.google.googleO2} />
               </div>
-              <img className="vector-2exuDX" src={mangoSVGS.google.googleG2} />
-              <img className="vector-x5hCTx" src={mangoSVGS.google.googleL} />
-              <img className="vector-kB2ba9" src={mangoSVGS.google.googleE} />
+              <img alt="google" className="vector-2exuDX" src={mangoSVGS.google.googleG2} />
+              <img alt="google" className="vector-x5hCTx" src={mangoSVGS.google.googleL} />
+              <img alt="google" className="vector-kB2ba9" src={mangoSVGS.google.googleE} />
             </div>
           </div>
         </form>

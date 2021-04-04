@@ -89,11 +89,11 @@ class Header extends Component {
     return (
       <div id="mango-nav">
         <div id="mango-logo">
-          <img className="mango-logo-m" src={mangoSVGS.logo.logoM} />
-          <img className="mango-logo-a" src={mangoSVGS.logo.logoA} />
-          <img className="mango-logo-n" src={mangoSVGS.logo.logoN} />
-          <img className="mango-logo-g" src={mangoSVGS.logo.logoG} />
-          <img className="mango-logo-mango" src={mangoSVGS.logo.logoO} />
+          <img alt={'mango-logo-m'} className="mango-logo-m" src={mangoSVGS.logo.logoM} />
+          <img alt={'mango-logo-a'} className="mango-logo-a" src={mangoSVGS.logo.logoA} />
+          <img alt={'mango-logo-n'} className="mango-logo-n" src={mangoSVGS.logo.logoN} />
+          <img alt={'mango-logo-g'} className="mango-logo-g" src={mangoSVGS.logo.logoG} />
+          <img alt={'mango-logo-o'} className="mango-logo-mango" src={mangoSVGS.logo.logoO} />
         </div>
         <div id="mango-menu-button">
           <i className="material-icons" onClick={() => this.toggleMenu()}>

@@ -76,20 +76,20 @@ class ProfileCover extends Component {
         <div className="mango-profile-icons-bar">
           <div className="mango-profile-icons">
             {this.renderConnectButton()}
-            <div className="mango-profile-icon-add-people">
-              <a href={`/invitation/new`}>
-                <img
-                  alt={'add-ppl-icon'}
-                  className="mango-profile-icon-add-people-1"
-                  src={mangoSVGS.mangoIconAddPeople.mangoIconAddPeople1}
-                />
-                <img
-                  alt={'add-ppl-icon'}
-                  className="mango-profile-icon-add-people-2"
-                  src={mangoSVGS.mangoIconAddPeople.mangoIconAddPeople2}
-                />
-              </a>
-            </div>
+            {/*<div className="mango-profile-icon-add-people">*/}
+            {/*  <a href={`/invitation/new`}>*/}
+            {/*    <img*/}
+            {/*      alt={'add-ppl-icon'}*/}
+            {/*      className="mango-profile-icon-add-people-1"*/}
+            {/*      src={mangoSVGS.mangoIconAddPeople.mangoIconAddPeople1}*/}
+            {/*    />*/}
+            {/*    <img*/}
+            {/*      alt={'add-ppl-icon'}*/}
+            {/*      className="mango-profile-icon-add-people-2"*/}
+            {/*      src={mangoSVGS.mangoIconAddPeople.mangoIconAddPeople2}*/}
+            {/*    />*/}
+            {/*  </a>*/}
+            {/*</div>*/}
             <div className="mango-profile-icon-gallery">
               <a href={`/photoGallery/${this.props.dashboardId}`}>
                 <img

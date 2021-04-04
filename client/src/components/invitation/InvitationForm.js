@@ -9,7 +9,11 @@ import InvitationField from './invitationField';
  * **/
 
 const FIELDS = [
-  { label: 'Invite Your Friends To Mango Media!', name: 'recipients', errorMsg: 'You must input recipients emails!' },
+  {
+    label: 'Invite Your Friends To Mango Media! (Enter email/s and separate them using commas.)',
+    name: 'recipients',
+    errorMsg: 'You must input recipients emails!',
+  },
 ];
 
 class InvitationForm extends Component {

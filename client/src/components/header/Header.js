@@ -70,10 +70,10 @@ class Header extends Component {
             <a href={`/photoGallery/${this.props.auth._id}`}>
               <li>Photo Gallery</li>
             </a>
-            <li>
-              <a href="/invitation/new">Invite Friends</a>
-            </li>
-            <li>Settings</li>
+            {/*<li>*/}
+            {/*  <a href="/invitation/new">Invite Friends</a>*/}
+            {/*</li>*/}
+            {/*<li>Settings</li>*/}
             <li>
               <a href="/api/logout">Log Out</a>
             </li>

@@ -21,8 +21,25 @@ const InvitationFormReview = ({ onCancel, formValues, submitInvite, history }) =
     );
   });
 
+  // render() {
+  //     return (
+  //         <div className="screen mango-feed-page">
+  //             <form className="mango-friends-invite-form" onSubmit={this.props.handleSubmit(this.props.onSurveySubmit)}>
+  //                 {this.renderFields()}
+  //                 <Link to="/" className="red btn-flat left white-text">
+  //                     Cancel
+  //                 </Link>
+  //                 <button type="submit" className="teal btn-flat right white-text">
+  //                     Next
+  //                     <i className="material-icons right">arrow_forward</i>
+  //                 </button>
+  //             </form>
+  //         </div>
+  //     );
+  // }
+
   return (
-    <div>
+    <div className="screen mango-feed-page">
       <h5>Please confirm your entries</h5>
       {reviewFields}
       <button className="yellow darken-3 btn-flat" onClick={onCancel}>

@@ -26,7 +26,7 @@
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    height: 207px;
+    /*height: 207px;*/
     justify-content: flex-start;
     overflow: hidden;
     padding: 6.0px 6.0px;
@@ -81,7 +81,7 @@
     display: flex;
     flex-direction: row;
     flex-shrink: 1;
-    height: 64px;
+    /*height: 64px;*/
     justify-content: flex-start;
     margin-right: 8.0px;
     margin-top: 2px;
@@ -155,6 +155,7 @@
     padding: 3px 0;
     position: relative;
     width: 288px;
+    margin-bottom: 30px;
 }
 
 .post-comment-container::-webkit-scrollbar-track {
@@ -258,6 +259,18 @@
     position: relative;
     width: auto;
     max-width: 210px;
+    border-radius: 10px;
+    background-color: var(--celtic);
+    color: white;
+    padding: 6px;
+    height: auto;
+    margin-left: 10px;
+}
+
+.mango-post-text {
+    position: relative;
+    width: auto;
+    min-width: 210px;
     border-radius: 10px;
     background-color: var(--celtic);
     color: white;

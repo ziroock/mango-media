@@ -172,10 +172,11 @@ class MangoPost extends Component {
         </div>
         <div className="mango-post-avatar-and-text">
           <img alt="mango-post-avatar" src={post.avatarSrc} className="mango-post-avatar" />
-          <div className="mango-post-inner-text-container">
-            <div className="mango-post-inner-text-box" />
-            <div className="mango-post-inner-text roboto-normal-white-13px">{post.body}</div>
-          </div>
+          {/*<div className="mango-post-inner-text-container">*/}
+          {/*  <div className="mango-post-inner-text-box" />*/}
+          {/*  <div className="mango-post-inner-text roboto-normal-white-13px">{post.body}</div>*/}
+          {/*</div>*/}
+          <text className={'mango-post-text'}>{post.body}</text>
         </div>
         <div id={postReplyID} className="post-comment-container">
           {this.genComments(5, postReplyID)}

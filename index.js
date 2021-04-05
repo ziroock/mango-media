@@ -1,5 +1,6 @@
 const express = require('express');
-const session = require('express-session');
+// const session = require('express-session');
+const session = require('cookie-session');
 const mongoose = require('mongoose');
 const passport = require('passport');
 const flash = require('connect-flash');
@@ -33,9 +34,10 @@ app.use(flash());
 app.use(
     session({
         maxAge: 30 * 24 * 60 * 60 * 1000,
-        secret: ['mango'],
-        resave: false,
-        saveUninitialized: false,
+        keys: ['mongo'],
+        // secret: ['mango'],
+        // resave: false,
+        // saveUninitialized: false,
     })
 );
 
